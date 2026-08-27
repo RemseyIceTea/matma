@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2. Zbiory, wzory skróconego mnożenia &bull; Matematyka ZSE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ],
+      throwOnError: false
+    });"></script>
+  <style>
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3 w-full md:w-auto justify-between">
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div>
+            <span class="text-sm font-bold text-white tracking-wide block">Baza Zadań Maturalnych</span>
+            <span class="text-[11px] text-slate-400 block -mt-0.5">mgr M. Kucharska, mgr A. Piłat</span>
+          </div>
+        </a>
+        <a href="index.html" class="md:hidden text-xs text-indigo-400 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700">
+          <i class="fa-solid fa-house"></i> Home
+        </a>
+      </div>
+
+      <nav class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 text-xs">
+        <a href="index.html" class="px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition hidden lg:inline-flex items-center gap-1">
+          <i class="fa-solid fa-house"></i>
+        </a>
+        
+        <a href="1_liczby_rzeczywiste.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-calculator"></i>
+          <span>1. Liczby rzeczywiste</span>
+        </a>
+        
+        <a href="2_zbiory_i_wzory.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap bg-indigo-600 text-white font-semibold shadow-md shadow-indigo-500/20">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>2. Zbiory i wzory</span>
+        </a>
+        
+        <a href="3_funkcje_i_wlasnosci.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>3. Funkcje i ich własności</span>
+        </a>
+        
+        <a href="4_funkcja_liniowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-bezier-curve"></i>
+          <span>4. Funkcja liniowa</span>
+        </a>
+        
+        <a href="5_funkcja_kwadratowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-superscript"></i>
+          <span>5. Funkcja kwadratowa</span>
+        </a>
+        
+        <a href="6_ciagi.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-arrow-trend-up"></i>
+          <span>6. Ciągi</span>
+        </a>
+        
+        <a href="7_wielomiany.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-cubes"></i>
+          <span>7. Wielomiany</span>
+        </a>
+        
+        <a href="8_funkcje_wymierne.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-divide"></i>
+          <span>8. Funkcje wymierne</span>
+        </a>
+        
+      </nav>
+    </div>
+  </header>
+
+  <section class="border-b border-slate-800 bg-gradient-to-b from-slate-900/60 to-slate-950 py-8 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-3">
+            <i class="fa-solid fa-book-open"></i> Dział 2 z 8
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">2. Zbiory, wzory skróconego mnożenia</h1>
+          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-3xl">Rachunek zbiorów, przedziały liczbowe, wzory skróconego mnożenia stopnia 2 i 3, zaawansowane nierówności i dwumian Newtona.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="toggle-all-btn" onclick="toggleAllSolutions()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition flex items-center gap-2 shadow">
+            <i class="fa-regular fa-eye"></i> <span id="toggle-all-text">Rozwiń wszystkie rozwiązania</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <aside class="hidden lg:block lg:col-span-1">
+      <div class="sticky top-24 bg-slate-900/60 border border-slate-800 rounded-2xl p-4 max-h-[calc(100vh-7rem)] overflow-y-auto">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
+          <span>Spis Zadań</span>
+          <span class="text-indigo-400 font-mono" id="task-badge-count"></span>
+        </h3>
+        <div class="space-y-1 text-xs" id="sidebar-toc">
+        </div>
+      </div>
+    </aside>
+
+    <div class="lg:col-span-3 space-y-8">
+      
+<div class="p-6 rounded-2xl bg-violet-950/30 border border-violet-800/40 shadow-xl space-y-4">
+  <div class="flex items-center gap-3 border-b border-violet-800/40 pb-3">
+    <div class="w-8 h-8 rounded-lg bg-violet-600/30 text-violet-400 flex items-center justify-center font-bold">
+      <i class="fa-solid fa-layer-group"></i>
+    </div>
+    <h2 class="text-lg font-bold text-white tracking-wide">Kompendium Teoretyczne: Zbiory i Wzory Skróconego Mnożenia</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-slate-300">
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-violet-300 flex items-center gap-1.5"><i class="fa-solid fa-shapes"></i> Działania na zbiorach</h3>
+      <p>Suma: $A \cup B = \{x: x \in A \lor x \in B\}$</p>
+      <p>Iloczyn (część wspólna): $A \cap B = \{x: x \in A \land x \in B\}$</p>
+      <p>Różnica: $A \setminus B = \{x: x \in A \land x \notin B\}$</p>
+      <p>Zasada włączeń: $|A \cup B| = |A| + |B| - |A \cap B|$</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-violet-300 flex items-center gap-1.5"><i class="fa-solid fa-superscript"></i> Wzory stopnia 2</h3>
+      <p>$(a \pm b)^2 = a^2 \pm 2ab + b^2$</p>
+      <p>$a^2 - b^2 = (a - b)(a + b)$</p>
+      <p>$(a + b + c)^2 = a^2 + b^2 + c^2 + 2ab + 2ac + 2bc$</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-violet-300 flex items-center gap-1.5"><i class="fa-solid fa-cube"></i> Wzory stopnia 3</h3>
+      <p>$(a \pm b)^3 = a^3 \pm 3a^2b + 3ab^2 \pm b^3$</p>
+      <p>$a^3 - b^3 = (a - b)(a^2 + ab + b^2)$</p>
+      <p>$a^3 + b^3 = (a + b)(a^2 - ab + b^2)$</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-violet-300 flex items-center gap-1.5"><i class="fa-solid fa-arrows-split-up-and-left"></i> Wartość bezwzględna</h3>
+      <p>$|x| < r \iff -r < x < r \iff x \in (-r, r)$</p>
+      <p>$|x| \ge r \iff x \le -r \lor x \ge r$</p>
+      <p>Interpretacja: $|x - a| = \text{odległość } x \text{ od } a$.</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-violet-300 flex items-center gap-1.5"><i class="fa-solid fa-scale-balanced"></i> Metody dowodzenia nierówności</h3>
+      <p>Zwijanie do pełnych kwadratów: $\sum (expr)^2 \ge 0$.</p>
+      <p>Różnica stron: $L - P > 0$.</p>
+      <p>Nierówność Cauchy'ego między średnimi: $x+y \ge 2\sqrt{xy}$.</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-violet-300 flex items-center gap-1.5"><i class="fa-solid fa-diagram-project"></i> Dwumian Newtona</h3>
+      <p>$(a+b)^n = \sum_{k=0}^n \binom{n}{k} a^{n-k} b^k$</p>
+      <p>Współczynnik dwumianowy: $\binom{n}{k} = \frac{n!}{k!(n-k)!}$</p>
+      <p>Symetria: $\binom{n}{k} = \binom{n}{n-k}$.</p>
+    </div>
+  </div>
+</div>
+
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-slate-900/40 border border-slate-800">
+        <div class="relative w-full sm:w-72">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+          <input type="text" id="search-input" onkeyup="filterTasks()" placeholder="Szukaj zadania..."
+            class="w-full pl-9 pr-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition">
+        </div>
+        <div class="flex items-center gap-2 text-xs flex-wrap w-full sm:w-auto">
+          <button onclick="setFilter('all', event)" class="filter-btn active px-3 py-1 rounded-md bg-indigo-600 text-white font-medium">Wszystkie</button>
+          <button onclick="setFilter('podstawa', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Podstawa</button>
+          <button onclick="setFilter('rozszerzenie', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Rozszerzenie (R)</button>
+        </div>
+      </div>
+
+      <div class="space-y-6" id="tasks-wrapper">
+        
+    <article id="zad-2-1" data-title="1. Moc różnicy zbiorów i zasada włączeń/wyłączeń" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            1
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Moc różnicy zbiorów i zasada włączeń/wyłączeń</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Zbiór $A$ ma 12 elementów, zbiór $B$ ma 9 elementów, a zbiór $A \cup B$ ma 17 elementów. Ile elementów należy do zbioru $A \setminus B$?
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Skorzystaj ze wzoru na moc sumy: $|A \cup B| = |A| + |B| - |A \cap B|$, a następnie $|A \setminus B| = |A| - |A \cap B|$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-2-1')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-2-1" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-2-1" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>Krok 1:</strong> Obliczamy liczbę elementów części wspólnej $A \cap B$:
+    $$|A \cup B| = |A| + |B| - |A \cap B|$$
+    $$17 = 12 + 9 - |A \cap B| \implies |A \cap B| = 21 - 17 = 4$$</p>
+    <p><strong>Krok 2:</strong> Obliczamy liczbę elementów różnicy $A \setminus B$:
+    $$|A \setminus B| = |A| - |A \cap B| = 12 - 4 = 8$$</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            Do zbioru $A \setminus B$ należy <strong>8 elementów</strong>.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-2-2" data-title="2. Działania na podstawowych zbiorach liczbowych" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            2
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Działania na podstawowych zbiorach liczbowych</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Wykonaj działania na zbiorach:<br>
+    <strong>a)</strong> $\mathbb{Z}, \mathbb{N}$<br>
+    <strong>b)</strong> $\mathbb{Q}, \mathbb{IQ}$<br>
+    <strong>c)</strong> $A = \{x \in \mathbb{N}: 10 \mid x\}, \quad B = \{x \in \mathbb{N}: 5 \mid x\}$
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Zwróć uwagę na relacje zawierania: $\mathbb{N} \subset \mathbb{Z}$ oraz $A \subset B$. Zbiory $\mathbb{Q}$ i $\mathbb{IQ}$ są rozłączne.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-2-2')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-2-2" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-2-2" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>a) Dla $\mathbb{Z}$ i $\mathbb{N}$:</strong><br>
+    Ponieważ $\mathbb{N} \subset \mathbb{Z}$:<br>
+    $\mathbb{Z} \cup \mathbb{N} = \mathbb{Z}$,<br>
+    $\mathbb{Z} \cap \mathbb{N} = \mathbb{N}$,<br>
+    $\mathbb{Z} \setminus \mathbb{N} = \mathbb{Z}_- = \{k \in \mathbb{Z}: k < 0\}$,<br>
+    $\mathbb{N} \setminus \mathbb{Z} = \emptyset$.</p>
+    <p><strong>b) Dla $\mathbb{Q}$ i $\mathbb{IQ}$:</strong><br>
+    Liczby wymierne i niewymierne dzielą zbiór liczb rzeczywistych:<br>
+    $\mathbb{Q} \cup \mathbb{IQ} = \mathbb{R}$,<br>
+    $\mathbb{Q} \cap \mathbb{IQ} = \emptyset$,<br>
+    $\mathbb{Q} \setminus \mathbb{IQ} = \mathbb{Q}$,<br>
+    $\mathbb{IQ} \setminus \mathbb{Q} = \mathbb{IQ}$.</p>
+    <p><strong>c) Wielokrotności 10 i 5:</strong><br>
+    Każda liczba podzielna przez 10 jest podzielna przez 5 ($A \subset B$):<br>
+    $A \cup B = B$ (wielokrotności 5),<br>
+    $A \cap B = A$ (wielokrotności 10),<br>
+    $A \setminus B = \emptyset$,<br>
+    $B \setminus A = \{x \in \mathbb{N}: 5 \mid x \land 10 \nmid x\}$ (liczby o cyfrze jedności 5).</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            Zbiory wyznaczono w oparciu o relacje zawierania i rozłączności.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-2-3" data-title="3. Działania na przedziałach liczbowych i dopełnienia" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            3
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Działania na przedziałach liczbowych i dopełnienia</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Wykonaj działania na przedziałach $A, B$ ($A \cup B, A \cap B, A \setminus B, B \setminus A$) oraz wyznacz $A', B'$, gdy:<br>
+    <strong>a)</strong> $A = \langle 0; 1), \quad B = \langle 1; \infty)$<br>
+    <strong>b)</strong> $A = \langle -\sqrt{2}; 10 \rangle, \quad B = \langle 0; \pi)$<br>
+    <strong>c)</strong> $A = \langle -\frac{1}{3}; \infty), \quad B = (-\infty; 7 \rangle$
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Pamiętaj o domkniętości/otwartości nawiasów w punktach styku i dopełnieniach do $\mathbb{R}$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-2-3')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-2-3" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-2-3" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>a)</strong> $A = \langle 0; 1), B = \langle 1; \infty)$:<br>
+    $A \cup B = \langle 0; \infty)$; &nbsp; $A \cap B = \emptyset$; &nbsp; $A \setminus B = \langle 0; 1)$; &nbsp; $B \setminus A = \langle 1; \infty)$.<br>
+    $A' = (-\infty; 0) \cup \langle 1; \infty)$; &nbsp; $B' = (-\infty; 1)$.</p>
+    <p><strong>b)</strong> $A = \langle -\sqrt{2}; 10 \rangle, B = \langle 0; \pi)$ (zauważmy $B \subset A$, bo $\pi \approx 3,14$):<br>
+    $A \cup B = \langle -\sqrt{2}; 10 \rangle$; &nbsp; $A \cap B = \langle 0; \pi)$; &nbsp; $A \setminus B = \langle -\sqrt{2}; 0) \cup \langle \pi; 10 \rangle$; &nbsp; $B \setminus A = \emptyset$.<br>
+    $A' = (-\infty; -\sqrt{2}) \cup (10; \infty)$; &nbsp; $B' = (-\infty; 0) \cup \langle \pi; \infty)$.</p>
+    <p><strong>c)</strong> $A = \langle -\frac{1}{3}; \infty), B = (-\infty; 7 \rangle$:<br>
+    $A \cup B = \mathbb{R}$; &nbsp; $A \cap B = \langle -\frac{1}{3}; 7 \rangle$; &nbsp; $A \setminus B = (7; \infty)$; &nbsp; $B \setminus A = (-\infty; -\frac{1}{3})$.<br>
+    $A' = (-\infty; -\frac{1}{3})$; &nbsp; $B' = (7; \infty)$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            Wyznaczono wszystkie operacje i dopełnienia z precyzyjnym uwzględnieniem granic przedziałów.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-2-4-5" data-title="4 – 5. A. Część wspólna przedziałów, nierówności modułowe i oś liczbowa" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            4 – 5. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Część wspólna przedziałów, nierówności modułowe i oś liczbowa</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>4.</strong> Wykonaj działania:<br>
+    a) $(-\infty; 6\rangle \cap \mathbb{N}$ &emsp; b) $\langle -3; \sqrt{26}) \cap \mathbb{Z}$<br>
+    c) $A \cap B$ dla $A = \{|x| < 3\}, B = \{|x+1| \le 2\}$<br>
+    d) $A \cup B, A \cap B, B \setminus A$ dla $A = \{0, 1, 3, 5, 7\}, B = \{-2, 0, 5, 12\}$<br><br>
+    <strong>5.</strong> Wyznacz wszystkie $x \in \mathbb{R}$ spełniające $x^2 < 4x$, ale niespełniające $|x+2| < 3$.<br>
+    <strong>5. A)</strong> Dla $A = \{|x-4| \ge 7\}$ i $B = \{x^2 > 0\}$ wyznacz $C = B \setminus A$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla nierówności $|x-a| < r$: przedział $(a-r, a+r)$. $x^2 > 0 \iff x \neq 0$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-2-4-5')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-2-4-5" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-2-4-5" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>4. a)</strong> $\{0, 1, 2, 3, 4, 5, 6\}$.<br>
+    <strong>4. b)</strong> Ponieważ $5 < \sqrt{26} < 6$, zbiór to $\{-3, -2, -1, 0, 1, 2, 3, 4, 5\}$.<br>
+    <strong>4. c)</strong> $A = (-3, 3)$; $B: -2 \le x+1 \le 2 \implies \langle -3, 1 \rangle$. $A \cap B = (-3, 1\rangle$.<br>
+    <strong>4. d)</strong> $A \cup B = \{-2, 0, 1, 3, 5, 7, 12\}$, $A \cap B = \{0, 5\}$, $B \setminus A = \{-2, 12\}$.</p>
+    <p><strong>5:</strong> $x^2 - 4x < 0 \implies x(x-4) < 0 \implies x \in (0, 4)$.<br>
+    Nierówność $|x+2| < 3 \iff -5 < x < 1$. Liczby niespełniające jej to $x \in (-\infty, -5\rangle \cup \langle 1, \infty)$.<br>
+    Część wspólna: $(0, 4) \cap ((-\infty, -5\rangle \cup \langle 1, \infty)) = \langle 1, 4)$.</p>
+    <p><strong>5. A:</strong> $A: x-4 \ge 7 \lor x-4 \le -7 \implies A = (-\infty, -3\rangle \cup \langle 11, \infty)$.<br>
+    $B = \mathbb{R} \setminus \{0\}$.<br>
+    $C = B \setminus A = (-3, 11) \setminus \{0\} = (-3, 0) \cup (0, 11)$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            4: podane zbiory; &emsp; 5: $x \in \langle 1, 4)$; &emsp; 5. A: $C = (-3, 0) \cup (0, 11)$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-2-6-7" data-title="6 – 7. Kwadrat sumy, redukcja sześcianu i prawda/fałsz" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            6 – 7
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Kwadrat sumy, redukcja sześcianu i prawda/fałsz</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie mieszane</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>6.</strong> Liczbę $a = (\sqrt{2} + \sqrt{7})^2$ zapisz w postaci $x + y\sqrt{14}$ ($x, y \in \mathbb{Z}$). Wyznacz $x, y$.<br>
+    <strong>7.</strong> Oceń prawdziwość zdań:<br>
+    <strong>1.</strong> $2x^2 - 1 = (1 - x\sqrt{2})(x\sqrt{2} - 1)$ &emsp; <strong>[P / F]</strong><br>
+    <strong>2.</strong> Dla każdego $x \in \mathbb{R}$: $(2+x)^3 - x^2(x+6) - 12x = 8$ &emsp; <strong>[P / F]</strong>
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        $(a+b)^2 = a^2 + 2ab + b^2$. $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-2-6-7')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-2-6-7" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-2-6-7" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>6:</strong> $(\sqrt{2}+\sqrt{7})^2 = 2 + 2\sqrt{14} + 7 = 9 + 2\sqrt{14} \implies x = 9, y = 2$.</p>
+    <p><strong>7. Zdanie 1:</strong> $(1 - x\sqrt{2})(x\sqrt{2} - 1) = -(x\sqrt{2}-1)^2 = -(2x^2 - 2\sqrt{2}x + 1) = -2x^2 + 2\sqrt{2}x - 1 \neq 2x^2 - 1$.<br>
+    Zatem zdanie jest <strong>FAŁSZYWE (F)</strong>.</p>
+    <p><strong>7. Zdanie 2:</strong> $(2+x)^3 = 8 + 12x + 6x^2 + x^3$.<br>
+    Odejmujemy: $(8 + 12x + 6x^2 + x^3) - (x^3 + 6x^2) - 12x = 8$.<br>
+    Zatem zdanie jest <strong>PRAWZIWE (P)</strong>.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            6: $x = 9, y = 2$; &emsp; 7: 1. <strong>F</strong>, 2. <strong>P</strong>.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-2-8-9" data-title="8 – 9. Różnica kwadratów i potęgowanie wyrażeń" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            8 – 9
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Różnica kwadratów i potęgowanie wyrażeń</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie zamknięte (ABCD)</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>8.</strong> Wybierz dwie właściwe odpowiedzi: Wyrażenie $9 - (x^2 - 2xy + y^2)$ jest równe:<br>
+    A. $[3-(x-2y)]^2$ &emsp; B. $[3+(x-2y)]^2$ &emsp; C. $[3-(x-y)] \cdot [3+(x-y)]$<br>
+    D. $[3-(x+2y)]^2$ &emsp; E. $[3-(x+2y)] \cdot [3+(x+2y)]$ &emsp; F. $-[(x-y)-3] \cdot [(x-y)+3]$<br><br>
+    <strong>9.</strong> Liczba $[(1+\sqrt{8})^2 - (1-2\sqrt{2})^2]^2$ jest równa:<br>
+    A. 128 &emsp; B. $1-\sqrt{2}$ &emsp; C. 32 &emsp; D. 64
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Zauważ, że $x^2-2xy+y^2 = (x-y)^2$, a $\sqrt{8} = 2\sqrt{2}$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-2-8-9')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-2-8-9" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-2-8-9" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>8:</strong> $9 - (x-y)^2 = 3^2 - (x-y)^2 = [3 - (x-y)][3 + (x-y)]$, co odpowiada <strong>C</strong>.<br>
+    Również: $9 - (x-y)^2 = -[(x-y)^2 - 9] = -[(x-y)-3][(x-y)+3]$, co odpowiada <strong>F</strong>.<br>
+    Poprawne odpowiedzi: <strong>C oraz F</strong>.</p>
+    <p><strong>9:</strong> Ponieważ $\sqrt{8} = 2\sqrt{2}$:<br>
+    $(1+2\sqrt{2})^2 - (1-2\sqrt{2})^2 = (1 + 4\sqrt{2} + 8) - (1 - 4\sqrt{2} + 8) = 8\sqrt{2}$.<br>
+    Podnosimy do kwadratu: $(8\sqrt{2})^2 = 64 \cdot 2 = 128$.<br>
+    Odpowiedź: <strong>A</strong>.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            8: <strong>C oraz F</strong>; &emsp; 9: <strong>A (128)</strong>
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-2-10" data-title="10 i 10. A. Warunek wymierności liczby oraz działania na pierwiastkach zagnieżdżonych" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            10 i 10. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Warunek wymierności liczby oraz działania na pierwiastkach zagnieżdżonych</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie mieszane</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>10.</strong> Dana jest liczba $x = a - (\sqrt{3}-\sqrt{2})^2$. Liczba $x$ jest wymierna dla:<br>
+    A. $a = 5$ &emsp; B. $a = -\sqrt{3}+\sqrt{2}$ &emsp; C. $a = (\sqrt{2}-\sqrt{3})^2 + 0,3$<br>
+    D. $a = 6$ &emsp; E. $a = -2\sqrt{6} + 12,5$ &emsp; F. $a = (\sqrt{2}-\sqrt{3})^2 - 2\sqrt{6}$ &emsp; G. $a = -\sqrt{6}$<br><br>
+    <strong>10. A)</strong> Dla $a = \sqrt{\sqrt{5}-\sqrt{2}}$ i $b = \sqrt{\sqrt{5}+\sqrt{2}}$ oblicz: $a \cdot b$, $\frac{1}{a^2}+\frac{1}{b^2}$, $(a-b)^2$, $\frac{1}{a^2}+b^2$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        $(\sqrt{3}-\sqrt{2})^2 = 5 - 2\sqrt{6}$. Aby $x$ było wymierne, składnik z $\sqrt{6}$ musi się zredukować.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-2-10')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-2-10" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-2-10" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>10:</strong> $x = a - (5 - 2\sqrt{6}) = a - 5 + 2\sqrt{6}$.<br>
+    Dla opcji C: $a = 5 - 2\sqrt{6} + 0,3 = 5,3 - 2\sqrt{6} \implies x = 0,3 \in \mathbb{Q}$.<br>
+    Dla opcji E: $a = -2\sqrt{6} + 12,5 \implies x = 7,5 \in \mathbb{Q}$.<br>
+    Odpowiedzi: <strong>C oraz E</strong>.</p>
+    <p><strong>10. A:</strong><br>
+    1) $a \cdot b = \sqrt{(\sqrt{5}-\sqrt{2})(\sqrt{5}+\sqrt{2})} = \sqrt{5-2} = \sqrt{3}$.<br>
+    2) $\frac{1}{a^2} + \frac{1}{b^2} = \frac{a^2+b^2}{a^2b^2} = \frac{(\sqrt{5}-\sqrt{2})+(\sqrt{5}+\sqrt{2})}{3} = \frac{2\sqrt{5}}{3}$.<br>
+    3) $(a-b)^2 = a^2 - 2ab + b^2 = 2\sqrt{5} - 2\sqrt{3}$.<br>
+    4) $\frac{1}{a^2} + b^2 = \frac{1}{\sqrt{5}-\sqrt{2}} + (\sqrt{5}+\sqrt{2}) = \frac{\sqrt{5}+\sqrt{2}}{3} + (\sqrt{5}+\sqrt{2}) = \frac{4(\sqrt{5}+\sqrt{2})}{3}$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            10: <strong>C oraz E</strong>;<br>10. A: $ab = \sqrt{3}$, $\frac{1}{a^2}+\frac{1}{b^2} = \frac{2\sqrt{5}}{3}$, $(a-b)^2 = 2\sqrt{5}-2\sqrt{3}$, $\frac{1}{a^2}+b^2 = \frac{4\sqrt{5}+4\sqrt{2}}{3}$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-2-11-13" data-title="11 – 13. C. Usuwanie niewymierności, nierówności algebraiczne i wzory skróconego mnożenia stopnia 3" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            11 – 13. C
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Usuwanie niewymierności, nierówności algebraiczne i wzory skróconego mnożenia stopnia 3</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte i dowody</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>11.</strong> Wykaż, że $a = \frac{1}{1+\sqrt{2}} + \frac{1}{\sqrt{2}+\sqrt{3}} + \frac{1}{\sqrt{3}+\sqrt{4}}$ jest liczbą całkowitą.<br>
+    <strong>11. A)</strong> Oblicz $\frac{x+y}{x}$, gdy $\frac{x}{y} = \frac{1+\sqrt{5}}{2}$.<br>
+    <strong>12.</strong> Wykaż, że $4x^2 - 8xy + 5y^2 \ge 0$ dla dowolnych $x, y \in \mathbb{R}$.<br>
+    <strong>13.</strong> Wykaż, że dla $a, b, c > 0$ i $a < b$ zachodzi $\frac{a}{b} < \frac{a+c}{b+c}$.<br>
+    <strong>13. A)</strong> Oblicz $(3 - 2\sqrt{3})^3$.<br>
+    <strong>13. B)</strong> Współczynnik przy $xy^2$ w $(2\sqrt{3}x+4y)^3$.<br>
+    <strong>13. C)</strong> $a^3+b^3 = (a+b)^3$ dla $a, b \neq 0$. Oblicz $\frac{a}{b}$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 11 pomnóż liczniki i mianowniki przez sprzężenia. Dla 12 zwiń w kwadrat: $4(x-y)^2 + y^2$. Dla 13.C: $(a+b)^3 = a^3+b^3+3ab(a+b)$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-2-11-13')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-2-11-13" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-2-11-13" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>11:</strong> $(\sqrt{2}-1) + (\sqrt{3}-\sqrt{2}) + (2-\sqrt{3}) = -1 + 2 = 1 \in \mathbb{Z}$, c.k.d.</p>
+    <p><strong>11. A:</strong> $\frac{x+y}{x} = 1 + \frac{y}{x} = 1 + \frac{2}{\sqrt{5}+1} = 1 + \frac{2(\sqrt{5}-1)}{4} = 1 + \frac{\sqrt{5}-1}{2} = \frac{1+\sqrt{5}}{2}$.</p>
+    <p><strong>12:</strong> $4x^2 - 8xy + 4y^2 + y^2 = (2x-2y)^2 + y^2 \ge 0$, c.k.d.</p>
+    <p><strong>13:</strong> $\frac{a+c}{b+c} - \frac{a}{b} = \frac{b(a+c)-a(b+c)}{b(b+c)} = \frac{c(b-a)}{b(b+c)} > 0$, bo $c>0, b>a, b(b+c)>0$, c.k.d.</p>
+    <p><strong>13. A:</strong> $27 - 3 \cdot 9 \cdot 2\sqrt{3} + 3 \cdot 3 \cdot 12 - 24\sqrt{3} = 27 - 54\sqrt{3} + 108 - 24\sqrt{3} = 135 - 78\sqrt{3}$ $\implies$ Odp: <strong>C</strong>.</p>
+    <p><strong>13. B:</strong> Wyraz z $xy^2$: $\binom{3}{1} (2\sqrt{3}x)^1 (4y)^2 = 3 \cdot 2\sqrt{3}x \cdot 16y^2 = 96\sqrt{3}xy^2$ $\implies$ Odp: <strong>C</strong>.</p>
+    <p><strong>13. C:</strong> $a^3+b^3 = a^3+b^3 + 3ab(a+b) \implies 3ab(a+b) = 0$. Skoro $a, b \neq 0$, to $a+b=0 \implies a=-b \implies \frac{a}{b} = -1$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            11: 1; &nbsp; 11.A: $\frac{1+\sqrt{5}}{2}$; &nbsp; 12-13: udowodniono; &nbsp; 13.A: C; &nbsp; 13.B: C ($96\sqrt{3}$); &nbsp; 13.C: $-1$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-2-14" data-title="14 – 14. B. Podzielność sum sześcianów oraz niezależność pierwiastków" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            14 – 14. B
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Podzielność sum sześcianów oraz niezależność pierwiastków</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Dowód matematyczny (R)</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>14.</strong> Dwie kolejne liczby naturalne $a, b$ są niepodzielne przez 3. Udowodnij, że $9 \mid (a^3 + b^3)$.<br>
+    <strong>14. A)</strong> Udowodnij, że dla $k, m \in \mathbb{Z}$ liczba $k^3m - km^3$ dzieli się przez 6.<br>
+    <strong>14. B) (R)</strong> Niech $a, b, c \in \mathbb{Z}$ spełniają $a\sqrt{2} + b\sqrt{3} + c\sqrt{6} = 0$. Wykaż, że $a = b = c = 0$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 14.B: przenieś $c\sqrt{6}$ na prawą stronę i podnieś do kwadratu: $2a^2 + 2ab\sqrt{6} + 3b^2 = 6c^2$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-2-14')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-2-14" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-2-14" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>14:</strong> Reszty liczb $a, b$ modulo 3 to 1 i 2, więc $a = 3k+1, b = 3k+2$. Suma $a+b = 6k+3 = 3(2k+1)$ dzieli się przez 3. Ponadto $a^2 - ab + b^2 = (a+b)^2 - 3ab = 9(2k+1)^2 - 3(3k+1)(3k+2)$, co również dzieli się przez 3. Zatem iloczyn $(a+b)(a^2-ab+b^2) = a^3+b^3$ dzieli się przez $3 \cdot 3 = 9$, c.k.d.</p>
+    <p><strong>14. A:</strong> $km(k^2-m^2) = km(k-m)(k+m)$. Liczba ta dzieli się przez 2 (bo jeśli $k, m$ są nieparzyste, to $k-m$ jest parzyste). Dzieli się przez 3 (jeśli żadna z liczb nie dzieli się przez 3, to albo mają tę samą resztę i $3 \mid (k-m)$, albo różne reszty 1 i 2 i $3 \mid (k+m)$). Zatem $6 \mid km(k^2-m^2)$, c.k.d.</p>
+    <p><strong>14. B (R):</strong> $a\sqrt{2} + b\sqrt{3} = -c\sqrt{6} \implies 2a^2 + 2ab\sqrt{6} + 3b^2 = 6c^2 \implies 2ab\sqrt{6} = 6c^2 - 2a^2 - 3b^2$. Ponieważ prawa strona jest wymierna, a $\sqrt{6}$ niewymierne, musi być $2ab = 0$.<br>
+    Jeśli $a = 0$, to $3b^2 = 6c^2 \implies b^2 = 2c^2 \implies b = c = 0$ (bo $\sqrt{2} \notin \mathbb{Q}$).<br>
+    Jeśli $b = 0$, to $2a^2 = 6c^2 \implies a^2 = 3c^2 \implies a = c = 0$ (bo $\sqrt{3} \notin \mathbb{Q}$).<br>
+    W obu przypadkach $a = b = c = 0$, c.k.d.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            Wszystkie tezy udowodniono formalnie.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-2-15-17" data-title="15 – 17. A. Zaawansowane nierówności i układy algebraiczne" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            15 – 17. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Zaawansowane nierówności i układy algebraiczne</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Dowód matematyczny (R)</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>15. (R)</strong> Liczby dodatnie $a, b$ spełniają $a^2 + 2a = 4b^2 + 4b$. Wykaż, że $a = 2b$.<br>
+    <strong>16. (R)</strong> Dla $x, y > 0$ takich, że $x^2 + y^2 = 2$, wykaż, że $x + y \le 2$.<br>
+    <strong>16. A) (R)</strong> $x+y=4$ oraz $x^3 - x^2y \le xy^2 - y^3$. Wykaż, że $x=2$ i $y=2$.<br>
+    <strong>17. (R)</strong> Dla $x \neq y$ udowodnij: $x^2y^2 + 2x^2 + 2y^2 - 8xy + 4 > 0$.<br>
+    <strong>17. A) (R)</strong> Dla $x+y \ge 1$ wykaż: $x^3 + 2xy + y^3 \ge x^2 + xy(x+y) + y^2$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 15: $(a-2b)(a+2b+2)=0$. Dla 16: $(x+y)^2 = 2+2xy \le 4$. Dla 17: $(xy-2)^2 + 2(x-y)^2$. Dla 17.A: $(x-y)^2(x+y-1) \ge 0$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-2-15-17')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-2-15-17" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-2-15-17" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>15 (R):</strong> $a^2 - 4b^2 + 2(a - 2b) = 0 \implies (a - 2b)(a + 2b + 2) = 0$. Ponieważ $a, b > 0$, to $a+2b+2 > 0$, skąd $a - 2b = 0 \implies a = 2b$, c.k.d.</p>
+    <p><strong>16 (R):</strong> $(x+y)^2 = x^2 + y^2 + 2xy = 2 + 2xy$. Wiemy, że $2xy \le x^2+y^2 = 2$. Zatem $(x+y)^2 \le 4$. Ponieważ $x, y > 0$, mamy $x+y \le 2$, c.k.d.</p>
+    <p><strong>16. A (R):</strong> $x^2(x-y) \le y^2(x-y) \implies (x-y)(x^2-y^2) \le 0 \implies (x-y)^2(x+y) \le 0$. Ponieważ $x+y = 4 > 0$, to $(x-y)^2 \le 0 \implies x = y$. Z $x+y=4$ otrzymujemy natychmiast $x = y = 2$, c.k.d.</p>
+    <p><strong>17 (R):</strong> Zwijamy w kwadraty: $(x^2y^2 - 4xy + 4) + (2x^2 - 4xy + 2y^2) = (xy-2)^2 + 2(x-y)^2$. Ponieważ $x \neq y$, to $2(x-y)^2 > 0$, a $(xy-2)^2 \ge 0$. Suma jest ściśle dodatnia, c.k.d.</p>
+    <p><strong>17. A (R):</strong> $x^3+y^3 - xy(x+y) + 2xy - (x^2+y^2) = (x+y)(x-y)^2 - (x-y)^2 = (x-y)^2(x+y-1)$. Ponieważ $(x-y)^2 \ge 0$ oraz $x+y \ge 1 \implies x+y-1 \ge 0$, iloczyn jest nieujemny, c.k.d.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            Wszystkie tezy nierównościowe udowodniono formalnie.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-2-18-19" data-title="18 – 19. A. Nierówność ułamkowa, suma sześcianów i dwumian Newtona" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            18 – 19. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Nierówność ułamkowa, suma sześcianów i dwumian Newtona</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Dowód matematyczny / Zadanie otwarte (R)</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>18. (R)</strong> Dla $x, y, a > 0$ oraz $x < y$ udowodnij: $\frac{x+a}{y+a} + \frac{y}{x} > 2$.<br>
+    <strong>18. A) (R)</strong> Jeśli $3 \mid (x+y)$, wykaż, że $9 \mid (x^3+y^3)$ dla $x, y \in \mathbb{Z}$.<br>
+    <strong>19. (R)</strong> W rozwinięciu $(a+b)^n$ suma współczynników przy $a^{n-2}b^2$ oraz $a^{n-1}b$ wynosi 66. Oblicz $n$.<br>
+    <strong>19. A) (R)</strong> Wykaż, że liczba $a = (\sqrt{5}+2)^{2022} + (\sqrt{5}-2)^{2022}$ jest wymierna.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 19: $\binom{n}{2} + \binom{n}{1} = 66$. Dla 19.A: w rozwinięciu dwumianowym nieparzyste potęgi $\sqrt{5}$ redukują się wzajemnie do zera.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-2-18-19')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-2-18-19" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-2-18-19" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>18 (R):</strong> $\frac{x+a}{y+a} + \frac{y}{x} - 2 = \frac{x(x+a)+y(y+a)-2x(y+a)}{x(y+a)} = \frac{x^2+y^2-2xy+a(y-x)}{x(y+a)} = \frac{(x-y)^2 + a(y-x)}{x(y+a)}$. Licznik jest sumą liczb dodatnich ($(x-y)^2 > 0$ i $a(y-x) > 0$), a mianownik $> 0$, więc ułamek $> 0$, c.k.d.</p>
+    <p><strong>18. A (R):</strong> $x^3+y^3 = (x+y)^3 - 3xy(x+y)$. Niech $x+y = 3k$. Wtedy $(3k)^3 - 3xy(3k) = 27k^3 - 9xyk = 9(3k^3 - xyk)$, co jest podzielne przez 9, c.k.d.</p>
+    <p><strong>19 (R):</strong> Współczynniki: $\binom{n}{2} + \binom{n}{1} = \frac{n(n-1)}{2} + n = 66 \implies n(n-1) + 2n = 132 \implies n^2 + n - 132 = 0$. $\Delta = 1 + 528 = 529 = 23^2$. $n = \frac{-1+23}{2} = 11$ (odrzucamy $n = -12 < 0$). Odpowiedź: $n = 11$.</p>
+    <p><strong>19. A (R):</strong> Ze wzoru dwumianowego: $(\sqrt{5}+2)^{2022} = \sum_{k=0}^{2022} \binom{2022}{k} (\sqrt{5})^k 2^{2022-k}$ oraz $(\sqrt{5}-2)^{2022} = \sum_{k=0}^{2022} \binom{2022}{k} (\sqrt{5})^k (-2)^{2022-k}$. Składniki z nieparzystym wykładnikiem przy $\sqrt{5}$ znoszą się wzajemnie, a parzyste potęgi $(\sqrt{5})^{2m} = 5^m$ są liczbami całkowitymi. Zatem suma składa się wyłącznie z liczb całkowitych, co oznacza, że jest liczbą całkowitą, a więc wymierną, c.k.d.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            18, 18.A, 19.A: udowodniono formalnie; &emsp; 19: $$n = 11$$
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+      </div>
+
+      <div class="pt-8 border-t border-slate-800 flex items-center justify-between gap-4">
+        <a href="1_liczby_rzeczywiste.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm border border-slate-700 transition">
+        <i class="fa-solid fa-arrow-left"></i> Poprzedni: Liczby rzeczywiste
+    </a>
+        <a href="3_funkcje_i_wlasnosci.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition shadow-lg shadow-indigo-600/20">
+        Następny: Funkcje i ich własności <i class="fa-solid fa-arrow-right"></i>
+    </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-900/40 py-6 text-center text-xs text-slate-500 mt-16">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; 2026 Baza Zadań Maturalnych &bull; Przygotowano w J:\zadania</p>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="hover:text-slate-300">Strona główna</a>
+        <a href="#" class="hover:text-indigo-400"><i class="fa-solid fa-arrow-up"></i> W górę</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSolution(id) {
+      const content = document.getElementById('solution-' + id);
+      const icon = document.getElementById('icon-' + id);
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        if (icon) icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        content.classList.add('hidden');
+        if (icon) icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    }
+
+    let allExpanded = false;
+    function toggleAllSolutions() {
+      allExpanded = !allExpanded;
+      const solutions = document.querySelectorAll('.task-solution');
+      const icons = document.querySelectorAll('.solution-icon');
+      solutions.forEach(s => {
+        if (allExpanded) s.classList.remove('hidden');
+        else s.classList.add('hidden');
+      });
+      icons.forEach(ic => {
+        if (allExpanded) ic.classList.replace('fa-chevron-down', 'fa-chevron-up');
+        else ic.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      });
+      document.getElementById('toggle-all-text').innerText = allExpanded ? 'Zwiń wszystkie rozwiązania' : 'Rozwiń wszystkie rozwiązania';
+    }
+
+    let currentFilter = 'all';
+    function filterTasks() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const cards = document.querySelectorAll('.task-card');
+      cards.forEach(c => {
+        const text = c.innerText.toLowerCase();
+        const matchesQuery = text.includes(query);
+        const matchesType = currentFilter === 'all' || c.getAttribute('data-level') === currentFilter;
+        if (matchesQuery && matchesType) {
+          c.classList.remove('hidden');
+        } else {
+          c.classList.add('hidden');
+        }
+      });
+    }
+
+    function setFilter(type, ev) {
+      currentFilter = type;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-600', 'text-white', 'font-medium');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+      if (ev && ev.target) {
+        ev.target.classList.add('bg-indigo-600', 'text-white', 'font-medium');
+        ev.target.classList.remove('bg-slate-800', 'text-slate-300');
+      }
+      filterTasks();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const toc = document.getElementById('sidebar-toc');
+      const cards = document.querySelectorAll('.task-card');
+      const badge = document.getElementById('task-badge-count');
+      if (badge) badge.innerText = cards.length + ' zadań';
+      
+      cards.forEach(card => {
+        const id = card.id;
+        const title = card.getAttribute('data-title') || id;
+        const isR = card.getAttribute('data-level') === 'rozszerzenie';
+        const a = document.createElement('a');
+        a.href = '#' + id;
+        a.className = 'block px-2.5 py-1.5 rounded hover:bg-slate-800 text-slate-300 hover:text-white transition truncate flex items-center justify-between';
+        a.innerHTML = `<span class="truncate">${title}</span> ${isR ? '<span class="text-[10px] bg-amber-500/20 text-amber-300 px-1 rounded font-mono ml-1">R</span>' : ''}`;
+        toc.appendChild(a);
+      });
+    });
+  </script>
+</body>
+</html>

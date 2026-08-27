@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3. Funkcje i ich własności &bull; Matematyka ZSE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ],
+      throwOnError: false
+    });"></script>
+  <style>
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3 w-full md:w-auto justify-between">
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div>
+            <span class="text-sm font-bold text-white tracking-wide block">Baza Zadań Maturalnych</span>
+            <span class="text-[11px] text-slate-400 block -mt-0.5">mgr M. Kucharska, mgr A. Piłat</span>
+          </div>
+        </a>
+        <a href="index.html" class="md:hidden text-xs text-indigo-400 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700">
+          <i class="fa-solid fa-house"></i> Home
+        </a>
+      </div>
+
+      <nav class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 text-xs">
+        <a href="index.html" class="px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition hidden lg:inline-flex items-center gap-1">
+          <i class="fa-solid fa-house"></i>
+        </a>
+        
+        <a href="1_liczby_rzeczywiste.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-calculator"></i>
+          <span>1. Liczby rzeczywiste</span>
+        </a>
+        
+        <a href="2_zbiory_i_wzory.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>2. Zbiory i wzory</span>
+        </a>
+        
+        <a href="3_funkcje_i_wlasnosci.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap bg-indigo-600 text-white font-semibold shadow-md shadow-indigo-500/20">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>3. Funkcje i ich własności</span>
+        </a>
+        
+        <a href="4_funkcja_liniowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-bezier-curve"></i>
+          <span>4. Funkcja liniowa</span>
+        </a>
+        
+        <a href="5_funkcja_kwadratowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-superscript"></i>
+          <span>5. Funkcja kwadratowa</span>
+        </a>
+        
+        <a href="6_ciagi.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-arrow-trend-up"></i>
+          <span>6. Ciągi</span>
+        </a>
+        
+        <a href="7_wielomiany.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-cubes"></i>
+          <span>7. Wielomiany</span>
+        </a>
+        
+        <a href="8_funkcje_wymierne.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-divide"></i>
+          <span>8. Funkcje wymierne</span>
+        </a>
+        
+      </nav>
+    </div>
+  </header>
+
+  <section class="border-b border-slate-800 bg-gradient-to-b from-slate-900/60 to-slate-950 py-8 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-3">
+            <i class="fa-solid fa-book-open"></i> Dział 3 z 8
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">3. Funkcje i ich własności</h1>
+          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-3xl">Dziedzina, zbiór wartości, miejsca zerowe, odczytywanie własności z wykresu, przekształcenia wykresów, funkcje z wartością bezwzględną i model rozpadu promieniotwórczego.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="toggle-all-btn" onclick="toggleAllSolutions()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition flex items-center gap-2 shadow">
+            <i class="fa-regular fa-eye"></i> <span id="toggle-all-text">Rozwiń wszystkie rozwiązania</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <aside class="hidden lg:block lg:col-span-1">
+      <div class="sticky top-24 bg-slate-900/60 border border-slate-800 rounded-2xl p-4 max-h-[calc(100vh-7rem)] overflow-y-auto">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
+          <span>Spis Zadań</span>
+          <span class="text-indigo-400 font-mono" id="task-badge-count"></span>
+        </h3>
+        <div class="space-y-1 text-xs" id="sidebar-toc">
+        </div>
+      </div>
+    </aside>
+
+    <div class="lg:col-span-3 space-y-8">
+      
+<div class="p-6 rounded-2xl bg-emerald-950/30 border border-emerald-800/40 shadow-xl space-y-4">
+  <div class="flex items-center gap-3 border-b border-emerald-800/40 pb-3">
+    <div class="w-8 h-8 rounded-lg bg-emerald-600/30 text-emerald-400 flex items-center justify-center font-bold">
+      <i class="fa-solid fa-chart-line"></i>
+    </div>
+    <h2 class="text-lg font-bold text-white tracking-wide">Kompendium Teoretyczne: Funkcje i ich własności</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-slate-300">
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-compass"></i> Dziedzina funkcji ($D_f$)</h3>
+      <p>Mianownik nie może być zerem: $\frac{P(x)}{Q(x)} \implies Q(x) \neq 0$.</p>
+      <p>Pierwiastek parzystego stopnia: $\sqrt{W(x)} \implies W(x) \ge 0$.</p>
+      <p>Pierwiastek w mianowniku: $\frac{1}{\sqrt{W(x)}} \implies W(x) > 0$.</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-arrows-up-down-left-right"></i> Przekształcenia wykresów</h3>
+      <p>Przesunięcie o wektor $\vec{u}=[p, q]$: $y = f(x - p) + q$.</p>
+      <p>Symetria względem $OX$: $y = -f(x)$; względem $OY$: $y = f(-x)$.</p>
+      <p>Symetria względem $(0,0)$: $y = -f(-x)$.</p>
+      <p>Moduł: $y = |f(x)|$ (odbicie dołu nad oś $OX$).</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-arrow-trend-up"></i> Monotoniczność</h3>
+      <p>Rosnąca: $x_1 < x_2 \implies f(x_1) < f(x_2)$.</p>
+      <p>Malejąca: $x_1 < x_2 \implies f(x_1) > f(x_2)$.</p>
+      <p>Stała: $f(x_1) = f(x_2)$ dla każdego $x$.</p>
+      <p>Przedziały monotoniczności zawsze podajemy oddzielnie!</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-circle-notch"></i> Równania $f(x) = m$</h3>
+      <p>Liczba rozwiązań równania to liczba punktów przecięcia wykresu $y = f(x)$ z poziomą prostą $y = m$.</p>
+      <p>Punkty zwrotne (minima, maksima) wyznaczają granice przedziałów dla $m$.</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-repeat"></i> Funkcja okresowa</h3>
+      <p>$f(x + T) = f(x)$ dla każdego $x \in D_f$.</p>
+      <p>$T > 0$ to okres funkcji. Najmniejszy dodatni $T$ to okres podstawowy (zasadniczy).</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-code-merge"></i> Składanie funkcji</h3>
+      <p>$(f \circ g)(x) = f(g(x))$.</p>
+      <p>Dziedzina złożenia: $x \in D_g$ oraz $g(x) \in D_f$.</p>
+    </div>
+  </div>
+</div>
+
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-slate-900/40 border border-slate-800">
+        <div class="relative w-full sm:w-72">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+          <input type="text" id="search-input" onkeyup="filterTasks()" placeholder="Szukaj zadania..."
+            class="w-full pl-9 pr-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition">
+        </div>
+        <div class="flex items-center gap-2 text-xs flex-wrap w-full sm:w-auto">
+          <button onclick="setFilter('all', event)" class="filter-btn active px-3 py-1 rounded-md bg-indigo-600 text-white font-medium">Wszystkie</button>
+          <button onclick="setFilter('podstawa', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Podstawa</button>
+          <button onclick="setFilter('rozszerzenie', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Rozszerzenie (R)</button>
+        </div>
+      </div>
+
+      <div class="space-y-6" id="tasks-wrapper">
+        
+    <article id="zad-3-1" data-title="1. Wyznaczanie dziedziny i miejsc zerowych funkcji" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            1
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wyznaczanie dziedziny i miejsc zerowych funkcji</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Wyznacz dziedzinę i miejsca zerowe funkcji:<br>
+    <strong>a)</strong> $f(x) = \frac{x^3 - 8}{x^2 + 2x + 4}$<br>
+    <strong>b)</strong> $f(x) = \frac{x}{\sqrt{x^2 + x - 6}}$<br>
+    <strong>c)</strong> $f(x) = \sqrt{2 - |x|}$<br>
+    <strong>d)</strong> $f(x) = \frac{9 - x^2}{3 + x}$ oraz sporządź wykres<br>
+    <strong>e)</strong> $f(x) = \frac{2x^2 + 4}{-x^2 + 4}$
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Mianownik $\neq 0$, wyrażenie pod pierwiastkiem kwadratowym $\ge 0$ (w mianowniku $> 0$). Pamiętaj o uwzględnieniu dziedziny przy szukaniu miejsc zerowych!
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-3-1')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-3-1" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-3-1" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>a)</strong> Mianownik: $x^2+2x+4=0$, $\Delta = 4 - 16 = -12 < 0$, brak pierwiastków rzeczywistych, więc $D_f = \mathbb{R}$.<br>
+    Miejsca zerowe: $x^3 - 8 = 0 \iff (x-2)(x^2+2x+4) = 0 \iff x = 2 \in D_f$. Miejsce zerowe: $x = 2$.</p>
+    <p><strong>b)</strong> Mianownik pod pierwiastkiem musi być ściśle dodatni: $x^2 + x - 6 > 0 \iff (x+3)(x-2) > 0 \iff x \in (-\infty, -3) \cup (2, \infty) = D_f$.<br>
+    Licznik: $x = 0$. Jednakże $0 \notin D_f$, zatem funkcja <strong>nie ma miejsc zerowych</strong>!</p>
+    <p><strong>c)</strong> Wyrażenie pod pierwiastkiem: $2 - |x| \ge 0 \iff |x| \le 2 \iff D_f = \langle -2, 2 \rangle$.<br>
+    Miejsca zerowe: $2 - |x| = 0 \iff |x| = 2 \iff x = -2$ lub $x = 2$.</p>
+    <p><strong>d)</strong> Mianownik: $3 + x \neq 0 \iff x \neq -3$, więc $D_f = \mathbb{R} \setminus \{-3\}$.<br>
+    Wzór: $\frac{(3-x)(3+x)}{3+x} = 3 - x = -x + 3$ dla $x \neq -3$.<br>
+    Miejsca zerowe: $-x + 3 = 0 \implies x = 3 \in D_f$. Wykres to prosta $y = -x + 3$ z „dziurą” (otwartym punktem) w $(-3, 6)$.</p>
+    <p><strong>e)</strong> Mianownik: $-x^2 + 4 \neq 0 \iff x^2 \neq 4 \iff x \neq \pm 2$, czyli $D_f = \mathbb{R} \setminus \{-2, 2\}$.<br>
+    Licznik: $2x^2 + 4 = 0 \iff 2x^2 = -4$ (brak rozwiązań rzeczywistych), więc funkcja <strong>nie ma miejsc zerowych</strong>.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            a) $D = \mathbb{R}, x_0 = 2$; &nbsp; b) $D = (-\infty, -3) \cup (2, \infty)$, brak m. zerowych; &nbsp; c) $D = \langle -2, 2 \rangle, x_0 \in \{-2, 2\}$; &nbsp; d) $D = \mathbb{R} \setminus \{-3\}, x_0 = 3$; &nbsp; e) $D = \mathbb{R} \setminus \{-2, 2\}$, brak m. zerowych.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-3-2" data-title="2 (2.1 – 2.3). Odczytywanie własności funkcji z wykresu" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            2 (2.1 – 2.3)
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Odczytywanie własności funkcji z wykresu</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie z wykresem</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Na rysunku w kartezjańskim układzie współrzędnych przedstawiono wykres funkcji $f$ określonej dla $x \in [-5, 4)$.<br>
+    <strong>2.1</strong> Zapisz zbiór wartości funkcji $f$.<br>
+    <strong>2.2</strong> Oceń prawdziwość stwierdzeń:<br>
+    1. Dla każdego argumentu $x \in (-4, -2)$ funkcja $f$ przyjmuje wartości ujemne. [P/F]<br>
+    2. Funkcja $f$ ma trzy miejsca zerowe. [P/F]<br>
+    <strong>2.3</strong> Wyznacz najmniejszą wartość funkcji w przedziale $\langle -4, 1 \rangle$.
+        
+    <div class="my-4 p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col items-center">
+      <img src="assets/img/3/p1_img2.png" alt="Rysunek do zadania 2 (2.1 – 2.3)" class="max-h-72 rounded-lg object-contain">
+      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 2 (2.1 – 2.3)</span>
+    </div>
+    
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Analizuj punkty o współrzędnych całkowitych zaznaczone na wykresie: $(-5, 2)$, $(-4, 0)$, $(-3, -2)$, $(-2, 1)$, $(-1, 4)$, $(0, 0)$, $(1, -4)$, $(4, 0)$ (kółko otwarte).
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-3-2')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-3-2" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-3-2" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>2.1 Zbiór wartości:</strong><br>
+    Najmniejsza wartość na całym wykresie osiągana jest w punkcie $(1, -4)$ i wynosi $-4$. Największa w punkcie $(-1, 4)$ i wynosi $4$. Ponieważ wykres jest ciągły w przedziałach i osiąga wszystkie wartości pośrednie:
+    $$ZW_f = \langle -4, 4 \rangle$$</p>
+    <p><strong>2.2 Prawda / Fałsz:</strong><br>
+    1. Dla $x \in (-4, -2)$: od $x=-4$ funkcja spada do $-2$ w $x=-3$, a następnie rośnie do $0$ dla $x \approx -2,67$, po czym osiąga $+1$ dla $x=-2$. Zatem przyjmuje wartości zarówno ujemne jak i dodatnie! Zdanie jest <strong>FAŁSZYWE (F)</strong>.<br>
+    2. Miejsca zerowe (punkty przecięcia z osią $OX$): $x = -4$, $x = -2\frac{2}{3}$, $x = 0$. Punkt $x = 4$ ma kółko otwarte ($4 \notin D_f$). Zatem funkcja ma dokładnie 3 miejsca zerowe. Zdanie jest <strong>PRAWZIWE (P)</strong>.</p>
+    <p><strong>2.3 Najmniejsza wartość w $\langle -4, 1 \rangle$:</strong><br>
+    W punkcie $x = 1$ funkcja osiąga swoje minimum globalne równe <strong>$-4$</strong>.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            2.1: $ZW = \langle -4, 4 \rangle$; &emsp; 2.2: 1. <strong>F</strong>, 2. <strong>P</strong>; &emsp; 2.3: $y_{min} = -4$ (dla $x=1$).
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-3-3" data-title="3 (3.1 – 3.3). Dziedzina, zbiór wartości i monotoniczność z wykresu łamanej" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            3 (3.1 – 3.3)
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Dziedzina, zbiór wartości i monotoniczność z wykresu łamanej</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie z wykresem</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Dana jest funkcja $y = f(x)$, której wykres przedstawiono na rysunku.<br>
+    <strong>3.1</strong> Zapisz dziedzinę i zbiór wartości funkcji $f$.<br>
+    <strong>3.2</strong> Zapisz maksymalny przedział, w którym funkcja jest malejąca.<br>
+    <strong>3.3</strong> Odczytaj wartość $f(2)$ oraz podaj zbiór rozwiązań nierówności $f(x) \le 0$.
+        
+    <div class="my-4 p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col items-center">
+      <img src="assets/img/3/p1_img1.png" alt="Rysunek do zadania 3 (3.1 – 3.3)" class="max-h-72 rounded-lg object-contain">
+      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 3 (3.1 – 3.3)</span>
+    </div>
+    
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Odczytaj punkty charakterystyczne: $(-5, 4)$, $(-3, 6)$, $(0, 0)$, $(3, -6)$, $(6, 0)$, $(8, 4)$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-3-3')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-3-3" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-3-3" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>3.1:</strong><br>
+    Dziedzina: $D_f = \langle -5, 8 \rangle$.<br>
+    Zbiór wartości: $ZW_f = \langle -6, 6 \rangle$.</p>
+    <p><strong>3.2 Maksymalny przedział monotoniczności:</strong><br>
+    Funkcja maleje od wierzchołka $(-3, 6)$ do dołka $(3, -6)$, zatem maksymalny przedział, w którym funkcja jest malejąca, to:
+    $$\langle -3, 3 \rangle$$</p>
+    <p><strong>3.3 Wartości i nierówność:</strong><br>
+    W przedziale $\langle 0, 3 \rangle$ funkcja jest odcinkiem łączącym $(0, 0)$ z $(3, -6)$, czyli $y = -2x$. Zatem dla $x = 2$:
+    $$f(2) = -2 \cdot 2 = -4$$
+    Nierówność $f(x) \le 0$ oznacza fragmenty wykresu leżące na osi lub pod osią $OX$:
+    $$x \in \langle 0, 6 \rangle$$</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            3.1: $D = \langle -5, 8 \rangle, ZW = \langle -6, 6 \rangle$; &nbsp; 3.2: $\langle -3, 3 \rangle$; &nbsp; 3.3: $f(2) = -4$, $x \in \langle 0, 6 \rangle$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-3-4" data-title="4 (4.1 – 4.3). Analiza porównawcza czterech wykresów" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            4 (4.1 – 4.3)
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Analiza porównawcza czterech wykresów</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie z wykresem</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        W kartezjańskim układzie współrzędnych przedstawiono fragmenty wykresów czterech funkcji $f, g, h, k$.<br>
+    <strong>4.1</strong> Największą wartość w przedziale $\langle -2, 2 \rangle$ ma funkcja...<br>
+    <strong>4.2</strong> Dla argumentu $x = 3$ tę samą wartość mają funkcje...<br>
+    <strong>4.3</strong> Zapisz maksymalny przedział, w którym prawdziwa jest nierówność $g(x) > h(x)$.
+        
+    <div class="my-4 p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col items-center">
+      <img src="assets/img/3/p2_img1.png" alt="Rysunek do zadania 4 (4.1 – 4.3)" class="max-h-72 rounded-lg object-contain">
+      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 4 (4.1 – 4.3)</span>
+    </div>
+    
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Porównaj położenie wykresów dla wspólnych argumentów. $g(x) > h(x)$ oznacza, że wykres $g$ leży ściśle powyżej wykresu $h$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-3-4')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-3-4" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-3-4" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>4.1 Największa wartość w $\langle -2, 2 \rangle$:</strong><br>
+    Odczytujemy z wykresów najwyżej położony punkt w tym przedziale – należy on do wykresu funkcji <strong>$g$</strong>.</p>
+    <p><strong>4.2 Ta sama wartość dla $x = 3$:</strong><br>
+    W punkcie $x = 3$ przecinają się wykresy funkcji <strong>$f$ i $h$</strong> (wspólny punkt $(3, 1)$).</p>
+    <p><strong>4.3 Nierówność $g(x) > h(x)$:</strong><br>
+    Wykres $g$ leży ściśle nad wykresem $h$ w przedziale między ich punktami przecięcia:
+    $$x \in (-1, 4)$$</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            4.1: funkcja $g$; &emsp; 4.2: funkcje $f$ i $h$; &emsp; 4.3: $(-1, 4)$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-3-5-6" data-title="5 – 6. Translacja wykresu oraz analiza liczby rozwiązań f(x) = m" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            5 – 6
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Translacja wykresu oraz analiza liczby rozwiązań f(x) = m</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte / z wykresem</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>5.</strong> Wyznacz wzór funkcji $g(x) = f(x-3) - 1$, gdy $f(x) = x^2$ i sporządź jej wykres.<br>
+    <strong>6.</strong> Na rysunku przedstawiono wykres funkcji $y = f(x)$.<br>
+    <strong>6.1</strong> Podaj liczbę rozwiązań równania $f(x) = m$ w zależności od parametru $m$.<br>
+    <strong>6.2</strong> Naszkicuj wykres funkcji $y = |f(x)|$.
+        
+    <div class="my-4 p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col items-center">
+      <img src="assets/img/3/p2_img2.png" alt="Rysunek do zadania 5 – 6" class="max-h-72 rounded-lg object-contain">
+      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 5 – 6</span>
+    </div>
+    
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Przesunięcie o wektor $\vec{u} = [3, -1]$: o 3 jednostki w prawo i 1 w dół. Dla $f(x)=m$ prowadzimy poziome proste $y=m$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-3-5-6')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-3-5-6" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-3-5-6" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>5:</strong> Wzór $g(x) = (x-3)^2 - 1 = x^2 - 6x + 9 - 1 = x^2 - 6x + 8$.<br>
+    Wierzchołek paraboli znajduje się w punkcie $W = (3, -1)$, ramiona skierowane są w górę, a miejsca zerowe to $x_1 = 2, x_2 = 4$.</p>
+    <p><strong>6.1 Liczba rozwiązań $f(x) = m$:</strong><br>
+    Prowadząc proste poziome $y = m$:<br>
+    - 0 rozwiązań dla $m \in (-\infty, -3) \cup (3, \infty)$<br>
+    - 1 rozwiązanie dla $m = -3$ oraz $m \in (1, 3\rangle$<br>
+    - 2 rozwiązania dla $m = 1$ oraz $m \in (-3, -1)$<br>
+    - 3 rozwiązania dla $m \in \langle -1, 1)$</p>
+    <p><strong>6.2 Wykres $y = |f(x)|$:</strong><br>
+    Część wykresu leżącą pod osią $OX$ odbijamy symetrycznie względem osi $OX$ w górę, a część leżącą nad osią $OX$ pozostawiamy bez zmian.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            5: $g(x) = (x-3)^2 - 1 = x^2 - 6x + 8$; &nbsp; 6.1: podane przedziały dla $m$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-3-7-9" data-title="7 – 9. A. Funkcja dyskretna NWD, przynależność punktu i parametry" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            7 – 9. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Funkcja dyskretna NWD, przynależność punktu i parametry</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>7.</strong> Dana jest funkcja $f(x) = NWD(x, 4)$ dla $x \in \{1, 2, 3, 4, 5, 6, 7, 8\}$. Sporządź tabelę wartości, wyznacz $ZW_f$ i miejsca zerowe.<br>
+    <strong>8.</strong> Wiadomo, że dziedziną funkcji $f(x) = \frac{1}{\sqrt{ax+b}}$ jest $(2, \infty)$. Wyznacz $a$ i $b$.<br>
+    <strong>9.</strong> Sprawdź, czy punkt $A = (3, 27)$ należy do wykresu $f(x) = 3^x$.<br>
+    <strong>9. A)</strong> Sprawdź, czy punkt $A = (\sqrt{2}, 2)$ należy do wykresu $f(x) = x^2$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        W zadaniu 7 pamiętaj, że $NWD(x, 4) \ge 1$, więc nie może być równe 0. W zadaniu 8: $ax+b > 0 \iff x > -\frac{b}{a}$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-3-7-9')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-3-7-9" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-3-7-9" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>7:</strong> Wartości $f(x)$:<br>
+    $f(1) = 1, f(2) = 2, f(3) = 1, f(4) = 4, f(5) = 1, f(6) = 2, f(7) = 1, f(8) = 4$.<br>
+    Zbiór wartości: $ZW_f = \{1, 2, 4\}$.<br>
+    Miejsca zerowe: brak (wartość NWD jest zawsze dodatnia, $\ge 1$).</p>
+    <p><strong>8:</strong> Wyrażenie pod pierwiastkiem w mianowniku musi spełniać $ax+b > 0$. Skoro rozwiązaniem jest $x > 2$, to $-b/a = 2 \implies b = -2a$ (przy $a > 0$). Przykładowo dla $a = 1$: $b = -2$, czyli $f(x) = \frac{1}{\sqrt{x-2}}$.</p>
+    <p><strong>9:</strong> $f(3) = 3^3 = 27 = y_A$ $\implies$ Punkt $A$ <strong>należy</strong> do wykresu.</p>
+    <p><strong>9. A:</strong> $f(\sqrt{2}) = (\sqrt{2})^2 = 2 = y_A$ $\implies$ Punkt $A$ <strong>należy</strong> do wykresu.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            7: $ZW = \{1, 2, 4\}$, brak m. zerowych; &emsp; 8: $b = -2a$ ($a > 0$); &emsp; 9 i 9.A: TAK, punkty należą.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-3-10-11" data-title="10 – 11. Wyznaczanie parametru ze znajomości miejsca zerowego" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            10 – 11
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wyznaczanie parametru ze znajomości miejsca zerowego</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>10.</strong> Dana jest funkcja $f(x) = x^3 - b - 5\sqrt{2}$. Liczba $\sqrt{2}$ jest miejscem zerowym funkcji $f$. Wyznacz $b$.<br>
+    <strong>11.</strong> Funkcja $f(x) = \frac{2x-4}{|x-2|}$ jest określona dla $x \neq 2$. Podaj zbiór wartości $ZW_f$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Miejsce zerowe to taki argument $x_0$, dla którego $f(x_0) = 0$. Zastosuj definicję wartości bezwzględnej dla $x > 2$ i $x < 2$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-3-10-11')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-3-10-11" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-3-10-11" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>10:</strong> Skoro $f(\sqrt{2}) = 0$, to:
+    $$(\sqrt{2})^3 - b - 5\sqrt{2} = 0$$
+    $$2\sqrt{2} - 5\sqrt{2} - b = 0 \implies -3\sqrt{2} - b = 0 \implies b = -3\sqrt{2}$$</p>
+    <p><strong>11:</strong> Wyłączamy 2 przed nawias w liczniku: $2(x-2)$.<br>
+    - Dla $x > 2$: $|x-2| = x-2$, więc $f(x) = \frac{2(x-2)}{x-2} = 2$.<br>
+    - Dla $x < 2$: $|x-2| = -(x-2)$, więc $f(x) = \frac{2(x-2)}{-(x-2)} = -2$.<br>
+    Zatem funkcja przyjmuje wyłącznie dwie wartości: $ZW_f = \{-2, 2\}$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            10: $$b = -3\sqrt{2}$$; &emsp; 11: $$ZW_f = \{-2, 2\}$$
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-3-12" data-title="12 i 12. A. Odczytywanie własności i przekształceń z wykresów" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            12 i 12. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Odczytywanie własności i przekształceń z wykresów</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie z wykresem</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>12.</strong> Na rysunku przedstawiono wykres funkcji $y = f(x)$. Odczytaj przedziały monotoniczności oraz zbiór wartości.<br>
+    <strong>12. A)</strong> Na rysunku obok przedstawiono wykres funkcji $y = f(x)$. Wyznacz zbiór rozwiązań nierówności $f(x) \ge 1$ oraz podaj liczbę rozwiązań równania $f(x) = -1$.
+        
+    <div class="my-4 p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col items-center">
+      <img src="assets/img/3/p3_img1.png" alt="Rysunek do zadania 12 i 12. A" class="max-h-72 rounded-lg object-contain">
+      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 12 i 12. A</span>
+    </div>
+    
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Odczytaj współrzędne wierzchołków i punktów załamania.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-3-12')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-3-12" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-3-12" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>12:</strong> Z wykresu odczytujemy:<br>
+    Funkcja rośnie w przedziałach: $(-\infty, -2\rangle$ oraz $\langle 1, \infty)$.<br>
+    Funkcja maleje w przedziale: $\langle -2, 1 \rangle$.<br>
+    Zbiór wartości: $ZW = \mathbb{R}$.</p>
+    <p><strong>12. A:</strong> Nierówność $f(x) \ge 1$ zachodzi dla argumentów, dla których linia wykresu znajduje się na lub powyżej prostej $y = 1$: $x \in \langle -3, 2 \rangle$.<br>
+    Równanie $f(x) = -1$: prosta pozioma $y = -1$ przecina wykres w <strong>2 punktach</strong>.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            12: rosnąca w $(-\infty, -2\rangle, \langle 1, \infty)$, malejąca w $\langle -2, 1 \rangle$; &emsp; 12.A: $x \in \langle -3, 2 \rangle$, 2 rozwiązania.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-3-13" data-title="13 (13.1 – 13.2). Model wykładniczy połowicznego rozpadu promieniotwórczego" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            13 (13.1 – 13.2)
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Model wykładniczy połowicznego rozpadu promieniotwórczego</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie praktyczne</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Czas $T$ połowicznego rozpadu izotopu to czas, po którym liczba jąder maleje o połowę: $N(t) = N_0 \cdot \left(\frac{1}{2}\right)^{\frac{t}{T}}$.<br>
+    <strong>13.1</strong> Wskaż rysunek poprawnie przedstawiający zależność liczby jąder od czasu.<br>
+    <strong>13.2</strong> Czas połowicznego rozpadu węgla $^{14}C$ to około 5700 lat. Jaki procent początkowej liczby jąder pozostanie po 17100 latach?
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Funkcja wykładnicza o podstawie $\frac{1}{2}$ jest malejąca i ma asymptotę poziomą $y = 0$. $17100 = 3 \cdot 5700$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-3-13')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-3-13" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-3-13" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>13.1:</strong> Prawidłowy wykres to malejąca krzywa wykładnicza wypukła w dół, dążąca asymptotycznie do zera przy $t \to \infty$ (Rysunek 1).</p>
+    <p><strong>13.2:</strong> Obliczamy liczbę okresów połowicznego rozpadu:
+    $$n = \frac{t}{T} = \frac{17100}{5700} = 3$$
+    Po 3 okresach połowicznego rozpadu pozostaje:
+    $$N(17100) = N_0 \cdot \left(\frac{1}{2}\right)^3 = N_0 \cdot \frac{1}{8} = 0,125 N_0 = 12,5\% N_0$$</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            13.1: <strong>Rysunek 1</strong>; &emsp; 13.2: <strong>12,5%</strong> początkowej liczby jąder.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-3-14-17" data-title="14. A – 17. A. Przekształcenia wykresów, symetrie, cecha liczby i ekstrema" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            14. A – 17. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Przekształcenia wykresów, symetrie, cecha liczby i ekstrema</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte / dowody (R)</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>14. A) (R)</strong> Znajdź miejsca zerowe funkcji $f(x) = \frac{|x+1| - 2}{\sqrt{x+4}}$.<br>
+    <strong>14. B) (R)</strong> Opisz przekształcenie wykresu $f$ prowadzące do $g(x) = -f(2x-4) + 3$.<br>
+    <strong>15. (R)</strong> Narysuj wykres funkcji $f(x) = \frac{|x|}{x} \cdot (x-2)^2$.<br>
+    <strong>16. (R)</strong> Funkcja okresowa ma okres zasadniczy $T = 2$. Sporządź jej wykres, gdy dla $x \in [0, 2)$: $f(x) = 1 - |x-1|$.<br>
+    <strong>16. A) (R)</strong> Wskaż przedziały monotoniczności funkcji mantysy $f(x) = x - [x]$.<br>
+    <strong>17. A) (R)</strong> Dane są $k(x) = 5 - x^2$ oraz $p(x) = 2x+1$. Wyznacz wzór funkcji złożonej $h(x) = k(p(x))$ oraz jej wartość największą.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 14.A pamiętaj o $x+4 > 0$. Dla 14.B: $2x-4 = 2(x-2)$. Dla 16.A mantysa rośnie od 0 do 1 w każdym przedziale postaci $\langle k, k+1)$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-3-14-17')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-3-14-17" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-3-14-17" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>14. A (R):</strong> Dziedzina: $x+4 > 0 \implies x > -4$. Licznik: $|x+1| = 2 \implies x+1 = 2 \lor x+1 = -2 \implies x = 1 \lor x = -3$. Oba pierwiastki należą do $(-4, \infty)$. Miejsca zerowe: $x \in \{-3, 1\}$.</p>
+    <p><strong>14. B (R):</strong> Zapisujemy $g(x) = -f(2(x-2)) + 3$. Kolejne kroki:<br>
+    1) Powinowactwo prostokątne względem osi $OY$ w skali $\frac{1}{2}$ (2-krotne zwężenie poziome): $f(2x)$.<br>
+    2) Przesunięcie o 2 jednostki w prawo: $f(2(x-2))$.<br>
+    3) Symetria względem osi $OX$: $-f(2(x-2))$.<br>
+    4) Przesunięcie o 3 jednostki w górę: $-f(2(x-2)) + 3$.</p>
+    <p><strong>15 (R):</strong> Zauważmy, że $\frac{|x|}{x} = \text{sgn}(x) = 1$ dla $x > 0$ oraz $-1$ dla $x < 0$ (dla $x=0$ funkcja nieokreślona).<br>
+    Zatem: $f(x) = (x-2)^2$ dla $x > 0$ oraz $f(x) = -(x-2)^2$ dla $x < 0$.</p>
+    <p><strong>16 (R):</strong> W bazowym okresie $[0, 2)$: dla $x \in [0, 1]$ $f(x) = 1 - (1-x) = x$, dla $x \in [1, 2)$ $f(x) = 1 - (x-1) = 2-x$. Jest to „trójkątny ząb” o wysokości 1 w $x=1$. Następnie powtarzamy ten kształt co 2 jednostki na całej prostej rzeczywistej.</p>
+    <p><strong>16. A (R):</strong> Funkcja mantysy $x - [x] = \{x\}$ jest funkcją rosnącą w każdym przedziale postaci $\langle k, k+1)$, gdzie $k \in \mathbb{Z}$. W punktach całkowitych następuje skok z wartości zbliżającej się do 1 do wartości 0.</p>
+    <p><strong>17. A (R):</strong> Złożenie: $h(x) = k(2x+1) = 5 - (2x+1)^2 = 5 - (4x^2 + 4x + 1) = -4x^2 - 4x + 4$.<br>
+    Jest to parabola z ramionami w dół ($a = -4 < 0$). Osiąga maksimum w wierzchołku: $x_w = -\frac{-4}{2 \cdot (-4)} = -\frac{1}{2}$.<br>
+    Wartość największa: $y_{max} = h(-1/2) = 5 - 0 = 5$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            14.A: $x \in \{-3, 1\}$; &nbsp; 14.B: zwężenie $\times 2$, translacja $\vec{u}=[2,3]$, symetria $OX$; &nbsp; 16.A: rosnąca w $\langle k, k+1)$ ($k \in \mathbb{Z}$); &nbsp; 17.A: $h(x) = -4x^2-4x+4$, $y_{max} = 5$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+      </div>
+
+      <div class="pt-8 border-t border-slate-800 flex items-center justify-between gap-4">
+        <a href="2_zbiory_i_wzory.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm border border-slate-700 transition">
+        <i class="fa-solid fa-arrow-left"></i> Poprzedni: Zbiory i wzory
+    </a>
+        <a href="4_funkcja_liniowa.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition shadow-lg shadow-indigo-600/20">
+        Następny: Funkcja liniowa <i class="fa-solid fa-arrow-right"></i>
+    </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-900/40 py-6 text-center text-xs text-slate-500 mt-16">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; 2026 Baza Zadań Maturalnych &bull; Przygotowano w J:\zadania</p>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="hover:text-slate-300">Strona główna</a>
+        <a href="#" class="hover:text-indigo-400"><i class="fa-solid fa-arrow-up"></i> W górę</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSolution(id) {
+      const content = document.getElementById('solution-' + id);
+      const icon = document.getElementById('icon-' + id);
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        if (icon) icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        content.classList.add('hidden');
+        if (icon) icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    }
+
+    let allExpanded = false;
+    function toggleAllSolutions() {
+      allExpanded = !allExpanded;
+      const solutions = document.querySelectorAll('.task-solution');
+      const icons = document.querySelectorAll('.solution-icon');
+      solutions.forEach(s => {
+        if (allExpanded) s.classList.remove('hidden');
+        else s.classList.add('hidden');
+      });
+      icons.forEach(ic => {
+        if (allExpanded) ic.classList.replace('fa-chevron-down', 'fa-chevron-up');
+        else ic.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      });
+      document.getElementById('toggle-all-text').innerText = allExpanded ? 'Zwiń wszystkie rozwiązania' : 'Rozwiń wszystkie rozwiązania';
+    }
+
+    let currentFilter = 'all';
+    function filterTasks() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const cards = document.querySelectorAll('.task-card');
+      cards.forEach(c => {
+        const text = c.innerText.toLowerCase();
+        const matchesQuery = text.includes(query);
+        const matchesType = currentFilter === 'all' || c.getAttribute('data-level') === currentFilter;
+        if (matchesQuery && matchesType) {
+          c.classList.remove('hidden');
+        } else {
+          c.classList.add('hidden');
+        }
+      });
+    }
+
+    function setFilter(type, ev) {
+      currentFilter = type;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-600', 'text-white', 'font-medium');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+      if (ev && ev.target) {
+        ev.target.classList.add('bg-indigo-600', 'text-white', 'font-medium');
+        ev.target.classList.remove('bg-slate-800', 'text-slate-300');
+      }
+      filterTasks();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const toc = document.getElementById('sidebar-toc');
+      const cards = document.querySelectorAll('.task-card');
+      const badge = document.getElementById('task-badge-count');
+      if (badge) badge.innerText = cards.length + ' zadań';
+      
+      cards.forEach(card => {
+        const id = card.id;
+        const title = card.getAttribute('data-title') || id;
+        const isR = card.getAttribute('data-level') === 'rozszerzenie';
+        const a = document.createElement('a');
+        a.href = '#' + id;
+        a.className = 'block px-2.5 py-1.5 rounded hover:bg-slate-800 text-slate-300 hover:text-white transition truncate flex items-center justify-between';
+        a.innerHTML = `<span class="truncate">${title}</span> ${isR ? '<span class="text-[10px] bg-amber-500/20 text-amber-300 px-1 rounded font-mono ml-1">R</span>' : ''}`;
+        toc.appendChild(a);
+      });
+    });
+  </script>
+</body>
+</html>

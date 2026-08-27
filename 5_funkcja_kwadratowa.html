@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5. Funkcja kwadratowa &bull; Matematyka ZSE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ],
+      throwOnError: false
+    });"></script>
+  <style>
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3 w-full md:w-auto justify-between">
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div>
+            <span class="text-sm font-bold text-white tracking-wide block">Baza Zadań Maturalnych</span>
+            <span class="text-[11px] text-slate-400 block -mt-0.5">mgr M. Kucharska, mgr A. Piłat</span>
+          </div>
+        </a>
+        <a href="index.html" class="md:hidden text-xs text-indigo-400 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700">
+          <i class="fa-solid fa-house"></i> Home
+        </a>
+      </div>
+
+      <nav class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 text-xs">
+        <a href="index.html" class="px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition hidden lg:inline-flex items-center gap-1">
+          <i class="fa-solid fa-house"></i>
+        </a>
+        
+        <a href="1_liczby_rzeczywiste.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-calculator"></i>
+          <span>1. Liczby rzeczywiste</span>
+        </a>
+        
+        <a href="2_zbiory_i_wzory.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>2. Zbiory i wzory</span>
+        </a>
+        
+        <a href="3_funkcje_i_wlasnosci.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>3. Funkcje i ich własności</span>
+        </a>
+        
+        <a href="4_funkcja_liniowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-bezier-curve"></i>
+          <span>4. Funkcja liniowa</span>
+        </a>
+        
+        <a href="5_funkcja_kwadratowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap bg-indigo-600 text-white font-semibold shadow-md shadow-indigo-500/20">
+          <i class="fa-solid fa-superscript"></i>
+          <span>5. Funkcja kwadratowa</span>
+        </a>
+        
+        <a href="6_ciagi.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-arrow-trend-up"></i>
+          <span>6. Ciągi</span>
+        </a>
+        
+        <a href="7_wielomiany.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-cubes"></i>
+          <span>7. Wielomiany</span>
+        </a>
+        
+        <a href="8_funkcje_wymierne.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-divide"></i>
+          <span>8. Funkcje wymierne</span>
+        </a>
+        
+      </nav>
+    </div>
+  </header>
+
+  <section class="border-b border-slate-800 bg-gradient-to-b from-slate-900/60 to-slate-950 py-8 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-3">
+            <i class="fa-solid fa-book-open"></i> Dział 5 z 8
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">5. Funkcja kwadratowa</h1>
+          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-3xl">Równania i nierówności kwadratowe, postacie trójmianu, wierzchołek, zadania optymalizacyjne, wzory Viète'a i parametry.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="toggle-all-btn" onclick="toggleAllSolutions()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition flex items-center gap-2 shadow">
+            <i class="fa-regular fa-eye"></i> <span id="toggle-all-text">Rozwiń wszystkie rozwiązania</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <aside class="hidden lg:block lg:col-span-1">
+      <div class="sticky top-24 bg-slate-900/60 border border-slate-800 rounded-2xl p-4 max-h-[calc(100vh-7rem)] overflow-y-auto">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
+          <span>Spis Zadań</span>
+          <span class="text-indigo-400 font-mono" id="task-badge-count"></span>
+        </h3>
+        <div class="space-y-1 text-xs" id="sidebar-toc">
+        </div>
+      </div>
+    </aside>
+
+    <div class="lg:col-span-3 space-y-8">
+      
+<div class="p-6 rounded-2xl bg-rose-950/30 border border-rose-800/40 shadow-xl space-y-4">
+  <div class="flex items-center gap-3 border-b border-rose-800/40 pb-3">
+    <div class="w-8 h-8 rounded-lg bg-rose-600/30 text-rose-400 flex items-center justify-center font-bold">
+      <i class="fa-solid fa-superscript"></i>
+    </div>
+    <h2 class="text-lg font-bold text-white tracking-wide">Kompendium Teoretyczne: Funkcja Kwadratowa</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-slate-300">
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-shapes"></i> Trzy postacie funkcji</h3>
+      <p>Ogólna: $f(x) = ax^2 + bx + c$ ($a \neq 0$)</p>
+      <p>Kanoniczna: $f(x) = a(x - p)^2 + q$ ($W = (p, q)$)</p>
+      <p>Iloczynowa: $f(x) = a(x - x_1)(x - x_2)$ (gdy $\Delta \ge 0$)</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-triangle-exclamation"></i> Wyróżnik $\Delta$ i pierwiastki</h3>
+      <p>$\Delta = b^2 - 4ac$</p>
+      <p>$\Delta > 0$: dwa różne pierwiastki $x_{1,2} = \frac{-b \pm \sqrt{\Delta}}{2a}$</p>
+      <p>$\Delta = 0$: jeden pierwiastek podwójny $x_0 = -\frac{b}{2a}$</p>
+      <p>$\Delta < 0$: brak pierwiastków rzeczywistych</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-location-crosshairs"></i> Wierzchołek paraboli</h3>
+      <p>$p = -\frac{b}{2a} = \frac{x_1 + x_2}{2}$</p>
+      <p>$q = -\frac{\Delta}{4a} = f(p)$</p>
+      <p>Oś symetrii paraboli: prosta $x = p$</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-calculator"></i> Wzory Viète'a</h3>
+      <p>$x_1 + x_2 = -\frac{b}{a}$</p>
+      <p>$x_1 \cdot x_2 = \frac{c}{a}$</p>
+      <p>$x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2$</p>
+      <p>$\frac{1}{x_1} + \frac{1}{x_2} = \frac{x_1 + x_2}{x_1 x_2}$</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-up-across-line"></i> Najmniejsza i największa wartość</h3>
+      <p>W przedziale $\langle lpha, \beta \rangle$:</p>
+      <p>1. Oblicz $p$. Jeśli $p \in \langle lpha, \beta \rangle$, oblicz $f(p)$.</p>
+      <p>2. Oblicz wartości na krańcach: $f(\alpha)$ i $f(\beta)$.</p>
+      <p>3. Wybierz wartość najmniejszą i największą spośród obliczonych.</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-diagram-project"></i> Zadania optymalizacyjne</h3>
+      <p>1. Zapisz wielkość optymalizowaną jako funkcję jednej zmiennej.</p>
+      <p>2. Ustal dziedzinę geometryczną/fizyczną.</p>
+      <p>3. Ekstremum leży w wierzchołku paraboli $x = p$.</p>
+    </div>
+  </div>
+</div>
+
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-slate-900/40 border border-slate-800">
+        <div class="relative w-full sm:w-72">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+          <input type="text" id="search-input" onkeyup="filterTasks()" placeholder="Szukaj zadania..."
+            class="w-full pl-9 pr-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition">
+        </div>
+        <div class="flex items-center gap-2 text-xs flex-wrap w-full sm:w-auto">
+          <button onclick="setFilter('all', event)" class="filter-btn active px-3 py-1 rounded-md bg-indigo-600 text-white font-medium">Wszystkie</button>
+          <button onclick="setFilter('podstawa', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Podstawa</button>
+          <button onclick="setFilter('rozszerzenie', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Rozszerzenie (R)</button>
+        </div>
+      </div>
+
+      <div class="space-y-6" id="tasks-wrapper">
+        
+    <article id="zad-5-1" data-title="1. Rozwiązywanie równań kwadratowych i sprowadzalnych do kwadratowych" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            1
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Rozwiązywanie równań kwadratowych i sprowadzalnych do kwadratowych</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Rozwiąż równania:<br>
+    <strong>a)</strong> $-9x^2 + 100 = -5x^2$<br>
+    <strong>b)</strong> $\frac{1}{4}x^2 - 3x + 9 = 0$<br>
+    <strong>c)</strong> $25(t - 1)^2 - 9(t + 2)^2 = 0$<br>
+    <strong>d)</strong> $(y + 3)^2 + 25 = 0$<br>
+    <strong>e)</strong> $x^4 - 3(x^2 - 1) = 7(x^2 - 3)$<br>
+    <strong>f)</strong> $(x - 1)^4 - 5(x - 1)^2 + 6 = 0$
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla a, c stosuj różnicę kwadratów $a^2-b^2=(a-b)(a+b)$. Dla e, f podstaw $t = x^2$ lub $t = (x-1)^2$ ($t \ge 0$).
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-5-1')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-5-1" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-5-1" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>a)</strong> $-4x^2 + 100 = 0 \iff 4x^2 = 100 \iff x^2 = 25 \iff x \in \{-5, 5\}$.</p>
+    <p><strong>b)</strong> Mnożymy przez 4: $x^2 - 12x + 36 = 0 \iff (x - 6)^2 = 0 \iff x = 6$ (pierwiastek podwójny).</p>
+    <p><strong>c)</strong> Różnica kwadratów: $[5(t-1) - 3(t+2)][5(t-1) + 3(t+2)] = 0 \iff (2t - 11)(8t + 1) = 0 \implies t = \frac{11}{2} = 5,5$ lub $t = -\frac{1}{8}$.</p>
+    <p><strong>d)</strong> $(y + 3)^2 = -25$. Ponieważ kwadrat liczby rzeczywistej jest nieujemny, równanie <strong>nie ma rozwiązań w $\mathbb{R}$</strong> (zbiór pusty $\emptyset$).</p>
+    <p><strong>e)</strong> $x^4 - 3x^2 + 3 = 7x^2 - 21 \implies x^4 - 10x^2 + 24 = 0$. Niech $t = x^2 \ge 0$:<br>
+    $t^2 - 10t + 24 = 0 \iff (t - 4)(t - 6) = 0 \implies t = 4 \lor t = 6$.<br>
+    Stąd $x^2 = 4 \implies x = \pm 2$; $x^2 = 6 \implies x = \pm \sqrt{6}$. Rozwiązania: $x \in \{-2, 2, -\sqrt{6}, \sqrt{6}\}$.</p>
+    <p><strong>f)</strong> Niech $t = (x-1)^2 \ge 0$. Wtedy $t^2 - 5t + 6 = 0 \iff (t - 2)(t - 3) = 0 \implies t = 2 \lor t = 3$.<br>
+    1) $(x-1)^2 = 2 \implies x - 1 = \pm\sqrt{2} \implies x = 1 \pm \sqrt{2}$.<br>
+    2) $(x-1)^2 = 3 \implies x - 1 = \pm\sqrt{3} \implies x = 1 \pm \sqrt{3}$.<br>
+    Rozwiązania: $x \in \{1-\sqrt{3}, 1-\sqrt{2}, 1+\sqrt{2}, 1+\sqrt{3}\}$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            a) $\{-5, 5\}$; &nbsp; b) $\{6\}$; &nbsp; c) $\{-1/8, 11/2\}$; &nbsp; d) $\emptyset$; &nbsp; e) $\{\pm 2, \pm \sqrt{6}\}; &nbsp; f) $\{1\pm\sqrt{2}, 1\pm\sqrt{3}\}$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-5-2" data-title="2. Rozwiązywanie nierówności kwadratowych" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            2
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Rozwiązywanie nierówności kwadratowych</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Rozwiąż nierówności kwadratowe:<br>
+    <strong>a)</strong> $8x^2 - 72x \le 0$<br>
+    <strong>b)</strong> $2x^2 - 4x > 3x^2 - 6x$<br>
+    <strong>c)</strong> $2(x - 1)(x + 3) > x - 1$<br>
+    <strong>d)</strong> $k^2 + 1 > 0$<br>
+    <strong>e)</strong> $-4x^2 + 7x - 4 \ge 0$<br>
+    <strong>f)</strong> $x^2 - 5x \le 14$<br>
+    <strong>g)</strong> $(k - 2)^2 > 0$<br>
+    <strong>h)</strong> $(3y - 1)^2 \le 0$
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Zawsze sprowadź do postaci ogólnej, wyznacz miejsca zerowe i narysuj pomocniczy szkic paraboli.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-5-2')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-5-2" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-5-2" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>a)</strong> $8x(x - 9) \le 0$. Miejsca zerowe: $x_1 = 0, x_2 = 9$. Parabola z ramionami w górę: $x \in \langle 0, 9 \rangle$.</p>
+    <p><strong>b)</strong> Przenosimy na prawo: $0 > x^2 - 2x \iff x(x - 2) < 0$. Miejsca zerowe: 0 i 2. Rozwiązanie: $x \in (0, 2)$.</p>
+    <p><strong>c)</strong> $2(x-1)(x+3) - (x-1) > 0 \iff (x-1)[2(x+3) - 1] > 0 \iff (x-1)(2x+5) > 0$. Miejsca zerowe: $1$ oraz $-\frac{5}{2}$. Rozwiązanie: $x \in (-\infty, -2,5) \cup (1, \infty)$.</p>
+    <p><strong>d)</strong> Dla każdego $k \in \mathbb{R}$: $k^2 \ge 0 \implies k^2 + 1 \ge 1 > 0$. Zbiór rozwiązań: $k \in \mathbb{R}$.</p>
+    <p><strong>e)</strong> $\Delta = 49 - 4(-4)(-4) = 49 - 64 = -15 < 0$. Parabola z ramionami w dół leży całkowicie pod osią $OX$. Nierówność $\ge 0$ <strong>nie ma rozwiązań ($x \in \emptyset$)</strong>.</p>
+    <p><strong>f)</strong> $x^2 - 5x - 14 \le 0 \iff (x - 7)(x + 2) \le 0$. Miejsca zerowe: $-2, 7$. Rozwiązanie: $x \in \langle -2, 7 \rangle$.</p>
+    <p><strong>g)</strong> Kwadrat jest ściśle dodatni dla wszystkich liczb oprócz zera: $k \in \mathbb{R} \setminus \{2\}$.</p>
+    <p><strong>h)</strong> Kwadrat nie może być ujemny, więc jedyna możliwość to równość zeru: $3y - 1 = 0 \implies y = \frac{1}{3}$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            a) $\langle 0, 9 \rangle$; &nbsp; b) $(0, 2)$; &nbsp; c) $(-\infty, -2,5) \cup (1, \infty)$; &nbsp; d) $\mathbb{R}$; &nbsp; e) $\emptyset$; &nbsp; f) $\langle -2, 7 \rangle$; &nbsp; g) $\mathbb{R} \setminus \{2\}$; &nbsp; h) $\{1/3\}$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-5-3-6" data-title="3 – 6. Postacie funkcji kwadratowej, wierzchołek i znak delty" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            3 – 6
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Postacie funkcji kwadratowej, wierzchołek i znak delty</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie mieszane</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>3.</strong> Podaj współrzędne wierzchołka paraboli $y = -2(x - 3)^2 + 5$.<br>
+    <strong>4.</strong> Sporządź wykres funkcji $f(x) = -(x+3)^2 + 4$ i omów jej własności.<br>
+    <strong>5.</strong> Liczby $-1$ i $3$ są miejscami zerowymi funkcji kwadratowej $f$. Oblicz pierwszą współrzędną wierzchołka $p$.<br>
+    <strong>6.</strong> Funkcja $f(x) = 3x^2 + bx - 5$ jest określona dla każdego $x \in \mathbb{R}$. Wykaż, że funkcja ta ma zawsze dwa różne miejsca zerowe.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Postać kanoniczna $y = a(x-p)^2 + q \implies W = (p, q)$. Wierzchołek leży pośrodku miejsc zerowych: $p = \frac{x_1+x_2}{2}$. Liczba miejsc zerowych zależy od znaku $\Delta$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-5-3-6')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-5-3-6" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-5-3-6" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>3:</strong> Z postaci kanonicznej odczytujemy natychmiast: $p = 3, q = 5 \implies W = (3, 5)$.</p>
+    <p><strong>4:</strong> Wierzchołek $W = (-3, 4)$, ramiona skierowane w dół ($a = -1 < 0$).<br>
+    Miejsca zerowe: $-(x+3)^2 + 4 = 0 \iff (x+3)^2 = 4 \implies x+3 = 2 \lor x+3 = -2 \implies x_1 = -1, x_2 = -5$.<br>
+    Własności: $D = \mathbb{R}$, $ZW = (-\infty, 4\rangle$, rosnąca w $(-\infty, -3\rangle$, malejąca w $\langle -3, \infty)$, oś symetrii: $x = -3$.</p>
+    <p><strong>5:</strong> Ponieważ oś symetrii paraboli leży dokładnie pośrodku między miejscami zerowymi:
+    $$p = \frac{x_1 + x_2}{2} = \frac{-1 + 3}{2} = \frac{2}{2} = 1$$</p>
+    <p><strong>6:</strong> Obliczamy wyróżnik $\Delta$ trójmianu:
+    $$\Delta = b^2 - 4 \cdot 3 \cdot (-5) = b^2 + 60$$
+    Dla dowolnej liczby rzeczywistej $b$: $b^2 \ge 0$, a zatem:
+    $$\Delta = b^2 + 60 \ge 0 + 60 = 60 > 0$$
+    Ponieważ $\Delta > 0$ dla każdego $b \in \mathbb{R}$, funkcja zawsze posiada dwa różne miejsca zerowe, c.k.d.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            3: $W = (3, 5)$; &nbsp; 4: $W=(-3, 4), ZW=(-\infty, 4\rangle, x_0 \in \{-5, -1\}$; &nbsp; 5: $p = 1$; &nbsp; 6: $\Delta = b^2+60 > 0$ (udowodniono).
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-5-7-10" data-title="7 – 10. Przekształcenia postaci trójmianu i wyznaczanie współczynników" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            7 – 10
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Przekształcenia postaci trójmianu i wyznaczanie współczynników</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>7.</strong> Wyznacz współczynniki $b, c$ trójmianu $f(x) = x^2 + bx + c$, jeśli $W = (-2, 1)$.<br>
+    <strong>8.</strong> Dla funkcji $y = x^2 + 5x + 6$ wyznacz postać kanoniczną oraz postać iloczynową.<br>
+    <strong>9.</strong> Liczba 2 jest miejscem zerowym $f(x) = x^2 + bx - 12$. Oblicz $b$ i drugie miejsce zerowe.<br>
+    <strong>10.</strong> Wyznacz $b$ tak, aby przedział $\langle -8, \infty)$ był zbiorem wartości funkcji $f(x) = 2x^2 + bx$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Z wierzchołka: $p = -\frac{b}{2a}, q = -\frac{\Delta}{4a}$. Postać iloczynowa wymaga wyznaczenia miejsc zerowych.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-5-7-10')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-5-7-10" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-5-7-10" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>7:</strong> Z postaci kanonicznej: $f(x) = (x - (-2))^2 + 1 = (x+2)^2 + 1 = x^2 + 4x + 4 + 1 = x^2 + 4x + 5$. Zatem $b = 4, c = 5$.</p>
+    <p><strong>8. 1 Postać kanoniczna:</strong> $p = -\frac{5}{2} = -2,5$. $\Delta = 25 - 24 = 1$. $q = -\frac{1}{4} = -0,25$.<br>
+    $$y = \left(x + \frac{5}{2}\right)^2 - \frac{1}{4}$$<br>
+    <strong>8. 2 Postać iloczynowa:</strong> $x_1 = \frac{-5-1}{2} = -3, x_2 = \frac{-5+1}{2} = -2 \implies y = (x + 3)(x + 2)$.</p>
+    <p><strong>9:</strong> $f(2) = 0 \implies 2^2 + 2b - 12 = 0 \implies 2b = 8 \implies b = 4$.<br>
+    Trójmian: $x^2 + 4x - 12 = (x - 2)(x + 6) = 0 \implies$ drugie miejsce zerowe to $x_2 = -6$.</p>
+    <p><strong>10:</strong> $a = 2 > 0$, więc najmniejszą wartością jest $q = -8$.<br>
+    $\Delta = b^2 - 4(2)(0) = b^2$. Zatem $q = -\frac{b^2}{4a} = -\frac{b^2}{8}$.<br>
+    $-\frac{b^2}{8} = -8 \implies b^2 = 64 \implies b = 8$ lub $b = -8$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            7: $b = 4, c = 5$; &nbsp; 8: $y = (x+2,5)^2 - 0,25 = (x+2)(x+3)$; &nbsp; 9: $b = 4, x_2 = -6$; &nbsp; 10: $b \in \{-8, 8\}$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-5-11-15" data-title="11 – 15. A. Wartości w przedziałach, styczna pozioma i znaki wartości" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            11 – 15. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wartości w przedziałach, styczna pozioma i znaki wartości</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania optymalizacyjne i analityczne</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>12.</strong> Funkcja $f(x) = -2x^2 + bx + c$ przyjmuje wartości dodatnie tylko dla $x \in (-1, 5)$. Wyznacz $b$ i $c$.<br>
+    <strong>13.</strong> Oblicz najmniejszą i największą wartość funkcji $f(x) = x^2 - 6x + 1$ w przedziale $\langle 0, 1 \rangle$.<br>
+    <strong>14.</strong> Oblicz najmniejszą i największą wartość funkcji $f(x) = x^2 - 6x + 3$ w przedziale $\langle 0, 4 \rangle$.<br>
+    <strong>15.</strong> Wykres $f(x) = ax^2 + bx + c$ ma z prostą $y = 6$ dokładnie jeden punkt wspólny $(2, 6)$ i przecina $OY$ w punkcie $(0, 2)$. Wyznacz wzór.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 12: liczby $-1$ i $5$ są miejscami zerowymi. W zadaniach 13-14 sprawdź, czy $p \in \langle a, b \rangle$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-5-11-15')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-5-11-15" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-5-11-15" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>12:</strong> Skoro $f(x) > 0 \iff x \in (-1, 5)$, to miejscami zerowymi są $x_1 = -1, x_2 = 5$. Z postaci iloczynowej:
+    $$f(x) = -2(x + 1)(x - 5) = -2(x^2 - 4x - 5) = -2x^2 + 8x + 10$$
+    Zatem $b = 8, c = 10$.</p>
+    <p><strong>13:</strong> Współrzędna wierzchołka: $p = -\frac{-6}{2} = 3$. Ponieważ $3 \notin \langle 0, 1 \rangle$, funkcja jest monotoniczna w tym przedziale (maleje). Sprawdzamy końce:
+    $$f(0) = 1 \quad (\text{maksimum})$$
+    $$f(1) = 1 - 6 + 1 = -4 \quad (\text{minimum})$$</p>
+    <p><strong>14:</strong> $p = 3 \in \langle 0, 4 \rangle$. Ponieważ $a = 1 > 0$, w wierzchołku jest minimum:
+    $$y_{min} = f(3) = 9 - 18 + 3 = -6$$
+    Badamy końce przedziału: $f(0) = 3$, $f(4) = 16 - 24 + 3 = -5$.
+    Zatem wartość największa to $y_{max} = 3$ (dla $x=0$).</p>
+    <p><strong>15:</strong> Punkt $(2, 6)$ to wierzchołek paraboli (jedyny punkt wspólny z poziomą prostą $y=6$): $W = (2, 6)$.
+    Postać kanoniczna: $y = a(x - 2)^2 + 6$. Przecięcie z $OY$: $(0, 2) \implies 2 = a(0 - 2)^2 + 6 \implies 4a = -4 \implies a = -1$.
+    Wzór: $f(x) = -(x-2)^2 + 6 = -x^2 + 4x + 2$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            12: $b = 8, c = 10$; &nbsp; 13: $y_{min} = -4, y_{max} = 1$; &nbsp; 14: $y_{min} = -6, y_{max} = 3$; &nbsp; 15: $f(x) = -x^2 + 4x + 2$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-5-16-20" data-title="16 – 20. Zadania optymalizacyjne, rzut piłką i dowód nierówności" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            16 – 20
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Zadania optymalizacyjne, rzut piłką i dowód nierówności</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania optymalizacyjne / praktyczne</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>16.</strong> Znajdź trzy kolejne liczby parzyste tak, aby suma kwadratów dwóch mniejszych była równa kwadratowi największej.<br>
+    <strong>17.</strong> Tor rzutu piłki opisuje funkcja $h(x) = -0,05x^2 + 0,4x + 2$ (gdzie $h$ to wysokość w metrach, $x$ to odległość pozioma). Oblicz maksymalną wysokość piłki.<br>
+    <strong>18.</strong> Szyba ma kształt prostokąta o obwodzie 4 m. Jakie wymiary zapewnią maksymalną powierzchnię (pole)?<br>
+    <strong>20.</strong> Wykaż, że jeżeli $x + y = 5$, to $x^2 + y^2 \ge \frac{25}{2}$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 16: $(2k)^2 + (2k+2)^2 = (2k+4)^2$. Dla 18: $P(x) = x(2-x)$. Dla 20: podstaw $y = 5-x$ i zbadaj minimum funkcji kwadratowej.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-5-16-20')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-5-16-20" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-5-16-20" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>16:</strong> Niech liczby to $2k, 2k+2, 2k+4$ dla $k > 0$.<br>
+    $4k^2 + (4k^2 + 8k + 4) = 4k^2 + 16k + 16 \implies 4k^2 - 8k - 12 = 0 \implies k^2 - 2k - 3 = 0 \implies (k-3)(k+1) = 0$.<br>
+    Dla $k = 3$: liczby to <strong>6, 8, 10</strong> ($6^2 + 8^2 = 36 + 64 = 100 = 10^2$).</p>
+    <p><strong>17:</strong> Wierzchołek paraboli: $p = -\frac{0,4}{2 \cdot (-0,05)} = \frac{0,4}{0,1} = 4$ m.<br>
+    Wysokość maksymalna $h_{max} = h(4) = -0,05(16) + 0,4(4) + 2 = -0,8 + 1,6 + 2 = 2,8$ m.</p>
+    <p><strong>18:</strong> Obwód: $2a + 2b = 4 \implies a + b = 2 \implies b = 2 - a$. Pole: $P(a) = a(2 - a) = -a^2 + 2a$.<br>
+    Maksimum w wierzchołku: $a = -\frac{2}{2(-1)} = 1$ m $\implies b = 2 - 1 = 1$ m.<br>
+    Maksymalne pole daje szyba kwadratowa o wymiarach <strong>$1\text{ m} \times 1\text{ m}$</strong> (pole $1\text{ m}^2$).</p>
+    <p><strong>20:</strong> Podstawiamy $y = 5 - x$:<br>
+    $f(x) = x^2 + (5 - x)^2 = x^2 + 25 - 10x + x^2 = 2x^2 - 10x + 25$.<br>
+    Ramiona w górę ($a = 2 > 0$). Minimum w wierzchołku: $x_w = -\frac{-10}{4} = \frac{5}{2} = 2,5$.<br>
+    Wartość najmniejsza: $f(2,5) = 2(6,25) - 10(2,5) + 25 = 12,5 - 25 + 25 = 12,5 = \frac{25}{2}$.<br>
+    Zatem dla każdego $x$: $x^2 + y^2 \ge \frac{25}{2}$, c.k.d.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            16: 6, 8, 10; &nbsp; 17: $H_{max} = 2,8$ m; &nbsp; 18: $1\text{ m} \times 1\text{ m}$; &nbsp; 20: udowodniono.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-5-21-32" data-title="21 – 32. Równania i nierówności z parametrem i wzorami Viète'a" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            21 – 32
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Równania i nierówności z parametrem i wzorami Viète'a</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania z parametrem (R)</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>21. A) (R)</strong> Rozwiąż równanie $|x| + |1 - x^2| = 1$.<br>
+    <strong>23. (R)</strong> Wyznacz liczbę rozwiązań $2|x| - x^2 = m$ w zależności od $m$.<br>
+    <strong>27. (R)</strong> Dany jest trójmian $f(x) = x^2 + 2(m+1)x + 6m + 1$. Wyznacz wszystkie wartości $m$, dla których równanie ma dwa różne pierwiastki tego samego znaku.<br>
+    <strong>29. (R)</strong> Dla jakich wartości parametru $m$ równanie $x^2 - (m+1)x + m = 0$ ma dwa różne rozwiązania $x_1, x_2$ spełniające warunek $x_1^2 + x_2^2 < 5$?
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Warunki dla dwóch pierwiastków tego samego znaku: $\Delta > 0$ oraz $x_1 \cdot x_2 > 0$. Suma kwadratów: $x_1^2 + x_2^2 = (x_1+x_2)^2 - 2x_1x_2$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-5-21-32')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-5-21-32" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-5-21-32" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>21. A (R):</strong> Zauważmy, że $|1 - x^2| = 1 - |x| \iff |x^2 - 1| = 1 - |x|$.<br>
+    Badamy przedziałami: dla $x \in \langle -1, 1 \rangle$: $1 - x^2 = 1 - |x| \implies x^2 - |x| = 0 \implies |x|(|x| - 1) = 0 \implies x \in \{-1, 0, 1\}$.<br>
+    Dla $|x| > 1$: $x^2 - 1 = 1 - |x| \implies x^2 + |x| - 2 = 0 \implies (|x|+2)(|x|-1) = 0 \implies |x| = 1 \implies x = \pm 1$.<br>
+    Rozwiązania: $x \in \{-1, 0, 1\}$.</p>
+    <p><strong>23 (R):</strong> Wykres $y = 2|x| - x^2$ jest parzysty: dla $x \ge 0$: $y = 2x - x^2 = -(x-1)^2 + 1$ (wierzchołek w $(1, 1)$, miejsce zerowe $x=2$).<br>
+    Liczba rozwiązań równania $f(x) = m$:<br>
+    - 0 rozwiązań dla $m > 1$<br>
+    - 2 rozwiązania dla $m = 1$ oraz $m < 0$<br>
+    - 3 rozwiązania dla $m = 0$<br>
+    - 4 rozwiązania dla $m \in (0, 1)$.</p>
+    <p><strong>27 (R):</strong> Warunki zadania:<br>
+    1) $\Delta > 0$: $\Delta = 4(m+1)^2 - 4(6m+1) = 4(m^2 + 2m + 1 - 6m - 1) = 4(m^2 - 4m) = 4m(m-4) > 0 \implies m \in (-\infty, 0) \cup (4, \infty)$.<br>
+    2) $x_1 \cdot x_2 > 0$ (ze wzorów Viète'a): $\frac{c}{a} = 6m + 1 > 0 \implies m > -\frac{1}{6}$.<br>
+    Część wspólna warunków: $m \in \left(-\frac{1}{6}, 0\right) \cup (4, \infty)$.</p>
+    <p><strong>29 (R):</strong> $x^2 - (m+1)x + m = 0 \iff (x - 1)(x - m) = 0$.<br>
+    Dwa różne pierwiastki $\iff m \neq 1$. Pierwiastki to $x_1 = 1, x_2 = m$.<br>
+    Warunek sumy kwadratów: $x_1^2 + x_2^2 = 1^2 + m^2 = m^2 + 1 < 5 \implies m^2 < 4 \implies m \in (-2, 2)$.<br>
+    Uwzględniając $m \neq 1$, otrzymujemy ostatecznie:
+    $$m \in (-2, 1) \cup (1, 2)$$</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            21.A: $x \in \{-1, 0, 1\}$; &nbsp; 23: podano liczbę rozwiązań; &nbsp; 27: $m \in (-1/6, 0) \cup (4, \infty)$; &nbsp; 29: $m \in (-2, 1) \cup (1, 2)$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+      </div>
+
+      <div class="pt-8 border-t border-slate-800 flex items-center justify-between gap-4">
+        <a href="4_funkcja_liniowa.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm border border-slate-700 transition">
+        <i class="fa-solid fa-arrow-left"></i> Poprzedni: Funkcja liniowa
+    </a>
+        <a href="6_ciagi.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition shadow-lg shadow-indigo-600/20">
+        Następny: Ciągi <i class="fa-solid fa-arrow-right"></i>
+    </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-900/40 py-6 text-center text-xs text-slate-500 mt-16">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; 2026 Baza Zadań Maturalnych &bull; Przygotowano w J:\zadania</p>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="hover:text-slate-300">Strona główna</a>
+        <a href="#" class="hover:text-indigo-400"><i class="fa-solid fa-arrow-up"></i> W górę</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSolution(id) {
+      const content = document.getElementById('solution-' + id);
+      const icon = document.getElementById('icon-' + id);
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        if (icon) icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        content.classList.add('hidden');
+        if (icon) icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    }
+
+    let allExpanded = false;
+    function toggleAllSolutions() {
+      allExpanded = !allExpanded;
+      const solutions = document.querySelectorAll('.task-solution');
+      const icons = document.querySelectorAll('.solution-icon');
+      solutions.forEach(s => {
+        if (allExpanded) s.classList.remove('hidden');
+        else s.classList.add('hidden');
+      });
+      icons.forEach(ic => {
+        if (allExpanded) ic.classList.replace('fa-chevron-down', 'fa-chevron-up');
+        else ic.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      });
+      document.getElementById('toggle-all-text').innerText = allExpanded ? 'Zwiń wszystkie rozwiązania' : 'Rozwiń wszystkie rozwiązania';
+    }
+
+    let currentFilter = 'all';
+    function filterTasks() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const cards = document.querySelectorAll('.task-card');
+      cards.forEach(c => {
+        const text = c.innerText.toLowerCase();
+        const matchesQuery = text.includes(query);
+        const matchesType = currentFilter === 'all' || c.getAttribute('data-level') === currentFilter;
+        if (matchesQuery && matchesType) {
+          c.classList.remove('hidden');
+        } else {
+          c.classList.add('hidden');
+        }
+      });
+    }
+
+    function setFilter(type, ev) {
+      currentFilter = type;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-600', 'text-white', 'font-medium');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+      if (ev && ev.target) {
+        ev.target.classList.add('bg-indigo-600', 'text-white', 'font-medium');
+        ev.target.classList.remove('bg-slate-800', 'text-slate-300');
+      }
+      filterTasks();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const toc = document.getElementById('sidebar-toc');
+      const cards = document.querySelectorAll('.task-card');
+      const badge = document.getElementById('task-badge-count');
+      if (badge) badge.innerText = cards.length + ' zadań';
+      
+      cards.forEach(card => {
+        const id = card.id;
+        const title = card.getAttribute('data-title') || id;
+        const isR = card.getAttribute('data-level') === 'rozszerzenie';
+        const a = document.createElement('a');
+        a.href = '#' + id;
+        a.className = 'block px-2.5 py-1.5 rounded hover:bg-slate-800 text-slate-300 hover:text-white transition truncate flex items-center justify-between';
+        a.innerHTML = `<span class="truncate">${title}</span> ${isR ? '<span class="text-[10px] bg-amber-500/20 text-amber-300 px-1 rounded font-mono ml-1">R</span>' : ''}`;
+        toc.appendChild(a);
+      });
+    });
+  </script>
+</body>
+</html>

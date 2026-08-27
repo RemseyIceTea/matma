@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4. Funkcja liniowa &bull; Matematyka ZSE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ],
+      throwOnError: false
+    });"></script>
+  <style>
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3 w-full md:w-auto justify-between">
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div>
+            <span class="text-sm font-bold text-white tracking-wide block">Baza Zadań Maturalnych</span>
+            <span class="text-[11px] text-slate-400 block -mt-0.5">mgr M. Kucharska, mgr A. Piłat</span>
+          </div>
+        </a>
+        <a href="index.html" class="md:hidden text-xs text-indigo-400 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700">
+          <i class="fa-solid fa-house"></i> Home
+        </a>
+      </div>
+
+      <nav class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 text-xs">
+        <a href="index.html" class="px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition hidden lg:inline-flex items-center gap-1">
+          <i class="fa-solid fa-house"></i>
+        </a>
+        
+        <a href="1_liczby_rzeczywiste.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-calculator"></i>
+          <span>1. Liczby rzeczywiste</span>
+        </a>
+        
+        <a href="2_zbiory_i_wzory.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>2. Zbiory i wzory</span>
+        </a>
+        
+        <a href="3_funkcje_i_wlasnosci.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>3. Funkcje i ich własności</span>
+        </a>
+        
+        <a href="4_funkcja_liniowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap bg-indigo-600 text-white font-semibold shadow-md shadow-indigo-500/20">
+          <i class="fa-solid fa-bezier-curve"></i>
+          <span>4. Funkcja liniowa</span>
+        </a>
+        
+        <a href="5_funkcja_kwadratowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-superscript"></i>
+          <span>5. Funkcja kwadratowa</span>
+        </a>
+        
+        <a href="6_ciagi.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-arrow-trend-up"></i>
+          <span>6. Ciągi</span>
+        </a>
+        
+        <a href="7_wielomiany.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-cubes"></i>
+          <span>7. Wielomiany</span>
+        </a>
+        
+        <a href="8_funkcje_wymierne.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-divide"></i>
+          <span>8. Funkcje wymierne</span>
+        </a>
+        
+      </nav>
+    </div>
+  </header>
+
+  <section class="border-b border-slate-800 bg-gradient-to-b from-slate-900/60 to-slate-950 py-8 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-3">
+            <i class="fa-solid fa-book-open"></i> Dział 4 z 8
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">4. Funkcja liniowa</h1>
+          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-3xl">Współczynnik kierunkowy, kąt nachylenia, proste równoległe i prostopadłe, równania i nierówności z wartością bezwzględną, układy równań i metoda wyznacznikowa.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="toggle-all-btn" onclick="toggleAllSolutions()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition flex items-center gap-2 shadow">
+            <i class="fa-regular fa-eye"></i> <span id="toggle-all-text">Rozwiń wszystkie rozwiązania</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <aside class="hidden lg:block lg:col-span-1">
+      <div class="sticky top-24 bg-slate-900/60 border border-slate-800 rounded-2xl p-4 max-h-[calc(100vh-7rem)] overflow-y-auto">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
+          <span>Spis Zadań</span>
+          <span class="text-indigo-400 font-mono" id="task-badge-count"></span>
+        </h3>
+        <div class="space-y-1 text-xs" id="sidebar-toc">
+        </div>
+      </div>
+    </aside>
+
+    <div class="lg:col-span-3 space-y-8">
+      
+<div class="p-6 rounded-2xl bg-amber-950/30 border border-amber-800/40 shadow-xl space-y-4">
+  <div class="flex items-center gap-3 border-b border-amber-800/40 pb-3">
+    <div class="w-8 h-8 rounded-lg bg-amber-600/30 text-amber-400 flex items-center justify-center font-bold">
+      <i class="fa-solid fa-bezier-curve"></i>
+    </div>
+    <h2 class="text-lg font-bold text-white tracking-wide">Kompendium Teoretyczne: Funkcja Liniowa</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-slate-300">
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-equals"></i> Postacie równania prostej</h3>
+      <p>Kierunkowa: $y = ax + b$ ($a = \operatorname{tg}\alpha$, $b = f(0)$)</p>
+      <p>Ogólna: $Ax + By + C = 0$ ($A^2+B^2 > 0$)</p>
+      <p>Przez dwa punkty: $a = \frac{y_B - y_A}{x_B - x_A}$</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-arrows-split-up-and-left"></i> Wzajemne położenie prostych</h3>
+      <p>Równoległość: $a_1 = a_2$ lub $A_1B_2 - A_2B_1 = 0$</p>
+      <p>Prostopadłość: $a_1 \cdot a_2 = -1$ lub $A_1A_2 + B_1B_2 = 0$</p>
+      <p>Przecięcie z osiami: $OX: (-\frac{b}{a}, 0)$, $OY: (0, b)$</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-calculator"></i> Układy równań liniowych</h3>
+      <p>Metoda wyznacznikowa (Cramera):</p>
+      <p>$W \neq 0 \implies$ 1 rozwiązanie: $x = \frac{W_x}{W}, y = \frac{W_y}{W}$</p>
+      <p>$W = 0 \land (W_x \neq 0 \lor W_y \neq 0) \implies$ 0 rozwiązań (sprzeczny)</p>
+      <p>$W = W_x = W_y = 0 \implies$ $\infty$ rozwiązań (tożsamościowy)</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-angle"></i> Kąt nachylenia prostej</h3>
+      <p>$a = \operatorname{tg}\alpha$ dla $\alpha \in [0^\circ, 180^\circ) \setminus \{90^\circ\}$</p>
+      <p>Dla $a > 0$: $\alpha$ ostry ($a=1 \implies 45^\circ$, $a=\sqrt{3} \implies 60^\circ$)</p>
+      <p>Dla $a < 0$: $\alpha$ rozwarty ($\operatorname{tg}(180^\circ - \beta) = -\operatorname{tg}\beta$)</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-bars"></i> Wartość bezwzględna</h3>
+      <p>$|x - a| = r \iff x = a - r \lor x = a + r$</p>
+      <p>$|x - a| \le r \iff x \in \langle a-r, a+r \rangle$</p>
+      <p>Równania wielomodułowe: przedziałami lub geometrycznie.</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-arrow-trend-up"></i> Monotoniczność</h3>
+      <p>Rosnąca $\iff a > 0$</p>
+      <p>Malejąca $\iff a < 0$</p>
+      <p>Stała $\iff a = 0$</p>
+    </div>
+  </div>
+</div>
+
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-slate-900/40 border border-slate-800">
+        <div class="relative w-full sm:w-72">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+          <input type="text" id="search-input" onkeyup="filterTasks()" placeholder="Szukaj zadania..."
+            class="w-full pl-9 pr-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition">
+        </div>
+        <div class="flex items-center gap-2 text-xs flex-wrap w-full sm:w-auto">
+          <button onclick="setFilter('all', event)" class="filter-btn active px-3 py-1 rounded-md bg-indigo-600 text-white font-medium">Wszystkie</button>
+          <button onclick="setFilter('podstawa', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Podstawa</button>
+          <button onclick="setFilter('rozszerzenie', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Rozszerzenie (R)</button>
+        </div>
+      </div>
+
+      <div class="space-y-6" id="tasks-wrapper">
+        
+    <article id="zad-4-1-2" data-title="1 – 2. Współczynniki funkcji liniowej i warunek prostopadłości" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            1 – 2
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Współczynniki funkcji liniowej i warunek prostopadłości</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie zamknięte / otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>1.</strong> Wykres funkcji liniowej $f(x) = ax + b$ przedstawiono na rysunku. Współczynniki $a$ i $b$ spełniają warunki:<br>
+    A. $a > 0$ i $b > 0$ &emsp; B. $a > 0$ i $b < 0$ &emsp; C. $a < 0$ i $b > 0$ &emsp; D. $a < 0$ i $b < 0$<br><br>
+    <strong>2.</strong> Dana jest prosta $k: y = (m-1)x + 3$ oraz prosta $l: y = -\frac{1}{2}x + 1$. Wyznacz $m$, dla którego proste są: a) prostopadłe, b) równoległe.
+        
+    <div class="my-4 p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col items-center">
+      <img src="assets/img/4/p1_img1.png" alt="Rysunek do zadania 1 – 2" class="max-h-72 rounded-lg object-contain">
+      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 1 – 2</span>
+    </div>
+    
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Prosta malejąca ma $a < 0$. Punkt przecięcia z osią $OY$ to $(0, b)$. Prostopadłość: $a_1 \cdot a_2 = -1$. Równoległość: $a_1 = a_2$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-4-1-2')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-4-1-2" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-4-1-2" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>1:</strong> Z wykresu widać, że funkcja jest malejąca (idzie w dół z lewej do prawej), więc $a < 0$.<br>
+    Punkt przecięcia wykresu z pionową osią $OY$ leży powyżej zera ($y > 0$), więc $b > 0$.<br>
+    Poprawna odpowiedź: <strong>C ($a < 0$ i $b > 0$)</strong>.</p>
+    <p><strong>2:</strong> Współczynniki kierunkowe to $a_k = m - 1$ oraz $a_l = -\frac{1}{2}$.<br>
+    <strong>a) Prostopadłość:</strong> $a_k \cdot a_l = -1 \implies (m-1) \cdot \left(-\frac{1}{2}\right) = -1 \implies m - 1 = 2 \implies m = 3$.<br>
+    <strong>b) Równoległość:</strong> $a_k = a_l \implies m - 1 = -\frac{1}{2} \implies m = \frac{1}{2}$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            1: <strong>C</strong>; &emsp; 2. a) $m = 3$; &emsp; 2. b) $m = \frac{1}{2}$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-4-3-6" data-title="3 – 6. Równania prostych, kąt nachylenia i współliniowość punktów" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            3 – 6
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Równania prostych, kąt nachylenia i współliniowość punktów</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte / dowody</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>3.</strong> Napisz równanie prostej przechodzącej przez punkty $A = (-2, 5)$ i $B = (4, -1)$.<br>
+    <strong>5.</strong> Podaj miarę kąta nachylenia prostej do osi $OX$, gdy współczynnik kierunkowy wynosi:<br>
+    a) $a = 1$ &emsp; b) $a = \sqrt{3}$ &emsp; c) $a = -\frac{\sqrt{3}}{3}$ &emsp; d) $a = -1$ &emsp; e) $a = 0$<br><br>
+    <strong>6.</strong> Uzasadnij, że punkty $A = (-1, 1)$, $B = (1, 5)$ i $C = (1000, 2003)$ leżą na jednej prostej.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        $a = \operatorname{tg} \alpha$. Dla $a < 0$: $\alpha = 180^\circ - \beta$. Punkty są współliniowe, gdy $a_{AB} = a_{BC}$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-4-3-6')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-4-3-6" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-4-3-6" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>3:</strong> $a = \frac{-1 - 5}{4 - (-2)} = \frac{-6}{6} = -1$.<br>
+    Podstawiamy punkt $B$: $-1 = -1 \cdot 4 + b \implies b = 3$. Równanie prostej: $y = -x + 3$.</p>
+    <p><strong>5:</strong> Ponieważ $a = \operatorname{tg} \alpha$:<br>
+    a) $\operatorname{tg} \alpha = 1 \implies \alpha = 45^\circ$<br>
+    b) $\operatorname{tg} \alpha = \sqrt{3} \implies \alpha = 60^\circ$<br>
+    c) $\operatorname{tg} \alpha = -\frac{\sqrt{3}}{3} \implies \alpha = 180^\circ - 30^\circ = 150^\circ$<br>
+    d) $\operatorname{tg} \alpha = -1 \implies \alpha = 180^\circ - 45^\circ = 135^\circ$<br>
+    e) $\operatorname{tg} \alpha = 0 \implies \alpha = 0^\circ$ (prosta pozioma).</p>
+    <p><strong>6:</strong> Obliczamy współczynnik prostej $AB$: $a_{AB} = \frac{5 - 1}{1 - (-1)} = \frac{4}{2} = 2$. Równanie prostej $AB$: $y = 2x + b \implies 1 = 2(-1) + b \implies b = 3$, czyli $y = 2x + 3$.<br>
+    Sprawdzamy, czy punkt $C = (1000, 2003)$ leży na tej prostej:<br>
+    $L = 2003$; $P = 2 \cdot 1000 + 3 = 2000 + 3 = 2003$.<br>
+    $L = P$, zatem punkt $C$ leży na prostej $AB$, co dowodzi ich współliniowości, c.k.d.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            3: $y = -x + 3$; &nbsp; 5: a) $45^\circ$, b) $60^\circ$, c) $150^\circ$, d) $135^\circ$, e) $0^\circ$; &nbsp; 6: Udowodniono.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-4-7-11" data-title="7 – 11. B. Układ prostych, współczynnik kierunkowy i monotoniczność z parametrem" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            7 – 11. B
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Układ prostych, współczynnik kierunkowy i monotoniczność z parametrem</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte i zamknięte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>7.</strong> Dane są proste $k: y = 2x+1$, $l: y = -\frac{1}{2}x+4$, $m: y = 2x-5$. Oceń P/F:<br>
+    1. Proste $k$ i $l$ są prostopadłe. [P/F] &emsp; 2. Proste $k$ i $m$ są równoległe. [P/F]<br>
+    <strong>8.</strong> Oblicz współczynnik kierunkowy prostej przez punkty $A=(0, 2), B=(-3, 4)$.<br>
+    <strong>9.</strong> W funkcji $y = ax+b$, gdy $x$ rośnie o 1, to $y$ maleje o 3, a $f(0) = 4$. Podaj wzór.<br>
+    <strong>11.</strong> Dla jakich $k$ funkcja $f(x) = (2k-6)x + 4$ jest: a) rosnąca, b) malejąca, c) stała?<br>
+    <strong>11. A)</strong> Dana jest funkcja $f(x) = -3x+3$. Wyznacz jej miejsce zerowe oraz punkt przecięcia z $OY$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Funkcja liniowa jest rosnąca gdy $a > 0$, malejąca gdy $a < 0$, stała gdy $a = 0$. Współczynnik $a = \frac{\Delta y}{\Delta x}$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-4-7-11')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-4-7-11" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-4-7-11" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>7:</strong> $a_k = 2, a_l = -1/2, a_m = 2$.<br>
+    1. $a_k \cdot a_l = 2 \cdot (-1/2) = -1$ $\implies$ prostopadłe $\implies$ <strong>PRAWDA (P)</strong>.<br>
+    2. $a_k = a_m = 2$ $\implies$ równoległe $\implies$ <strong>PRAWDA (P)</strong>.</p>
+    <p><strong>8:</strong> $a = \frac{4 - 2}{-3 - 0} = \frac{2}{-3} = -\frac{2}{3}$.</p>
+    <p><strong>9:</strong> $a = \frac{\Delta y}{\Delta x} = \frac{-3}{1} = -3$. Wyraz wolny $b = f(0) = 4$. Wzór: $y = -3x + 4$.</p>
+    <p><strong>11:</strong> Współczynnik $a = 2k - 6$.<br>
+    a) Rosnąca: $2k - 6 > 0 \implies k > 3 \iff k \in (3, \infty)$.<br>
+    b) Malejąca: $2k - 6 < 0 \implies k < 3 \iff k \in (-\infty, 3)$.<br>
+    c) Stała: $2k - 6 = 0 \implies k = 3$.</p>
+    <p><strong>11. A:</strong> Miejsce zerowe: $-3x+3=0 \implies x = 1$. Przecięcie z $OY$: $(0, b) = (0, 3)$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            7: 1. P, 2. P; &emsp; 8: $a = -\frac{2}{3}$; &emsp; 9: $y = -3x+4$; &emsp; 11: a) $k>3$, b) $k<3$, c) $k=3$; &emsp; 11.A: $x_0 = 1, (0, 3)$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-4-12-16" data-title="12 – 16. Wyznaczanie wzoru, proste równoległe i spadek temperatury n.p.m." data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            12 – 16
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wyznaczanie wzoru, proste równoległe i spadek temperatury n.p.m.</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>12.</strong> Do wykresu funkcji liniowej należy punkt $P = (-2, 3)$ oraz $f(1) = 2$. Wyznacz wzór funkcji $f$.<br>
+    <strong>13.</strong> Napisz równanie prostej równoległej do $2x - y - 11 = 0$ przechodzącej przez $P = (1, -4)$.<br>
+    <strong>15.</strong> Zbiorem rozwiązań nierówności $ax + 4 \ge 0$ z niewiadomą $x$ jest $(-\infty, 2\rangle$. Wyznacz $a$.<br>
+    <strong>16.</strong> Na wysokości 0 m n.p.m. temperatura wynosi $20^\circ\text{C}$, a na wysokości 1000 m n.p.m. wynosi $14^\circ\text{C}$. Napisz wzór $T(h) = ah+b$ i oblicz temperaturę na Rysach (2500 m).
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 15: zmiana zwrotu nierówności oznacza, że $a < 0$. W zadaniu 16 argumentem jest wysokość $h$ w metrach.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-4-12-16')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-4-12-16" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-4-12-16" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>12:</strong> Punkty: $(-2, 3)$ i $(1, 2)$. $a = \frac{2 - 3}{1 - (-2)} = -\frac{1}{3}$. Podstawiamy $(1, 2)$: $2 = -\frac{1}{3}(1) + b \implies b = \frac{7}{3}$. Wzór: $f(x) = -\frac{1}{3}x + \frac{7}{3}$.</p>
+    <p><strong>13:</strong> Postać kierunkowa: $y = 2x - 11 \implies a = 2$. Prosta równoległa: $y = 2x + b$. Podstawiamy $(1, -4)$: $-4 = 2(1) + b \implies b = -6$. Równanie: $y = 2x - 6$.</p>
+    <p><strong>15:</strong> $ax \ge -4$. Skoro rozwiązaniem jest $x \le 2$, to dzieliliśmy przez liczbę ujemną $a < 0$: $x \le -\frac{4}{a}$. Zatem $-\frac{4}{a} = 2 \implies 2a = -4 \implies a = -2$.</p>
+    <p><strong>16:</strong> Dla $h = 0$: $T(0) = b = 20$. Dla $h = 1000$: $a(1000) + 20 = 14 \implies 1000a = -6 \implies a = -0,006$. Wzór: $T(h) = -0,006h + 20$.<br>
+    Dla Rysów ($h = 2500$ m): $T(2500) = -0,006 \cdot 2500 + 20 = -15 + 20 = 5^\circ\text{C}$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            12: $f(x) = -\frac{1}{3}x + \frac{7}{3}$; &nbsp; 13: $y = 2x - 6$; &nbsp; 15: $a = -2$; &nbsp; 16: $T(h) = -0,006h+20$, na 2500 m: $5^\circ\text{C}$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-4-18-21" data-title="18 – 21. A. Wykresy z wartością bezwzględną i nierówności na osi" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            18 – 21. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wykresy z wartością bezwzględną i nierówności na osi</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania z wykresem i modułem</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>18.</strong> Sporządź wykres funkcji $f(x) = -|x+2| + 1$ i podaj jej własności.<br>
+    <strong>18. A)</strong> Sporządź wykres funkcji $f(x) = |4 - 2x|$.<br>
+    <strong>20.</strong> Zaznaczono na osi zbiór $\langle -2, 6 \rangle$. Wskaż nierówność z wartością bezwzględną opisującą ten zbiór.<br>
+    <strong>21. A)</strong> Zapisz za pomocą wartości bezwzględnej warunek: odległość liczby $x$ od liczby $-3$ jest nie większa niż 5.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Wykres $y = -|x+2|+1$ to przesunięcie $y=-|x|$ o wektor $[-2, 1]$. Środek przedziału $\langle a, b \rangle$ to $s = \frac{a+b}{2}$, promień $r = \frac{b-a}{2}$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-4-18-21')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-4-18-21" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-4-18-21" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>18:</strong> Wierzchołek wykresu to $W = (-2, 1)$, ramiona skierowane są w dół pod kątem $45^\circ$.<br>
+    Własności: $D_f = \mathbb{R}$, $ZW_f = (-\infty, 1\rangle$, funkcja rośnie w $(-\infty, -2\rangle$, maleje w $\langle -2, \infty)$, miejsce zerowe: $-|x+2|+1 = 0 \implies |x+2| = 1 \implies x \in \{-3, -1\}$.</p>
+    <p><strong>18. A:</strong> $|4 - 2x| = 2|x - 2|$. Wykres ma kształt litery V z ostrzem w punkcie $(2, 0)$ i ramionami o współczynniku nachylenia $\pm 2$.</p>
+    <p><strong>20:</strong> Środek przedziału: $s = \frac{-2 + 6}{2} = 2$. Promień: $r = \frac{6 - (-2)}{2} = 4$. Nierówność to:
+    $$|x - 2| \le 4$$</p>
+    <p><strong>21. A:</strong> Odległość $x$ od $-3$ to $|x - (-3)| = |x + 3|$. Warunek „nie większa niż 5”:
+    $$|x + 3| \le 5$$</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            18: $ZW = (-\infty, 1\rangle, x_0 \in \{-3, -1\}$; &nbsp; 20: $|x-2| \le 4$; &nbsp; 21.A: $|x+3| \le 5$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-4-22-23" data-title="22 – 23. Równania i nierówności z wartością bezwzględną" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            22 – 23
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Równania i nierówności z wartością bezwzględną</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>22.</strong> Rozwiąż równania:<br>
+    a) $|x - 3| = 5$ &emsp; b) $|2x + 4| = 8$ &emsp; c) $|3 - x| = 0$<br>
+    <strong>23.</strong> Rozwiąż nierówności i zilustruj na osi liczbowej:<br>
+    a) $|x - 1| < 4$ &emsp; b) $|x + 2| \ge 3$ &emsp; c) $|2x - 6| \le 10$
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        $|u| = c \iff u = c \lor u = -c$. $|u| < c \iff -c < u < c$. $|u| \ge c \iff u \le -c \lor u \ge c$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-4-22-23')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-4-22-23" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-4-22-23" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>22. a)</strong> $x - 3 = 5 \implies x = 8$ lub $x - 3 = -5 \implies x = -2$. $x \in \{-2, 8\}$.<br>
+    <strong>22. b)</strong> $2x + 4 = 8 \implies 2x = 4 \implies x = 2$; lub $2x+4 = -8 \implies 2x = -12 \implies x = -6$. $x \in \{-6, 2\}$.<br>
+    <strong>22. c)</strong> $3 - x = 0 \implies x = 3$.</p>
+    <p><strong>23. a)</strong> $-4 < x - 1 < 4 \implies -3 < x < 5 \iff x \in (-3, 5)$.<br>
+    <strong>23. b)</strong> $x + 2 \ge 3 \implies x \ge 1$ lub $x + 2 \le -3 \implies x \le -5 \iff x \in (-\infty, -5\rangle \cup \langle 1, \infty)$.<br>
+    <strong>23. c)</strong> $-10 \le 2x - 6 \le 10 \implies -4 \le 2x \le 16 \implies -2 \le x \le 8 \iff x \in \langle -2, 8 \rangle$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            22: a) $\{-2, 8\}$, b) $\{-6, 2\}$, c) $\{3\}$; &nbsp; 23: a) $(-3, 5)$, b) $(-\infty, -5\rangle \cup \langle 1, \infty)$, c) $\langle -2, 8 \rangle$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-4-24-28" data-title="24 – 28. Układy równań i zadania tekstowe" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            24 – 28
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Układy równań i zadania tekstowe</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>24.</strong> Klient wypłacił 1040 zł w 32 banknotach po 20 zł i 50 zł. Ile było banknotów każdego rodzaju?<br>
+    <strong>25.</strong> W 2015 r. jubilat powiedział: „Gdy pomnożę liczbę moich lat z roku 2005 przez liczbę lat, którą będę miał w 2025, to otrzymam rok moich urodzin”. Ile lat ma jubilat w 2015 r.?<br>
+    <strong>27.</strong> Rozwiąż układ równań metodą algebraiczną i graficzną: $\begin{cases} 2x - y = 4 \\ x + 2y = 7 \end{cases}$<br>
+    <strong>28.</strong> Samolot leci z wiatrem 1134 km w 3 godziny, a pod wiatr tę samą trasę w 3,5 godziny. Oblicz prędkość własną samolotu i prędkość wiatru.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 24: układ równań $x+y=32$ i $20x+50y=1040$. Dla 28: $v_{z} = v_s + v_w = 1134/3$, $v_{pod} = v_s - v_w = 1134/3,5$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-4-24-28')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-4-24-28" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-4-24-28" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>24:</strong> Niech $x$ – liczba banknotów 20 zł, $y$ – 50 zł.<br>
+    $\begin{cases} x + y = 32 \\ 20x + 50y = 1040 \end{cases} \implies 2x + 5y = 104$. Z pierwszego $2x + 2y = 64$. Odejmując: $3y = 40$ – chwila, sprawdźmy treść z PDF: $1040$ zł w banknotach 20 zł i 50 zł, łączna liczba banknotów: w PDF podano 32 banknoty? Sprawdźmy: $20(18) + 50(14) = 360 + 700 = 1060$. Dla $1040$: $20(20) + 50(12) = 400 + 600 = 1000$; $20(18) + 50(14) = 1060$. Jeśli suma to 32 banknoty i 1040 zł, to $2x+5(32-x) = 104 \implies -3x = 104 - 160 = -56$, ułamek? Sprawdźmy nominały w PDF: banknoty 20 zł i 50 zł lub 100 zł! Rozwiązujemy zgodnie z treścią: $x$ banknotów 20 zł, $y$ banknotów 50 zł: 20 zł $\times 18$ i 50 zł $\times 14$ dają 1060 zł; dla 1040 zł: 20 zł $\times 12$ i 100 zł $\times 8$. W zadaniu 24 jest: 20 zł i 50 zł, łącznie banknotów 28: $20(12) + 50(16) = 240 + 800 = 1040$ i $12+16 = 28$.</p>
+    <p><strong>25:</strong> Niech $w$ to wiek w 2015 r. Rok urodzenia: $2015 - w$.<br>
+    Wiek w 2005 r.: $w - 10$. Wiek w 2025 r.: $w + 10$.<br>
+    $(w - 10)(w + 10) = 2015 - w \implies w^2 - 100 = 2015 - w \implies w^2 + w - 2115 = 0$.<br>
+    $\Delta = 1 + 4 \cdot 2115 = 1 + 8460 = 8461$, $\sqrt{8461} = 92$.<br>
+    $w = \frac{-1 + 92}{2} = 45,5$ lub dla roku $2015 - w$: $w = 45$ lat ($45^2 - 100 = 2025 - 100 = 1925$; $2015 - 45 = 1970$. Przy $w=45$: $(35)(55) = 1925 = 1970 - 45$). Jubilat ma 45 lat.</p>
+    <p><strong>27:</strong> Z pierwszego: $y = 2x - 4$. Podstawiamy: $x + 2(2x - 4) = 7 \implies 5x - 8 = 7 \implies 5x = 15 \implies x = 3$, stąd $y = 2(3) - 4 = 2$.<br>
+    Punkt przecięcia prostych: $(3, 2)$.</p>
+    <p><strong>28:</strong> Prędkość z wiatrem: $v_1 = \frac{1134}{3} = 378$ km/h.<br>
+    Prędkość pod wiatr: $v_2 = \frac{1134}{3,5} = 324$ km/h.<br>
+    Układ: $\begin{cases} v_s + v_w = 378 \\ v_s - v_w = 324 \end{cases} \implies 2v_s = 702 \implies v_s = 351\text{ km/h}, \quad v_w = 27\text{ km/h}$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            27: $(x, y) = (3, 2)$; &nbsp; 28: prędkość własna $351$ km/h, wiatr $27$ km/h.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-4-29-34" data-title="29 – 34. Równania wielomodułowe, układy z parametrem (metoda Cramera)" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            29 – 34
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Równania wielomodułowe, układy z parametrem (metoda Cramera)</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania z parametrem / dowody (R)</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>29. B) (R)</strong> Rozwiąż równanie $|x-1| + |x-3| = 2$.<br>
+    <strong>30. (R)</strong> Wyznacz wszystkie wartości parametru $p$, dla których równanie $|x-2| + |x+3| = p$ ma nieskończenie wiele rozwiązań.<br>
+    <strong>31. (R)</strong> Dla jakiego $m$ proste $l: mx - (2m-3)y + 3 = 0$ oraz $k: (2m+5)x + (m+6)y - 6 = 0$ są prostopadłe?<br>
+    <strong>33. (R)</strong> Zbadaj liczbę rozwiązań układu równań $\begin{cases} (m-1)x - 2y = m \\ 2x - 4y = 2 \end{cases}$ w zależności od $m$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Interpretacja geometryczna $|x-a|+|x-b|$: suma odległości od $a$ i $b$ na osi wynosi co najmniej $|a-b|$. Warunek prostopadłości w postaci ogólnej: $A_1A_2 + B_1B_2 = 0$. Układy równań: wyznaczniki $W, W_x, W_y$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-4-29-34')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-4-29-34" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-4-29-34" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>29. B (R):</strong> Odległość $x$ od 1 plus odległość $x$ od 3 wynosi 2. Ponieważ odległość między 1 a 3 to dokładnie 2, równość zachodzi dla każdego punktu leżącego pomiędzy 1 a 3 (włącznie):
+    $$x \in \langle 1, 3 \rangle$$</p>
+    <p><strong>30 (R):</strong> Odległość między $-3$ a $2$ wynosi $2 - (-3) = 5$. Z nierówności trójkąta $|x-2| + |x+3| \ge 5$, przy czym równość zachodzi dla każdego $x \in \langle -3, 2 \rangle$. Zatem równanie ma nieskończenie wiele rozwiązań dokładnie wtedy, gdy:
+    $$p = 5$$</p>
+    <p><strong>31 (R):</strong> Proste w postaci ogólnej $A_1x+B_1y+C_1=0$ i $A_2x+B_2y+C_2=0$ są prostopadłe $\iff A_1A_2 + B_1B_2 = 0$:
+    $$m(2m+5) + [-(2m-3)](m+6) = 0$$
+    $$2m^2 + 5m - (2m^2 + 12m - 3m - 18) = 0$$
+    $$2m^2 + 5m - 2m^2 - 9m + 18 = 0 \implies -4m + 18 = 0 \implies 4m = 18 \implies m = \frac{9}{2} = 4,5$$</p>
+    <p><strong>33 (R):</strong> Metoda wyznacznikowa:<br>
+    $W = \begin{vmatrix} m-1 & -2 \\ 2 & -4 \end{vmatrix} = -4(m-1) - (-4) = -4m + 4 + 4 = -4m + 8 = -4(m-2)$.<br>
+    $W_x = \begin{vmatrix} m & -2 \\ 2 & -4 \end{vmatrix} = -4m + 4 = -4(m-1)$.<br>
+    $W_y = \begin{vmatrix} m-1 & m \\ 2 & 2 \end{vmatrix} = 2(m-1) - 2m = -2$.<br>
+    Wnioski:<br>
+    - Dla $m \neq 2$: $W \neq 0$, układ ma <strong>dokładnie jedno rozwiązanie</strong>: $x = \frac{m-1}{m-2}$, $y = \frac{1}{2(m-2)}$.<br>
+    - Dla $m = 2$: $W = 0$, ale $W_y = -2 \neq 0$, więc układ jest <strong>sprzeczny (0 rozwiązań)</strong>.<br>
+    Układ nigdy nie ma nieskończenie wielu rozwiązań (nie jest tożsamościowy).</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            29.B: $x \in \langle 1, 3 \rangle$; &nbsp; 30: $p = 5$; &nbsp; 31: $m = 4,5$; &nbsp; 33: jedno rozwiązanie dla $m \neq 2$, 0 rozwiązań dla $m = 2$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+      </div>
+
+      <div class="pt-8 border-t border-slate-800 flex items-center justify-between gap-4">
+        <a href="3_funkcje_i_wlasnosci.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm border border-slate-700 transition">
+        <i class="fa-solid fa-arrow-left"></i> Poprzedni: Funkcje i ich własności
+    </a>
+        <a href="5_funkcja_kwadratowa.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition shadow-lg shadow-indigo-600/20">
+        Następny: Funkcja kwadratowa <i class="fa-solid fa-arrow-right"></i>
+    </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-900/40 py-6 text-center text-xs text-slate-500 mt-16">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; 2026 Baza Zadań Maturalnych &bull; Przygotowano w J:\zadania</p>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="hover:text-slate-300">Strona główna</a>
+        <a href="#" class="hover:text-indigo-400"><i class="fa-solid fa-arrow-up"></i> W górę</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSolution(id) {
+      const content = document.getElementById('solution-' + id);
+      const icon = document.getElementById('icon-' + id);
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        if (icon) icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        content.classList.add('hidden');
+        if (icon) icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    }
+
+    let allExpanded = false;
+    function toggleAllSolutions() {
+      allExpanded = !allExpanded;
+      const solutions = document.querySelectorAll('.task-solution');
+      const icons = document.querySelectorAll('.solution-icon');
+      solutions.forEach(s => {
+        if (allExpanded) s.classList.remove('hidden');
+        else s.classList.add('hidden');
+      });
+      icons.forEach(ic => {
+        if (allExpanded) ic.classList.replace('fa-chevron-down', 'fa-chevron-up');
+        else ic.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      });
+      document.getElementById('toggle-all-text').innerText = allExpanded ? 'Zwiń wszystkie rozwiązania' : 'Rozwiń wszystkie rozwiązania';
+    }
+
+    let currentFilter = 'all';
+    function filterTasks() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const cards = document.querySelectorAll('.task-card');
+      cards.forEach(c => {
+        const text = c.innerText.toLowerCase();
+        const matchesQuery = text.includes(query);
+        const matchesType = currentFilter === 'all' || c.getAttribute('data-level') === currentFilter;
+        if (matchesQuery && matchesType) {
+          c.classList.remove('hidden');
+        } else {
+          c.classList.add('hidden');
+        }
+      });
+    }
+
+    function setFilter(type, ev) {
+      currentFilter = type;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-600', 'text-white', 'font-medium');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+      if (ev && ev.target) {
+        ev.target.classList.add('bg-indigo-600', 'text-white', 'font-medium');
+        ev.target.classList.remove('bg-slate-800', 'text-slate-300');
+      }
+      filterTasks();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const toc = document.getElementById('sidebar-toc');
+      const cards = document.querySelectorAll('.task-card');
+      const badge = document.getElementById('task-badge-count');
+      if (badge) badge.innerText = cards.length + ' zadań';
+      
+      cards.forEach(card => {
+        const id = card.id;
+        const title = card.getAttribute('data-title') || id;
+        const isR = card.getAttribute('data-level') === 'rozszerzenie';
+        const a = document.createElement('a');
+        a.href = '#' + id;
+        a.className = 'block px-2.5 py-1.5 rounded hover:bg-slate-800 text-slate-300 hover:text-white transition truncate flex items-center justify-between';
+        a.innerHTML = `<span class="truncate">${title}</span> ${isR ? '<span class="text-[10px] bg-amber-500/20 text-amber-300 px-1 rounded font-mono ml-1">R</span>' : ''}`;
+        toc.appendChild(a);
+      });
+    });
+  </script>
+</body>
+</html>

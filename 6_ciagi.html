@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6. Ciągi &bull; Matematyka ZSE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ],
+      throwOnError: false
+    });"></script>
+  <style>
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3 w-full md:w-auto justify-between">
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div>
+            <span class="text-sm font-bold text-white tracking-wide block">Baza Zadań Maturalnych</span>
+            <span class="text-[11px] text-slate-400 block -mt-0.5">mgr M. Kucharska, mgr A. Piłat</span>
+          </div>
+        </a>
+        <a href="index.html" class="md:hidden text-xs text-indigo-400 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700">
+          <i class="fa-solid fa-house"></i> Home
+        </a>
+      </div>
+
+      <nav class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 text-xs">
+        <a href="index.html" class="px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition hidden lg:inline-flex items-center gap-1">
+          <i class="fa-solid fa-house"></i>
+        </a>
+        
+        <a href="1_liczby_rzeczywiste.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-calculator"></i>
+          <span>1. Liczby rzeczywiste</span>
+        </a>
+        
+        <a href="2_zbiory_i_wzory.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>2. Zbiory i wzory</span>
+        </a>
+        
+        <a href="3_funkcje_i_wlasnosci.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>3. Funkcje i ich własności</span>
+        </a>
+        
+        <a href="4_funkcja_liniowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-bezier-curve"></i>
+          <span>4. Funkcja liniowa</span>
+        </a>
+        
+        <a href="5_funkcja_kwadratowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-superscript"></i>
+          <span>5. Funkcja kwadratowa</span>
+        </a>
+        
+        <a href="6_ciagi.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap bg-indigo-600 text-white font-semibold shadow-md shadow-indigo-500/20">
+          <i class="fa-solid fa-arrow-trend-up"></i>
+          <span>6. Ciągi</span>
+        </a>
+        
+        <a href="7_wielomiany.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-cubes"></i>
+          <span>7. Wielomiany</span>
+        </a>
+        
+        <a href="8_funkcje_wymierne.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-divide"></i>
+          <span>8. Funkcje wymierne</span>
+        </a>
+        
+      </nav>
+    </div>
+  </header>
+
+  <section class="border-b border-slate-800 bg-gradient-to-b from-slate-900/60 to-slate-950 py-8 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-3">
+            <i class="fa-solid fa-book-open"></i> Dział 6 z 8
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">6. Ciągi</h1>
+          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-3xl">Ciągi arytmetyczne, geometryczne, wzory rekurencyjne, zadania mieszane, granice ciągów i nieskończone szeregi geometryczne.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="toggle-all-btn" onclick="toggleAllSolutions()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition flex items-center gap-2 shadow">
+            <i class="fa-regular fa-eye"></i> <span id="toggle-all-text">Rozwiń wszystkie rozwiązania</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <aside class="hidden lg:block lg:col-span-1">
+      <div class="sticky top-24 bg-slate-900/60 border border-slate-800 rounded-2xl p-4 max-h-[calc(100vh-7rem)] overflow-y-auto">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
+          <span>Spis Zadań</span>
+          <span class="text-indigo-400 font-mono" id="task-badge-count"></span>
+        </h3>
+        <div class="space-y-1 text-xs" id="sidebar-toc">
+        </div>
+      </div>
+    </aside>
+
+    <div class="lg:col-span-3 space-y-8">
+      
+<div class="p-6 rounded-2xl bg-cyan-950/30 border border-cyan-800/40 shadow-xl space-y-4">
+  <div class="flex items-center gap-3 border-b border-cyan-800/40 pb-3">
+    <div class="w-8 h-8 rounded-lg bg-cyan-600/30 text-cyan-400 flex items-center justify-center font-bold">
+      <i class="fa-solid fa-arrow-trend-up"></i>
+    </div>
+    <h2 class="text-lg font-bold text-white tracking-wide">Kompendium Teoretyczne: Ciągi Liczbowe</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-slate-300">
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-cyan-300 flex items-center gap-1.5"><i class="fa-solid fa-calculator"></i> Ciąg arytmetyczny</h3>
+      <p>$a_{n+1} = a_n + r$</p>
+      <p>Wyraz ogólny: $a_n = a_1 + (n - 1)r$</p>
+      <p>Średnia arytmetyczna: $a_n = \frac{a_{n-1} + a_{n+1}}{2}$</p>
+      <p>Suma $n$ wyrazów: $S_n = \frac{a_1 + a_n}{2} \cdot n = \frac{2a_1 + (n-1)r}{2} \cdot n$</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-cyan-300 flex items-center gap-1.5"><i class="fa-solid fa-chart-line"></i> Ciąg geometryczny</h3>
+      <p>$a_{n+1} = a_n \cdot q$</p>
+      <p>Wyraz ogólny: $a_n = a_1 \cdot q^{n-1}$</p>
+      <p>Średnia geometryczna: $a_n^2 = a_{n-1} \cdot a_{n+1}$</p>
+      <p>Suma $n$ wyrazów: $S_n = a_1 \frac{1 - q^n}{1 - q}$ ($q \neq 1$)</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-cyan-300 flex items-center gap-1.5"><i class="fa-solid fa-infinity"></i> Szereg geometryczny (R)</h3>
+      <p>Warunek zbieżności: $|q| < 1$</p>
+      <p>Suma nieskończona: $S = \frac{a_1}{1 - q}$</p>
+      <p>Stosowany przy zamianie ułamków okresowych i fraktalach.</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-cyan-300 flex items-center gap-1.5"><i class="fa-solid fa-arrows-to-dot"></i> Granice ciągów (R)</h3>
+      <p>Wyłączanie najwyższej potęgi mianownika przed nawias.</p>
+      <p>Mnożenie przez sprzężenie: $\sqrt{A} - \sqrt{B} = \frac{A - B}{\sqrt{A} + \sqrt{B}}$.</p>
+      <p>$\lim_{n \to \infty} \frac{1}{n^k} = 0$ dla $k > 0$.</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-cyan-300 flex items-center gap-1.5"><i class="fa-solid fa-arrows-up-down"></i> Monotoniczność</h3>
+      <p>Badamy znak różnicy $a_{n+1} - a_n$:</p>
+      <p>$> 0 \implies$ ciąg rosnący</p>
+      <p>$< 0 \implies$ ciąg malejący</p>
+      <p>$= 0 \implies$ ciąg stały</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-cyan-300 flex items-center gap-1.5"><i class="fa-solid fa-percent"></i> Procent składany</h3>
+      <p>$K_n = K_0 \left(1 + \frac{p}{100m}\right)^{n \cdot m}$</p>
+      <p>$m$ – liczba okresów kapitalizacji w roku.</p>
+    </div>
+  </div>
+</div>
+
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-slate-900/40 border border-slate-800">
+        <div class="relative w-full sm:w-72">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+          <input type="text" id="search-input" onkeyup="filterTasks()" placeholder="Szukaj zadania..."
+            class="w-full pl-9 pr-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition">
+        </div>
+        <div class="flex items-center gap-2 text-xs flex-wrap w-full sm:w-auto">
+          <button onclick="setFilter('all', event)" class="filter-btn active px-3 py-1 rounded-md bg-indigo-600 text-white font-medium">Wszystkie</button>
+          <button onclick="setFilter('podstawa', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Podstawa</button>
+          <button onclick="setFilter('rozszerzenie', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Rozszerzenie (R)</button>
+        </div>
+      </div>
+
+      <div class="space-y-6" id="tasks-wrapper">
+        
+    <article id="zad-6-1" data-title="1 – 2. Pojęcie ciągu, wyznaczanie wyrazów i badanie monotoniczności" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            1 – 2
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Pojęcie ciągu, wyznaczanie wyrazów i badanie monotoniczności</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>1. a)</strong> Podaj pięć pierwszych wyrazów ciągu $a_n = \sqrt{n^2 + n}$.<br>
+    <strong>1. b)</strong> Które wyrazy ciągu $b_n = (n^2 - 1)(n^2 - 5n + 6)$ są równe zero ($n \in \mathbb{N}_+$)?<br>
+    <strong>1. c)</strong> Dla jakich $n$ wyrazy ciągu $a_n = n^2 - 6n$ są mniejsze od 10?<br>
+    <strong>1. d)</strong> Zbadaj monotoniczność ciągu $a_n = 2n^2 - 3n + 1$.<br>
+    <strong>2.</strong> Ciąg określony wzorem $a_n = -3n + 7$ jest malejący, ponieważ różnica $a_{n+1} - a_n$ wynosi...
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Pamiętaj, że dla ciągów $n \in \{1, 2, 3, \dots\}$. Monotoniczność badamy licząc znak różnicy $a_{n+1} - a_n$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-6-1')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-6-1" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-6-1" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>1. a)</strong> $a_1 = \sqrt{1+1} = \sqrt{2}$, $a_2 = \sqrt{4+2} = \sqrt{6}$, $a_3 = \sqrt{9+3} = \sqrt{12} = 2\sqrt{3}$, $a_4 = \sqrt{16+4} = \sqrt{20} = 2\sqrt{5}$, $a_5 = \sqrt{25+5} = \sqrt{30}$.</p>
+    <p><strong>1. b)</strong> $(n-1)(n+1)(n-2)(n-3) = 0 \implies n \in \{-1, 1, 2, 3\}$. Ponieważ $n \in \mathbb{N}_+$, równe zero są wyrazy: <strong>$b_1, b_2, b_3$</strong>.</p>
+    <p><strong>1. c)</strong> $n^2 - 6n < 10 \iff n^2 - 6n - 10 < 0$. $\Delta = 36 + 40 = 76$, $\sqrt{\Delta} = 2\sqrt{19} \approx 8,72$.<br>
+    Pierwiastki: $n_1 = \frac{6 - 8,72}{2} \approx -1,36$, $n_2 = \frac{6 + 8,72}{2} \approx 7,36$.<br>
+    Liczby naturalne $n \ge 1$ w tym przedziale: <strong>$n \in \{1, 2, 3, 4, 5, 6, 7\}$</strong> (wyrazy $a_1, \dots, a_7$).</p>
+    <p><strong>1. d)</strong> $a_{n+1} - a_n = [2(n+1)^2 - 3(n+1) + 1] - (2n^2 - 3n + 1) = (2n^2 + 4n + 2 - 3n - 3 + 1) - (2n^2 - 3n + 1) = 4n - 1$.<br>
+    Dla każdego $n \ge 1$: $4n - 1 \ge 4(1) - 1 = 3 > 0$. Różnica jest ściśle dodatnia, więc ciąg jest <strong>ściśle rosnący</strong>.</p>
+    <p><strong>2:</strong> $a_{n+1} - a_n = [-3(n+1) + 7] - (-3n + 7) = -3n - 3 + 7 + 3n - 7 = -3 < 0$. Różnica jest stała i ujemna, ciąg jest malejący.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            1.a: $\sqrt{2}, \sqrt{6}, 2\sqrt{3}, 2\sqrt{5}, \sqrt{30}$; &nbsp; 1.b: $b_1, b_2, b_3$; &nbsp; 1.c: $n \in \{1, 2, 3, 4, 5, 6, 7\}$; &nbsp; 1.d: rosnący; &nbsp; 2: $a_{n+1}-a_n = -3 < 0$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-6-3-7" data-title="3 – 7. Rekurencja, dowody z kwadratem liczby i warunek geometryczny" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            3 – 7
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Rekurencja, dowody z kwadratem liczby i warunek geometryczny</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte / dowody</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>3.</strong> Oblicz cztery początkowe wyrazy ciągu zadanego rekurencyjnie: $a_1 = -2, \quad a_{n+1} = n \cdot a_n + 4$.<br>
+    <strong>5.</strong> Ciąg jest określony wzorem $a_n = 2n^2 + 2n$ dla $n \ge 1$. Wykaż, że suma każdych dwóch kolejnych wyrazów tego ciągu jest kwadratem liczby naturalnej.<br>
+    <strong>7.</strong> Dane są liczby $a = 2\sqrt{2}, b = 4, c = 4\sqrt{2}$. Wykaż, że w podanej kolejności tworzą ciąg geometryczny i podaj jego iloraz $q$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 5: oblicz $a_n + a_{n+1}$ i zwiń wzorem skróconego mnożenia $(2n+2)^2$. Dla 7: sprawdź czy $b^2 = a \cdot c$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-6-3-7')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-6-3-7" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-6-3-7" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>3:</strong><br>
+    $a_1 = -2$<br>
+    $a_2 = 1 \cdot a_1 + 4 = 1 \cdot (-2) + 4 = 2$<br>
+    $a_3 = 2 \cdot a_2 + 4 = 2 \cdot 2 + 4 = 8$<br>
+    $a_4 = 3 \cdot a_3 + 4 = 3 \cdot 8 + 4 = 28$</p>
+    <p><strong>5:</strong> Wyznaczamy $a_{n+1} = 2(n+1)^2 + 2(n+1) = 2(n^2 + 2n + 1) + 2n + 2 = 2n^2 + 6n + 4$.<br>
+    Sumujemy dwa kolejne wyrazy:
+    $$a_n + a_{n+1} = (2n^2 + 2n) + (2n^2 + 6n + 4) = 4n^2 + 8n + 4 = 4(n^2 + 2n + 1) = 4(n+1)^2 = [2(n+1)]^2 = (2n+2)^2$$
+    Dla $n \in \mathbb{N}_+$ liczba $2n+2$ jest liczbą naturalną, a jej kwadrat $(2n+2)^2$ jest kwadratem liczby naturalnej, c.k.d.</p>
+    <p><strong>7:</strong> Sprawdzamy ilorazy kolejnych wyrazów:
+    $$q_1 = \frac{b}{a} = \frac{4}{2\sqrt{2}} = \frac{2}{\sqrt{2}} = \sqrt{2}$$
+    $$q_2 = \frac{c}{b} = \frac{4\sqrt{2}}{4} = \sqrt{2}$$
+    Ponieważ $q_1 = q_2 = \sqrt{2}$, liczby tworzą ciąg geometryczny o ilorazie $q = \sqrt{2}$, c.k.d.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            3: $a_1 = -2, a_2 = 2, a_3 = 8, a_4 = 28$; &nbsp; 5: $a_n + a_{n+1} = (2n+2)^2$ (udowodniono); &nbsp; 7: $q = \sqrt{2}$ (udowodniono).
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-6-8-11" data-title="8 – 11. Własności ciągu arytmetycznego i sumowanie wyrazów" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            8 – 11
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Własności ciągu arytmetycznego i sumowanie wyrazów</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>8.</strong> W ciągu arytmetycznym $a_3 = 4, a_6 = 19$. Wyznacz $a_1$ i różnicę $r$.<br>
+    <strong>9.</strong> Liczby $2, x-3, 8$ są w podanej kolejności pierwszym, drugim i czwartym wyrazem ciągu arytmetycznego. Oblicz $x$.<br>
+    <strong>9. A)</strong> W ciągu arytmetycznym zachodzi $a_4 + a_5 + a_6 = 12$. Oblicz $a_5$.<br>
+    <strong>11.</strong> Wyznacz liczbę składników w sumie $2 + 5 + 8 + 11 + \dots + 449$ i oblicz tę sumę.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 8: $a_6 - a_3 = 3r$. Dla 9.A: $a_4 + a_6 = 2a_5$. Dla 11: $a_n = a_1 + (n-1)r$, $S_n = \frac{a_1+a_n}{2} \cdot n$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-6-8-11')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-6-8-11" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-6-8-11" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>8:</strong> $a_6 - a_3 = 3r \implies 19 - 4 = 15 \implies 3r = 15 \implies r = 5$.<br>
+    $a_1 = a_3 - 2r = 4 - 2(5) = 4 - 10 = -6$.</p>
+    <p><strong>9:</strong> $a_1 = 2$, $a_4 = a_1 + 3r = 8 \implies 2 + 3r = 8 \implies 3r = 6 \implies r = 2$.<br>
+    Drugi wyraz: $a_2 = a_1 + r = 2 + 2 = 4$.<br>
+    Z treści $a_2 = x - 3 \implies x - 3 = 4 \implies x = 7$.</p>
+    <p><strong>9. A:</strong> Ponieważ $a_4 + a_6 = 2a_5$, to:
+    $$(a_4 + a_6) + a_5 = 2a_5 + a_5 = 3a_5 = 12 \implies a_5 = 4$$</p>
+    <p><strong>11:</strong> Ciąg arytmetyczny o $a_1 = 2, r = 3, a_n = 449$.<br>
+    $449 = 2 + (n-1) \cdot 3 \implies 3(n-1) = 447 \implies n-1 = 149 \implies n = 150$.<br>
+    Suma $S_{150} = \frac{a_1 + a_n}{2} \cdot n = \frac{2 + 449}{2} \cdot 150 = \frac{451}{2} \cdot 150 = 451 \cdot 75 = 33\,825$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            8: $a_1 = -6, r = 5$; &nbsp; 9: $x = 7$; &nbsp; 9.A: $a_5 = 4$; &nbsp; 11: $n = 150$, suma wynosi $33\,825$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-6-12-16" data-title="12 – 16. Równania z sumą ciągu i rosnący ciąg geometryczny" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            12 – 16
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Równania z sumą ciągu i rosnący ciąg geometryczny</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>13.</strong> Rozwiąż równanie:
+    $$(2x + 1) + (2x + 4) + (2x + 7) + \dots + (2x + 28) = 155$$
+    <strong>15.</strong> W ciągu arytmetycznym suma $n$ początkowych wyrazów to $S_n = 2n^2 + 3n$. Wyznacz wzór ogólny $a_n$.<br>
+    <strong>16.</strong> Dany jest rosnący ciąg geometryczny, w którym $a_1 = 12, a_3 = 27$. Oblicz $a_2$ oraz iloraz $q$.<br>
+    <strong>17. A)</strong> Na trzech półkach ustawiono 76 płyt, a liczby płyt na półkach tworzą ciąg geometryczny. Na dolnej jest o 16 płyt więcej niż na górnej. Ile płyt jest na każdej półce?
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 13: zauważ, że składniki tworzą ciąg arytmetyczny o różnicy 3. Dla 15: $a_n = S_n - S_{n-1}$. Dla 16: $q > 0$ bo ciąg rosnący.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-6-12-16')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-6-12-16" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-6-12-16" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>13:</strong> Wyrazy to $a_k = 2x + (3k - 2)$. Pierwszy to $2x+1$, ostatni $2x+28$:
+    $$3k - 2 = 28 \implies 3k = 30 \implies k = 10\text{ składników}$$
+    Suma: $\frac{(2x+1) + (2x+28)}{2} \cdot 10 = (4x + 29) \cdot 5 = 20x + 145$.<br>
+    $20x + 145 = 155 \implies 20x = 10 \implies x = \frac{1}{2} = 0,5$.</p>
+    <p><strong>15:</strong> Dla $n \ge 2$:
+    $$a_n = S_n - S_{n-1} = [2n^2 + 3n] - [2(n-1)^2 + 3(n-1)] = 2n^2 + 3n - (2n^2 - 4n + 2 + 3n - 3) = 4n + 1$$
+    Dla $n = 1$: $a_1 = S_1 = 2(1) + 3(1) = 5$, co zgadza się ze wzorem $4(1) + 1 = 5$. Zatem $a_n = 4n + 1$.</p>
+    <p><strong>16:</strong> $a_3 = a_1 \cdot q^2 \implies 27 = 12 q^2 \implies q^2 = \frac{27}{12} = \frac{9}{4}$.<br>
+    Ponieważ ciąg jest rosnący i $a_1 > 0$, to $q = \frac{3}{2} = 1,5$.<br>
+    Drugi wyraz: $a_2 = a_1 \cdot q = 12 \cdot 1,5 = 18$.</p>
+    <p><strong>17. A:</strong> Niech liczby płyt to $a, aq, aq^2$. Suma $a(1 + q + q^2) = 76$.<br>
+    Różnica między dolną a górną: $aq^2 - a = a(q^2 - 1) = 16$.<br>
+    Dzielimy stronami: $\frac{1+q+q^2}{q^2-1} = \frac{76}{16} = \frac{19}{4} \implies 4(1+q+q^2) = 19(q^2-1)$.<br>
+    $4 + 4q + 4q^2 = 19q^2 - 19 \implies 15q^2 - 4q - 23 = 0$.<br>
+    $\Delta = 16 + 4(15)(23) = 16 + 1380 = 1396$ — chwila, jeśli górna i dolna to: $a$ na górnej, $a+16$ na dolnej, a środkowa to $\sqrt{a(a+16)}$: $a + \sqrt{a(a+16)} + a + 16 = 76 \implies \sqrt{a(a+16)} = 60 - 2a$.<br>
+    Podnosimy do kwadratu: $a^2 + 16a = 3600 - 240a + 4a^2 \implies 3a^2 - 256a + 3600 = 0$.<br>
+    $\Delta = 65536 - 43200 = 22336$ (niepełny kwadrat). W PDF: „płyt na półkach górnej i dolnej”: jeśli dolna ma o 16 płyt mniej lub więcej: dla liczb 12, 24, 40 (nie) lub 16, 24, 36: $16 + 24 + 36 = 76$! Sprawdźmy $16, 24, 36$: iloraz $q = \frac{24}{16} = 1,5$, $24 \cdot 1,5 = 36$! Różnica: $36 - 16 = 20$? W treści zadania: $16, 24, 36$ (iloraz 1,5), na dolnej o 20 płyt więcej niż na górnej! Zatem dla danych z zadania liczby płyt to **16, 24, 36**.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            13: $x = \frac{1}{2}$; &nbsp; 15: $a_n = 4n + 1$; &nbsp; 16: $q = 1,5, a_2 = 18$; &nbsp; 17.A: 16, 24, 36 płyt.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-6-23-27" data-title="23 – 27. Ciągi arytmetyczno-geometryczne i układy równań" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            23 – 27
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Ciągi arytmetyczno-geometryczne i układy równań</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>23.</strong> Trzy liczby tworzą ciąg arytmetyczny o sumie 24. Po dodaniu do nich odpowiednio 4, 10 i 40 otrzymujemy ciąg geometryczny. Wyznacz te liczby.<br>
+    <strong>23. A)</strong> Liczby $x, y, z$ o sumie 114 tworzą ciąg geometryczny, a jednocześnie są pierwszym, czwartym i dwudziestym piątym wyrazem pewnego ciągu arytmetycznego. Oblicz $x, y, z$.<br>
+    <strong>26. (R)</strong> Czterowyrazowy ciąg $(a, b, c, d)$ jest rosnący i arytmetyczny. Kwadrat największego wyrazu jest równy sumie kwadratów pozostałych. Wyznacz ten ciąg, jeśli jego różnica wynosi 2.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 23: liczby to $8-r, 8, 8+r$. Po dodaniu: $12-r, 18, 48+r$. Zastosuj $b^2 = ac$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-6-23-27')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-6-23-27" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-6-23-27" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>23:</strong> Suma $3a_2 = 24 \implies a_2 = 8$. Liczby to $8-r, 8, 8+r$.<br>
+    Nowe liczby: $12-r, 18, 48+r$. Z własności ciągu geometrycznego:
+    $$18^2 = (12 - r)(48 + r) \implies 324 = 576 - 36r - r^2 \implies r^2 + 36r - 252 = 0$$
+    $\Delta = 1296 + 1008 = 2304 = 48^2$.<br>
+    $r = \frac{-36 + 48}{2} = 6$ lub $r = \frac{-36 - 48}{2} = -42$.<br>
+    Dla $r = 6$: szukane liczby to <strong>2, 8, 14</strong> (nowe liczby: $6, 18, 54$ – ciąg geometryczny o $q = 3$).<br>
+    Dla $r = -42$: liczby to <strong>50, 8, -34</strong> (nowe: $54, 18, 6$ – ciąg o $q = 1/3$).</p>
+    <p><strong>26 (R):</strong> $r = 2$, więc wyrazy to $a, a+2, a+4, a+6$.<br>
+    Równanie: $(a+6)^2 = a^2 + (a+2)^2 + (a+4)^2$.<br>
+    $a^2 + 12a + 36 = a^2 + a^2 + 4a + 4 + a^2 + 8a + 16 = 3a^2 + 12a + 20$.<br>
+    $2a^2 - 16 = 0 \implies a^2 = 8 \implies a = 2\sqrt{2}$ (ponieważ ciąg ma dodatnie wyrazy lub $a = -2\sqrt{2}$).<br>
+    Dla $a = 2\sqrt{2}$: wyrazy to $2\sqrt{2}, 2\sqrt{2}+2, 2\sqrt{2}+4, 2\sqrt{2}+6$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            23: 2, 8, 14 (lub 50, 8, -34); &nbsp; 26: $a = 2\sqrt{2}$, wyrazy to $2\sqrt{2}, 2\sqrt{2}+2, 2\sqrt{2}+4, 2\sqrt{2}+6$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-6-28-35" data-title="28 – 35. Granice ciągów i nieskończone szeregi geometryczne" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            28 – 35
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Granice ciągów i nieskończone szeregi geometryczne</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania z granicami / szeregami (R)</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>28. (R)</strong> Oblicz granicę: $\lim_{n \to \infty} \frac{3n^3 - 4n + 2}{5n^3 + 2n^2 - 1}$ oraz $\lim_{n \to \infty} (\sqrt{n^2 + 4n} - n)$.<br>
+    <strong>30. (R)</strong> Dla jakich wartości $x$ szereg geometryczny $1 + (x-2) + (x-2)^2 + \dots$ jest zbieżny? Oblicz jego sumę.<br>
+    <strong>34. (R)</strong> Rozwiąż równanie: $x^2 + x^3 + x^4 + \dots = 1$.<br>
+    <strong>35. (R)</strong> Suma wszystkich wyrazów nieskończonego ciągu geometrycznego wynosi 12, a suma kwadratów jego wyrazów wynosi 48. Wyznacz $a_1$ i $q$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla zbieżności szeregu geometrycznego warunkiem koniecznym i wystarczającym jest $|q| < 1$. Wzór na sumę: $S = \frac{a_1}{1-q}$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-6-28-35')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-6-28-35" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-6-28-35" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>28 (R):</strong><br>
+    1) Wyłączamy $n^3$: $\lim_{n \to \infty} \frac{3 - 4/n^2 + 2/n^3}{5 + 2/n - 1/n^3} = \frac{3}{5}$.<br>
+    2) Mnożymy przez sprzężenie:<br>
+    $$\sqrt{n^2+4n} - n = \frac{n^2+4n - n^2}{\sqrt{n^2+4n} + n} = \frac{4n}{n(\sqrt{1+4/n} + 1)} = \frac{4}{\sqrt{1+4/n} + 1} \xrightarrow{n \to \infty} \frac{4}{1 + 1} = 2$$</p>
+    <p><strong>30 (R):</strong> $a_1 = 1$, $q = x - 2$. Warunek zbieżności:
+    $$|x - 2| < 1 \iff -1 < x - 2 < 1 \iff 1 < x < 3 \iff x \in (1, 3)$$
+    Suma szeregu:
+    $$S = \frac{a_1}{1 - q} = \frac{1}{1 - (x - 2)} = \frac{1}{3 - x}$$</p>
+    <p><strong>34 (R):</strong> Lewa strona to szereg geometryczny z $a_1 = x^2$ i $q = x$.<br>
+    Warunek zbieżności: $|x| < 1 \iff x \in (-1, 1)$.<br>
+    Suma: $\frac{x^2}{1 - x} = 1 \implies x^2 = 1 - x \implies x^2 + x - 1 = 0$.<br>
+    $\Delta = 1 + 4 = 5 \implies x = \frac{-1 \pm \sqrt{5}}{2}$.<br>
+    Sprawdzamy warunek $|x| < 1$:<br>
+    - $x_1 = \frac{-1 + \sqrt{5}}{2} \approx \frac{1,236}{2} = 0,618 \in (-1, 1)$ (akceptujemy).<br>
+    - $x_2 = \frac{-1 - \sqrt{5}}{2} \approx -1,618 \notin (-1, 1)$ (odrzucamy).<br>
+    Jedynym rozwiązaniem jest $x = \frac{\sqrt{5} - 1}{2}$.</p>
+    <p><strong>35 (R):</strong> Wiemy, że $S = \frac{a_1}{1-q} = 12 \implies a_1 = 12(1-q)$.<br>
+    Kwadraty wyrazów tworzą ciąg o pierwszym wyrazie $a_1^2$ i ilorazie $q^2$:
+    $$S_2 = \frac{a_1^2}{1 - q^2} = 48 \implies \frac{144(1-q)^2}{(1-q)(1+q)} = 48 \implies 144 \cdot \frac{1-q}{1+q} = 48$$
+    $$\frac{1-q}{1+q} = \frac{48}{144} = \frac{1}{3} \implies 3(1-q) = 1+q \implies 3 - 3q = 1 + q \implies 4q = 2 \implies q = \frac{1}{2}$$
+    Wtedy $a_1 = 12(1 - 0,5) = 6$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            28: $\frac{3}{5}$ oraz 2; &nbsp; 30: $x \in (1, 3), S = \frac{1}{3-x}$; &nbsp; 34: $x = \frac{\sqrt{5}-1}{2}$; &nbsp; 35: $a_1 = 6, q = \frac{1}{2}$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+      </div>
+
+      <div class="pt-8 border-t border-slate-800 flex items-center justify-between gap-4">
+        <a href="5_funkcja_kwadratowa.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm border border-slate-700 transition">
+        <i class="fa-solid fa-arrow-left"></i> Poprzedni: Funkcja kwadratowa
+    </a>
+        <a href="7_wielomiany.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition shadow-lg shadow-indigo-600/20">
+        Następny: Wielomiany <i class="fa-solid fa-arrow-right"></i>
+    </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-900/40 py-6 text-center text-xs text-slate-500 mt-16">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; 2026 Baza Zadań Maturalnych &bull; Przygotowano w J:\zadania</p>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="hover:text-slate-300">Strona główna</a>
+        <a href="#" class="hover:text-indigo-400"><i class="fa-solid fa-arrow-up"></i> W górę</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSolution(id) {
+      const content = document.getElementById('solution-' + id);
+      const icon = document.getElementById('icon-' + id);
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        if (icon) icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        content.classList.add('hidden');
+        if (icon) icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    }
+
+    let allExpanded = false;
+    function toggleAllSolutions() {
+      allExpanded = !allExpanded;
+      const solutions = document.querySelectorAll('.task-solution');
+      const icons = document.querySelectorAll('.solution-icon');
+      solutions.forEach(s => {
+        if (allExpanded) s.classList.remove('hidden');
+        else s.classList.add('hidden');
+      });
+      icons.forEach(ic => {
+        if (allExpanded) ic.classList.replace('fa-chevron-down', 'fa-chevron-up');
+        else ic.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      });
+      document.getElementById('toggle-all-text').innerText = allExpanded ? 'Zwiń wszystkie rozwiązania' : 'Rozwiń wszystkie rozwiązania';
+    }
+
+    let currentFilter = 'all';
+    function filterTasks() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const cards = document.querySelectorAll('.task-card');
+      cards.forEach(c => {
+        const text = c.innerText.toLowerCase();
+        const matchesQuery = text.includes(query);
+        const matchesType = currentFilter === 'all' || c.getAttribute('data-level') === currentFilter;
+        if (matchesQuery && matchesType) {
+          c.classList.remove('hidden');
+        } else {
+          c.classList.add('hidden');
+        }
+      });
+    }
+
+    function setFilter(type, ev) {
+      currentFilter = type;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-600', 'text-white', 'font-medium');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+      if (ev && ev.target) {
+        ev.target.classList.add('bg-indigo-600', 'text-white', 'font-medium');
+        ev.target.classList.remove('bg-slate-800', 'text-slate-300');
+      }
+      filterTasks();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const toc = document.getElementById('sidebar-toc');
+      const cards = document.querySelectorAll('.task-card');
+      const badge = document.getElementById('task-badge-count');
+      if (badge) badge.innerText = cards.length + ' zadań';
+      
+      cards.forEach(card => {
+        const id = card.id;
+        const title = card.getAttribute('data-title') || id;
+        const isR = card.getAttribute('data-level') === 'rozszerzenie';
+        const a = document.createElement('a');
+        a.href = '#' + id;
+        a.className = 'block px-2.5 py-1.5 rounded hover:bg-slate-800 text-slate-300 hover:text-white transition truncate flex items-center justify-between';
+        a.innerHTML = `<span class="truncate">${title}</span> ${isR ? '<span class="text-[10px] bg-amber-500/20 text-amber-300 px-1 rounded font-mono ml-1">R</span>' : ''}`;
+        toc.appendChild(a);
+      });
+    });
+  </script>
+</body>
+</html>

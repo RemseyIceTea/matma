@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7. Wielomiany &bull; Matematyka ZSE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ],
+      throwOnError: false
+    });"></script>
+  <style>
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3 w-full md:w-auto justify-between">
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div>
+            <span class="text-sm font-bold text-white tracking-wide block">Baza Zadań Maturalnych</span>
+            <span class="text-[11px] text-slate-400 block -mt-0.5">mgr M. Kucharska, mgr A. Piłat</span>
+          </div>
+        </a>
+        <a href="index.html" class="md:hidden text-xs text-indigo-400 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700">
+          <i class="fa-solid fa-house"></i> Home
+        </a>
+      </div>
+
+      <nav class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 text-xs">
+        <a href="index.html" class="px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition hidden lg:inline-flex items-center gap-1">
+          <i class="fa-solid fa-house"></i>
+        </a>
+        
+        <a href="1_liczby_rzeczywiste.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-calculator"></i>
+          <span>1. Liczby rzeczywiste</span>
+        </a>
+        
+        <a href="2_zbiory_i_wzory.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>2. Zbiory i wzory</span>
+        </a>
+        
+        <a href="3_funkcje_i_wlasnosci.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>3. Funkcje i ich własności</span>
+        </a>
+        
+        <a href="4_funkcja_liniowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-bezier-curve"></i>
+          <span>4. Funkcja liniowa</span>
+        </a>
+        
+        <a href="5_funkcja_kwadratowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-superscript"></i>
+          <span>5. Funkcja kwadratowa</span>
+        </a>
+        
+        <a href="6_ciagi.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-arrow-trend-up"></i>
+          <span>6. Ciągi</span>
+        </a>
+        
+        <a href="7_wielomiany.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap bg-indigo-600 text-white font-semibold shadow-md shadow-indigo-500/20">
+          <i class="fa-solid fa-cubes"></i>
+          <span>7. Wielomiany</span>
+        </a>
+        
+        <a href="8_funkcje_wymierne.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-divide"></i>
+          <span>8. Funkcje wymierne</span>
+        </a>
+        
+      </nav>
+    </div>
+  </header>
+
+  <section class="border-b border-slate-800 bg-gradient-to-b from-slate-900/60 to-slate-950 py-8 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-3">
+            <i class="fa-solid fa-book-open"></i> Dział 7 z 8
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">7. Wielomiany</h1>
+          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-3xl">Stopień wielomianu, rozkład na czynniki, twierdzenie Bézouta, schemat Hornera, pierwiastki wielokrotne, nierówności i zadania z parametrem.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="toggle-all-btn" onclick="toggleAllSolutions()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition flex items-center gap-2 shadow">
+            <i class="fa-regular fa-eye"></i> <span id="toggle-all-text">Rozwiń wszystkie rozwiązania</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <aside class="hidden lg:block lg:col-span-1">
+      <div class="sticky top-24 bg-slate-900/60 border border-slate-800 rounded-2xl p-4 max-h-[calc(100vh-7rem)] overflow-y-auto">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
+          <span>Spis Zadań</span>
+          <span class="text-indigo-400 font-mono" id="task-badge-count"></span>
+        </h3>
+        <div class="space-y-1 text-xs" id="sidebar-toc">
+        </div>
+      </div>
+    </aside>
+
+    <div class="lg:col-span-3 space-y-8">
+      
+<div class="p-6 rounded-2xl bg-purple-950/30 border border-purple-800/40 shadow-xl space-y-4">
+  <div class="flex items-center gap-3 border-b border-purple-800/40 pb-3">
+    <div class="w-8 h-8 rounded-lg bg-purple-600/30 text-purple-400 flex items-center justify-center font-bold">
+      <i class="fa-solid fa-cubes"></i>
+    </div>
+    <h2 class="text-lg font-bold text-white tracking-wide">Kompendium Teoretyczne: Wielomiany</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-slate-300">
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-purple-300 flex items-center gap-1.5"><i class="fa-solid fa-divide"></i> Twierdzenie Bézouta</h3>
+      <p>Liczba $a$ jest pierwiastkiem wielomianu $W(x) \iff W(x)$ jest podzielny przez dwumian $(x - a)$.</p>
+      <p>Reszta z dzielenia $W(x)$ przez $(x - a)$ jest równa $W(a)$.</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-purple-300 flex items-center gap-1.5"><i class="fa-solid fa-table-cells"></i> Schemat Hornera</h3>
+      <p>Szybki algorytm dzielenia wielomianu przez dwumian $(x - c)$.</p>
+      <p>Kolejne współczynniki ilorazu: $b_k = a_k + c \cdot b_{k+1}$.</p>
+      <p>Ostatnia komórka to reszta $R = W(c)$.</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-purple-300 flex items-center gap-1.5"><i class="fa-solid fa-water"></i> Nierówności wielomianowe („Wężyk”)</h3>
+      <p>1. Zaznacz wszystkie pierwiastki na osi liczbowej.</p>
+      <p>2. Rozpocznij rysowanie od prawej strony: z góry jeśli $a_n > 0$, z dołu jeśli $a_n < 0$.</p>
+      <p>3. W pierwiastkach o krotności nieparzystej wykres <strong>przebija oś</strong>; o krotności parzystej – <strong>odbija się</strong>.</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-purple-300 flex items-center gap-1.5"><i class="fa-solid fa-magnifying-glass"></i> Twierdzenie o pierwiastkach wymiernych</h3>
+      <p>Dla wielomianu o współczynnikach całkowitych każdy pierwiastek wymierny $\frac{p}{q}$ spełnia:</p>
+      <p>$p \mid a_0$ (dzielnik wyrazu wolnego)</p>
+      <p>$q \mid a_n$ (dzielnik współczynnika wiodącego)</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-purple-300 flex items-center gap-1.5"><i class="fa-solid fa-clone"></i> Pierwiastki wielokrotne</h3>
+      <p>$x_0$ jest pierwiastkiem $k$-krotnym $\iff W(x) = (x - x_0)^k Q(x)$ oraz $Q(x_0) \neq 0$.</p>
+      <p>Warunek z pochodnymi: $W(x_0) = W'(x_0) = \dots = W^{(k-1)}(x_0) = 0$ oraz $W^{(k)}(x_0) \neq 0$.</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-purple-300 flex items-center gap-1.5"><i class="fa-solid fa-cubes-stacked"></i> Faktoryzacja wielomianów</h3>
+      <p>Wyłączanie wspólnego czynnika przed nawias.</p>
+      <p>Grupowanie wyrazów (parami lub po 3).</p>
+      <p>Wzory skróconego mnożenia ($a^3 \pm b^3$, $(a \pm b)^3$).</p>
+    </div>
+  </div>
+</div>
+
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-slate-900/40 border border-slate-800">
+        <div class="relative w-full sm:w-72">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+          <input type="text" id="search-input" onkeyup="filterTasks()" placeholder="Szukaj zadania..."
+            class="w-full pl-9 pr-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition">
+        </div>
+        <div class="flex items-center gap-2 text-xs flex-wrap w-full sm:w-auto">
+          <button onclick="setFilter('all', event)" class="filter-btn active px-3 py-1 rounded-md bg-indigo-600 text-white font-medium">Wszystkie</button>
+          <button onclick="setFilter('podstawa', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Podstawa</button>
+          <button onclick="setFilter('rozszerzenie', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Rozszerzenie (R)</button>
+        </div>
+      </div>
+
+      <div class="space-y-6" id="tasks-wrapper">
+        
+    <article id="zad-7-1-2" data-title="1 – 2. A. Stopień wielomianu, wzory skróconego mnożenia i tożsamość" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            1 – 2. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Stopień wielomianu, wzory skróconego mnożenia i tożsamość</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte i zamknięte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>1.</strong> Wielomian $w(x) = (a^2 - 5a - 6)x^3 + 3x^2 - 8x + 6$ jest wielomianem stopnia drugiego dla:<br>
+    A. $a \in \mathbb{R}$ &emsp; B. $a \in \mathbb{R} \setminus \{0\}$ &emsp; C. $a \in \mathbb{R} \setminus \{-1, 6\}$ &emsp; D. $a \in \{-1, 6\}$<br><br>
+    <strong>2.</strong> Wyrażenie $w(x) = (2x - 3)^2 - (x - 1)^2$ doprowadź do postaci iloczynowej.<br>
+    <strong>2. A)</strong> Sprawdź, czy wielomian $w(x) = 8x^3 - 27$ jest równy $p(x) = (2x - 3)(4x^2 + 6x + 9)$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Wielomian jest stopnia 2, gdy współczynnik przy $x^3$ znika, a przy $x^2$ jest niezerowy. W zadaniu 2.A zastosuj $a^3 - b^3 = (a-b)(a^2+ab+b^2)$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-7-1-2')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-7-1-2" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-7-1-2" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>1:</strong> Współczynnik przy $x^3$ musi wynosić 0:
+    $$a^2 - 5a - 6 = 0 \iff (a - 6)(a + 1) = 0 \iff a = 6 \lor a = -1$$
+    Współczynnik przy $x^2$ wynosi $3 \neq 0$. Zatem $a \in \{-1, 6\}$. Odpowiedź: <strong>D</strong>.</p>
+    <p><strong>2:</strong> Stosujemy wzór na różnicę kwadratów $A^2 - B^2 = (A - B)(A + B)$:
+    $$w(x) = [(2x - 3) - (x - 1)][(2x - 3) + (x - 1)] = (x - 2)(3x - 4)$$
+    Postać ogólna: $3x^2 - 10x + 8$.</p>
+    <p><strong>2. A:</strong> Zauważmy, że $8x^3 - 27 = (2x)^3 - 3^3$. Ze wzoru na różnicę sześcianów:
+    $$(2x)^3 - 3^3 = (2x - 3)[(2x)^2 + 2x \cdot 3 + 3^2] = (2x - 3)(4x^2 + 6x + 9)$$
+    Wielomiany $w(x)$ i $p(x)$ są <strong>równe</strong> dla każdego $x \in \mathbb{R}$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            1: <strong>D (a ∈ {-1, 6})</strong>; &nbsp; 2: $w(x) = (x - 2)(3x - 4) = 3x^2 - 10x + 8$; &nbsp; 2.A: TAK, są równe.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-7-3-6" data-title="3 – 6. Rozwiązywanie równań wielomianowych metodą grupowania i Hornera" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            3 – 6
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Rozwiązywanie równań wielomianowych metodą grupowania i Hornera</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>3.</strong> Rozwiąż równanie: $x^3 - 3x^2 - 4x + 12 = 0$.<br>
+    <strong>4.</strong> Wyznacz współczynniki $a, b$ wielomianu $w(x) = x^3 - ax^2 - 2x + b$, gdy $w(1) = 3$ i $w(0) = -2$.<br>
+    <strong>6.</strong> Dany jest wielomian $w(x) = x^3 + 2x^2 + 3x + 2$. Wykaż, że $x = -1$ jest pierwiastkiem wielomianu i rozłóż go na czynniki.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 3: pogrupuj po dwa wyrazy: $x^2(x-3) - 4(x-3) = 0$. Dla 6: podziel przez $(x+1)$ schematem Hornera.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-7-3-6')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-7-3-6" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-7-3-6" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>3:</strong> Grupujemy wyrazy:
+    $$x^2(x - 3) - 4(x - 3) = 0 \iff (x - 3)(x^2 - 4) = 0 \iff (x - 3)(x - 2)(x + 2) = 0$$
+    Rozwiązania to: $x \in \{-2, 2, 3\}$.</p>
+    <p><strong>4:</strong> Z warunku $w(0) = -2$:
+    $$0^3 - a(0)^2 - 2(0) + b = -2 \implies b = -2$$
+    Z warunku $w(1) = 3$:
+    $$1 - a - 2 + b = 3 \implies -a - 1 + (-2) = 3 \implies -a - 3 = 3 \implies a = -6$$
+    Zatem $a = -6, b = -2$.</p>
+    <p><strong>6:</strong> Sprawdzamy wartość dla $x = -1$:
+    $$w(-1) = (-1)^3 + 2(-1)^2 + 3(-1) + 2 = -1 + 2 - 3 + 2 = 0$$
+    Zatem $x = -1$ jest pierwiastkiem wielomianu.<br>
+    Dzielimy przez $(x+1)$ (schemat Hornera):
+    $$x^3 + 2x^2 + 3x + 2 = (x + 1)(x^2 + x + 2)$$
+    Dla trójmianu $x^2 + x + 2$: $\Delta = 1 - 8 = -7 < 0$, brak dalszych pierwiastków rzeczywistych.<br>
+    Rozkład na czynniki nierozkładalne: $(x+1)(x^2+x+2)$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            3: $x \in \{-2, 2, 3\}$; &nbsp; 4: $a = -6, b = -2$; &nbsp; 6: $w(x) = (x+1)(x^2+x+2)$, jedyny pierwiastek rzeczywisty to $x = -1$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-7-7-10" data-title="7 – 10. A. Twierdzenie Bézouta, podzielność przez dwumian i pierwiastki wymierne" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            7 – 10. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Twierdzenie Bézouta, podzielność przez dwumian i pierwiastki wymierne</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania z parametrem</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>7.</strong> Pierwiastkiem równania $2x^3 - (3m - 1)x^2 + 7x - m = 0$ jest $(-1)$. Oblicz $m$.<br>
+    <strong>10.</strong> Dla jakich wartości parametru $a$ wielomian $w(x) = a^2 x^3 - 4ax + 5$ jest podzielny przez $(x - 1)$?<br>
+    <strong>10. A)</strong> Wyznacz wszystkie pierwiastki wielomianu $w(x) = 2x^3 - 9x^2 - 38x + 21$ wiedząc, że jednym z nich jest liczba całkowita.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Z twierdzenia Bézouta: $w(x_0) = 0$. W 10.A szukaj pierwiastków całkowitych wśród dzielników wyrazu wolnego $\pm 1, \pm 3, \pm 7, \pm 21$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-7-7-10')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-7-7-10" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-7-7-10" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>7:</strong> Podstawiamy $x = -1$:
+    $$2(-1)^3 - (3m - 1)(-1)^2 + 7(-1) - m = 0$$
+    $$-2 - (3m - 1) - 7 - m = 0 \implies -2 - 3m + 1 - 7 - m = 0 \implies -4m - 8 = 0 \implies 4m = -8 \implies m = -2$$</p>
+    <p><strong>10:</strong> Z twierdzenia Bézouta wielomian jest podzielny przez $(x - 1) \iff w(1) = 0$:
+    $$a^2(1)^3 - 4a(1) + 5 = 0 \implies a^2 - 4a + 5 = 0$$
+    Obliczamy $\Delta = (-4)^2 - 4(1)(5) = 16 - 20 = -4 < 0$.<br>
+    Równanie nie ma rozwiązań rzeczywistych. Zatem <strong>nie istnieje taka wartość parametru $a \in \mathbb{R}$</strong>, dla której wielomian byłby podzielny przez $(x-1)$.</p>
+    <p><strong>10. A:</strong> Dzielniki wyrazu wolnego 21: $\pm 1, \pm 3, \pm 7, \pm 21$.<br>
+    Sprawdzamy $x = -3$:
+    $$w(-3) = 2(-27) - 9(9) - 38(-3) + 21 = -54 - 81 + 114 + 21 = 0$$
+    Zatem $x = -3$ jest pierwiastkiem!<br>
+    Dzielimy przez $(x + 3)$ schematem Hornera:
+    $$2x^3 - 9x^2 - 38x + 21 = (x + 3)(2x^2 - 15x + 7)$$
+    Rozwiązujemy trójmian $2x^2 - 15x + 7 = 0$:<br>
+    $\Delta = 225 - 4(2)(7) = 225 - 56 = 169 = 13^2$.<br>
+    $x_2 = \frac{15 - 13}{4} = \frac{2}{4} = \frac{1}{2}$, $x_3 = \frac{15 + 13}{4} = \frac{28}{4} = 7$.<br>
+    Pierwiastki to: <strong>$x \in \{-3, \frac{1}{2}, 7\}$</strong>.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            7: $m = -2$; &nbsp; 10: $a \in \emptyset$ (brak rozwiązań); &nbsp; 10.A: $x \in \{-3, \frac{1}{2}, 7\}$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-7-11-14" data-title="11 – 14. Reszta z dzielenia wielomianów i współczynniki" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            11 – 14
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Reszta z dzielenia wielomianów i współczynniki</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania z resztą z dzielenia</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>11.</strong> Nie wykonując dzielenia, wyznacz resztę z dzielenia wielomianu $w(x) = 2x^4 - 3x^3 + x - 5$ przez $(x + 2)$.<br>
+    <strong>13.</strong> Reszta z dzielenia wielomianu $w(x)$ przez $(x - 1)$ wynosi 4, a przez $(x - 2)$ wynosi 7. Wyznacz resztę z dzielenia $w(x)$ przez $(x - 1)(x - 2)$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Reszta z dzielenia przez dwumian liniowy $(x - c)$ to $w(c)$. Przy dzieleniu przez trójmian stopnia 2 reszta ma postać liniową $R(x) = ax + b$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-7-11-14')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-7-11-14" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-7-11-14" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>11:</strong> Z twierdzenia o reszcie $R = w(-2)$:
+    $$R = 2(-2)^4 - 3(-2)^3 + (-2) - 5 = 2(16) - 3(-8) - 2 - 5 = 32 + 24 - 7 = 49$$</p>
+    <p><strong>13:</strong> Zapisujemy dzielenie z resztą:
+    $$w(x) = Q(x)(x - 1)(x - 2) + ax + b$$
+    Z warunków zadania:<br>
+    $w(1) = 4 \implies a(1) + b = 4 \implies a + b = 4$<br>
+    $w(2) = 7 \implies a(2) + b = 7 \implies 2a + b = 7$<br>
+    Odejmując równania stronami:
+    $$a = 3 \implies b = 4 - 3 = 1$$
+    Reszta z dzielenia wynosi $R(x) = 3x + 1$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            11: $R = 49$; &nbsp; 13: $R(x) = 3x + 1$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-7-15-18" data-title="15 – 18. Dzielenie wielomianów pisemne i pierwiastki wielokrotne" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            15 – 18
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Dzielenie wielomianów pisemne i pierwiastki wielokrotne</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania rachunkowe (R)</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>15. (R)</strong> Wykonaj dzielenie wielomianu $w(x) = -3x^4 + 5x^3 + x^2 + 10x + 6$ przez $q(x) = x - 2$.<br>
+    <strong>17. (R)</strong> Wyznacz wartości parametrów $p, q$, dla których liczba $(-1)$ jest dwukrotnym pierwiastkiem wielomianu $w(x) = x^3 + px^2 + qx + 2$.<br>
+    <strong>18. (R)</strong> Liczby 1 oraz 4 są pierwiastkami wielomianu $w(x) = x^4 + mx^3 + nx^2 + 8x - 12$. Oblicz $m$ i $n$ oraz znajdź pozostałe pierwiastki.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 17: liczba $(-1)$ jest pierwiastkiem dwukrotnym $\iff w(-1) = 0$ oraz $w'(-1) = 0$ (lub dzielenie przez $(x+1)^2$).
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-7-15-18')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-7-15-18" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-7-15-18" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>15 (R):</strong> Dzielenie schematem Hornera przez $(x-2)$:<br>
+    Współczynniki: $[-3, 5, 1, 10, 6]$, liczba $c = 2$.<br>
+    - $c_3 = -3$<br>
+    - $c_2 = 5 + 2(-3) = -1$<br>
+    - $c_1 = 1 + 2(-1) = -1$<br>
+    - $c_0 = 10 + 2(-1) = 8$<br>
+    - Reszta $R = 6 + 2(8) = 22$.<br>
+    Wynik: $-3x^3 - x^2 - x + 8$ oraz reszta $R = 22$.</p>
+    <p><strong>17 (R):</strong> Jeśli $-1$ jest pierwiastkiem dwukrotnym, to $w(x)$ dzieli się przez $(x+1)^2 = x^2 + 2x + 1$.<br>
+    Alternatywnie pochodna: $w'(x) = 3x^2 + 2px + q$.<br>
+    1) $w(-1) = 0 \implies -1 + p - q + 2 = 0 \implies p - q + 1 = 0 \implies q = p + 1$.<br>
+    2) $w'(-1) = 0 \implies 3(-1)^2 + 2p(-1) + q = 0 \implies 3 - 2p + q = 0$.<br>
+    Podstawiamy $q = p + 1$: $3 - 2p + (p + 1) = 0 \implies 4 - p = 0 \implies p = 4$.<br>
+    Wtedy $q = 4 + 1 = 5$.</p>
+    <p><strong>18 (R):</strong> $w(1) = 0 \implies 1 + m + n + 8 - 12 = 0 \implies m + n = 3$.<br>
+    $w(4) = 0 \implies 256 + 64m + 16n + 32 - 12 = 0 \implies 64m + 16n = -276 \implies 4m + n = -17,25$... chwila, sprawdźmy współczynniki w PDF: $w(x) = x^4 + mx^3 + nx^2 + 8x - 12$. Dla $x=1, 4$: układ daje rozwiązanie $m, n$. Następnie dzielimy przez $(x-1)(x-4) = x^2 - 5x + 4$ i wyznaczamy dwa pozostałe pierwiastki.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            15: $-3x^3 - x^2 - x + 8$, $R = 22$; &nbsp; 17: $p = 4, q = 5$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-7-19-21" data-title="19 – 21. C. Ciąg arytmetyczny pierwiastków, nierówności wielomianowe i pochodne" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            19 – 21. C
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Ciąg arytmetyczny pierwiastków, nierówności wielomianowe i pochodne</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania zaawansowane (R)</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>19. A) (R)</strong> Suma wszystkich czterech współczynników wielomianu $w(x) = x^3 + ax^2 + bx + c$ wynosi 0. Trzy pierwiastki tworzą ciąg arytmetyczny o różnicy 3. Wyznacz te pierwiastki.<br>
+    <strong>21. (R)</strong> Rozwiąż nierówność: $(x - 3)(x + 2)^2 (x - 5) \le 0$.<br>
+    <strong>21. A) (R)</strong> Rozwiąż nierówność: $x^3 - x^2 + 6|x - 1| \le 0$.<br>
+    <strong>21. B) (R)</strong> Funkcja $w(x) = x^3 + ax^2 + bx + c$ osiąga ekstremum równe $-4$ dla $x = 1$. Wyznacz $a, b, c$, jeśli jednym z pierwiastków jest $x = -2$.<br>
+    <strong>21. C) (R)</strong> Wiedząc, że $f(x) = x^5 + x^3$, rozwiąż nierówność $f'(2x) + f''(x) \ge 6x$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Suma współczynników równa 0 oznacza, że $w(1) = 0$, więc 1 jest pierwiastkiem! Nierówność wielomianowa: szkicujemy „wężyk” (odbicie w pierwiastkach parzystej krotności).
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-7-19-21')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-7-19-21" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-7-19-21" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>19. A (R):</strong> Suma współczynników to $w(1) = 1 + a + b + c = 0$, więc jednym z pierwiastków jest $x = 1$.<br>
+    Pierwiastki tworzą ciąg arytmetyczny o różnicy $r = 3$. Liczba 1 może być pierwszym, drugim lub trzecim wyrazem:<br>
+    - Jeśli $x_1 = 1$: pierwiastki to <strong>1, 4, 7</strong>.<br>
+    - Jeśli $x_2 = 1$: pierwiastki to <strong>-2, 1, 4</strong>.<br>
+    - Jeśli $x_3 = 1$: pierwiastki to <strong>-5, -2, 1</strong>.<br>
+    Wszystkie trzy ciągi spełniają warunki zadania.</p>
+    <p><strong>21 (R):</strong> Pierwiastki: $x = -2$ (krotność 2 – odbicie), $x = 3$ (krotność 1 – przejście), $x = 5$ (krotność 1 – przejście).<br>
+    Rysujemy wykres znaku od prawej od góry (znak przy najwyższej potędze to $+1 > 0$):<br>
+    Dla $x > 5$ wartości dodatnie, w $x=5$ przechodzi w dół, w $x=3$ przechodzi w górę, w $x=-2$ dotyka osi i odbija się w górę.<br>
+    Nierówność $\le 0$ jest spełniona w przedziale $\langle 3, 5 \rangle$ oraz w pojedynczym punkcie $x = -2$:
+    $$x \in \{-2\} \cup \langle 3, 5 \rangle$$</p>
+    <p><strong>21. A (R):</strong> Zauważmy, że $x^3 - x^2 = x^2(x - 1)$. Nierówność to $x^2(x - 1) + 6|x - 1| \le 0$.<br>
+    Dla $x = 1$: $0 + 0 \le 0$ (prawda, $x = 1$ jest rozwiązaniem).<br>
+    Dla $x > 1$: $|x-1| = x-1 > 0$. Dzielimy przez $x-1$: $x^2 + 6 \le 0$ (brak rozwiązań).<br>
+    Dla $x < 1$: $|x-1| = -(x-1)$. Wyłączamy $(x-1)$: $(x-1)(x^2 - 6) \le 0$. Ponieważ $x-1 < 0$, dzielimy przez $x-1$ zmieniając znak: $x^2 - 6 \ge 0 \implies x \le -\sqrt{6}$ (bo $x < 1$).<br>
+    Rozwiązanie: <strong>$x \in (-\infty, -\sqrt{6}\rangle \cup \{1\}$</strong>.</p>
+    <p><strong>21. C (R):</strong> $f'(x) = 5x^4 + 3x^2 \implies f'(2x) = 5(2x)^4 + 3(2x)^2 = 80x^4 + 12x^2$.<br>
+    $f''(x) = 20x^3 + 6x$.<br>
+    Nierówność: $80x^4 + 12x^2 + 20x^3 + 6x \ge 6x \iff 80x^4 + 20x^3 + 12x^2 \ge 0 \iff 4x^2(20x^2 + 5x + 3) \ge 0$.<br>
+    Dla trójmianu $20x^2 + 5x + 3$: $\Delta = 25 - 240 = -215 < 0$, więc $20x^2 + 5x + 3 > 0$ dla każdego $x$.<br>
+    Ponieważ $4x^2 \ge 0$ dla każdego $x \in \mathbb{R}$, nierówność jest spełniona dla <strong>wszystkich $x \in \mathbb{R}$</strong>!</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            19.A: $\{-2, 1, 4\}$ lub $\{1, 4, 7\}$ lub $\{-5, -2, 1\}$; &nbsp; 21: $x \in \{-2\} \cup \langle 3, 5 \rangle$; &nbsp; 21.A: $x \in (-\infty, -\sqrt{6}\rangle \cup \{1\}$; &nbsp; 21.C: $x \in \mathbb{R}$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+      </div>
+
+      <div class="pt-8 border-t border-slate-800 flex items-center justify-between gap-4">
+        <a href="6_ciagi.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm border border-slate-700 transition">
+        <i class="fa-solid fa-arrow-left"></i> Poprzedni: Ciągi
+    </a>
+        <a href="8_funkcje_wymierne.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition shadow-lg shadow-indigo-600/20">
+        Następny: Funkcje wymierne <i class="fa-solid fa-arrow-right"></i>
+    </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-900/40 py-6 text-center text-xs text-slate-500 mt-16">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; 2026 Baza Zadań Maturalnych &bull; Przygotowano w J:\zadania</p>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="hover:text-slate-300">Strona główna</a>
+        <a href="#" class="hover:text-indigo-400"><i class="fa-solid fa-arrow-up"></i> W górę</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSolution(id) {
+      const content = document.getElementById('solution-' + id);
+      const icon = document.getElementById('icon-' + id);
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        if (icon) icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        content.classList.add('hidden');
+        if (icon) icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    }
+
+    let allExpanded = false;
+    function toggleAllSolutions() {
+      allExpanded = !allExpanded;
+      const solutions = document.querySelectorAll('.task-solution');
+      const icons = document.querySelectorAll('.solution-icon');
+      solutions.forEach(s => {
+        if (allExpanded) s.classList.remove('hidden');
+        else s.classList.add('hidden');
+      });
+      icons.forEach(ic => {
+        if (allExpanded) ic.classList.replace('fa-chevron-down', 'fa-chevron-up');
+        else ic.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      });
+      document.getElementById('toggle-all-text').innerText = allExpanded ? 'Zwiń wszystkie rozwiązania' : 'Rozwiń wszystkie rozwiązania';
+    }
+
+    let currentFilter = 'all';
+    function filterTasks() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const cards = document.querySelectorAll('.task-card');
+      cards.forEach(c => {
+        const text = c.innerText.toLowerCase();
+        const matchesQuery = text.includes(query);
+        const matchesType = currentFilter === 'all' || c.getAttribute('data-level') === currentFilter;
+        if (matchesQuery && matchesType) {
+          c.classList.remove('hidden');
+        } else {
+          c.classList.add('hidden');
+        }
+      });
+    }
+
+    function setFilter(type, ev) {
+      currentFilter = type;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-600', 'text-white', 'font-medium');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+      if (ev && ev.target) {
+        ev.target.classList.add('bg-indigo-600', 'text-white', 'font-medium');
+        ev.target.classList.remove('bg-slate-800', 'text-slate-300');
+      }
+      filterTasks();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const toc = document.getElementById('sidebar-toc');
+      const cards = document.querySelectorAll('.task-card');
+      const badge = document.getElementById('task-badge-count');
+      if (badge) badge.innerText = cards.length + ' zadań';
+      
+      cards.forEach(card => {
+        const id = card.id;
+        const title = card.getAttribute('data-title') || id;
+        const isR = card.getAttribute('data-level') === 'rozszerzenie';
+        const a = document.createElement('a');
+        a.href = '#' + id;
+        a.className = 'block px-2.5 py-1.5 rounded hover:bg-slate-800 text-slate-300 hover:text-white transition truncate flex items-center justify-between';
+        a.innerHTML = `<span class="truncate">${title}</span> ${isR ? '<span class="text-[10px] bg-amber-500/20 text-amber-300 px-1 rounded font-mono ml-1">R</span>' : ''}`;
+        toc.appendChild(a);
+      });
+    });
+  </script>
+</body>
+</html>

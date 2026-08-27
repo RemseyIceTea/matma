@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1. Liczby rzeczywiste &bull; Matematyka ZSE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ],
+      throwOnError: false
+    });"></script>
+  <style>
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3 w-full md:w-auto justify-between">
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div>
+            <span class="text-sm font-bold text-white tracking-wide block">Baza Zadań Maturalnych</span>
+            <span class="text-[11px] text-slate-400 block -mt-0.5">mgr M. Kucharska, mgr A. Piłat</span>
+          </div>
+        </a>
+        <a href="index.html" class="md:hidden text-xs text-indigo-400 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700">
+          <i class="fa-solid fa-house"></i> Home
+        </a>
+      </div>
+
+      <nav class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 text-xs">
+        <a href="index.html" class="px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition hidden lg:inline-flex items-center gap-1">
+          <i class="fa-solid fa-house"></i>
+        </a>
+        
+        <a href="1_liczby_rzeczywiste.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap bg-indigo-600 text-white font-semibold shadow-md shadow-indigo-500/20">
+          <i class="fa-solid fa-calculator"></i>
+          <span>1. Liczby rzeczywiste</span>
+        </a>
+        
+        <a href="2_zbiory_i_wzory.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>2. Zbiory i wzory</span>
+        </a>
+        
+        <a href="3_funkcje_i_wlasnosci.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>3. Funkcje i ich własności</span>
+        </a>
+        
+        <a href="4_funkcja_liniowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-bezier-curve"></i>
+          <span>4. Funkcja liniowa</span>
+        </a>
+        
+        <a href="5_funkcja_kwadratowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-superscript"></i>
+          <span>5. Funkcja kwadratowa</span>
+        </a>
+        
+        <a href="6_ciagi.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-arrow-trend-up"></i>
+          <span>6. Ciągi</span>
+        </a>
+        
+        <a href="7_wielomiany.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-cubes"></i>
+          <span>7. Wielomiany</span>
+        </a>
+        
+        <a href="8_funkcje_wymierne.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
+          <i class="fa-solid fa-divide"></i>
+          <span>8. Funkcje wymierne</span>
+        </a>
+        
+      </nav>
+    </div>
+  </header>
+
+  <section class="border-b border-slate-800 bg-gradient-to-b from-slate-900/60 to-slate-950 py-8 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-3">
+            <i class="fa-solid fa-book-open"></i> Dział 1 z 8
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">1. Liczby rzeczywiste</h1>
+          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-3xl">Zbiór liczb rzeczywistych, potęgi, pierwiastki, procenty, NWD/NWW oraz zaawansowane dowody podzielnościowe.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="toggle-all-btn" onclick="toggleAllSolutions()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition flex items-center gap-2 shadow">
+            <i class="fa-regular fa-eye"></i> <span id="toggle-all-text">Rozwiń wszystkie rozwiązania</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <aside class="hidden lg:block lg:col-span-1">
+      <div class="sticky top-24 bg-slate-900/60 border border-slate-800 rounded-2xl p-4 max-h-[calc(100vh-7rem)] overflow-y-auto">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
+          <span>Spis Zadań</span>
+          <span class="text-indigo-400 font-mono" id="task-badge-count"></span>
+        </h3>
+        <div class="space-y-1 text-xs" id="sidebar-toc">
+        </div>
+      </div>
+    </aside>
+
+    <div class="lg:col-span-3 space-y-8">
+      
+<div class="p-6 rounded-2xl bg-indigo-950/30 border border-indigo-800/40 shadow-xl space-y-4">
+  <div class="flex items-center gap-3 border-b border-indigo-800/40 pb-3">
+    <div class="w-8 h-8 rounded-lg bg-indigo-600/30 text-indigo-400 flex items-center justify-center font-bold">
+      <i class="fa-solid fa-brain"></i>
+    </div>
+    <h2 class="text-lg font-bold text-white tracking-wide">Kompendium Teoretyczne & Wzory Maturalne: Liczby Rzeczywiste</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-slate-300">
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-indigo-300 flex items-center gap-1.5"><i class="fa-solid fa-superscript"></i> Działania na potęgach</h3>
+      <p>$a^r \cdot a^s = a^{r+s}$, $\frac{a^r}{a^s} = a^{r-s}$, $(a^r)^s = a^{r \cdot s}$</p>
+      <p>$(a \cdot b)^r = a^r \cdot b^r$, $\left(\frac{a}{b}\right)^r = \frac{a^r}{b^r}$</p>
+      <p>$a^{-r} = \frac{1}{a^r}$, $a^{\frac{m}{n}} = \sqrt[n]{a^m} = (\sqrt[n]{a})^m$</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-indigo-300 flex items-center gap-1.5"><i class="fa-solid fa-square-root-variable"></i> Pierwiastki</h3>
+      <p>$\sqrt[n]{a \cdot b} = \sqrt[n]{a} \cdot \sqrt[n]{b}$ dla $a, b \ge 0$</p>
+      <p>$\sqrt[n]{\frac{a}{b}} = \frac{\sqrt[n]{a}}{\sqrt[n]{b}}$ ($b > 0$)</p>
+      <p>Dla $n$ nieparzystego: $\sqrt[n]{-a} = -\sqrt[n]{a}$</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-indigo-300 flex items-center gap-1.5"><i class="fa-solid fa-percent"></i> Procenty i promile</h3>
+      <p>Punkty procentowe (p.p.): różnica arytmetyczna stóp proc.</p>
+      <p>Wzrost procentowy: $\frac{W_k - W_p}{W_p} \cdot 100\%$</p>
+      <p>Kapitalizacja (procent składany): $K_n = K_0 (1 + \frac{p}{100})^n$</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-indigo-300 flex items-center gap-1.5"><i class="fa-solid fa-hashtag"></i> NWD i NWW</h3>
+      <p>$NWD(a, b) \cdot NWW(a, b) = a \cdot b$</p>
+      <p>NWD: iloczyn wspólnych czynników w najniższej potędze.</p>
+      <p>NWW: iloczyn wszystkich czynników w najwyższej potędze.</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-indigo-300 flex items-center gap-1.5"><i class="fa-solid fa-infinity"></i> Ułamki okresowe</h3>
+      <p>$0,(a) = \frac{a}{9}$, $0,(ab) = \frac{ab}{99}$</p>
+      <p>$0,a(b) = \frac{ab - a}{90}$</p>
+      <p>Zawsze warto sprawdzić metodę równania: $10^k x - x$.</p>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+      <h3 class="font-semibold text-indigo-300 flex items-center gap-1.5"><i class="fa-solid fa-shield-halved"></i> Teoria podzielności</h3>
+      <p>Iloczyn $k$ kolejnych liczb jest podzielny przez $k!$.</p>
+      <p>Postacie liczb parzystych ($2k$) i nieparzystych ($2k+1$).</p>
+      <p>Arytmetyka reszt (modulo): $a = mq + r$.</p>
+    </div>
+  </div>
+</div>
+
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-slate-900/40 border border-slate-800">
+        <div class="relative w-full sm:w-72">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+          <input type="text" id="search-input" onkeyup="filterTasks()" placeholder="Szukaj zadania..."
+            class="w-full pl-9 pr-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition">
+        </div>
+        <div class="flex items-center gap-2 text-xs flex-wrap w-full sm:w-auto">
+          <button onclick="setFilter('all', event)" class="filter-btn active px-3 py-1 rounded-md bg-indigo-600 text-white font-medium">Wszystkie</button>
+          <button onclick="setFilter('podstawa', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Podstawa</button>
+          <button onclick="setFilter('rozszerzenie', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Rozszerzenie (R)</button>
+        </div>
+      </div>
+
+      <div class="space-y-6" id="tasks-wrapper">
+        
+    <article id="zad-1" data-title="1. Przedstawianie liczby 0 w różnych postaciach" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            1
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Przedstawianie liczby 0 w różnych postaciach</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Przedstaw liczbę 0 w postaci:<br>
+    <strong>a)</strong> ilorazu dwóch liczb wymiernych,<br>
+    <strong>b)</strong> różnicy dwóch pierwiastków różnych stopni,<br>
+    <strong>c)</strong> iloczynu dwóch potęg o różnych podstawach.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Liczba wymierna to iloraz $\frac{p}{q}$ ($q \neq 0$). Pierwiastki różnych stopni mogą mieć tę samą wartość 0 lub 1.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-1')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-1" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-1" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>a)</strong> $0 = \frac{0}{1}$ (zarówno 0 jak i 1 są liczbami wymiernymi, mianownik $\neq 0$).</p>
+    <p><strong>b)</strong> $\sqrt{1} - \sqrt[3]{1} = 1 - 1 = 0$ (lub $\sqrt{0} - \sqrt[3]{0} = 0$).</p>
+    <p><strong>c)</strong> $0^2 \cdot 5^3 = 0 \cdot 125 = 0$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            a) $\frac{0}{1}$; &emsp; b) $\sqrt{1} - \sqrt[3]{1} = 0$; &emsp; c) $0^2 \cdot 5^3 = 0$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-2" data-title="2. Wartość wyrażenia z ułamkami piętrowymi" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            2
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wartość wyrażenia z ułamkami piętrowymi</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie zamknięte (ABCD)</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Wartość wyrażenia $2021 : \left(1 - \frac{1}{2022}\right) - \left(1 - \frac{2022}{2021}\right) : \frac{1}{2021}$ jest równa:<br>
+    <strong>A.</strong> 0 &emsp; <strong>B.</strong> 1 &emsp; <strong>C.</strong> 2021 &emsp; <strong>D.</strong> 2023
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Oblicz kolejno wartości nawiasów, a dzielenie zamień na mnożenie przez odwrotność.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-2')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-2" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-2" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p>1) $1 - \frac{1}{2022} = \frac{2021}{2022} \implies 2021 : \frac{2021}{2022} = 2021 \cdot \frac{2022}{2021} = 2022$.</p>
+    <p>2) $1 - \frac{2022}{2021} = -\frac{1}{2021} \implies \left(-\frac{1}{2021}\right) : \frac{1}{2021} = -1$.</p>
+    <p>3) Różnica: $2022 - (-1) = 2022 + 1 = 2023$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            Odpowiedź: <strong>D (2023)</strong>
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-2ab" data-title="2. A i B. Gęstość liczb wymiernych i szacowanie ułamka" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            2. A i B
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Gęstość liczb wymiernych i szacowanie ułamka</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>A)</strong> Podaj przykłady trzech liczb wymiernych $m, k, l$ spełniających: $\frac{1}{4} < m < k < l < \frac{8}{25}$.<br>
+    <strong>B)</strong> Wyznacz ułamek o mianowniku 250, który jest większy od $0,(8)$ i mniejszy od $\frac{23}{25}$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        $\frac{1}{4} = 0,25$; $\frac{8}{25} = 0,32$. W punkcie B pamiętaj: $0,(8) = \frac{8}{9}$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-2ab')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-2ab" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-2ab" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>A)</strong> W przedziale $(0,25; 0,32)$ leżą np. $m = 0,26 = \frac{13}{50}$, $k = 0,27 = \frac{27}{100}$, $l = 0,28 = \frac{7}{25}$.</p>
+    <p><strong>B)</strong> $\frac{8}{9} < \frac{x}{250} < \frac{23}{25} \iff \frac{2000}{9} < x < 230 \iff 222,22 < x < 230$.<br>
+    Całkowite $x \in \{223, 224, 225, 226, 227, 228, 229\}$. Przykładowy ułamek: $\frac{225}{250} = \frac{9}{10}$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            A) np. 0,26; 0,27; 0,28; &emsp; B) np. $\frac{225}{250} = \frac{9}{10}$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-3" data-title="3. Działania na ułamkach okresowych" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            3
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Działania na ułamkach okresowych</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Oblicz:<br>
+    <strong>a)</strong> $3 + 2,(9)$ &emsp; <strong>b)</strong> $2 + 3,(4)$ &emsp; <strong>c)</strong> $6 - 2,(7)$<br>
+    <strong>d)</strong> $2 \cdot 0,(1) + 0,(7)$ &emsp; <strong>e)</strong> $1,(09) + 0,(90)$<br>
+    <strong>f)</strong> Zamień liczbę $1,24(36)$ na ułamek zwykły.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        $2,(9) = 3$. Dla okresu wielocyfrowego stosujemy metodę układu równań z potęgami 10.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-3')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-3" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-3" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>a)</strong> $3 + 3 = 6$.</p>
+    <p><strong>b)</strong> $2 + 3\frac{4}{9} = 5\frac{4}{9} = \frac{49}{9}$.</p>
+    <p><strong>c)</strong> $6 - 2\frac{7}{9} = 3\frac{2}{9} = \frac{29}{9}$.</p>
+    <p><strong>d)</strong> $2 \cdot \frac{1}{9} + \frac{7}{9} = \frac{9}{9} = 1$.</p>
+    <p><strong>e)</strong> $1\frac{9}{99} + \frac{90}{99} = 1\frac{99}{99} = 2$.</p>
+    <p><strong>f)</strong> $10000x - 100x = 12436 - 124 \implies 9900x = 12312 \implies x = \frac{12312}{9900} = \frac{342}{275} = 1\frac{67}{275}$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            a) 6; &nbsp; b) $\frac{49}{9}$; &nbsp; c) $\frac{29}{9}$; &nbsp; d) 1; &nbsp; e) 2; &nbsp; f) $\frac{342}{275} = 1\frac{67}{275}$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-4" data-title="4 i 4. A. NWD i NWW oraz tożsamość NWW · NWD = a · b" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            4 i 4. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">NWD i NWW oraz tożsamość NWW · NWD = a · b</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte / Dowód</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Niech $a = 2 \cdot 3 \cdot 5^2 \cdot 11^5$ i $b = 4 \cdot 3^3 \cdot 5 \cdot 7 \cdot 11^4$.<br>
+    <strong>a)</strong> Wyznacz $NWW(a, b)$ i $NWD(a, b)$.<br>
+    <strong>b)</strong> Oblicz $\frac{NWW(a, b)}{NWD(a, b)}$.<br>
+    <strong>4. A)</strong> Wykaż, że $NWW(a, b) \cdot NWD(a, b) = a \cdot b$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Zapisz $b = 2^2 \cdot 3^3 \cdot 5^1 \cdot 7^1 \cdot 11^4$. NWD bierze min wykładników, NWW bierze max.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-4')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-4" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-4" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>a)</strong> $NWD(a, b) = 2^1 \cdot 3^1 \cdot 5^1 \cdot 11^4 = 30 \cdot 14641 = 439\,230$.<br>
+    $NWW(a, b) = 2^2 \cdot 3^3 \cdot 5^2 \cdot 7^1 \cdot 11^5 = 18\,900 \cdot 161\,051 = 3\,043\,863\,900$.</p>
+    <p><strong>b)</strong> $\frac{NWW}{NWD} = 2^{2-1} \cdot 3^{3-1} \cdot 5^{2-1} \cdot 7^1 \cdot 11^{5-4} = 2 \cdot 9 \cdot 5 \cdot 7 \cdot 11 = 6930$.</p>
+    <p><strong>4. A)</strong> Dla każdego czynnika pierwszego: $\min(\alpha, \beta) + \max(\alpha, \beta) = \alpha + \beta$. Wykładniki w iloczynie $NWD \cdot NWW$ sumują się do wykładników w $a \cdot b$, c.k.d.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            a) $NWD = 439\,230$, $NWW = 3\,043\,863\,900$; &nbsp; b) $6930$; &nbsp; 4. A) Udowodniono.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-5" data-title="5. Obliczanie liczby ze znajomości NWD i NWW" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            5
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Obliczanie liczby ze znajomości NWD i NWW</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        O liczbie $x$ wiadomo, że $NWD(6, x) = 3$ oraz $NWW(6, x) = 90$. Oblicz $x$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Zastosuj $a \cdot b = NWD(a, b) \cdot NWW(a, b)$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-5')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-5" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-5" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p>$6 \cdot x = 3 \cdot 90 = 270 \implies x = \frac{270}{6} = 45$.<br>
+    Sprawdzenie: $6 = 2 \cdot 3$, $45 = 3^2 \cdot 5$. $NWD(6, 45) = 3$, $NWW(6, 45) = 2 \cdot 9 \cdot 5 = 90$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            $$x = 45$$
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-6" data-title="6. Prawda/Fałsz: Potęgi i liczba odwrotna" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            6
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Prawda/Fałsz: Potęgi i liczba odwrotna</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie zamknięte (P/F)</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Oceń prawdziwość zdań:<br>
+    <strong>1.</strong> Liczba $3^{33} + 3^{33} + 3^{33}$ jest równa $9^{17}$. &emsp; <strong>[P / F]</strong><br>
+    <strong>2.</strong> Odwrotnością liczby $2 + \sqrt{5}$ jest liczba $2 - \sqrt{5}$. &emsp; <strong>[P / F]</strong>
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        $3 \cdot 3^{33} = 3^{34}$. Odwrotność to $\frac{1}{2+\sqrt{5}} = \sqrt{5}-2 \neq 2-\sqrt{5}$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-6')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-6" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-6" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p>1) $3 \cdot 3^{33} = 3^{34} = (3^2)^{17} = 9^{17}$ $\implies$ <strong>PRAWDA (P)</strong>.</p>
+    <p>2) $\frac{1}{2+\sqrt{5}} = \frac{2-\sqrt{5}}{4-5} = \frac{2-\sqrt{5}}{-1} = \sqrt{5}-2$. Liczba $2-\sqrt{5}$ to jej liczba przeciwna, więc zdanie jest <strong>FAŁSZYWE (F)</strong>.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            1: <strong>P</strong>; &emsp; 2: <strong>F</strong>
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-7" data-title="7 i 7. A. Działania na potęgach wymiernych" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            7 i 7. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Działania na potęgach wymiernych</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>7.</strong> Przedstaw w postaci potęgi liczby 3: $\frac{27^{665} \cdot \sqrt[3]{3^{-92}}}{\left(\frac{1}{3}\right)^{\frac{152}{3}}}$.<br>
+    <strong>7. A)</strong> Przedstaw w postaci nieskracalnego ułamka zwykłego: $\frac{4^{-1} - 3 \cdot \left(\frac{2}{3}\right)^{-2}}{5 - \left(\frac{1}{2}\right)^{-1}}$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Sprowadź do wspólnej podstawy 3. W 7.A: $(\frac{2}{3})^{-2} = \frac{9}{4}$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-7')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-7" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-7" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>7:</strong> Licznik: $(3^3)^{665} \cdot 3^{-\frac{92}{3}} = 3^{1995 - \frac{92}{3}}$. Mianownik: $3^{-\frac{152}{3}}$.<br>
+    Wynik: $3^{1995 - \frac{92}{3} + \frac{152}{3}} = 3^{1995 + \frac{60}{3}} = 3^{1995 + 20} = 3^{2015}$.</p>
+    <p><strong>7. A:</strong> Licznik: $\frac{1}{4} - 3 \cdot \frac{9}{4} = \frac{1-27}{4} = -\frac{26}{4} = -\frac{13}{2}$.<br>
+    Mianownik: $5 - 2 = 3$. Całość: $\frac{-13/2}{3} = -\frac{13}{6} = -2\frac{1}{6}$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            7: $$3^{2015}$$; &emsp; 7. A: $$-\frac{13}{6} = -2\frac{1}{6}$$
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-8" data-title="8. Pierwiastki i proste równania pierwiastkowe" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            8
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Pierwiastki i proste równania pierwiastkowe</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Oblicz:<br>
+    a) $\sqrt{-2 \sqrt[3]{-8}}$ &emsp; b) $\left(\left(\sqrt[5]{\sqrt[3]{3}}\right)^3\right)^5$ &emsp; c) $\frac{\sqrt[3]{-60} \cdot \sqrt[3]{50}}{\sqrt[3]{4} \cdot \sqrt[3]{6}}$<br>
+    d) Rozwiąż: $\sqrt{x} - \sqrt{8} = \sqrt{32}$ &emsp; e) Rozwiąż: $\frac{1}{x} = \sqrt[3]{0,064}$
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        $\sqrt[3]{-8} = -2$, $\sqrt{32} = 4\sqrt{2}$, $\sqrt[3]{0,064} = 0,4 = \frac{2}{5}$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-8')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-8" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-8" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p>a) $\sqrt{-2 \cdot (-2)} = \sqrt{4} = 2$.</p>
+    <p>b) $3^{\frac{1}{15} \cdot 3 \cdot 5} = 3^1 = 3$.</p>
+    <p>c) $\sqrt[3]{\frac{-3000}{24}} = \sqrt[3]{-125} = -5$.</p>
+    <p>d) $\sqrt{x} - 2\sqrt{2} = 4\sqrt{2} \implies \sqrt{x} = 6\sqrt{2} \implies x = 72$.</p>
+    <p>e) $\frac{1}{x} = 0,4 = \frac{2}{5} \implies x = 2,5 = \frac{5}{2}$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            a) 2; &emsp; b) 3; &emsp; c) -5; &emsp; d) $x = 72$; &emsp; e) $x = 2,5$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-9" data-title="9, 9. A, 9. B. Własności pierwiastków i redukcja wyrażeń" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            9, 9. A, 9. B
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Własności pierwiastków i redukcja wyrażeń</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie mieszane</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>9.</strong> Która równość jest prawdziwa?<br>
+    A. $(\sqrt{7}+\sqrt{5})^3 = \sqrt{7}^3+\sqrt{5}^3$ &emsp; B. $\sqrt{\sqrt{144}+\sqrt{16}} = 2^{\frac{4}{2}}$<br>
+    C. $(\sqrt{2\frac{1}{4}})^3 = 2^{\frac{3}{2}}+(\frac{1}{2})^3$ &emsp; D. $(\sqrt[3]{64})^{\frac{1}{8}} = 8^3$<br><br>
+    <strong>9. A)</strong> Oblicz $\frac{a \cdot b}{\sqrt{a}+\sqrt{b}} : \frac{\sqrt{a}-\sqrt{b}}{a-b}$ dla $a = \sqrt{5}-2$, $b = \sqrt{5}+2$.<br>
+    <strong>9. B)</strong> Oblicz $\frac{a}{b} + \frac{b}{a}$ wiedząc, że $a\sqrt{2}+b\sqrt{3}=0$ ($a,b \neq 0$).
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        W 9.A: dzielenie ułamków prowadzi do iloczynu $a \cdot b$. W 9.B: $\frac{a}{b} = -\frac{\sqrt{3}}{\sqrt{2}}$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-9')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-9" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-9" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>9:</strong> W opcji B: $L = \sqrt{12+4} = 4$, $P = 2^2 = 4$. Odpowiedź: <strong>B</strong>.</p>
+    <p><strong>9. A:</strong> $\frac{ab}{\sqrt{a}+\sqrt{b}} \cdot \frac{a-b}{\sqrt{a}-\sqrt{b}} = \frac{ab(a-b)}{a-b} = ab = (\sqrt{5}-2)(\sqrt{5}+2) = 5-4 = 1$.</p>
+    <p><strong>9. B:</strong> $\frac{a}{b} = -\frac{\sqrt{3}}{\sqrt{2}} = -\frac{\sqrt{6}}{2}$. Wtedy $\frac{b}{a} = -\frac{\sqrt{6}}{3}$. Suma: $-\frac{\sqrt{6}}{2} - \frac{\sqrt{6}}{3} = -\frac{5\sqrt{6}}{6}$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            9: <strong>B</strong>; &emsp; 9. A: <strong>1</strong>; &emsp; 9. B: <strong>$-\frac{5\sqrt{6}}{6}$</strong>
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-10" data-title="10 i 10. A. Wahadło fizyczne oraz porównywanie potęg" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            10 i 10. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wahadło fizyczne oraz porównywanie potęg</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>10.</strong> Okres drgań wahadła: $T = 2\pi \sqrt{\frac{l}{g}}$. Dla $g_Z = 9,81\text{ m/s}^2$ i $g_K = 1,62\text{ m/s}^2$ oblicz $\frac{T_K}{T_Z}$ z dokładnością do 0,01.<br>
+    <strong>10. A)</strong> Uzasadnij, że $x < y$, gdy $x = \left(\frac{\sqrt{3}}{2}\right)^{-4}$ oraz $y = \sqrt{2} \cdot \sqrt[3]{2} \cdot \sqrt[6]{2}$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        $\frac{T_K}{T_Z} = \sqrt{\frac{g_Z}{g_K}}$. Dla 10.A sprowadź $y$ do potęgi dwójki: $\frac{1}{2}+\frac{1}{3}+\frac{1}{6}=1$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-10')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-10" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-10" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>10:</strong> $\frac{T_K}{T_Z} = \sqrt{\frac{9,81}{1,62}} = \sqrt{6,0555...} \approx 2,46$.</p>
+    <p><strong>10. A:</strong> $x = (\frac{2}{\sqrt{3}})^4 = \frac{16}{9} \approx 1,78$.<br>
+    $y = 2^{\frac{3+2+1}{6}} = 2^1 = 2$.<br>
+    Ponieważ $\frac{16}{9} < 2$ (gdyż $16 < 18$), to $x < y$, c.k.d.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            10: $\frac{T_K}{T_Z} \approx 2,46$; &emsp; 10. A: $x = \frac{16}{9} < 2 = y$ (uzasadniono).
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-11" data-title="11 i 11. A. Notacja wykładnicza i zmiana procentowa" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            11 i 11. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Notacja wykładnicza i zmiana procentowa</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie mieszane</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>11.</strong> Oblicz $\frac{a}{b}$ dla $a = 3,6 \cdot 10^{-12}$, $b = 2,4 \cdot 10^{-20}$.<br>
+    A. $8,64 \cdot 10^{-32}$ &emsp; B. $1,5 \cdot 10^{-8}$ &emsp; C. $1,5 \cdot 10^8$ &emsp; D. $8,64 \cdot 10^{32}$<br><br>
+    <strong>11. A)</strong> O ile procent liczba $x$ jest większa od $y$, jeżeli $x = (\frac{3}{5}-\frac{2}{15}):(\frac{11}{20}-0,2)$ oraz $y = (0,5 \cdot 3)^{-2} \cdot 2^3 \cdot 3^{-1}$?
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Iloraz potęg o tej samej podstawie: $10^{-12 - (-20)} = 10^8$. Wzrost procentowy: $\frac{x-y}{y} \cdot 100\%$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-11')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-11" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-11" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>11:</strong> $\frac{3,6}{2,4} \cdot 10^{-12 - (-20)} = 1,5 \cdot 10^8$ $\implies$ Odp: <strong>C</strong>.</p>
+    <p><strong>11. A:</strong> $x = \frac{7}{15} : \frac{7}{20} = \frac{20}{15} = \frac{4}{3}$.<br>
+    $y = (\frac{3}{2})^{-2} \cdot 8 \cdot \frac{1}{3} = \frac{4}{9} \cdot \frac{8}{3} = \frac{32}{27}$.<br>
+    Względna różnica: $\frac{x}{y} - 1 = \frac{4/3}{32/27} - 1 = \frac{9}{8} - 1 = \frac{1}{8} = 12,5\%$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            11: <strong>C</strong>; &emsp; 11. A: <strong>o 12,5%</strong>
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-12" data-title="12. Porównywanie pensji w relacji do średniej krajowej" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            12
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Porównywanie pensji w relacji do średniej krajowej</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie zamknięte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        Pensja pana X jest o 50% wyższa od średniej krajowej, a pana Y o 40% niższa od średniej.<br>
+    <strong>12.1.</strong> Pensja pana X jest wyższa od pensji pana Y o:<br>
+    A. 40% pensji Y &emsp; B. 90% pensji Y &emsp; C. 150% pensji Y &emsp; D. 275% pensji Y<br>
+    <strong>12.2.</strong> Pensja pana Y jest niższa od pensji pana X o:<br>
+    E. 60% pensji X &emsp; F. 73% pensji X &emsp; G. 90% pensji X &emsp; H. 150% pensji X
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Niech $S$ to średnia krajowa. $X = 1,5S$, $Y = 0,6S$. Zwróć uwagę na mianownik!
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-12')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-12" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-12" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p>12.1: $\frac{X - Y}{Y} = \frac{1,5S - 0,6S}{0,6S} = \frac{0,9}{0,6} = 1,5 = 150\%$ $\implies$ <strong>C</strong>.</p>
+    <p>12.2: $\frac{X - Y}{X} = \frac{1,5S - 0,6S}{1,5S} = \frac{0,9}{1,5} = 0,6 = 60\%$ $\implies$ <strong>E</strong>.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            12.1: <strong>C (o 150%)</strong>; &emsp; 12.2: <strong>E (o 60%)</strong>
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-13-16" data-title="13 – 16. Zadania praktyczne: zmiana cen, VAT, siano, roztwory" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            13 – 16
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Zadania praktyczne: zmiana cen, VAT, siano, roztwory</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>13.</strong> Cenę obniżono o 60%, a potem podniesiono o $p\%$ do ceny wyjściowej. Oblicz $p$.<br>
+    <strong>14.</strong> Cena brutto kurtki: 307,50 zł (VAT 23%). Po obniżce VAT wynosi 51,75 zł. O ile spadła cena netto?<br>
+    <strong>15.</strong> Trawa zawiera 60% wody, siano 15% wody. Ile kg siana da 1 tona trawy? (do 1 kg)<br>
+    <strong>16.</strong> Ile kg wody dodać do 0,5 kg 30% roztworu soli, by otrzymać roztwór 5%?
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        W zadaniu 15 masa suchej masy (bezwodnej) wynosi $0,40 \cdot 1000 = 400$ kg i stanowi 85% masy siana.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-13-16')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-13-16" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-13-16" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>13:</strong> $0,40 C \cdot (1 + \frac{p}{100}) = C \implies 1 + \frac{p}{100} = 2,5 \implies p = 150\%$.</p>
+    <p><strong>14:</strong> $C_{netto1} = \frac{307,50}{1,23} = 250$ zł. Po obniżce: $C_{netto2} = \frac{51,75}{0,23} = 225$ zł. Spadek: $250 - 225 = 25$ zł.</p>
+    <p><strong>15:</strong> Sucha masa: $0,40 \cdot 1000\text{ kg} = 400\text{ kg}$. Masa siana: $M = \frac{400}{0,85} \approx 471\text{ kg}$.</p>
+    <p><strong>16:</strong> Masa soli: $0,5 \cdot 0,30 = 0,15\text{ kg}$. $\frac{0,15}{0,5+x} = 0,05 \implies 0,5+x = 3 \implies x = 2,5\text{ kg}$ wody.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            13: $p = 150\%$; &emsp; 14: o 25 zł; &emsp; 15: 471 kg; &emsp; 16: 2,5 kg wody.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-17-18" data-title="17 – 18. Zbiory kawy, wzrost populacji i procent składany" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            17 – 18
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Zbiory kawy, wzrost populacji i procent składany</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie mieszane</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>17.</strong> W 1995 r. światowe zbiory: 5489 tys. t (Wietnam 4%). W 2001 r.: 7300 tys. t (Wietnam 12,3%). O ile p.p. wzrósł udział Wietnamu? O ile procent wzrosły jego zbiory?<br>
+    <strong>17. A)</strong> Populacja wzrosła o 120% i wynosi 8910. Ile wynosiła przed wzrostem?<br>
+    <strong>18.</strong> Lokata 3% w skali roku przez 10 lat z kapitalizacją roczną wzrośnie o:<br>
+    A. 30% &emsp; B. 34% &emsp; C. 36% &emsp; D. 43%
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Punkty procentowe to zwykła różnica. Wzrost o 120% daje $2,2x$. Lokata: $(1,03)^{10} \approx 1,3439$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-17-18')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-17-18" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-17-18" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>17:</strong> Różnica udziałów: $12,3\% - 4,0\% = 8,3\text{ p.p.}$.<br>
+    Zbiory w Wietnamie: w 1995 r. $219,56$ tys. t; w 2001 r. $897,9$ tys. t.<br>
+    Wzrost proc.: $\frac{897,9 - 219,56}{219,56} \cdot 100\% \approx 309\%$.</p>
+    <p><strong>17. A:</strong> $2,2 x = 8910 \implies x = 4050$.</p>
+    <p><strong>18:</strong> $(1,03)^{10} \approx 1,3439 \implies$ wzrost o ok. $34\%$ $\implies$ <strong>B</strong>.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            17: 8,3 p.p. oraz ok. 309%; &emsp; 17. A: 4050 zwierząt; &emsp; 18: <strong>B (34%)</strong>
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-19-20" data-title="19 – 20. B. Dowodzenie podzielności: kolejne liczby i potęgi" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            19 – 20. B
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Dowodzenie podzielności: kolejne liczby i potęgi</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Dowód matematyczny</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>19.</strong> Wykaż, że suma trzech kolejnych liczb całkowitych jest podzielna przez 3.<br>
+    <strong>20. a)</strong> Wykaż, że iloczyn trzech kolejnych liczb naturalnych dzieli się przez 6.<br>
+    <strong>20. b)</strong> Wykaż, że iloczyn trzech kolejnych liczb parzystych dzieli się przez 48.<br>
+    <strong>20. A)</strong> Wykaż, że iloczyn czterech kolejnych liczb naturalnych dzieli się przez 24.<br>
+    <strong>20. B)</strong> Wykaż, że $4^{2017} + 4^{2018} + 4^{2019} + 4^{2020}$ jest podzielna przez 17.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Iloczyn $k$ kolejnych liczb naturalnych dzieli się przez $k!$. Dla potęg wyłącz wspólny czynnik przed nawias.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-19-20')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-19-20" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-19-20" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>19:</strong> $n + (n+1) + (n+2) = 3n+3 = 3(n+1)$, co jest wielokrotnością 3, c.k.d.</p>
+    <p><strong>20. a):</strong> Wśród 3 kolejnych liczb naturalnych jest co najmniej jedna parzysta i dokładnie jedna podzielna przez 3. Ponieważ $NWD(2,3)=1$, iloczyn dzieli się przez $2 \cdot 3 = 6$, c.k.d.</p>
+    <p><strong>20. b):</strong> $2k \cdot 2(k+1) \cdot 2(k+2) = 8k(k+1)(k+2)$. Iloczyn $k(k+1)(k+2)$ dzieli się przez 6, więc $8 \cdot 6m = 48m$, c.k.d.</p>
+    <p><strong>20. A:</strong> Wśród 4 kolejnych liczb są dwie parzyste (jedna podzielna przez 4, druga przez 2, co daje $4 \cdot 2 = 8$) oraz co najmniej jedna podzielna przez 3. Zatem iloczyn dzieli się przez $8 \cdot 3 = 24$, c.k.d.</p>
+    <p><strong>20. B:</strong> $4^{2017}(1 + 4 + 16 + 64) = 4^{2017} \cdot 85 = 4^{2017} \cdot 5 \cdot 17$. Czynnik 17 dowodzi podzielności, c.k.d.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            Wszystkie tezy udowodniono formalnie.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-21-22" data-title="21 – 22. A. Podzielność sum potęg przez liczby dwucyfrowe" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            21 – 22. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Podzielność sum potęg przez liczby dwucyfrowe</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Dowód matematyczny</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>21.</strong> Wykaż, że $3^n + 3^{n+1} + 3^{n+2}$ jest podzielna przez 13 dla $n \in \mathbb{N}$.<br>
+    <strong>22.</strong> Wykaż, że $m = 5^{97} + 5^{98} + 5^{99} + 5^{100}$ dzieli się przez dwie kolejne liczby naturalne.<br>
+    <strong>22. A)</strong> Wykaż, że liczba $m$ dzieli się przez dwie kolejne liczby naturalne <strong>dwucyfrowe</strong>.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Wyłącz $5^{97}$ przed nawias: w nawiasie otrzymasz $1+5+25+125 = 156$. Rozłóż $156$ na czynniki!
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-21-22')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-21-22" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-21-22" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>21:</strong> $3^n(1 + 3 + 9) = 3^n \cdot 13$. Ponieważ $n \in \mathbb{N}$, liczba dzieli się przez 13, c.k.d.</p>
+    <p><strong>22 i 22. A:</strong> $m = 5^{97}(1 + 5 + 25 + 125) = 5^{97} \cdot 156$.<br>
+    Zauważmy, że $156 = 12 \cdot 13$.<br>
+    Liczby 12 i 13 to dwie kolejne liczby naturalne (teza zadania 22).<br>
+    Ponadto liczby 12 i 13 są liczbami <strong>dwucyfrowymi</strong> ($12, 13 \in \langle 10, 99 \rangle$), co bezpośrednio dowodzi podpunktu 22. A, c.k.d.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            Udowodniono: $m = 5^{97} \cdot 12 \cdot 13$ (liczby 12 i 13 są kolejnymi liczbami naturalnymi dwucyfrowymi).
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-23" data-title="23 – 23. B. Własności podzielności i reszty wyrażeń algebraicznych" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            23 – 23. B
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Własności podzielności i reszty wyrażeń algebraicznych</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Dowód matematyczny</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>23.</strong> Wykaż, że dla $n \ge 1$ liczba $(2n+1)^2 - 1$ jest podzielna przez 8.<br>
+    <strong>23. A)</strong> Udowodnij, że dla $k \in \mathbb{N}_+$ liczba $k^4 + 2k^3 - k^2 - 2k$ dzieli się przez 12.<br>
+    <strong>23. B)</strong> Udowodnij, że dla $n \in \mathbb{N}$ liczba $20n^2 + 30n + 7$ przy dzieleniu przez 5 daje resztę 2.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        W 23.A rozłóż wielomian grupowaniem: $(k-1)k(k+1)(k+2)$ to 4 kolejne liczby całkowite.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-23')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-23" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-23" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>23:</strong> $(2n+1)^2 - 1 = 4n^2 + 4n = 4n(n+1)$. Iloczyn dwóch kolejnych liczb $n(n+1)$ jest parzysty ($= 2m$). Zatem $4 \cdot 2m = 8m$, c.k.d.</p>
+    <p><strong>23. A:</strong> $k(k^3+2k^2-k-2) = k[k^2(k+2)-(k+2)] = (k-1)k(k+1)(k+2)$. Iloczyn 4 kolejnych liczb dzieli się przez 24, a więc w szczególności przez 12, c.k.d.</p>
+    <p><strong>23. B:</strong> $20n^2 + 30n + 7 = 5(4n^2 + 6n + 1) + 2$. Dla $n \in \mathbb{N}$ wartość w nawiasie jest całkowita, więc reszta wynosi 2, c.k.d.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            Wszystkie tezy udowodniono formalnie.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-24" data-title="24 – 24. E. Teoria liczb: reszty, palindromy, podzielność przez 36 i 25, repjedynki" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            24 – 24. E
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Teoria liczb: reszty, palindromy, podzielność przez 36 i 25, repjedynki</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Dowód matematyczny (R)</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>24.</strong> Udowodnij, że jeśli $k \equiv 2 \pmod 7$, to reszta z dzielenia $3k^2$ przez 7 wynosi 5.<br>
+    <strong>24. A)</strong> Udowodnij, że każda czterocyfrowa liczba palindromiczna jest podzielna przez 11.<br>
+    <strong>24. B)</strong> Wykaż, że $S = 2^0 + 2^1 + \dots + 2^{2023}$ dzieli się przez 3, ale nie przez 6.<br>
+    <strong>24. C)</strong> Udowodnij, że suma sześcianów trzech kolejnych liczb całkowitych niepodzielnych przez 4 dzieli się przez 36.<br>
+    <strong>24. D)</strong> Niech $2a^2+a = 3b^2+b$ ($a, b \in \mathbb{Z}$). Wykaż, że jeśli $5 \mid (a-b)$, to $25 \mid (a-b)$.<br>
+    <strong>24. E)</strong> Wykaż, że jeśli repjedynka $a = \underbrace{11\dots 1}_{n}$ ($n \ge 4$) jest pierwsza, to $n$ też jest liczbą pierwszą.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Dla 24.C podstaw $u=4m+2$ jako liczbę środkową. Dla 24.D: $(a-b)[2(a+b)+1] = b^2$. Dla 24.E: dowód nie wprost przez faktoryzację blokową.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-24')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-24" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-24" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>24:</strong> $k = 7m+2 \implies 3k^2 = 3(49m^2+28m+4) = 7(21m^2+12m+1) + 5$, c.k.d.</p>
+    <p><strong>24. A:</strong> $\overline{abba} = 1001a + 110b = 11(91a + 10b)$, co jest wielokrotnością 11, c.k.d.</p>
+    <p><strong>24. B:</strong> Grupujemy w pary: $S = (1+2) + 2^2(1+2) + \dots = 3(1 + 2^2 + \dots)$, więc $3 \mid S$. Składnik $2^0=1$ jest nieparzysty, a pozostałe parzyste, więc suma jest liczbą nieparzystą ($2 \nmid S$), stąd $6 \nmid S$, c.k.d.</p>
+    <p><strong>24. C:</strong> Reszty modulo 4 to 1, 2, 3. Liczby to $u-1, u, u+1$ dla $u = 4m+2$. Suma sześcianów: $3u(u^2+2) = 6(2m+1) \cdot 2(8m^2+8m+3) = 12(2m+1)(8m^2+8m+3)$. Modulo 3: $(2m+1)(2m^2+2m) = 2m(m+1)(2m+1)$, co zawsze dzieli się przez 3 dla każdego $m \in \mathbb{Z}$. Zatem $S = 12 \cdot 3k = 36k$, c.k.d.</p>
+    <p><strong>24. D:</strong> Równość przekształcamy do $(a-b)[2(a+b)+1] = b^2$. Skoro $5 \mid (a-b)$, to $5 \mid b^2 \implies 5 \mid b$, a stąd również $5 \mid a$ oraz $5 \mid (a+b)$. Wtedy $2(a+b)+1 \equiv 1 \pmod 5$, więc nie ma dzielnika 5. Ponieważ $5 \mid b$, to $25 \mid b^2$, a stąd $25 \mid (a-b)$, c.k.d.</p>
+    <p><strong>24. E:</strong> Jeśli $n = p \cdot q$ ($p, q > 1$), to $a = \underbrace{11\dots 1}_{q} \cdot (10^{q(p-1)} + \dots + 1)$. Oba czynniki są większe od 1, więc $a$ jest złożona. Zatem jeśli $a$ jest pierwsza, to $n$ musi być liczbą pierwszą, c.k.d.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            Wszystkie tezy zaawansowane udowodniono formalnie.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+      </div>
+
+      <div class="pt-8 border-t border-slate-800 flex items-center justify-between gap-4">
+        <div></div>
+        <a href="2_zbiory_i_wzory.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition shadow-lg shadow-indigo-600/20">
+        Następny: Zbiory i wzory <i class="fa-solid fa-arrow-right"></i>
+    </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-900/40 py-6 text-center text-xs text-slate-500 mt-16">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; 2026 Baza Zadań Maturalnych &bull; Przygotowano w J:\zadania</p>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="hover:text-slate-300">Strona główna</a>
+        <a href="#" class="hover:text-indigo-400"><i class="fa-solid fa-arrow-up"></i> W górę</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSolution(id) {
+      const content = document.getElementById('solution-' + id);
+      const icon = document.getElementById('icon-' + id);
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        if (icon) icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        content.classList.add('hidden');
+        if (icon) icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    }
+
+    let allExpanded = false;
+    function toggleAllSolutions() {
+      allExpanded = !allExpanded;
+      const solutions = document.querySelectorAll('.task-solution');
+      const icons = document.querySelectorAll('.solution-icon');
+      solutions.forEach(s => {
+        if (allExpanded) s.classList.remove('hidden');
+        else s.classList.add('hidden');
+      });
+      icons.forEach(ic => {
+        if (allExpanded) ic.classList.replace('fa-chevron-down', 'fa-chevron-up');
+        else ic.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      });
+      document.getElementById('toggle-all-text').innerText = allExpanded ? 'Zwiń wszystkie rozwiązania' : 'Rozwiń wszystkie rozwiązania';
+    }
+
+    let currentFilter = 'all';
+    function filterTasks() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const cards = document.querySelectorAll('.task-card');
+      cards.forEach(c => {
+        const text = c.innerText.toLowerCase();
+        const matchesQuery = text.includes(query);
+        const matchesType = currentFilter === 'all' || c.getAttribute('data-level') === currentFilter;
+        if (matchesQuery && matchesType) {
+          c.classList.remove('hidden');
+        } else {
+          c.classList.add('hidden');
+        }
+      });
+    }
+
+    function setFilter(type, ev) {
+      currentFilter = type;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-600', 'text-white', 'font-medium');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+      if (ev && ev.target) {
+        ev.target.classList.add('bg-indigo-600', 'text-white', 'font-medium');
+        ev.target.classList.remove('bg-slate-800', 'text-slate-300');
+      }
+      filterTasks();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const toc = document.getElementById('sidebar-toc');
+      const cards = document.querySelectorAll('.task-card');
+      const badge = document.getElementById('task-badge-count');
+      if (badge) badge.innerText = cards.length + ' zadań';
+      
+      cards.forEach(card => {
+        const id = card.id;
+        const title = card.getAttribute('data-title') || id;
+        const isR = card.getAttribute('data-level') === 'rozszerzenie';
+        const a = document.createElement('a');
+        a.href = '#' + id;
+        a.className = 'block px-2.5 py-1.5 rounded hover:bg-slate-800 text-slate-300 hover:text-white transition truncate flex items-center justify-between';
+        a.innerHTML = `<span class="truncate">${title}</span> ${isR ? '<span class="text-[10px] bg-amber-500/20 text-amber-300 px-1 rounded font-mono ml-1">R</span>' : ''}`;
+        toc.appendChild(a);
+      });
+    });
+  </script>
+</body>
+</html>
