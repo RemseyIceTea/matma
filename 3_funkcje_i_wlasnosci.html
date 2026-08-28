@@ -610,7 +610,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        NWD(x, 4) to największy wspólny dzielnik liczb x oraz 4. W zadaniu 8 mianownik musi zerować się dla x = 2.
+        NWD(x, 4) to największy wspólny dzielnik liczb x oraz 4. Dziedzina to zbiór 8 pojedynczych liczb, więc wykres to 8 izolowanych punktów, a zbiór wartości to zbiór skończony, a NIE przedział.
       </div>
     </div>
     
@@ -630,8 +630,15 @@
     $\operatorname{NWD}(1, 4) = 1$, $\operatorname{NWD}(2, 4) = 2$, $\operatorname{NWD}(3, 4) = 1$, $\operatorname{NWD}(4, 4) = 4$,<br>
     $\operatorname{NWD}(5, 4) = 1$, $\operatorname{NWD}(6, 4) = 2$, $\operatorname{NWD}(7, 4) = 1$, $\operatorname{NWD}(8, 4) = 4$.<br>
     Wiersz wartości $f(x)$: $1, 2, 1, 4, 1, 2, 1, 4$.<br>
-    b) Wykres składa się z 8 izolowanych punktów w układzie współrzędnych: $(1, 1), (2, 2), (3, 1), (4, 4), (5, 1), (6, 2), (7, 1), (8, 4)$.<br>
-    c) Zbiór wartości funkcji $f$ to $ZW_f = \{1, 2, 4\}$. Funkcja $g(x) = f(x) + 3$ przesuwa wartości o 3 w górę: $\{1+3, 2+3, 4+3\} = \{4, 5, 7\}$.</p>
+    b) Wykres składa się wyłącznie z 8 izolowanych punktów (kropek) w układzie współrzędnych: $(1, 1), (2, 2), (3, 1), (4, 4), (5, 1), (6, 2), (7, 1), (8, 4)$. Punktów tych <strong>nie łączymy</strong> linią ciągłą!<br>
+    c) Wartości przyjmowane przez funkcję $f$ to wyłącznie liczby $1, 2$ oraz $4$, czyli $ZW_f = \{1, 2, 4\}$.<br>
+    Funkcja $g(x) = f(x) + 3$ zwiększa każdą z tych wartości o 3:<br>
+    - dla $f(x) = 1 \implies g(x) = 1 + 3 = 4$<br>
+    - dla $f(x) = 2 \implies g(x) = 2 + 3 = 5$<br>
+    - dla $f(x) = 4 \implies g(x) = 4 + 3 = 7$<br>
+    Funkcja $g$ przyjmuje zatem wyłącznie trzy liczby: 4, 5 oraz 7. Nigdy nie przyjmuje wartości pośrednich (np. $4{,}5$ ani nawet $6$). Zatem zbiór wartości to zbiór trójelementowy:
+    $$ZW_g = \{4, 5, 7\}$$
+    <em>(Uwaga: nie jest to przedział $\langle 4, 7 \rangle$, ponieważ funkcja nie przyjmuje wszystkich liczb rzeczywistych od 4 do 7, a jedynie trzy punkty!)</em></p>
     <p><strong>8:</strong> Dziedzina $D = \mathbb{R} \setminus \{2\}$ oznacza, że mianownik $2x + a$ jest równy zero dokładnie dla $x = 2$:<br>
     $$2(2) + a = 0 \implies 4 + a = 0 \implies a = -4$$
     Poprawna odpowiedź to <strong>D ($a = -4$)</strong>.</p>
@@ -648,6 +655,14 @@
         </div>
 
         
+    <div class="mt-4 p-3.5 rounded-xl bg-rose-950/30 border border-rose-800/40 text-xs text-rose-200 flex items-start gap-3">
+      <i class="fa-solid fa-triangle-exclamation text-rose-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-rose-300 block mb-0.5">Częsty błąd / Pułapka egzaminacyjna:</strong>
+        <strong>Klasyczna pułapka maturalna w zadaniu 7. c):</strong> Częstym błędem jest zapisanie zbioru wartości w postaci przedziału $\langle 4, 7 \rangle$. Pamiętaj: dziedzina $D = \{1, 2, 3, 4, 5, 6, 7, 8\}$ to zbiór 8 pojedynczych liczb, a nie przedział $\langle 1, 8 \rangle$! Wykres to 8 oddzielnych kropek. Funkcja $g$ osiąga tylko trzy wartości: $4, 5$ oraz $7$ (liczba $6$ ani ułamki nigdy nie są osiągane). Dlatego zbiór wartości to zbiór dyskretny $\{4, 5, 7\}$ w nawiasach klamrowych, a NIE przedział liczbowy!
+      </div>
+    </div>
+    
       </div>
     </article>
     
