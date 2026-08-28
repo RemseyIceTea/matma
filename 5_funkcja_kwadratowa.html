@@ -8,14 +8,32 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {
-      delimiters: [
-        {left: '$$', right: '$$', display: true},
-        {left: '$', right: '$', display: false}
-      ],
-      throwOnError: false
-    });"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script>
+    function renderMathOnPage() {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false,
+          macros: {
+            "\\degree": "^{\\circ}",
+            "°": "^{\\circ}",
+            "\\tg": "\\operatorname{tg}",
+            "\\ctg": "\\operatorname{ctg}",
+            "\\arctg": "\\operatorname{arctg}",
+            "\\arcctg": "\\operatorname{arcctg}",
+            "\\sphericalangle": "\\angle",
+            "\\measuredangle": "\\angle"
+          }
+        });
+      }
+    }
+    document.addEventListener("DOMContentLoaded", renderMathOnPage);
+    window.addEventListener("load", renderMathOnPage);
+  </script>
   <style>
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: #0f172a; }
@@ -160,8 +178,8 @@
     </div>
     <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
       <h3 class="font-semibold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-up-across-line"></i> Najmniejsza i największa wartość</h3>
-      <p>W przedziale $\langle lpha, \beta \rangle$:</p>
-      <p>1. Oblicz $p$. Jeśli $p \in \langle lpha, \beta \rangle$, oblicz $f(p)$.</p>
+      <p>W przedziale $\langle \alpha, \beta \rangle$:</p>
+      <p>1. Oblicz $p$. Jeśli $p \in \langle \alpha, \beta \rangle$, oblicz $f(p)$.</p>
       <p>2. Oblicz wartości na krańcach: $f(\alpha)$ i $f(\beta)$.</p>
       <p>3. Wybierz wartość najmniejszą i największą spośród obliczonych.</p>
     </div>
@@ -254,7 +272,7 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            a) $\{-5, 5\}$; &nbsp; b) $\{6\}$; &nbsp; c) $\{-1/8, 11/2\}$; &nbsp; d) $\emptyset$; &nbsp; e) $\{\pm 2, \pm \sqrt{6}\}; &nbsp; f) $\{1\pm\sqrt{2}, 1\pm\sqrt{3}\}$.
+            a) $\{-5, 5\}$; &nbsp; b) $\{6\}$; &nbsp; c) $\{-1/8, 11/2\}$; &nbsp; d) $\emptyset$; &nbsp; e) $\{\pm 2, \pm \sqrt{6}\}$; &nbsp; f) $\{1\pm\sqrt{2}, 1\pm\sqrt{3}\}$.
           </div>
         </div>
 

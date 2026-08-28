@@ -8,14 +8,32 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {
-      delimiters: [
-        {left: '$$', right: '$$', display: true},
-        {left: '$', right: '$', display: false}
-      ],
-      throwOnError: false
-    });"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script>
+    function renderMathOnPage() {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false,
+          macros: {
+            "\\degree": "^{\\circ}",
+            "°": "^{\\circ}",
+            "\\tg": "\\operatorname{tg}",
+            "\\ctg": "\\operatorname{ctg}",
+            "\\arctg": "\\operatorname{arctg}",
+            "\\arcctg": "\\operatorname{arcctg}",
+            "\\sphericalangle": "\\angle",
+            "\\measuredangle": "\\angle"
+          }
+        });
+      }
+    }
+    document.addEventListener("DOMContentLoaded", renderMathOnPage);
+    window.addEventListener("load", renderMathOnPage);
+  </script>
   <style>
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: #0f172a; }
@@ -99,7 +117,7 @@
             <i class="fa-solid fa-book-open"></i> Dział 3 z 8
           </div>
           <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">3. Funkcje i ich własności</h1>
-          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-3xl">Dziedzina, zbiór wartości, miejsca zerowe, odczytywanie własności z wykresu, przekształcenia wykresów, funkcje z wartością bezwzględną i model rozpadu promieniotwórczego.</p>
+          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-3xl">Dziedzina, zbiór wartości, miejsca zerowe, odczytywanie wykresów, przekształcenia geometryczne, modele wykładnicze oraz zagadnienia na poziomie rozszerzonym.</p>
         </div>
         <div class="flex items-center gap-3">
           <button id="toggle-all-btn" onclick="toggleAllSolutions()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition flex items-center gap-2 shadow">
@@ -124,49 +142,26 @@
 
     <div class="lg:col-span-3 space-y-8">
       
-<div class="p-6 rounded-2xl bg-emerald-950/30 border border-emerald-800/40 shadow-xl space-y-4">
-  <div class="flex items-center gap-3 border-b border-emerald-800/40 pb-3">
-    <div class="w-8 h-8 rounded-lg bg-emerald-600/30 text-emerald-400 flex items-center justify-center font-bold">
-      <i class="fa-solid fa-chart-line"></i>
-    </div>
-    <h2 class="text-lg font-bold text-white tracking-wide">Kompendium Teoretyczne: Funkcje i ich własności</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+    <h3 class="font-semibold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-compass"></i> Dziedzina i miejsca zerowe</h3>
+    <p class="text-xs text-slate-300">Wyrażenie pod pierwiastkiem st. parzystego $\ge 0$. Mianownik $\ne 0$.</p>
+    <p class="text-xs text-slate-400">Miejsce zerowe: $f(x_0) = 0$ przy warunku $x_0 \in D_f$.</p>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-slate-300">
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-compass"></i> Dziedzina funkcji ($D_f$)</h3>
-      <p>Mianownik nie może być zerem: $\frac{P(x)}{Q(x)} \implies Q(x) \neq 0$.</p>
-      <p>Pierwiastek parzystego stopnia: $\sqrt{W(x)} \implies W(x) \ge 0$.</p>
-      <p>Pierwiastek w mianowniku: $\frac{1}{\sqrt{W(x)}} \implies W(x) > 0$.</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-arrows-up-down-left-right"></i> Przekształcenia wykresów</h3>
-      <p>Przesunięcie o wektor $\vec{u}=[p, q]$: $y = f(x - p) + q$.</p>
-      <p>Symetria względem $OX$: $y = -f(x)$; względem $OY$: $y = f(-x)$.</p>
-      <p>Symetria względem $(0,0)$: $y = -f(-x)$.</p>
-      <p>Moduł: $y = |f(x)|$ (odbicie dołu nad oś $OX$).</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-arrow-trend-up"></i> Monotoniczność</h3>
-      <p>Rosnąca: $x_1 < x_2 \implies f(x_1) < f(x_2)$.</p>
-      <p>Malejąca: $x_1 < x_2 \implies f(x_1) > f(x_2)$.</p>
-      <p>Stała: $f(x_1) = f(x_2)$ dla każdego $x$.</p>
-      <p>Przedziały monotoniczności zawsze podajemy oddzielnie!</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-circle-notch"></i> Równania $f(x) = m$</h3>
-      <p>Liczba rozwiązań równania to liczba punktów przecięcia wykresu $y = f(x)$ z poziomą prostą $y = m$.</p>
-      <p>Punkty zwrotne (minima, maksima) wyznaczają granice przedziałów dla $m$.</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-repeat"></i> Funkcja okresowa</h3>
-      <p>$f(x + T) = f(x)$ dla każdego $x \in D_f$.</p>
-      <p>$T > 0$ to okres funkcji. Najmniejszy dodatni $T$ to okres podstawowy (zasadniczy).</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-code-merge"></i> Składanie funkcji</h3>
-      <p>$(f \circ g)(x) = f(g(x))$.</p>
-      <p>Dziedzina złożenia: $x \in D_g$ oraz $g(x) \in D_f$.</p>
-    </div>
+  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+    <h3 class="font-semibold text-sky-300 flex items-center gap-1.5"><i class="fa-solid fa-arrows-up-down-left-right"></i> Przekształcenia wykresów</h3>
+    <p class="text-xs text-slate-300">$y = f(x - p) + q$ &rarr; wektor $[p, q]$.</p>
+    <p class="text-xs text-slate-400">$y = -f(x)$ ($OX$), $y = f(-x)$ ($OY$), $y = -f(-x)$ ($(0,0)$).</p>
+  </div>
+  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+    <h3 class="font-semibold text-purple-300 flex items-center gap-1.5"><i class="fa-solid fa-wave-square"></i> Wartość bezwzględna</h3>
+    <p class="text-xs text-slate-300">$y = |f(x)|$: odbicie części leżącej pod osią $OX$ w górę.</p>
+    <p class="text-xs text-slate-400">$y = f(|x|)$: symetria części dla $x \ge 0$ na lewą stronę.</p>
+  </div>
+  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+    <h3 class="font-semibold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-atom"></i> Rozpad promieniotwórczy</h3>
+    <p class="text-xs text-slate-300">$N(t) = N_0 \left(\frac{1}{2}\right)^{\frac{t}{T}}$.</p>
+    <p class="text-xs text-slate-400">Po czasie $t = k \cdot T$ zostaje $\left(\frac{1}{2}\right)^k$ masy początkowej.</p>
   </div>
 </div>
 
@@ -202,11 +197,11 @@
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
         Wyznacz dziedzinę i miejsca zerowe funkcji:<br>
-    <strong>a)</strong> $f(x) = \frac{x^3 - 8}{x^2 + 2x + 4}$<br>
-    <strong>b)</strong> $f(x) = \frac{x}{\sqrt{x^2 + x - 6}}$<br>
-    <strong>c)</strong> $f(x) = \sqrt{2 - |x|}$<br>
-    <strong>d)</strong> $f(x) = \frac{9 - x^2}{3 + x}$ oraz sporządź wykres<br>
-    <strong>e)</strong> $f(x) = \frac{2x^2 + 4}{-x^2 + 4}$
+    a) $f(x) = \frac{x^3 - 8}{x^2 + 2x + 4}$<br>
+    b) $f(x) = \frac{x}{\sqrt{x^2 + x - 6}}$<br>
+    c) $f(x) = \sqrt{2 - |x|}$<br>
+    d) $f(x) = \frac{9 - x^2}{3 + x}$ oraz sporządź wykres,<br>
+    e) $f(x) = \frac{2x^2 + 4}{-x^2 + 4}$.
         
       </div>
 
@@ -215,7 +210,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Mianownik $\neq 0$, wyrażenie pod pierwiastkiem kwadratowym $\ge 0$ (w mianowniku $> 0$). Pamiętaj o uwzględnieniu dziedziny przy szukaniu miejsc zerowych!
+        Mianownik musi być różny od zera. Wyrażenie pod pierwiastkiem kwadratowym $\ge 0$ (w mianowniku $> 0$). Miejsce zerowe musi bezwzględnie należeć do dziedziny.
       </div>
     </div>
     
@@ -230,17 +225,17 @@
 
       <div id="solution-zad-3-1" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>a)</strong> Mianownik: $x^2+2x+4=0$, $\Delta = 4 - 16 = -12 < 0$, brak pierwiastków rzeczywistych, więc $D_f = \mathbb{R}$.<br>
-    Miejsca zerowe: $x^3 - 8 = 0 \iff (x-2)(x^2+2x+4) = 0 \iff x = 2 \in D_f$. Miejsce zerowe: $x = 2$.</p>
-    <p><strong>b)</strong> Mianownik pod pierwiastkiem musi być ściśle dodatni: $x^2 + x - 6 > 0 \iff (x+3)(x-2) > 0 \iff x \in (-\infty, -3) \cup (2, \infty) = D_f$.<br>
-    Licznik: $x = 0$. Jednakże $0 \notin D_f$, zatem funkcja <strong>nie ma miejsc zerowych</strong>!</p>
-    <p><strong>c)</strong> Wyrażenie pod pierwiastkiem: $2 - |x| \ge 0 \iff |x| \le 2 \iff D_f = \langle -2, 2 \rangle$.<br>
-    Miejsca zerowe: $2 - |x| = 0 \iff |x| = 2 \iff x = -2$ lub $x = 2$.</p>
-    <p><strong>d)</strong> Mianownik: $3 + x \neq 0 \iff x \neq -3$, więc $D_f = \mathbb{R} \setminus \{-3\}$.<br>
-    Wzór: $\frac{(3-x)(3+x)}{3+x} = 3 - x = -x + 3$ dla $x \neq -3$.<br>
-    Miejsca zerowe: $-x + 3 = 0 \implies x = 3 \in D_f$. Wykres to prosta $y = -x + 3$ z „dziurą” (otwartym punktem) w $(-3, 6)$.</p>
-    <p><strong>e)</strong> Mianownik: $-x^2 + 4 \neq 0 \iff x^2 \neq 4 \iff x \neq \pm 2$, czyli $D_f = \mathbb{R} \setminus \{-2, 2\}$.<br>
-    Licznik: $2x^2 + 4 = 0 \iff 2x^2 = -4$ (brak rozwiązań rzeczywistych), więc funkcja <strong>nie ma miejsc zerowych</strong>.</p>
+          <p><strong>a)</strong> Mianownik: $x^2 + 2x + 4 = 0 \implies \Delta = 4 - 16 = -12 < 0$, brak pierwiastków, więc $x^2+2x+4 > 0$ dla każdego $x \in \mathbb{R}$. Zatem $D = \mathbb{R}$.<br>
+    Miejsce zerowe: $x^3 - 8 = 0 \iff (x-2)(x^2+2x+4) = 0 \implies x = 2$.</p>
+    <p><strong>b)</strong> Wyrażenie pod pierwiastkiem w mianowniku musi być ściśle dodatnie: $x^2 + x - 6 > 0 \iff (x+3)(x-2) > 0 \implies D = (-\infty, -3) \cup (2, \infty)$.<br>
+    Licznik zeruje się dla $x = 0$. Jednak $0 \notin D$, zatem funkcja <strong>nie posiada miejsc zerowych</strong> ($x_0 \in \emptyset$).</p>
+    <p><strong>c)</strong> $2 - |x| \ge 0 \iff |x| \le 2 \implies D = \langle -2, 2 \rangle$.<br>
+    Miejsca zerowe: $2 - |x| = 0 \iff |x| = 2 \implies x = 2$ lub $x = -2$. Oba punkty należą do $D$.</p>
+    <p><strong>d)</strong> Mianownik: $3 + x \ne 0 \implies x \ne -3$, zatem $D = \mathbb{R} \setminus \{-3\}$.<br>
+    Wzór uproszczony: $f(x) = \frac{(3-x)(3+x)}{3+x} = 3 - x$ dla $x \ne -3$.<br>
+    Miejsce zerowe: $3 - x = 0 \implies x = 3 \in D$. Wykres to prosta $y = -x + 3$ z usuniętym punktem (dziurą) $(-3, 6)$.</p>
+    <p><strong>e)</strong> Mianownik: $-x^2 + 4 \ne 0 \iff x^2 \ne 4 \implies x \ne 2 \land x \ne -2$, zatem $D = \mathbb{R} \setminus \{-2, 2\}$.<br>
+    Licznik: $2x^2 + 4 = 0 \iff x^2 = -2$, co nie ma rozwiązań rzeczywistych. Brak miejsc zerowych.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -249,40 +244,49 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            a) $D = \mathbb{R}, x_0 = 2$; &nbsp; b) $D = (-\infty, -3) \cup (2, \infty)$, brak m. zerowych; &nbsp; c) $D = \langle -2, 2 \rangle, x_0 \in \{-2, 2\}$; &nbsp; d) $D = \mathbb{R} \setminus \{-3\}, x_0 = 3$; &nbsp; e) $D = \mathbb{R} \setminus \{-2, 2\}$, brak m. zerowych.
+            a) $D = \mathbb{R}$, $x_0 = 2$; &emsp; b) $D = (-\infty, -3) \cup (2, \infty)$, brak miejsc zerowych; &emsp; c) $D = \langle -2, 2 \rangle$, $x_0 \in \{-2, 2\}$; &emsp; d) $D = \mathbb{R} \setminus \{-3\}$, $x_0 = 3$; &emsp; e) $D = \mathbb{R} \setminus \{-2, 2\}$, brak miejsc zerowych.
           </div>
         </div>
 
         
+    <div class="mt-4 p-3.5 rounded-xl bg-rose-950/30 border border-rose-800/40 text-xs text-rose-200 flex items-start gap-3">
+      <i class="fa-solid fa-triangle-exclamation text-rose-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-rose-300 block mb-0.5">Częsty błąd / Pułapka egzaminacyjna:</strong>
+        W podpunkcie b) kandydat na miejsce zerowe $x = 0$ nie należy do dziedziny funkcji! Nigdy nie podawaj miejsc zerowych przed ustaleniem dziedziny.
+      </div>
+    </div>
+    
       </div>
     </article>
     
 
-    <article id="zad-3-2" data-title="2 (2.1 – 2.3). Odczytywanie własności funkcji z wykresu" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-3-2" data-title="2. Odczytywanie własności z wykresu funkcji" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            2 (2.1 – 2.3)
+            2
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Odczytywanie własności funkcji z wykresu</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Odczytywanie własności z wykresu funkcji</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie z wykresem</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie z wykresem / prawda-fałsz</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        Na rysunku w kartezjańskim układzie współrzędnych przedstawiono wykres funkcji $f$ określonej dla $x \in [-5, 4)$.<br>
+        Na rysunku w kartezjańskim układzie współrzędnych $(x, y)$ przedstawiono wykres funkcji $f$ określonej dla każdego $x \in [-5, 4)$. Na tym wykresie zaznaczono punkty o współrzędnych całkowitych.<br><br>
     <strong>2.1</strong> Zapisz zbiór wartości funkcji $f$.<br>
-    <strong>2.2</strong> Oceń prawdziwość stwierdzeń:<br>
-    1. Dla każdego argumentu $x \in (-4, -2)$ funkcja $f$ przyjmuje wartości ujemne. [P/F]<br>
-    2. Funkcja $f$ ma trzy miejsca zerowe. [P/F]<br>
-    <strong>2.3</strong> Wyznacz najmniejszą wartość funkcji w przedziale $\langle -4, 1 \rangle$.
+    <strong>2.2</strong> Oceń prawdziwość poniższych stwierdzeń (P/F):<br>
+    1. Dla każdego argumentu z przedziału $(-4, -2)$ funkcja $f$ przyjmuje wartości ujemne.<br>
+    2. Funkcja $f$ ma trzy miejsca zerowe.<br>
+    <strong>2.3</strong> Najmniejsza wartość funkcji $f$ w przedziale $[-4; 0]$ jest równa:<br>
+    A. $(-4)$ &emsp; B. $(-3)$ &emsp; C. $(-2)$ &emsp; D. $0$
         
     <div class="my-4 p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col items-center">
-      <img src="assets/img/3/p1_img2.png" alt="Rysunek do zadania 2 (2.1 – 2.3)" class="max-h-72 rounded-lg object-contain">
-      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 2 (2.1 – 2.3)</span>
+      <img src="assets/img/3/p1_img1.png" alt="Rysunek do zadania 2" class="max-h-72 rounded-lg object-contain">
+      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 2</span>
     </div>
     
       </div>
@@ -292,7 +296,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Analizuj punkty o współrzędnych całkowitych zaznaczone na wykresie: $(-5, 2)$, $(-4, 0)$, $(-3, -2)$, $(-2, 1)$, $(-1, 4)$, $(0, 0)$, $(1, -4)$, $(4, 0)$ (kółko otwarte).
+        Zwróć uwagę na przedział argumentów w podpunkcie 2.3: rozpatrujemy wyłącznie odcięte $x \in [-4, 0]$, a nie całą dziedzinę!
       </div>
     </div>
     
@@ -307,14 +311,12 @@
 
       <div id="solution-zad-3-2" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>2.1 Zbiór wartości:</strong><br>
-    Najmniejsza wartość na całym wykresie osiągana jest w punkcie $(1, -4)$ i wynosi $-4$. Największa w punkcie $(-1, 4)$ i wynosi $4$. Ponieważ wykres jest ciągły w przedziałach i osiąga wszystkie wartości pośrednie:
+          <p><strong>2.1:</strong> Wykres osiąga najniższą wartość $-4$ (w punkcie $(1, -4)$) oraz najwyższą wartość $4$ (w punkcie $(-1, 4)$). Ponieważ wszystkie wartości pośrednie są osiągane w sposób ciągły na odcinkach, zbiór wartości to:<br>
     $$ZW_f = \langle -4, 4 \rangle$$</p>
-    <p><strong>2.2 Prawda / Fałsz:</strong><br>
-    1. Dla $x \in (-4, -2)$: od $x=-4$ funkcja spada do $-2$ w $x=-3$, a następnie rośnie do $0$ dla $x \approx -2,67$, po czym osiąga $+1$ dla $x=-2$. Zatem przyjmuje wartości zarówno ujemne jak i dodatnie! Zdanie jest <strong>FAŁSZYWE (F)</strong>.<br>
-    2. Miejsca zerowe (punkty przecięcia z osią $OX$): $x = -4$, $x = -2\frac{2}{3}$, $x = 0$. Punkt $x = 4$ ma kółko otwarte ($4 \notin D_f$). Zatem funkcja ma dokładnie 3 miejsca zerowe. Zdanie jest <strong>PRAWZIWE (P)</strong>.</p>
-    <p><strong>2.3 Najmniejsza wartość w $\langle -4, 1 \rangle$:</strong><br>
-    W punkcie $x = 1$ funkcja osiąga swoje minimum globalne równe <strong>$-4$</strong>.</p>
+    <p><strong>2.2:</strong><br>
+    1. W przedziale $(-4, -2)$ funkcja na odcinku od $(-4, 0)$ do $(-3, -2)$ przyjmuje wartości ujemne, lecz na odcinku od $(-3, -2)$ do $(-2, 1)$ przecina oś $OX$ w punkcie $x = -2\frac{1}{3}$ i dla $x \in (-2\frac{1}{3}, -2)$ przyjmuje wartości <strong>dodatnie</strong> (np. w $x=-2$ wartość wynosi $1$). Zatem stwierdzenie jest <strong>FAŁSZYWE (F)</strong>.<br>
+    2. Miejsca zerowe widoczne na wykresie to: $x = -4$, $x = -2\frac{1}{3}$, $x = 0$, $x = 2$, $x = 4$ (punkt $(4, 0)$ z kółkiem otwartym, ale wewnątrz dziedziny są aż 4 miejsca zerowe). Funkcja NIE ma dokładnie trzech miejsc zerowych. Stwierdzenie jest <strong>FAŁSZYWE (F)</strong>.</p>
+    <p><strong>2.3:</strong> W przedziale $x \in [-4, 0]$ wykres przyjmuje wartości: w $x = -4$ wartość $0$, w $x = -3$ minimum lokalne $-2$, w $x = -1$ maksimum $4$, a w $x = 0$ wartość $0$. Najmniejszą wartością na tym odcinku jest $-2$. Poprawna odpowiedź to <strong>C. (-2)</strong>.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -323,22 +325,30 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            2.1: $ZW = \langle -4, 4 \rangle$; &emsp; 2.2: 1. <strong>F</strong>, 2. <strong>P</strong>; &emsp; 2.3: $y_{min} = -4$ (dla $x=1$).
+            2.1: $ZW_f = \langle -4, 4 \rangle$; &emsp; 2.2: 1. <strong>F</strong>, 2. <strong>F</strong>; &emsp; 2.3: <strong>C</strong> (czyli $-2$).
           </div>
         </div>
 
         
+    <div class="mt-4 p-3.5 rounded-xl bg-rose-950/30 border border-rose-800/40 text-xs text-rose-200 flex items-start gap-3">
+      <i class="fa-solid fa-triangle-exclamation text-rose-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-rose-300 block mb-0.5">Częsty błąd / Pułapka egzaminacyjna:</strong>
+        W zadaniu 2.3 nie zaznaczaj wartości najmniejszej z całej dziedziny ($-4$), lecz wyłącznie z podanego przedziału $[-4; 0]$, gdzie minimum to $-2$!
+      </div>
+    </div>
+    
       </div>
     </article>
     
 
-    <article id="zad-3-3" data-title="3 (3.1 – 3.3). Dziedzina, zbiór wartości i monotoniczność z wykresu łamanej" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-3-3" data-title="3. Analiza wykresu funkcji na przedziale [-5, 8]" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            3 (3.1 – 3.3)
+            3
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Dziedzina, zbiór wartości i monotoniczność z wykresu łamanej</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Analiza wykresu funkcji na przedziale [-5, 8]</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
@@ -347,14 +357,14 @@
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        Dana jest funkcja $y = f(x)$, której wykres przedstawiono na rysunku.<br>
-    <strong>3.1</strong> Zapisz dziedzinę i zbiór wartości funkcji $f$.<br>
-    <strong>3.2</strong> Zapisz maksymalny przedział, w którym funkcja jest malejąca.<br>
-    <strong>3.3</strong> Odczytaj wartość $f(2)$ oraz podaj zbiór rozwiązań nierówności $f(x) \le 0$.
+        Dana jest funkcja $y = f(x)$, której wykres przedstawiono na rysunku. Funkcja określona jest dla $x \in [-5, 8]$.<br><br>
+    <strong>3.1</strong> Zapisz zbiór rozwiązań nierówności $f(x) > 2$.<br>
+    <strong>3.2</strong> Zapisz maksymalny przedział lub przedziały, w których funkcja $f$ jest malejąca.<br>
+    <strong>3.3</strong> Największa wartość funkcji $f$ jest równa liczbie ..............., a najmniejsza wartość funkcji $f$ jest równa liczbie .................... .
         
     <div class="my-4 p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col items-center">
-      <img src="assets/img/3/p1_img1.png" alt="Rysunek do zadania 3 (3.1 – 3.3)" class="max-h-72 rounded-lg object-contain">
-      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 3 (3.1 – 3.3)</span>
+      <img src="assets/img/3/p1_img2.png" alt="Rysunek do zadania 3" class="max-h-72 rounded-lg object-contain">
+      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 3</span>
     </div>
     
       </div>
@@ -364,7 +374,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Odczytaj punkty charakterystyczne: $(-5, 4)$, $(-3, 6)$, $(0, 0)$, $(3, -6)$, $(6, 0)$, $(8, 4)$.
+        Punkty łamania wykresu: $(-5, 4)$, $(-3, 6)$, $(3, -6)$, $(8, 4)$. Wyznacz równania odpowiednich odcinków, aby znaleźć dokładne punkty przecięcia z prostą $y = 2$.
       </div>
     </div>
     
@@ -379,17 +389,16 @@
 
       <div id="solution-zad-3-3" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>3.1:</strong><br>
-    Dziedzina: $D_f = \langle -5, 8 \rangle$.<br>
-    Zbiór wartości: $ZW_f = \langle -6, 6 \rangle$.</p>
-    <p><strong>3.2 Maksymalny przedział monotoniczności:</strong><br>
-    Funkcja maleje od wierzchołka $(-3, 6)$ do dołka $(3, -6)$, zatem maksymalny przedział, w którym funkcja jest malejąca, to:
-    $$\langle -3, 3 \rangle$$</p>
-    <p><strong>3.3 Wartości i nierówność:</strong><br>
-    W przedziale $\langle 0, 3 \rangle$ funkcja jest odcinkiem łączącym $(0, 0)$ z $(3, -6)$, czyli $y = -2x$. Zatem dla $x = 2$:
-    $$f(2) = -2 \cdot 2 = -4$$
-    Nierówność $f(x) \le 0$ oznacza fragmenty wykresu leżące na osi lub pod osią $OX$:
-    $$x \in \langle 0, 6 \rangle$$</p>
+          <p><strong>3.1:</strong> Wyznaczamy odcięte punktów, w których $f(x) = 2$:<br>
+    - Na odcinku od $(-3, 6)$ do $(3, -6)$: odcinek przechodzi przez $(0, 0)$, jego równanie to $y = -2x$. Wtedy $-2x = 2 \implies x = -1$.<br>
+    Dla $x \in [-5, -3]$ funkcja przyjmuje wartości od $4$ do $6$, czyli $> 2$. Na odcinku $[-3, 3]$ wartości są $> 2$ dla $x \in [-3, -1)$. Zatem pierwsza część zbioru to $[-5, -1)$.<br>
+    - Na odcinku od $(3, -6)$ do $(8, 4)$: równanie prostej to $y - 4 = \frac{4 - (-6)}{8 - 3}(x - 8) \implies y = 2x - 12$.<br>
+    Przyrównujemy do $2$: $2x - 12 = 2 \implies 2x = 14 \implies x = 7$. Dla $x \in (7, 8]$ wartości $y > 2$.<br>
+    Zbiór rozwiązań: $$x \in [-5, -1) \cup (7, 8]$$</p>
+    <p><strong>3.2:</strong> Wykres idzie w dół od punktu $(-3, 6)$ do punktu $(3, -6)$. Maksymalnym przedziałem, w którym funkcja jest malejąca, jest:<br>
+    $$\langle -3, 3 \rangle \quad \text{(lub } [-3, 3]\text{)}$$</p>
+    <p><strong>3.3:</strong> Najwyższy punkt wykresu to $(-3, 6)$, więc wartość największa to <strong>6</strong>.<br>
+    Najniższy punkt wykresu to $(3, -6)$, więc wartość najmniejsza to <strong>-6</strong>.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -398,7 +407,7 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            3.1: $D = \langle -5, 8 \rangle, ZW = \langle -6, 6 \rangle$; &nbsp; 3.2: $\langle -3, 3 \rangle$; &nbsp; 3.3: $f(2) = -4$, $x \in \langle 0, 6 \rangle$.
+            3.1: $x \in [-5, -1) \cup (7, 8]$; &emsp; 3.2: $\langle -3, 3 \rangle$; &emsp; 3.3: Największa: <strong>6</strong>, Najmniejsza: <strong>-6</strong>.
           </div>
         </div>
 
@@ -407,29 +416,31 @@
     </article>
     
 
-    <article id="zad-3-4" data-title="4 (4.1 – 4.3). Analiza porównawcza czterech wykresów" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-3-4" data-title="4. Fragmenty wykresów czterech funkcji f, g, h, s" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            4 (4.1 – 4.3)
+            4
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Analiza porównawcza czterech wykresów</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Fragmenty wykresów czterech funkcji f, g, h, s</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie z wykresem</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie z wykresem / test wielokrotnego wyboru</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        W kartezjańskim układzie współrzędnych przedstawiono fragmenty wykresów czterech funkcji $f, g, h, k$.<br>
-    <strong>4.1</strong> Największą wartość w przedziale $\langle -2, 2 \rangle$ ma funkcja...<br>
-    <strong>4.2</strong> Dla argumentu $x = 3$ tę samą wartość mają funkcje...<br>
+        W kartezjańskim układzie współrzędnych $(x, y)$ przedstawiono fragmenty wykresów czterech funkcji: $f, g, h, s$.<br><br>
+    <strong>4.1</strong> Największą wartość dla argumentu $x = 2$ przyjmuje funkcja:<br>
+    A. $f$ &emsp; B. $g$ &emsp; C. $h$ &emsp; D. $s$<br><br>
+    <strong>4.2</strong> Dla argumentu $x = 3$ tę samą wartość przyjmują funkcje:<br>
+    A. $f$ i $s$ &emsp; B. $s$ i $h$ &emsp; C. $f$ i $g$ &emsp; D. $g$ i $s$<br><br>
     <strong>4.3</strong> Zapisz maksymalny przedział, w którym prawdziwa jest nierówność $g(x) > h(x)$.
         
     <div class="my-4 p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col items-center">
-      <img src="assets/img/3/p2_img1.png" alt="Rysunek do zadania 4 (4.1 – 4.3)" class="max-h-72 rounded-lg object-contain">
-      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 4 (4.1 – 4.3)</span>
+      <img src="assets/img/3/p2_img1.png" alt="Rysunek do zadania 4" class="max-h-72 rounded-lg object-contain">
+      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 4</span>
     </div>
     
       </div>
@@ -439,7 +450,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Porównaj położenie wykresów dla wspólnych argumentów. $g(x) > h(x)$ oznacza, że wykres $g$ leży ściśle powyżej wykresu $h$.
+        Odczytaj z wykresu wartości dla pionowych linii $x = 2$ oraz $x = 3$. Punkty przecięcia prostej $g$ i krzywej $h$ wyznaczają granice przedziału, w którym $g$ leży wyżej niż $h$.
       </div>
     </div>
     
@@ -454,13 +465,22 @@
 
       <div id="solution-zad-3-4" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>4.1 Największa wartość w $\langle -2, 2 \rangle$:</strong><br>
-    Odczytujemy z wykresów najwyżej położony punkt w tym przedziale – należy on do wykresu funkcji <strong>$g$</strong>.</p>
-    <p><strong>4.2 Ta sama wartość dla $x = 3$:</strong><br>
-    W punkcie $x = 3$ przecinają się wykresy funkcji <strong>$f$ i $h$</strong> (wspólny punkt $(3, 1)$).</p>
-    <p><strong>4.3 Nierówność $g(x) > h(x)$:</strong><br>
-    Wykres $g$ leży ściśle nad wykresem $h$ w przedziale między ich punktami przecięcia:
-    $$x \in (-1, 4)$$</p>
+          <p><strong>4.1:</strong> Prowadzimy pionową prostą $x = 2$ i porównujemy rzędne punktów na poszczególnych wykresach:<br>
+    - Dla krzywej $h$: $y \approx 1{,}4$<br>
+    - Dla prostej $g$: $y = 2{,}5$<br>
+    - Dla poziomej prostej $s$: $y = 3{,}5$<br>
+    - Dla paraboli $f$: $y = 5{,}0$ (punkt $(2, 5)$)<br>
+    Najwyżej położony jest punkt funkcji $f$, zatem największą wartość przyjmuje funkcja $f$. Poprawna odpowiedź: <strong>A ($f$)</strong>.</p>
+    <p><strong>4.2:</strong> Sprawdzamy punkt przecięcia wykresów dla linii pionowej $x = 3$:<br>
+    Wykres funkcji $f$ (magenta) oraz wykres funkcji liniowej $g$ (szary) przecinają się dokładnie w punkcie o współrzędnych $(3, 2)$. Oznacza to, że:<br>
+    $$f(3) = 2 \quad \text{oraz} \quad g(3) = 2$$
+    Zatem tę samą wartość przyjmują funkcje <strong>$f$ i $g$</strong>. Poprawna odpowiedź: <strong>C ($f$ i $g$)</strong>.</p>
+    <p><strong>4.3:</strong> Nierówność $g(x) > h(x)$ oznacza, że wykres prostej $g$ leży powyżej wykresu krzywej $h$.<br>
+    Wykresy $g$ i $h$ przecinają się w punktach o odciętych:<br>
+    - $x_1 = 1$ (punkt $(1, 3)$)<br>
+    - $x_2 = 6$ (punkt $(6; 0{,}5)$)<br>
+    Wewnątrz tego przedziału odcinek prostej $g$ znajduje się powyżej krzywej $h$. Zatem maksymalny przedział to:<br>
+    $$(1, 6)$$</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -469,34 +489,45 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            4.1: funkcja $g$; &emsp; 4.2: funkcje $f$ i $h$; &emsp; 4.3: $(-1, 4)$.
+            4.1: <strong>A</strong> (funkcja $f$); &emsp; 4.2: <strong>C</strong> (funkcje $f$ i $g$); &emsp; 4.3: $(1, 6)$.
           </div>
         </div>
 
         
+    <div class="mt-4 p-3.5 rounded-xl bg-rose-950/30 border border-rose-800/40 text-xs text-rose-200 flex items-start gap-3">
+      <i class="fa-solid fa-triangle-exclamation text-rose-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-rose-300 block mb-0.5">Częsty błąd / Pułapka egzaminacyjna:</strong>
+        W zadaniu 4.2 w punkcie $x = 3$ prosta $s$ ma wartość $3{,}5$, podczas gdy $f$ i $g$ mają wartość $2$. Odpowiedź to bezsprzecznie C ($f$ i $g$).
+      </div>
+    </div>
+    
       </div>
     </article>
     
 
-    <article id="zad-3-5-6" data-title="5 – 6. Translacja wykresu oraz analiza liczby rozwiązań f(x) = m" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-3-5-6" data-title="5 – 6. Przekształcenia geometryczne wykresów funkcji" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
             5 – 6
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Translacja wykresu oraz analiza liczby rozwiązań f(x) = m</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Przekształcenia geometryczne wykresów funkcji</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte / z wykresem</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte / dopasowanie</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>5.</strong> Wyznacz wzór funkcji $g(x) = f(x-3) - 1$, gdy $f(x) = x^2$ i sporządź jej wykres.<br>
-    <strong>6.</strong> Na rysunku przedstawiono wykres funkcji $y = f(x)$.<br>
-    <strong>6.1</strong> Podaj liczbę rozwiązań równania $f(x) = m$ w zależności od parametru $m$.<br>
-    <strong>6.2</strong> Naszkicuj wykres funkcji $y = |f(x)|$.
+        <strong>5.</strong> Wyznacz wzór funkcji $g(x) = f(x - 3) - 1$, gdy $f(x) = x^2$ i sporządź jej wykres.<br><br>
+    <strong>6.</strong> Dana jest funkcja $y = f(x)$, której wykres dla $x \in [-3, 5]$ przedstawiono na rysunku. Funkcje $g$ oraz $h$ są określone jako:<br>
+    &bull; $y = g(x) = f(x + 2)$<br>
+    &bull; $y = h(x) = f(-x)$<br>
+    Każdej z funkcji $y = g(x)$ oraz $y = h(x)$ przyporządkuj jej wykres spośród rysunków A–F.<br>
+    6.1: $y = g(x)$ &rarr; ...............<br>
+    6.2: $y = h(x)$ &rarr; ...............
         
     <div class="my-4 p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col items-center">
       <img src="assets/img/3/p2_img2.png" alt="Rysunek do zadania 5 – 6" class="max-h-72 rounded-lg object-contain">
@@ -510,7 +541,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Przesunięcie o wektor $\vec{u} = [3, -1]$: o 3 jednostki w prawo i 1 w dół. Dla $f(x)=m$ prowadzimy poziome proste $y=m$.
+        $f(x+2)$ to przesunięcie w lewo o 2 jednostki. $f(-x)$ to symetria osiowa względem pionowej osi $OY$.
       </div>
     </div>
     
@@ -525,16 +556,14 @@
 
       <div id="solution-zad-3-5-6" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>5:</strong> Wzór $g(x) = (x-3)^2 - 1 = x^2 - 6x + 9 - 1 = x^2 - 6x + 8$.<br>
-    Wierzchołek paraboli znajduje się w punkcie $W = (3, -1)$, ramiona skierowane są w górę, a miejsca zerowe to $x_1 = 2, x_2 = 4$.</p>
-    <p><strong>6.1 Liczba rozwiązań $f(x) = m$:</strong><br>
-    Prowadząc proste poziome $y = m$:<br>
-    - 0 rozwiązań dla $m \in (-\infty, -3) \cup (3, \infty)$<br>
-    - 1 rozwiązanie dla $m = -3$ oraz $m \in (1, 3\rangle$<br>
-    - 2 rozwiązania dla $m = 1$ oraz $m \in (-3, -1)$<br>
-    - 3 rozwiązania dla $m \in \langle -1, 1)$</p>
-    <p><strong>6.2 Wykres $y = |f(x)|$:</strong><br>
-    Część wykresu leżącą pod osią $OX$ odbijamy symetrycznie względem osi $OX$ w górę, a część leżącą nad osią $OX$ pozostawiamy bez zmian.</p>
+          <p><strong>5:</strong> Wstawiamy $(x - 3)$ w miejsce argumentu we wzorze $f(x) = x^2$ i odejmujemy 1:<br>
+    $$g(x) = (x - 3)^2 - 1 = x^2 - 6x + 9 - 1 = x^2 - 6x + 8$$
+    Wykres $g(x)$ to parabola otrzymana przez przesunięcie paraboli $y = x^2$ o wektor $\vec{u} = [3, -1]$ (3 jednostki w prawo, 1 w dół). Wierzchołek: $W = (3, -1)$, miejsca zerowe: $x = 2$ oraz $x = 4$, przecięcie z osią $OY$: $(0, 8)$.</p>
+    <p><strong>6:</strong> Oryginalny wykres $f$ ma punkty kluczowe: $(-3, 4)$, $(0, 6)$, $(3, 8)$, $(5, 5)$.<br>
+    - <strong>Funkcja $g(x) = f(x+2)$:</strong> przesunięcie o 2 jednostki w lewo (wektor $[-2, 0]$).<br>
+    Nowe punkty to: $(-5, 4)$, $(-2, 6)$, $(1, 8)$, $(3, 5)$. Wykres ten jest przedstawiony na <strong>Rysunku D</strong>.<br>
+    - <strong>Funkcja $h(x) = f(-x)$:</strong> odbicie symetryczne względem osi $OY$ ($x \to -x$).<br>
+    Nowe punkty to: $(3, 4)$, $(0, 6)$, $(-3, 8)$, $(-5, 5)$. Wykres ten jest przedstawiony na <strong>Rysunku B</strong>.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -543,7 +572,7 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            5: $g(x) = (x-3)^2 - 1 = x^2 - 6x + 8$; &nbsp; 6.1: podane przedziały dla $m$.
+            5: $g(x) = (x - 3)^2 - 1 = x^2 - 6x + 8$; &emsp; 6.1: <strong>D</strong>; &emsp; 6.2: <strong>B</strong>.
           </div>
         </div>
 
@@ -552,25 +581,27 @@
     </article>
     
 
-    <article id="zad-3-7-9" data-title="7 – 9. A. Funkcja dyskretna NWD, przynależność punktu i parametry" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-3-7-8" data-title="7 – 8. Funkcja NWD oraz wyznaczanie parametru z dziedziny" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            7 – 9. A
+            7 – 8
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Funkcja dyskretna NWD, przynależność punktu i parametry</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Funkcja NWD oraz wyznaczanie parametru z dziedziny</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie tabelaryczne / testowe</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>7.</strong> Dana jest funkcja $f(x) = NWD(x, 4)$ dla $x \in \{1, 2, 3, 4, 5, 6, 7, 8\}$. Sporządź tabelę wartości, wyznacz $ZW_f$ i miejsca zerowe.<br>
-    <strong>8.</strong> Wiadomo, że dziedziną funkcji $f(x) = \frac{1}{\sqrt{ax+b}}$ jest $(2, \infty)$. Wyznacz $a$ i $b$.<br>
-    <strong>9.</strong> Sprawdź, czy punkt $A = (3, 27)$ należy do wykresu $f(x) = 3^x$.<br>
-    <strong>9. A)</strong> Sprawdź, czy punkt $A = (\sqrt{2}, 2)$ należy do wykresu $f(x) = x^2$.
+        <strong>7.</strong> Dana jest funkcja $f(x) = \operatorname{NWD}(x, 4)$ dla $x \in \{1, 2, 3, 4, 5, 6, 7, 8\}$.<br>
+    a) Uzupełnij tabelę wartości funkcji $f$.<br>
+    b) Naszkicuj wykres funkcji $f$.<br>
+    c) Podaj zbiór wartości funkcji $g(x) = f(x) + 3$.<br><br>
+    <strong>8.</strong> Wiadomo, że dziedziną funkcji $f(x) = \frac{x - 7}{2x + a}$ jest zbiór $(-\infty; 2) \cup (2; +\infty)$. Wówczas:<br>
+    A. $a = 2$ &emsp; B. $a = -2$ &emsp; C. $a = 4$ &emsp; D. $a = -4$
         
       </div>
 
@@ -579,28 +610,31 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        W zadaniu 7 pamiętaj, że $NWD(x, 4) \ge 1$, więc nie może być równe 0. W zadaniu 8: $ax+b > 0 \iff x > -\frac{b}{a}$.
+        NWD(x, 4) to największy wspólny dzielnik liczb x oraz 4. W zadaniu 8 mianownik musi zerować się dla x = 2.
       </div>
     </div>
     
 
-      <button onclick="toggleSolution('zad-3-7-9')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+      <button onclick="toggleSolution('zad-3-7-8')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
         <span class="flex items-center gap-2">
           <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
           Pokaż pełne omówienie i rozwiązanie krok po kroku
         </span>
-        <i id="icon-zad-3-7-9" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+        <i id="icon-zad-3-7-8" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
       </button>
 
-      <div id="solution-zad-3-7-9" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+      <div id="solution-zad-3-7-8" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>7:</strong> Wartości $f(x)$:<br>
-    $f(1) = 1, f(2) = 2, f(3) = 1, f(4) = 4, f(5) = 1, f(6) = 2, f(7) = 1, f(8) = 4$.<br>
-    Zbiór wartości: $ZW_f = \{1, 2, 4\}$.<br>
-    Miejsca zerowe: brak (wartość NWD jest zawsze dodatnia, $\ge 1$).</p>
-    <p><strong>8:</strong> Wyrażenie pod pierwiastkiem w mianowniku musi spełniać $ax+b > 0$. Skoro rozwiązaniem jest $x > 2$, to $-b/a = 2 \implies b = -2a$ (przy $a > 0$). Przykładowo dla $a = 1$: $b = -2$, czyli $f(x) = \frac{1}{\sqrt{x-2}}$.</p>
-    <p><strong>9:</strong> $f(3) = 3^3 = 27 = y_A$ $\implies$ Punkt $A$ <strong>należy</strong> do wykresu.</p>
-    <p><strong>9. A:</strong> $f(\sqrt{2}) = (\sqrt{2})^2 = 2 = y_A$ $\implies$ Punkt $A$ <strong>należy</strong> do wykresu.</p>
+          <p><strong>7:</strong><br>
+    a) Obliczamy największy wspólny dzielnik dla kolejnych liczb:<br>
+    $\operatorname{NWD}(1, 4) = 1$, $\operatorname{NWD}(2, 4) = 2$, $\operatorname{NWD}(3, 4) = 1$, $\operatorname{NWD}(4, 4) = 4$,<br>
+    $\operatorname{NWD}(5, 4) = 1$, $\operatorname{NWD}(6, 4) = 2$, $\operatorname{NWD}(7, 4) = 1$, $\operatorname{NWD}(8, 4) = 4$.<br>
+    Wiersz wartości $f(x)$: $1, 2, 1, 4, 1, 2, 1, 4$.<br>
+    b) Wykres składa się z 8 izolowanych punktów w układzie współrzędnych: $(1, 1), (2, 2), (3, 1), (4, 4), (5, 1), (6, 2), (7, 1), (8, 4)$.<br>
+    c) Zbiór wartości funkcji $f$ to $ZW_f = \{1, 2, 4\}$. Funkcja $g(x) = f(x) + 3$ przesuwa wartości o 3 w górę: $\{1+3, 2+3, 4+3\} = \{4, 5, 7\}$.</p>
+    <p><strong>8:</strong> Dziedzina $D = \mathbb{R} \setminus \{2\}$ oznacza, że mianownik $2x + a$ jest równy zero dokładnie dla $x = 2$:<br>
+    $$2(2) + a = 0 \implies 4 + a = 0 \implies a = -4$$
+    Poprawna odpowiedź to <strong>D ($a = -4$)</strong>.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -609,7 +643,7 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            7: $ZW = \{1, 2, 4\}$, brak m. zerowych; &emsp; 8: $b = -2a$ ($a > 0$); &emsp; 9 i 9.A: TAK, punkty należą.
+            7: a) $1, 2, 1, 4, 1, 2, 1, 4$; c) $ZW_g = \{4, 5, 7\}$; &emsp; 8: <strong>D</strong> ($a = -4$).
           </div>
         </div>
 
@@ -618,23 +652,89 @@
     </article>
     
 
-    <article id="zad-3-10-11" data-title="10 – 11. Wyznaczanie parametru ze znajomości miejsca zerowego" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-3-9" data-title="9 & 9. A. Badanie przynależności punktu do wykresu funkcji" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            9 & 9. A
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Badanie przynależności punktu do wykresu funkcji</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie obliczeniowe</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>9.</strong> Sprawdź, czy punkt $A$ należy do wykresu funkcji $f$, gdy:<br>
+    a) $f(x) = 3^{|x - 1|}, \quad A = \left(-2, \frac{1}{27}\right)$<br>
+    b) $f(x) = x^{-3}, \quad A = \left(-\frac{1}{2}, -8\right)$<br><br>
+    <strong>9. A)</strong> Sprawdź, czy punkt $A$ należy do wykresu funkcji $f$, gdy:<br>
+    a) $f(x) = \frac{x^2 + 1}{x^2 - 1}, \quad A = \left(\sqrt{3}, \frac{5}{2}\right)$<br>
+    b) $f(x) = |\sqrt{2} - x|, \quad A = (\sqrt{2} + 1, 1)$
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        Punkt $(x_A, y_A)$ należy do wykresu, jeśli po wstawieniu $x_A$ do wzoru funkcji otrzymamy dokładnie wartość $y_A$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-3-9')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-3-9" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-3-9" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>9. a)</strong> $f(-2) = 3^{|-2 - 1|} = 3^{|-3|} = 3^3 = 27$. Ponieważ $27 \ne \frac{1}{27}$, punkt $A$ <strong>nie należy</strong> do wykresu.<br>
+    <strong>9. b)</strong> $f\left(-\frac{1}{2}\right) = \left(-\frac{1}{2}\right)^{-3} = (-2)^3 = -8$. Wartość jest równa rzędnej punktu $A$, zatem punkt $A$ <strong>należy</strong> do wykresu.</p>
+    <p><strong>9. A. a)</strong> $f(\sqrt{3}) = \frac{(\sqrt{3})^2 + 1}{(\sqrt{3})^2 - 1} = \frac{3 + 1}{3 - 1} = \frac{4}{2} = 2$. Ponieważ $2 \ne \frac{5}{2}$, punkt $A$ <strong>nie należy</strong> do wykresu.<br>
+    <strong>9. A. b)</strong> $f(\sqrt{2} + 1) = |\sqrt{2} - (\sqrt{2} + 1)| = |\sqrt{2} - \sqrt{2} - 1| = |-1| = 1$. Otrzymana wartość jest równa rzędnej punktu $A$, zatem punkt $A$ <strong>należy</strong> do wykresu.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            9: a) NIE należy, b) NALEŻY; &emsp; 9.A: a) NIE należy, b) NALEŻY.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-3-10-11" data-title="10 – 11. Współczynnik wielomianu i punkty kratowe funkcji wymiernej" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
             10 – 11
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wyznaczanie parametru ze znajomości miejsca zerowego</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Współczynnik wielomianu i punkty kratowe funkcji wymiernej</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie zamknięte / wyznaczanie punktów</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>10.</strong> Dana jest funkcja $f(x) = x^3 - b - 5\sqrt{2}$. Liczba $\sqrt{2}$ jest miejscem zerowym funkcji $f$. Wyznacz $b$.<br>
-    <strong>11.</strong> Funkcja $f(x) = \frac{2x-4}{|x-2|}$ jest określona dla $x \neq 2$. Podaj zbiór wartości $ZW_f$.
+        <strong>10.</strong> Dana jest funkcja $f$ określona wzorem $f(x) = x^3 - b - 5\sqrt{2}$ dla każdej liczby rzeczywistej $x$. Miejscem zerowym funkcji $f$ jest $x = \sqrt{2} + 1$. Współczynnik $b$ we wzorze funkcji $f$ jest równy:<br>
+    A. $b = 1$ &emsp; B. $b = 7$ &emsp; C. $b = 1 - 3\sqrt{2}$ &emsp; D. $b = 3 - 3\sqrt{2}$<br><br>
+    <strong>11.</strong> Funkcja $f$ jest określona wzorem $f(x) = \frac{-3x + 41}{x - 13}$ dla $x \ne 13$. Punktem kratowym nazywamy punkt w układzie współrzędnych, którego obie współrzędne są liczbami całkowitymi. Wyznacz wszystkie punkty kratowe należące do wykresu funkcji $f$.
         
       </div>
 
@@ -643,7 +743,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Miejsce zerowe to taki argument $x_0$, dla którego $f(x_0) = 0$. Zastosuj definicję wartości bezwzględnej dla $x > 2$ i $x < 2$.
+        Dla zadania 10 zastosuj wzór $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$. W zadaniu 11 wydziel część całkowitą z ułamka algebraicznego.
       </div>
     </div>
     
@@ -658,13 +758,20 @@
 
       <div id="solution-zad-3-10-11" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>10:</strong> Skoro $f(\sqrt{2}) = 0$, to:
-    $$(\sqrt{2})^3 - b - 5\sqrt{2} = 0$$
-    $$2\sqrt{2} - 5\sqrt{2} - b = 0 \implies -3\sqrt{2} - b = 0 \implies b = -3\sqrt{2}$$</p>
-    <p><strong>11:</strong> Wyłączamy 2 przed nawias w liczniku: $2(x-2)$.<br>
-    - Dla $x > 2$: $|x-2| = x-2$, więc $f(x) = \frac{2(x-2)}{x-2} = 2$.<br>
-    - Dla $x < 2$: $|x-2| = -(x-2)$, więc $f(x) = \frac{2(x-2)}{-(x-2)} = -2$.<br>
-    Zatem funkcja przyjmuje wyłącznie dwie wartości: $ZW_f = \{-2, 2\}$.</p>
+          <p><strong>10:</strong> Warunek miejsca zerowego: $f(\sqrt{2} + 1) = 0$.<br>
+    Obliczamy $(\sqrt{2} + 1)^3$:<br>
+    $$(\sqrt{2} + 1)^3 = (\sqrt{2})^3 + 3(\sqrt{2})^2(1) + 3(\sqrt{2})(1)^2 + 1^3 = 2\sqrt{2} + 6 + 3\sqrt{2} + 1 = 7 + 5\sqrt{2}$$
+    Wstawiamy do równania:<br>
+    $$(7 + 5\sqrt{2}) - b - 5\sqrt{2} = 0 \implies 7 - b = 0 \implies b = 7$$
+    Poprawna odpowiedź to <strong>B ($b = 7$)</strong>.</p>
+    <p><strong>11:</strong> Przekształcamy ułamek, wydzielając część całkowitą:<br>
+    $$f(x) = \frac{-3(x - 13) + 41 - 39}{x - 13} = \frac{-3(x - 13) + 2}{x - 13} = -3 + \frac{2}{x - 13}$$
+    Wartość $f(x)$ jest liczbą całkowitą wtedy i tylko wtedy, gdy mianownik $x - 13$ jest dzielnikiem liczby 2 w zbiorze liczb całkowitych: $x - 13 \in \{-2, -1, 1, 2\}$.<br>
+    - $x - 13 = -2 \implies x = 11 \implies y = -3 + \frac{2}{-2} = -4 \implies (11, -4)$<br>
+    - $x - 13 = -1 \implies x = 12 \implies y = -3 + \frac{2}{-1} = -5 \implies (12, -5)$<br>
+    - $x - 13 = 1 \implies x = 14 \implies y = -3 + \frac{2}{1} = -1 \implies (14, -1)$<br>
+    - $x - 13 = 2 \implies x = 15 \implies y = -3 + \frac{2}{2} = -2 \implies (15, -2)$<br>
+    Wszystkie cztery punkty mają współrzędne całkowite i należą do dziedziny ($x \ne 13$).</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -673,7 +780,7 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            10: $$b = -3\sqrt{2}$$; &emsp; 11: $$ZW_f = \{-2, 2\}$$
+            10: <strong>B</strong> ($b = 7$); &emsp; 11: Punkty kratowe: $(11, -4), (12, -5), (14, -1), (15, -2)$.
           </div>
         </div>
 
@@ -682,13 +789,13 @@
     </article>
     
 
-    <article id="zad-3-12" data-title="12 i 12. A. Odczytywanie własności i przekształceń z wykresów" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-3-12" data-title="12 & 12. A. Przekształcenia geometryczne i odczytywanie własności" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            12 i 12. A
+            12 & 12. A
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Odczytywanie własności i przekształceń z wykresów</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Przekształcenia geometryczne i odczytywanie własności</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
@@ -697,12 +804,20 @@
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>12.</strong> Na rysunku przedstawiono wykres funkcji $y = f(x)$. Odczytaj przedziały monotoniczności oraz zbiór wartości.<br>
-    <strong>12. A)</strong> Na rysunku obok przedstawiono wykres funkcji $y = f(x)$. Wyznacz zbiór rozwiązań nierówności $f(x) \ge 1$ oraz podaj liczbę rozwiązań równania $f(x) = -1$.
+        <strong>12.</strong> Dany jest wykres pewnej funkcji $y = f(x)$ dla $x \in \mathbb{R}$. Sporządź wykres i opisz przekształcenia:<br>
+    a) $y = f(x - 2) - 1$,<br>
+    b) $y = -f(-x)$,<br>
+    c) (R) $y = |f(x)|$.<br><br>
+    <strong>12. A)</strong> Dany jest wykres funkcji $y = f(x)$ określonej dla $x \in \langle -6, 6 \rangle$. Korzystając z wykresu zapisz:<br>
+    a) maksymalne przedziały, w których funkcja jest rosnąca,<br>
+    b) zbiór argumentów, dla których funkcja przyjmuje wartości dodatnie,<br>
+    c) największą wartość funkcji $f$ w przedziale $\langle -5, 5 \rangle$,<br>
+    d) miejsca zerowe funkcji $g(x) = f(x - 1)$,<br>
+    e) najmniejszą wartość funkcji $h(x) = f(x) + 2$.
         
     <div class="my-4 p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col items-center">
-      <img src="assets/img/3/p3_img1.png" alt="Rysunek do zadania 12 i 12. A" class="max-h-72 rounded-lg object-contain">
-      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 12 i 12. A</span>
+      <img src="assets/img/3/p4_img1.png" alt="Rysunek do zadania 12 & 12. A" class="max-h-72 rounded-lg object-contain">
+      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 12 & 12. A</span>
     </div>
     
       </div>
@@ -712,7 +827,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Odczytaj współrzędne wierzchołków i punktów załamania.
+        W podpunkcie 12.b $y = -f(-x)$ to symetria środkowa względem $(0,0)$. W 12.A.d przesunięcie wykresu o 1 w prawo przesuwa miejsca zerowe o +1.
       </div>
     </div>
     
@@ -727,12 +842,16 @@
 
       <div id="solution-zad-3-12" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>12:</strong> Z wykresu odczytujemy:<br>
-    Funkcja rośnie w przedziałach: $(-\infty, -2\rangle$ oraz $\langle 1, \infty)$.<br>
-    Funkcja maleje w przedziale: $\langle -2, 1 \rangle$.<br>
-    Zbiór wartości: $ZW = \mathbb{R}$.</p>
-    <p><strong>12. A:</strong> Nierówność $f(x) \ge 1$ zachodzi dla argumentów, dla których linia wykresu znajduje się na lub powyżej prostej $y = 1$: $x \in \langle -3, 2 \rangle$.<br>
-    Równanie $f(x) = -1$: prosta pozioma $y = -1$ przecina wykres w <strong>2 punktach</strong>.</p>
+          <p><strong>12:</strong><br>
+    a) $y = f(x - 2) - 1$: translacja o wektor $\vec{u} = [2, -1]$ (przesunięcie o 2 jednostki w prawo wzdłuż osi $OX$ oraz o 1 jednostkę w dół wzdłuż osi $OY$).<br>
+    b) $y = -f(-x)$: symetria środkowa względem początku układu współrzędnych $(0, 0)$ (równoważnie: złożenie odbicia względem osi $OY$, a następnie osi $OX$).<br>
+    c) $y = |f(x)|$: część wykresu leżąca nad osią $OX$ i na niej pozostaje bez zmian; część wykresu leżąca pod osią $OX$ ($y < 0$) zostaje odbita symetrycznie w górę względem osi $OX$.</p>
+    <p><strong>12. A:</strong> Z wykresu na rysunku odczytujemy:<br>
+    a) Funkcja rośnie w przedziałach: $\langle -3, 0 \rangle$ oraz $\langle 3, 6 \rangle$.<br>
+    b) Miejsca zerowe to $-5, -1, 1, 5$. Wartości dodatnie ($f(x) > 0$) funkcja przyjmuje dla: $x \in \langle -6, -5) \cup (-1, 1) \cup (5, 6 \rangle$.<br>
+    c) W przedziale $\langle -5, 5 \rangle$ maksimum lokalne w wierzchołku środkowym wynosi $y = 1$ (dla $x = 0$). Krańce $f(-5) = f(5) = 0$. Zatem największa wartość to <strong>1</strong>.<br>
+    d) Wykres $g(x) = f(x-1)$ powstaje przez przesunięcie $f$ w prawo o 1. Oryginalne miejsca zerowe to $-5, -1, 1, 5$, więc po dodaniu 1 otrzymujemy: $x_0 \in \{-4, 0, 2, 6\}$.<br>
+    e) Najmniejsza wartość funkcji $f$ na całym wykresie wynosi $-4$ (w punktach $x = -3$ oraz $x = 3$). Dodanie 2 przesuwa wykres w górę: $-4 + 2 = -2$.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -741,7 +860,8 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            12: rosnąca w $(-\infty, -2\rangle, \langle 1, \infty)$, malejąca w $\langle -2, 1 \rangle$; &emsp; 12.A: $x \in \langle -3, 2 \rangle$, 2 rozwiązania.
+            12: a) wektor $[2, -1]$, b) symetria względem $(0,0)$, c) odbicie dołu w górę;<br>
+    12.A: a) $\langle -3, 0 \rangle, \langle 3, 6 \rangle$; b) $\langle -6, -5) \cup (-1, 1) \cup (5, 6 \rangle$; c) $1$; d) $\{-4, 0, 2, 6\}$; e) $-2$.
           </div>
         </div>
 
@@ -750,25 +870,31 @@
     </article>
     
 
-    <article id="zad-3-13" data-title="13 (13.1 – 13.2). Model wykładniczy połowicznego rozpadu promieniotwórczego" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-3-13" data-title="13. 1 – 13. 2. Zależność wykładnicza i datowanie radiowęglowe C-14" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            13 (13.1 – 13.2)
+            13. 1 – 13. 2
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Model wykładniczy połowicznego rozpadu promieniotwórczego</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Zależność wykładnicza i datowanie radiowęglowe C-14</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie praktyczne</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie z kontekstem realistycznym</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        Czas $T$ połowicznego rozpadu izotopu to czas, po którym liczba jąder maleje o połowę: $N(t) = N_0 \cdot \left(\frac{1}{2}\right)^{\frac{t}{T}}$.<br>
-    <strong>13.1</strong> Wskaż rysunek poprawnie przedstawiający zależność liczby jąder od czasu.<br>
-    <strong>13.2</strong> Czas połowicznego rozpadu węgla $^{14}C$ to około 5700 lat. Jaki procent początkowej liczby jąder pozostanie po 17100 latach?
+        Czas $T$ połowicznego rozpadu izotopu promieniotwórczego to czas, po którym liczba jąder danego izotopu zmniejsza się o połowę. Liczba jąder $N(t)$ po czasie $t$ wyraża się wzorem: $N(t) = N_0 \left(\frac{1}{2}\right)^{\frac{t}{T}}$.<br><br>
+    <strong>13. 1.</strong> Wykres zależności wykładniczej $N(t)$ opisanej we wstępie do zadania przedstawiono na:<br>
+    A. rysunku 1. &emsp; B. rysunku 2. &emsp; C. rysunku 3. &emsp; D. rysunku 4.<br><br>
+    <strong>13. 2.</strong> Czas połowicznego rozpadu węgla $^{14}\text{C}$ to około 5700 lat. Naukowcy oszacowali za pomocą datowania radiowęglowego, że masa izotopu węgla $^{14}\text{C}$ w pewnym organicznym znalezisku archeologicznym stanowi $\frac{1}{16}$ masy tego izotopu, jaka utrzymywała się podczas życia organizmu. Oblicz, ile lat ma opisane znalezisko archeologiczne. Wynik podaj z dokładnością do stu lat.
         
+    <div class="my-4 p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col items-center">
+      <img src="assets/img/3/p5_img1.png" alt="Rysunek do zadania 13. 1 – 13. 2" class="max-h-72 rounded-lg object-contain">
+      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 13. 1 – 13. 2</span>
+    </div>
+    
       </div>
 
       
@@ -776,7 +902,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Funkcja wykładnicza o podstawie $\frac{1}{2}$ jest malejąca i ma asymptotę poziomą $y = 0$. $17100 = 3 \cdot 5700$.
+        W 13.1 sprawdź punkt $(T, \frac{1}{2}N_0)$. W 13.2 zauważ, że $\frac{1}{16} = (\frac{1}{2})^4$, co odpowiada upływowi dokładnie czterech okresów połowicznego rozpadu.
       </div>
     </div>
     
@@ -791,11 +917,22 @@
 
       <div id="solution-zad-3-13" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>13.1:</strong> Prawidłowy wykres to malejąca krzywa wykładnicza wypukła w dół, dążąca asymptotycznie do zera przy $t \to \infty$ (Rysunek 1).</p>
-    <p><strong>13.2:</strong> Obliczamy liczbę okresów połowicznego rozpadu:
-    $$n = \frac{t}{T} = \frac{17100}{5700} = 3$$
-    Po 3 okresach połowicznego rozpadu pozostaje:
-    $$N(17100) = N_0 \cdot \left(\frac{1}{2}\right)^3 = N_0 \cdot \frac{1}{8} = 0,125 N_0 = 12,5\% N_0$$</p>
+          <p><strong>13. 1:</strong> Zależność $N(t) = N_0 \left(\frac{1}{2}\right)^{\frac{t}{T}}$ ma następujące własności:<br>
+    - Dla $t = 0$: $N(0) = N_0$.<br>
+    - Dla $t = T$: $N(T) = \frac{1}{2}N_0$.<br>
+    - Dla $t = 2T$: $N(2T) = \frac{1}{4}N_0$.<br>
+    - Krzywa jest ściśle malejąca, wypukła, z osią poziomą jako asymptotą ($N \to 0$).<br>
+    Analizując rysunki 1–4:<br>
+    - Na rysunku 2 zależność jest liniowa (błędna).<br>
+    - Na rysunku 3 krzywa ma asymptotę pionową przy osi pionowej (błędna).<br>
+    - Na rysunku 1 dla $t = T$ wartość jest wyraźnie mniejsza niż połowa $N_0$.<br>
+    - Na <strong>rysunku 4</strong> dla $t = T$ wykres przechodzi dokładnie przez połowę wysokości początkowej ($4$ kratki na $8$). Poprawna odpowiedź to <strong>D (rysunku 4)</strong>.</p>
+    <p><strong>13. 2:</strong> Podstawiamy dane do wzoru:<br>
+    $$\frac{N(t)}{N_0} = \frac{1}{16} \implies \left(\frac{1}{2}\right)^{\frac{t}{T}} = \left(\frac{1}{2}\right)^4$$
+    Ponieważ podstawy potęg są równe, przyrównujemy wykładniki:<br>
+    $$\frac{t}{T} = 4 \implies t = 4T$$
+    Czas połowicznego rozpadu to $T \approx 5700$ lat, zatem wiek znaleziska wynosi:<br>
+    $$t = 4 \cdot 5700 = 22800 \text{ lat}$$</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -804,7 +941,7 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            13.1: <strong>Rysunek 1</strong>; &emsp; 13.2: <strong>12,5%</strong> początkowej liczby jąder.
+            13.1: <strong>D</strong> (rysunek 4); &emsp; 13.2: <strong>22 800 lat</strong>.
           </div>
         </div>
 
@@ -813,27 +950,26 @@
     </article>
     
 
-    <article id="zad-3-14-17" data-title="14. A – 17. A. Przekształcenia wykresów, symetrie, cecha liczby i ekstrema" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-3-14" data-title="14. A & 14. B (R). Trygonometryczne miejsca zerowe i zaawansowane translacje" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            14. A – 17. A
+            14. A & 14. B (R)
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Przekształcenia wykresów, symetrie, cecha liczby i ekstrema</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Trygonometryczne miejsca zerowe i zaawansowane translacje</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte / dowody (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte / trygonometria</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>14. A) (R)</strong> Znajdź miejsca zerowe funkcji $f(x) = \frac{|x+1| - 2}{\sqrt{x+4}}$.<br>
-    <strong>14. B) (R)</strong> Opisz przekształcenie wykresu $f$ prowadzące do $g(x) = -f(2x-4) + 3$.<br>
-    <strong>15. (R)</strong> Narysuj wykres funkcji $f(x) = \frac{|x|}{x} \cdot (x-2)^2$.<br>
-    <strong>16. (R)</strong> Funkcja okresowa ma okres zasadniczy $T = 2$. Sporządź jej wykres, gdy dla $x \in [0, 2)$: $f(x) = 1 - |x-1|$.<br>
-    <strong>16. A) (R)</strong> Wskaż przedziały monotoniczności funkcji mantysy $f(x) = x - [x]$.<br>
-    <strong>17. A) (R)</strong> Dane są $k(x) = 5 - x^2$ oraz $p(x) = 2x+1$. Wyznacz wzór funkcji złożonej $h(x) = k(p(x))$ oraz jej wartość największą.
+        <strong>14. A) (R)</strong> Znajdź miejsca zerowe funkcji:<br>
+    $$f(x) = \frac{\sin 3x - \sin x}{x}$$<br>
+    <strong>14. B) (R)</strong> Opisz sposób, w jaki należy przekształcić wykres funkcji $f$, aby otrzymać wykres funkcji $g$, gdy:<br>
+    a) $f(x) = \sin 3x \land g(x) = \sin(3x + \pi)$<br>
+    b) $f(x) = 2x^2 \land g(x) = 2x^2 - 12x + 12$
         
       </div>
 
@@ -842,34 +978,39 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Dla 14.A pamiętaj o $x+4 > 0$. Dla 14.B: $2x-4 = 2(x-2)$. Dla 16.A mantysa rośnie od 0 do 1 w każdym przedziale postaci $\langle k, k+1)$.
+        Zastosuj wzór na różnicę sinusów: $\sin \alpha - \sin \beta = 2 \sin\frac{\alpha-\beta}{2} \cos\frac{\alpha+\beta}{2}$. W 14.B.a wyłącz 3 przed nawias w argumencie: $3x+\pi = 3(x + \frac{\pi}{3})$.
       </div>
     </div>
     
 
-      <button onclick="toggleSolution('zad-3-14-17')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+      <button onclick="toggleSolution('zad-3-14')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
         <span class="flex items-center gap-2">
           <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
           Pokaż pełne omówienie i rozwiązanie krok po kroku
         </span>
-        <i id="icon-zad-3-14-17" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+        <i id="icon-zad-3-14" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
       </button>
 
-      <div id="solution-zad-3-14-17" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+      <div id="solution-zad-3-14" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>14. A (R):</strong> Dziedzina: $x+4 > 0 \implies x > -4$. Licznik: $|x+1| = 2 \implies x+1 = 2 \lor x+1 = -2 \implies x = 1 \lor x = -3$. Oba pierwiastki należą do $(-4, \infty)$. Miejsca zerowe: $x \in \{-3, 1\}$.</p>
-    <p><strong>14. B (R):</strong> Zapisujemy $g(x) = -f(2(x-2)) + 3$. Kolejne kroki:<br>
-    1) Powinowactwo prostokątne względem osi $OY$ w skali $\frac{1}{2}$ (2-krotne zwężenie poziome): $f(2x)$.<br>
-    2) Przesunięcie o 2 jednostki w prawo: $f(2(x-2))$.<br>
-    3) Symetria względem osi $OX$: $-f(2(x-2))$.<br>
-    4) Przesunięcie o 3 jednostki w górę: $-f(2(x-2)) + 3$.</p>
-    <p><strong>15 (R):</strong> Zauważmy, że $\frac{|x|}{x} = \text{sgn}(x) = 1$ dla $x > 0$ oraz $-1$ dla $x < 0$ (dla $x=0$ funkcja nieokreślona).<br>
-    Zatem: $f(x) = (x-2)^2$ dla $x > 0$ oraz $f(x) = -(x-2)^2$ dla $x < 0$.</p>
-    <p><strong>16 (R):</strong> W bazowym okresie $[0, 2)$: dla $x \in [0, 1]$ $f(x) = 1 - (1-x) = x$, dla $x \in [1, 2)$ $f(x) = 1 - (x-1) = 2-x$. Jest to „trójkątny ząb” o wysokości 1 w $x=1$. Następnie powtarzamy ten kształt co 2 jednostki na całej prostej rzeczywistej.</p>
-    <p><strong>16. A (R):</strong> Funkcja mantysy $x - [x] = \{x\}$ jest funkcją rosnącą w każdym przedziale postaci $\langle k, k+1)$, gdzie $k \in \mathbb{Z}$. W punktach całkowitych następuje skok z wartości zbliżającej się do 1 do wartości 0.</p>
-    <p><strong>17. A (R):</strong> Złożenie: $h(x) = k(2x+1) = 5 - (2x+1)^2 = 5 - (4x^2 + 4x + 1) = -4x^2 - 4x + 4$.<br>
-    Jest to parabola z ramionami w dół ($a = -4 < 0$). Osiąga maksimum w wierzchołku: $x_w = -\frac{-4}{2 \cdot (-4)} = -\frac{1}{2}$.<br>
-    Wartość największa: $y_{max} = h(-1/2) = 5 - 0 = 5$.</p>
+          <p><strong>14. A:</strong> Dziedzina: $x \ne 0$, czyli $D = \mathbb{R} \setminus \{0\}$.<br>
+    Stosujemy wzór na różnicę sinusów w liczniku:<br>
+    $$\sin 3x - \sin x = 2 \sin\left(\frac{3x - x}{2}\right) \cos\left(\frac{3x + x}{2}\right) = 2 \sin x \cos 2x$$
+    Funkcja przyjmuje postać: $f(x) = \frac{2 \sin x \cos 2x}{x}$.<br>
+    Przyrównujemy licznik do zera przy warunku $x \ne 0$:<br>
+    $$2 \sin x \cos 2x = 0 \iff \sin x = 0 \lor \cos 2x = 0$$
+    1) $\sin x = 0 \implies x = k\pi$, gdzie $k \in \mathbb{Z}$. Ponieważ $x \ne 0$, wykluczamy $k = 0$, co daje $x \in \{k\pi: k \in \mathbb{Z} \setminus \{0\}\}$.<br>
+    2) $\cos 2x = 0 \implies 2x = \frac{\pi}{2} + k\pi \implies x = \frac{\pi}{4} + \frac{k\pi}{2}$ dla $k \in \mathbb{Z}$ (żadna z tych wartości nie jest równa zero).<br>
+    Zatem zbiór miejsc zerowych to:<br>
+    $$x \in \left\{\frac{\pi}{4} + \frac{k\pi}{2}: k \in \mathbb{Z}\right\} \cup \{k\pi: k \in \mathbb{Z} \setminus \{0\}\}$$</p>
+    <p><strong>14. B:</strong><br>
+    a) Przekształcamy argument funkcji $g$:<br>
+    $$g(x) = \sin(3x + \pi) = \sin\left(3\left(x + \frac{\pi}{3}\right)\right) = f\left(x + \frac{\pi}{3}\right)$$
+    Należy przesunąć wykres funkcji $f$ o wektor $\vec{u} = \left[-\frac{\pi}{3}, 0\right]$, czyli o $\frac{\pi}{3}$ w lewo wzdłuż osi $OX$.<br>
+    <em>Uwaga:</em> Ponieważ $\sin(3x+\pi) = -\sin 3x$, równoważnym opisem jest symetria osiowa względem osi $OX$.<br>
+    b) Przekształcamy trójmian do postaci kanonicznej:<br>
+    $$g(x) = 2(x^2 - 6x) + 12 = 2((x-3)^2 - 9) + 12 = 2(x-3)^2 - 18 + 12 = 2(x-3)^2 - 6$$
+    Zatem $g(x) = f(x - 3) - 6$. Wykres funkcji $f(x) = 2x^2$ należy przesunąć o wektor $\vec{u} = [3, -6]$ (o 3 jednostki w prawo i 6 jednostek w dół).</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -878,7 +1019,179 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            14.A: $x \in \{-3, 1\}$; &nbsp; 14.B: zwężenie $\times 2$, translacja $\vec{u}=[2,3]$, symetria $OX$; &nbsp; 16.A: rosnąca w $\langle k, k+1)$ ($k \in \mathbb{Z}$); &nbsp; 17.A: $h(x) = -4x^2-4x+4$, $y_{max} = 5$.
+            14.A: $x \in \left\{\frac{\pi}{4} + \frac{k\pi}{2}: k \in \mathbb{Z}\right\} \cup \{k\pi: k \in \mathbb{Z} \setminus \{0\}\}$;<br>
+    14.B: a) przesunięcie o $\frac{\pi}{3}$ w lewo wzdłuż $OX$ (wektor $[-\frac{\pi}{3}, 0]$); b) przesunięcie o wektor $[3, -6]$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-3-15-16" data-title="15 & 16 (R). Równanie f(x) = m z modułem oraz funkcja okresowa" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            15 & 16 (R)
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Równanie f(x) = m z modułem oraz funkcja okresowa</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie z parametrem / rysowanie wykresu</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>15. (R)</strong> Narysuj wykres funkcji $f(x) = \frac{|x^2 - 9|}{3 - x}$. Wyznacz wszystkie wartości parametru $m$, dla których równanie $f(x) = m$ nie ma rozwiązania. Zapisz obliczenia.<br><br>
+    <strong>16. (R)</strong> Funkcja okresowa $f$ ma okres podstawowy $T = 2$. Naszkicuj wykres tej funkcji, jeżeli dla $x \in (-2, 0)$ określona jest wzorem $f(x) = \frac{1}{x}$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        W zadaniu 15 rozłóż $|x^2-9| = |x-3|\cdot|x+3|$ i rozpatrz znak wyrażenia $x-3$ w zależności od tego, czy $x < 3$ czy $x > 3$. Zauważ wyłączony punkt $x = 3$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-3-15-16')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-3-15-16" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-3-15-16" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>15:</strong> Dziedzina: $3 - x \ne 0 \implies x \ne 3$, zatem $D = \mathbb{R} \setminus \{3\}$.<br>
+    Korzystamy z tożsamości $|x^2 - 9| = |x - 3| \cdot |x + 3|$.<br>
+    - Dla $x < 3$: $x - 3 < 0 \implies |x - 3| = -(x - 3) = 3 - x$.<br>
+    $$f(x) = \frac{(3 - x)|x + 3|}{3 - x} = |x + 3|$$
+    Rozbijając dalej dla $x < 3$: jeśli $x \in [-3, 3)$, to $f(x) = x + 3$. Jeśli $x < -3$, to $f(x) = -x - 3$.<br>
+    Wartość graniczna przy $x \to 3^-$ wynosi $3 + 3 = 6$. Zatem dla $x < 3$ funkcja przyjmuje wartości ze zbioru $\langle 0, 6)$.<br>
+    - Dla $x > 3$: $x - 3 > 0 \implies |x - 3| = x - 3$. Ponadto dla $x > 3$ mamy $x + 3 > 0$, więc $|x + 3| = x + 3$.<br>
+    $$f(x) = \frac{(x - 3)(x + 3)}{3 - x} = -(x + 3) = -x - 3$$
+    Dla $x > 3$ wykres to półprosta malejąca w dół od punktu $(3, -6)$ (z otwartym kółkiem). Przyjmuje wartości ze zbioru $(-\infty, -6)$.<br>
+    Zbiór wartości funkcji $f$:<br>
+    $$ZW_f = (-\infty, -6) \cup \langle 0, 6)$$
+    Równanie $f(x) = m$ <strong>nie ma rozwiązania</strong>, gdy prosta pozioma $y = m$ nie przecina wykresu funkcji, czyli gdy $m \notin ZW_f$:<br>
+    $$m \in \langle -6, 0) \cup \langle 6, +\infty)$$</p>
+    <p><strong>16:</strong> Okres podstawowy $T = 2$ oznacza, że $f(x + 2) = f(x)$ dla każdego $x$ z dziedziny.<br>
+    W przedziale podstawowym $x \in (-2, 0)$ funkcja jest określona wzorem $f(x) = \frac{1}{x}$ (lewa gałąź hiperboli w III ćwiartce, rosnąca od $-\frac{1}{2}$ w $x=-2$ do $-\infty$ przy $x \to 0^-$).<br>
+    Wykres powielamy translacjami o wektory $[2k, 0]$ dla $k \in \mathbb{Z}$:<br>
+    - w przedziale $(0, 2)$: $f(x) = \frac{1}{x - 2}$<br>
+    - w przedziale $(2, 4)$: $f(x) = \frac{1}{x - 4}$<br>
+    Wykres składa się z nieskończonej liczby identycznych łuków hiperbolicznych o szerokości 2, z pionowymi asymptotami w punktach parzystych $x = 2k$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            15: $m \in \langle -6, 0) \cup \langle 6, +\infty)$; &emsp; 16: okresowe powielenie łuku $y = 1/x$ z okresowością $T=2$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-3-17" data-title="16. A, 17 & 17. A (R). Monotoniczność mantysy, wielomian ze styczną i złożenia funkcji" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            16. A, 17 & 17. A (R)
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Monotoniczność mantysy, wielomian ze styczną i złożenia funkcji</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie dowodowe / analiza matematyczna</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>16. A) (R)</strong> Wskaż przedziały monotoniczności funkcji $f(x) = x - [x]$, gdzie $[x]$ oznacza część całkowitą z $x$.<br><br>
+    <strong>17. (R)</strong> Rysunek przedstawia fragment wykresu pewnej funkcji wielomianowej $w$ stopnia trzeciego. Jedynymi miejscami zerowymi tego wielomianu są liczby $(-2)$ oraz $1$, a pochodna $w'(-2) = 18$.<br>
+    a) Wyznacz wzór wielomianu $w$.<br>
+    b) Wyznacz równanie prostej stycznej do wykresu tego wielomianu w punkcie o odciętej $x = 3$.<br><br>
+    <strong>17. A) (R)</strong> Dane są funkcje $k(x) = 5 - x^2$ dla $x \in \mathbb{R}$ oraz $p(x) = \sqrt{1 - x}$ dla $x \le 1$. Funkcje $f$ oraz $g$ są określone jako $f = k \circ p$ oraz $g = p \circ k$. Wyznacz wzory i dziedziny funkcji $f$ oraz $g$.
+        
+    <div class="my-4 p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col items-center">
+      <img src="assets/img/3/p6_img1.png" alt="Rysunek do zadania 16. A, 17 & 17. A (R)" class="max-h-72 rounded-lg object-contain">
+      <span class="text-[11px] text-slate-500 mt-2">Rysunek do zadania 16. A, 17 & 17. A (R)</span>
+    </div>
+    
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        W 16.A funkcja to część ułamkowa {x}. W 17 z wykresu widać, że w x = 1 jest pierwiastek podwójny, a w x = -2 pojedynczy: w(x) = a(x+2)(x-1)^2. W 17.A pamiętaj o warunku istnienia złożenia i dziedzinie wewnętrznej.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-3-17')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-3-17" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-3-17" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>16. A:</strong> Funkcja $f(x) = x - [x] = \{x\}$ to tzw. mantysa (część ułamkowa).<br>
+    Dla dowolnej liczby całkowitej $k \in \mathbb{Z}$ i $x \in \langle k, k+1)$ część całkowita wynosi $[x] = k$, zatem:<br>
+    $$f(x) = x - k$$
+    W każdym takim przedziale funkcja jest liniowa ze współczynnikiem kierunkowym $a = 1 > 0$, a więc ściśle rosnąca.<br>
+    Odpowiedź: Funkcja jest <strong>rosnąca w każdym z przedziałów postaci $\langle k, k+1)$</strong>, gdzie $k \in \mathbb{Z}$ (np. $\langle 0, 1), \langle 1, 2), \langle -1, 0)$ itd.). <em>W całej dziedzinie funkcja nie jest monotoniczna.</em></p>
+    <p><strong>17:</strong><br>
+    a) Z wykresu wynika, że w punkcie $x = 1$ wykres jest styczny do osi $OX$ (nie przecina jej), co oznacza pierwiastek o krotności parzystej (dwukrotny), natomiast w $x = -2$ przecina oś (pierwiastek pojedynczy). Ponieważ $\deg w = 3$, wielomian ma postać:<br>
+    $$w(x) = a(x + 2)(x - 1)^2$$
+    Wyznaczamy pochodną wielomianu:<br>
+    $$w'(x) = a\left[(1)(x - 1)^2 + (x + 2) \cdot 2(x - 1)\right] = a(x - 1)(x - 1 + 2x + 4) = a(x - 1)(3x + 3) = 3a(x - 1)(x + 1)$$
+    Wstawiamy warunek $w'(-2) = 18$:<br>
+    $$w'(-2) = 3a(-2 - 1)(-2 + 1) = 3a(-3)(-1) = 9a = 18 \implies a = 2$$
+    Wzór wielomianu:<br>
+    $$w(x) = 2(x + 2)(x - 1)^2 = 2(x + 2)(x^2 - 2x + 1) = 2(x^3 - 3x + 2) = 2x^3 - 6x + 4$$<br>
+    b) Obliczamy rzędną punktu styczności dla $x_0 = 3$:<br>
+    $$y_0 = w(3) = 2(3+2)(3-1)^2 = 2 \cdot 5 \cdot 4 = 40$$
+    Obliczamy współczynnik kierunkowy stycznej $a_s = w'(3)$:<br>
+    $$w'(3) = 3 \cdot 2(3 - 1)(3 + 1) = 6 \cdot 2 \cdot 4 = 48$$
+    Równanie prostej stycznej $y - y_0 = a_s(x - x_0)$:<br>
+    $$y - 40 = 48(x - 3) \implies y = 48x - 144 + 40 \implies y = 48x - 104$$</p>
+    <p><strong>17. A:</strong><br>
+    1) Złożenie $f(x) = (k \circ p)(x) = k(p(x))$:<br>
+    Dziedzina: $x \in D_p \iff x \le 1$, czyli $D_f = (-\infty, 1\rangle$.<br>
+    Wzór: $f(x) = 5 - (p(x))^2 = 5 - (\sqrt{1 - x})^2 = 5 - (1 - x) = x + 4$.<br>
+    2) Złożenie $g(x) = (p \circ k)(x) = p(k(x))$:<br>
+    Warunek istnienia pierwiastka w $p$: $1 - k(x) \ge 0 \iff 1 - (5 - x^2) \ge 0 \iff x^2 - 4 \ge 0$.<br>
+    $$(x - 2)(x + 2) \ge 0 \implies D_g = (-\infty, -2\rangle \cup \langle 2, +\infty)$$
+    Wzór: $g(x) = \sqrt{1 - (5 - x^2)} = \sqrt{x^2 - 4}$.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            16.A: rosnąca w każdym z przedziałów $\langle k, k+1)$, $k \in \mathbb{Z}$;<br>
+    17: a) $w(x) = 2(x+2)(x-1)^2 = 2x^3 - 6x + 4$, b) $y = 48x - 104$;<br>
+    17.A: $f(x) = x + 4$, $D_f = (-\infty, 1\rangle$; &emsp; $g(x) = \sqrt{x^2 - 4}$, $D_g = (-\infty, -2\rangle \cup \langle 2, +\infty)$.
           </div>
         </div>
 

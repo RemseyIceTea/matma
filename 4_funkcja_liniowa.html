@@ -8,14 +8,32 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {
-      delimiters: [
-        {left: '$$', right: '$$', display: true},
-        {left: '$', right: '$', display: false}
-      ],
-      throwOnError: false
-    });"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script>
+    function renderMathOnPage() {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false,
+          macros: {
+            "\\degree": "^{\\circ}",
+            "°": "^{\\circ}",
+            "\\tg": "\\operatorname{tg}",
+            "\\ctg": "\\operatorname{ctg}",
+            "\\arctg": "\\operatorname{arctg}",
+            "\\arcctg": "\\operatorname{arcctg}",
+            "\\sphericalangle": "\\angle",
+            "\\measuredangle": "\\angle"
+          }
+        });
+      }
+    }
+    document.addEventListener("DOMContentLoaded", renderMathOnPage);
+    window.addEventListener("load", renderMathOnPage);
+  </script>
   <style>
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: #0f172a; }
@@ -99,7 +117,7 @@
             <i class="fa-solid fa-book-open"></i> Dział 4 z 8
           </div>
           <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">4. Funkcja liniowa</h1>
-          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-3xl">Współczynnik kierunkowy, kąt nachylenia, proste równoległe i prostopadłe, równania i nierówności z wartością bezwzględną, układy równań i metoda wyznacznikowa.</p>
+          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-3xl">Równania prostych, kąty nachylenia, warunki równoległości i prostopadłości, układy równań oraz zadania optymalizacyjne i z parametrem.</p>
         </div>
         <div class="flex items-center gap-3">
           <button id="toggle-all-btn" onclick="toggleAllSolutions()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition flex items-center gap-2 shadow">
@@ -124,51 +142,27 @@
 
     <div class="lg:col-span-3 space-y-8">
       
-<div class="p-6 rounded-2xl bg-amber-950/30 border border-amber-800/40 shadow-xl space-y-4">
-  <div class="flex items-center gap-3 border-b border-amber-800/40 pb-3">
-    <div class="w-8 h-8 rounded-lg bg-amber-600/30 text-amber-400 flex items-center justify-center font-bold">
-      <i class="fa-solid fa-bezier-curve"></i>
-    </div>
-    <h2 class="text-lg font-bold text-white tracking-wide">Kompendium Teoretyczne: Funkcja Liniowa</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+    <h3 class="font-semibold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-chart-line"></i> Postacie prostej</h3>
+    <p class="text-xs text-slate-300">Kierunkowa: $y = ax + b$ ($a = \operatorname{tg}\alpha$, $b = f(0)$)</p>
+    <p class="text-xs text-slate-400">Ogólna: $Ax + By + C = 0$ ($A^2+B^2 > 0$)</p>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-slate-300">
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-equals"></i> Postacie równania prostej</h3>
-      <p>Kierunkowa: $y = ax + b$ ($a = \operatorname{tg}\alpha$, $b = f(0)$)</p>
-      <p>Ogólna: $Ax + By + C = 0$ ($A^2+B^2 > 0$)</p>
-      <p>Przez dwa punkty: $a = \frac{y_B - y_A}{x_B - x_A}$</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-arrows-split-up-and-left"></i> Wzajemne położenie prostych</h3>
-      <p>Równoległość: $a_1 = a_2$ lub $A_1B_2 - A_2B_1 = 0$</p>
-      <p>Prostopadłość: $a_1 \cdot a_2 = -1$ lub $A_1A_2 + B_1B_2 = 0$</p>
-      <p>Przecięcie z osiami: $OX: (-\frac{b}{a}, 0)$, $OY: (0, b)$</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-calculator"></i> Układy równań liniowych</h3>
-      <p>Metoda wyznacznikowa (Cramera):</p>
-      <p>$W \neq 0 \implies$ 1 rozwiązanie: $x = \frac{W_x}{W}, y = \frac{W_y}{W}$</p>
-      <p>$W = 0 \land (W_x \neq 0 \lor W_y \neq 0) \implies$ 0 rozwiązań (sprzeczny)</p>
-      <p>$W = W_x = W_y = 0 \implies$ $\infty$ rozwiązań (tożsamościowy)</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-angle"></i> Kąt nachylenia prostej</h3>
-      <p>$a = \operatorname{tg}\alpha$ dla $\alpha \in [0^\circ, 180^\circ) \setminus \{90^\circ\}$</p>
-      <p>Dla $a > 0$: $\alpha$ ostry ($a=1 \implies 45^\circ$, $a=\sqrt{3} \implies 60^\circ$)</p>
-      <p>Dla $a < 0$: $\alpha$ rozwarty ($\operatorname{tg}(180^\circ - \beta) = -\operatorname{tg}\beta$)</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-bars"></i> Wartość bezwzględna</h3>
-      <p>$|x - a| = r \iff x = a - r \lor x = a + r$</p>
-      <p>$|x - a| \le r \iff x \in \langle a-r, a+r \rangle$</p>
-      <p>Równania wielomodułowe: przedziałami lub geometrycznie.</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-arrow-trend-up"></i> Monotoniczność</h3>
-      <p>Rosnąca $\iff a > 0$</p>
-      <p>Malejąca $\iff a < 0$</p>
-      <p>Stała $\iff a = 0$</p>
-    </div>
+  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+    <h3 class="font-semibold text-sky-300 flex items-center gap-1.5"><i class="fa-solid fa-arrows-split-up-and-left"></i> Wzajemne położenie</h3>
+    <p class="text-xs text-slate-300">Równoległość: $a_1 = a_2$ &hArr; $A_1 B_2 - A_2 B_1 = 0$</p>
+    <p class="text-xs text-slate-400">Prostopadłość: $a_1 \cdot a_2 = -1$ &hArr; $A_1 A_2 + B_1 B_2 = 0$</p>
+  </div>
+  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+    <h3 class="font-semibold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-compass-drafting"></i> Kąt nachylenia $\alpha$</h3>
+    <p class="text-xs text-slate-300">$a = \operatorname{tg}\alpha$ dla $\alpha \in [0^\circ, 180^\circ) \setminus \{90^\circ\}$</p>
+    <p class="text-xs text-slate-400">Dla $a > 0$: $\alpha$ ostry ($a=1 \implies 45^\circ$, $a=\sqrt{3} \implies 60^\circ$). Dla $a < 0$: $\alpha = 180^\circ - \beta$.</p>
+  </div>
+  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+    <h3 class="font-semibold text-purple-300 flex items-center gap-1.5"><i class="fa-solid fa-table-cells-large"></i> Układy równań & Wyznaczniki</h3>
+    <p class="text-xs text-slate-300">$W \ne 0$: dokładnie 1 rozwiązanie (oznaczony)</p>
+    <p class="text-xs text-slate-400">$W = 0 \land (W_x \ne 0 \lor W_y \ne 0)$: sprzeczny (0)</p>
+    <p class="text-xs text-slate-400">$W = W_x = W_y = 0$: nieoznaczony ($\infty$)</p>
   </div>
 </div>
 
@@ -188,24 +182,26 @@
 
       <div class="space-y-6" id="tasks-wrapper">
         
-    <article id="zad-4-1-2" data-title="1 – 2. Współczynniki funkcji liniowej i warunek prostopadłości" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-4-1-2" data-title="1 – 2. Współczynniki funkcji liniowej z wykresu oraz punkt na prostej" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
             1 – 2
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Współczynniki funkcji liniowej i warunek prostopadłości</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Współczynniki funkcji liniowej z wykresu oraz punkt na prostej</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie zamknięte / otwarte</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania zamknięte wielokrotnego wyboru</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>1.</strong> Wykres funkcji liniowej $f(x) = ax + b$ przedstawiono na rysunku. Współczynniki $a$ i $b$ spełniają warunki:<br>
+        <strong>1.</strong> Dana jest funkcja liniowa $f$ określona wzorem $f(x) = ax + b$, gdzie $a$ i $b$ są liczbami rzeczywistymi. Wykres funkcji $f$ przedstawiono w kartezjańskim układzie współrzędnych $(x, y)$ na rysunku obok.<br>
+    Współczynniki $a$ i $b$ we wzorze funkcji $f$ spełniają warunki:<br>
     A. $a > 0$ i $b > 0$ &emsp; B. $a > 0$ i $b < 0$ &emsp; C. $a < 0$ i $b > 0$ &emsp; D. $a < 0$ i $b < 0$<br><br>
-    <strong>2.</strong> Dana jest prosta $k: y = (m-1)x + 3$ oraz prosta $l: y = -\frac{1}{2}x + 1$. Wyznacz $m$, dla którego proste są: a) prostopadłe, b) równoległe.
+    <strong>2.</strong> Na płaszczyźnie, w kartezjańskim układzie współrzędnych $(x, y)$, dana jest prosta $k$ o równaniu $y = 3x + b$, przechodząca przez punkt $A = (-1, 3)$. Współczynnik $b$ w równaniu tej prostej jest równy:<br>
+    A. $0$ &emsp; B. $6$ &emsp; C. $(-10)$ &emsp; D. $8$
         
     <div class="my-4 p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col items-center">
       <img src="assets/img/4/p1_img1.png" alt="Rysunek do zadania 1 – 2" class="max-h-72 rounded-lg object-contain">
@@ -219,7 +215,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Prosta malejąca ma $a < 0$. Punkt przecięcia z osią $OY$ to $(0, b)$. Prostopadłość: $a_1 \cdot a_2 = -1$. Równoległość: $a_1 = a_2$.
+        Funkcja rosnąca (idąca w górę od lewej do prawej) ma współczynnik kierunkowy $a > 0$. Punkt przecięcia z pionową osią $OY$ ma współrzędne $(0, b)$. W zadaniu 2 podstaw współrzędne punktu $A$ do równania prostej.
       </div>
     </div>
     
@@ -234,12 +230,12 @@
 
       <div id="solution-zad-4-1-2" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>1:</strong> Z wykresu widać, że funkcja jest malejąca (idzie w dół z lewej do prawej), więc $a < 0$.<br>
-    Punkt przecięcia wykresu z pionową osią $OY$ leży powyżej zera ($y > 0$), więc $b > 0$.<br>
-    Poprawna odpowiedź: <strong>C ($a < 0$ i $b > 0$)</strong>.</p>
-    <p><strong>2:</strong> Współczynniki kierunkowe to $a_k = m - 1$ oraz $a_l = -\frac{1}{2}$.<br>
-    <strong>a) Prostopadłość:</strong> $a_k \cdot a_l = -1 \implies (m-1) \cdot \left(-\frac{1}{2}\right) = -1 \implies m - 1 = 2 \implies m = 3$.<br>
-    <strong>b) Równoległość:</strong> $a_k = a_l \implies m - 1 = -\frac{1}{2} \implies m = \frac{1}{2}$.</p>
+          <p><strong>1:</strong> Z analizy rysunku wynika, że prosta wznosi się w prawo, co oznacza, że funkcja jest ściśle rosnąca: $a > 0$.<br>
+    Punkt przecięcia prostej z osią $OY$ leży poniżej osi odciętych $OX$ (w ujemnej części osi $OY$), zatem wyraz wolny $b < 0$.<br>
+    Prawidłowa odpowiedź to <strong>B ($a > 0$ i $b < 0$)</strong>.</p>
+    <p><strong>2:</strong> Punkt $A = (-1, 3)$ leży na prostej $y = 3x + b$, więc jego współrzędne spełniają jej równanie:<br>
+    $$3 = 3 \cdot (-1) + b \implies 3 = -3 + b \implies b = 3 + 3 = 6$$
+    Prawidłowa odpowiedź to <strong>B (6)</strong>.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -248,7 +244,7 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            1: <strong>C</strong>; &emsp; 2. a) $m = 3$; &emsp; 2. b) $m = \frac{1}{2}$.
+            1: <strong>B</strong> ($a > 0$ i $b < 0$); &emsp; 2: <strong>B</strong> ($b = 6$).
           </div>
         </div>
 
@@ -257,25 +253,33 @@
     </article>
     
 
-    <article id="zad-4-3-6" data-title="3 – 6. Równania prostych, kąt nachylenia i współliniowość punktów" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-4-3-6" data-title="3 – 6. Równania prostych, kąty nachylenia do osi OX i współliniowość punktów" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
             3 – 6
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Równania prostych, kąt nachylenia i współliniowość punktów</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Równania prostych, kąty nachylenia do osi OX i współliniowość punktów</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte / dowody</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte / dowód</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>3.</strong> Napisz równanie prostej przechodzącej przez punkty $A = (-2, 5)$ i $B = (4, -1)$.<br>
-    <strong>5.</strong> Podaj miarę kąta nachylenia prostej do osi $OX$, gdy współczynnik kierunkowy wynosi:<br>
-    a) $a = 1$ &emsp; b) $a = \sqrt{3}$ &emsp; c) $a = -\frac{\sqrt{3}}{3}$ &emsp; d) $a = -1$ &emsp; e) $a = 0$<br><br>
-    <strong>6.</strong> Uzasadnij, że punkty $A = (-1, 1)$, $B = (1, 5)$ i $C = (1000, 2003)$ leżą na jednej prostej.
+        <strong>3.</strong> Napisz równanie prostej:<br>
+    a) $-6x + 3y + 2 = 0$ w postaci kierunkowej,<br>
+    b) przechodzącej przez punkty $A = (-4, -2)$ i $B = (5, 4)$,<br>
+    c) nachylonej do osi $OX$ pod kątem $120^\circ$ i przechodzącej przez punkt $N = (-3, 2)$,<br>
+    d) równoległej do prostej $l: 6x - y = 0$ i przechodzącej przez punkt $P = (-1, 1)$,<br>
+    e) prostopadłej do prostej $l: \sqrt{2}x - y + 5 = 0$ i przechodzącej przez punkt $M = (2, 1)$.<br><br>
+    <strong>4.</strong> Dane są: prosta $k: y = \frac{1}{2}x + 5$ oraz prosta $l: y - 1 = -2x$. Proste $k$ i $l$:<br>
+    A. się pokrywają &emsp; B. nie mają punktów wspólnych &emsp; C. są prostopadłe &emsp; D. przecinają się pod kątem $30^\circ$<br><br>
+    <strong>5.</strong> Podaj miarę kąta nachylenia $\alpha$, jaki tworzy funkcja liniowa z osią $OX$, gdy:<br>
+    a) $f(x) = \sqrt{3}x + 3$ &emsp; b) $f(x) = x + 4$ &emsp; c) $f(x) = \frac{\sqrt{3}}{3}x + 1$<br>
+    d) $f(x) = -x + 1$ &emsp; e) $f(x) = -\sqrt{3}x - 2$ &emsp; f) $f(x) = -\sqrt{3}$<br><br>
+    <strong>6.</strong> Uzasadnij, że punkty $A = (-1, 1)$, $B = (1, 5)$ i $C = (1000, 2003)$ należą do jednej prostej.
         
       </div>
 
@@ -284,7 +288,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        $a = \operatorname{tg} \alpha$. Dla $a < 0$: $\alpha = 180^\circ - \beta$. Punkty są współliniowe, gdy $a_{AB} = a_{BC}$.
+        Kąt nachylenia prostej spełnia zależność $a = \operatorname{tg}\alpha$. Dla kątów rozwartych: $\operatorname{tg}(180^\circ - \beta) = -\operatorname{tg}\beta$. Warunek prostopadłości: $a_1 \cdot a_2 = -1$.
       </div>
     </div>
     
@@ -299,18 +303,32 @@
 
       <div id="solution-zad-4-3-6" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>3:</strong> $a = \frac{-1 - 5}{4 - (-2)} = \frac{-6}{6} = -1$.<br>
-    Podstawiamy punkt $B$: $-1 = -1 \cdot 4 + b \implies b = 3$. Równanie prostej: $y = -x + 3$.</p>
-    <p><strong>5:</strong> Ponieważ $a = \operatorname{tg} \alpha$:<br>
-    a) $\operatorname{tg} \alpha = 1 \implies \alpha = 45^\circ$<br>
-    b) $\operatorname{tg} \alpha = \sqrt{3} \implies \alpha = 60^\circ$<br>
-    c) $\operatorname{tg} \alpha = -\frac{\sqrt{3}}{3} \implies \alpha = 180^\circ - 30^\circ = 150^\circ$<br>
-    d) $\operatorname{tg} \alpha = -1 \implies \alpha = 180^\circ - 45^\circ = 135^\circ$<br>
-    e) $\operatorname{tg} \alpha = 0 \implies \alpha = 0^\circ$ (prosta pozioma).</p>
-    <p><strong>6:</strong> Obliczamy współczynnik prostej $AB$: $a_{AB} = \frac{5 - 1}{1 - (-1)} = \frac{4}{2} = 2$. Równanie prostej $AB$: $y = 2x + b \implies 1 = 2(-1) + b \implies b = 3$, czyli $y = 2x + 3$.<br>
-    Sprawdzamy, czy punkt $C = (1000, 2003)$ leży na tej prostej:<br>
-    $L = 2003$; $P = 2 \cdot 1000 + 3 = 2000 + 3 = 2003$.<br>
-    $L = P$, zatem punkt $C$ leży na prostej $AB$, co dowodzi ich współliniowości, c.k.d.</p>
+          <p><strong>3:</strong><br>
+    a) $3y = 6x - 2 \implies y = 2x - \frac{2}{3}$.<br>
+    b) $a = \frac{4 - (-2)}{5 - (-4)} = \frac{6}{9} = \frac{2}{3}$. Wstawiamy punkt $B(5, 4)$: $4 = \frac{2}{3} \cdot 5 + b \implies b = 4 - \frac{10}{3} = \frac{2}{3}$. Równanie: $y = \frac{2}{3}x + \frac{2}{3}$.<br>
+    c) $a = \operatorname{tg} 120^\circ = -\operatorname{tg}(180^\circ - 120^\circ) = -\operatorname{tg} 60^\circ = -\sqrt{3}$.<br>
+    Wstawiamy punkt $N(-3, 2)$: $2 = -\sqrt{3} \cdot (-3) + b \implies 2 = 3\sqrt{3} + b \implies b = 2 - 3\sqrt{3}$.<br>
+    Równanie: $y = -\sqrt{3}x + 2 - 3\sqrt{3}$.<br>
+    d) Prosta $l: y = 6x \implies a_l = 6$. Prosta równoległa ma $a = 6$. Wstawiamy $P(-1, 1)$: $1 = 6(-1) + b \implies b = 7$. Równanie: $y = 6x + 7$.<br>
+    e) Prosta $l: y = \sqrt{2}x + 5 \implies a_l = \sqrt{2}$. Prosta prostopadła ma współczynnik $a = -\frac{1}{\sqrt{2}} = -\frac{\sqrt{2}}{2}$.<br>
+    Wstawiamy punkt $M(2, 1)$: $1 = -\frac{\sqrt{2}}{2} \cdot 2 + b \implies 1 = -\sqrt{2} + b \implies b = 1 + \sqrt{2}$.<br>
+    Równanie: $y = -\frac{\sqrt{2}}{2}x + 1 + \sqrt{2}$.</p>
+    <p><strong>4:</strong> Prosta $k$ ma $a_k = \frac{1}{2}$. Prosta $l$ po przekształceniu to $y = -2x + 1$, czyli $a_l = -2$.<br>
+    Iloczyn współczynników kierunkowych wynosi: $a_k \cdot a_l = \frac{1}{2} \cdot (-2) = -1$.<br>
+    Zatem proste są prostopadłe. Poprawna odpowiedź: <strong>C (są prostopadłe)</strong>.</p>
+    <p><strong>5:</strong> Kąt $\alpha = \sphericalangle(k, OX)$ wyznaczamy z równania $\operatorname{tg}\alpha = a$ dla $\alpha \in [0^\circ, 180^\circ)$:<br>
+    a) $a = \sqrt{3} \implies \operatorname{tg}\alpha = \sqrt{3} \implies \alpha = 60^\circ$<br>
+    b) $a = 1 \implies \operatorname{tg}\alpha = 1 \implies \alpha = 45^\circ$<br>
+    c) $a = \frac{\sqrt{3}}{3} \implies \operatorname{tg}\alpha = \frac{\sqrt{3}}{3} \implies \alpha = 30^\circ$<br>
+    d) $a = -1 \implies \operatorname{tg}\alpha = -1 \implies \alpha = 180^\circ - 45^\circ = 135^\circ$<br>
+    e) $a = -\sqrt{3} \implies \operatorname{tg}\alpha = -\sqrt{3} \implies \alpha = 180^\circ - 60^\circ = 120^\circ$<br>
+    f) $f(x) = -\sqrt{3}$ jest funkcją stałą ($a = 0$), prosta jest równoległa do osi $OX$ $\implies \alpha = 0^\circ$.</p>
+    <p><strong>6:</strong> Wyznaczamy współczynnik kierunkowy prostej $AB$:<br>
+    $$a_{AB} = \frac{5 - 1}{1 - (-1)} = \frac{4}{2} = 2$$
+    Równanie prostej $AB$: $y - 1 = 2(x - (-1)) \implies y = 2x + 3$.<br>
+    Sprawdzamy, czy punkt $C = (1000, 2003)$ spełnia to równanie:<br>
+    $$L = 2003, \quad P = 2 \cdot 1000 + 3 = 2000 + 3 = 2003 \implies L = P$$
+    Punkt $C$ leży na prostej $AB$, co dowodzi współliniowości punktów $A, B, C$, c.k.d.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -319,7 +337,10 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            3: $y = -x + 3$; &nbsp; 5: a) $45^\circ$, b) $60^\circ$, c) $150^\circ$, d) $135^\circ$, e) $0^\circ$; &nbsp; 6: Udowodniono.
+            3: a) $y = 2x - \frac{2}{3}$, b) $y = \frac{2}{3}x + \frac{2}{3}$, c) $y = -\sqrt{3}x + 2 - 3\sqrt{3}$, d) $y = 6x + 7$, e) $y = -\frac{\sqrt{2}}{2}x + 1 + \sqrt{2}$;<br>
+    4: <strong>C</strong> (prostopadłe);<br>
+    5: a) $60^\circ$, b) $45^\circ$, c) $30^\circ$, d) $135^\circ$, e) $120^\circ$, f) $0^\circ$;<br>
+    6: Udowodniono ($L = P = 2003$).
           </div>
         </div>
 
@@ -328,27 +349,35 @@
     </article>
     
 
-    <article id="zad-4-7-11" data-title="7 – 11. B. Układ prostych, współczynnik kierunkowy i monotoniczność z parametrem" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-4-7-11" data-title="7 – 11. B. Wzajemne położenie prostych, monotoniczność z parametrem i pole figury" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
             7 – 11. B
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Układ prostych, współczynnik kierunkowy i monotoniczność z parametrem</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wzajemne położenie prostych, monotoniczność z parametrem i pole figury</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte i zamknięte</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte i prawda-fałsz</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>7.</strong> Dane są proste $k: y = 2x+1$, $l: y = -\frac{1}{2}x+4$, $m: y = 2x-5$. Oceń P/F:<br>
-    1. Proste $k$ i $l$ są prostopadłe. [P/F] &emsp; 2. Proste $k$ i $m$ są równoległe. [P/F]<br>
-    <strong>8.</strong> Oblicz współczynnik kierunkowy prostej przez punkty $A=(0, 2), B=(-3, 4)$.<br>
-    <strong>9.</strong> W funkcji $y = ax+b$, gdy $x$ rośnie o 1, to $y$ maleje o 3, a $f(0) = 4$. Podaj wzór.<br>
-    <strong>11.</strong> Dla jakich $k$ funkcja $f(x) = (2k-6)x + 4$ jest: a) rosnąca, b) malejąca, c) stała?<br>
-    <strong>11. A)</strong> Dana jest funkcja $f(x) = -3x+3$. Wyznacz jej miejsce zerowe oraz punkt przecięcia z $OY$.
+        <strong>7.</strong> Dane są proste $k: 2x + 4y - 1 = 0$, $l: 4x + 2y + 1 = 0$, $m: 3x + 6y - 2 = 0$. Oceń prawdziwość zdań (P/F):<br>
+    1. Proste $k$ i $l$ są prostopadłe.<br>
+    2. Proste $k$ i $m$ są równoległe.<br><br>
+    <strong>8.</strong> Oblicz współczynnik kierunkowy prostej przechodzącej przez punkty $A = (0, 2), B = (-3, 4)$, a następnie podaj wartość współczynnika prostej: a) równoległej, b) prostopadłej do $AB$.<br><br>
+    <strong>9.</strong> O funkcji liniowej $f$ o wzorze $y = ax + b$ wiadomo, że gdy argument $x$ zwiększa się o 1, to wartość funkcji zwiększa się o 2. Określ współczynnik $a$ tej funkcji.<br><br>
+    <strong>10.</strong> Napisz wzór funkcji liniowej $y = ax + b$ wiedząc, że:<br>
+    a) przyjmuje wartości ujemne w przedziale $(-\infty, -4)$ i jej wykres jest nachylony do osi odciętych pod kątem $45^\circ$,<br>
+    b) rzędna punktu przecięcia z osią $OY$ wynosi 4, a odcięta punktu przecięcia z osią $OX$ wynosi 2,<br>
+    c) przyjmuje wartość 2 dla argumentu 0, a ponadto $f(4) - f(2) = 6$.<br><br>
+    <strong>11.</strong> Oblicz dla jakich wartości $k$ funkcja liniowa $f$ określona wzorem:<br>
+    a) $f(x) = (-2k^2 - 6)x - 4$ jest malejąca,<br>
+    b) $f(x) = \left(3 - \frac{2k+3}{4}\right)x + 3$ jest rosnąca,<br>
+    c) $f(x) = 5kx + 8 - k^2x$ jest stała.<br><br>
+    <strong>11. A)</strong> Dana jest funkcja $f(x) = -3x + 3$. Wyznacz wzór funkcji $g$ równoległej do $f$ i przechodzącej przez $A = (1, 3)$, oblicz miejsca zerowe obu funkcji oraz pole figury ograniczonej ich wykresami i osiami układu współrzędnych.
         
       </div>
 
@@ -357,7 +386,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Funkcja liniowa jest rosnąca gdy $a > 0$, malejąca gdy $a < 0$, stała gdy $a = 0$. Współczynnik $a = \frac{\Delta y}{\Delta x}$.
+        W zadaniu 7 wyznacz postacie kierunkowe: $a_k = -2/4 = -1/2$, $a_l = -4/2 = -2$, $a_m = -3/6 = -1/2$. W zadaniu 10.a $a = \operatorname{tg} 45^\circ = 1$.
       </div>
     </div>
     
@@ -372,16 +401,31 @@
 
       <div id="solution-zad-4-7-11" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>7:</strong> $a_k = 2, a_l = -1/2, a_m = 2$.<br>
-    1. $a_k \cdot a_l = 2 \cdot (-1/2) = -1$ $\implies$ prostopadłe $\implies$ <strong>PRAWDA (P)</strong>.<br>
-    2. $a_k = a_m = 2$ $\implies$ równoległe $\implies$ <strong>PRAWDA (P)</strong>.</p>
-    <p><strong>8:</strong> $a = \frac{4 - 2}{-3 - 0} = \frac{2}{-3} = -\frac{2}{3}$.</p>
-    <p><strong>9:</strong> $a = \frac{\Delta y}{\Delta x} = \frac{-3}{1} = -3$. Wyraz wolny $b = f(0) = 4$. Wzór: $y = -3x + 4$.</p>
-    <p><strong>11:</strong> Współczynnik $a = 2k - 6$.<br>
-    a) Rosnąca: $2k - 6 > 0 \implies k > 3 \iff k \in (3, \infty)$.<br>
-    b) Malejąca: $2k - 6 < 0 \implies k < 3 \iff k \in (-\infty, 3)$.<br>
-    c) Stała: $2k - 6 = 0 \implies k = 3$.</p>
-    <p><strong>11. A:</strong> Miejsce zerowe: $-3x+3=0 \implies x = 1$. Przecięcie z $OY$: $(0, b) = (0, 3)$.</p>
+          <p><strong>7:</strong> Przekształcamy równania do postaci kierunkowej:<br>
+    - $k: 4y = -2x + 1 \implies y = -\frac{1}{2}x + \frac{1}{4}$, więc $a_k = -\frac{1}{2}$.<br>
+    - $l: 2y = -4x - 1 \implies y = -2x - \frac{1}{2}$, więc $a_l = -2$.<br>
+    - $m: 6y = -3x + 2 \implies y = -\frac{1}{2}x + \frac{1}{3}$, więc $a_m = -\frac{1}{2}$.<br>
+    1. $a_k \cdot a_l = \left(-\frac{1}{2}\right) \cdot (-2) = 1 \ne -1$. Proste NIE są prostopadłe &rarr; <strong>FAŁSZ (F)</strong>.<br>
+    2. $a_k = a_m = -\frac{1}{2}$ oraz różne wyrazy wolne $\frac{1}{4} \ne \frac{1}{3}$. Proste są równoległe &rarr; <strong>PRAWDA (P)</strong>.</p>
+    <p><strong>8:</strong> $a_{AB} = \frac{4 - 2}{-3 - 0} = \frac{2}{-3} = -\frac{2}{3}$.<br>
+    a) Prosta równoległa: $a = a_{AB} = -\frac{2}{3}$.<br>
+    b) Prosta prostopadła: $a = -\frac{1}{a_{AB}} = \frac{3}{2} = 1{,}5$.</p>
+    <p><strong>9:</strong> Ze wzoru na przyrost wartości: $a = \frac{\Delta y}{\Delta x} = \frac{2}{1} = 2$. Zatem $a = 2$.</p>
+    <p><strong>10:</strong><br>
+    a) Kąt nachylenia to $45^\circ$, więc $a = \operatorname{tg} 45^\circ = 1$. Wartości ujemne w $(-\infty, -4)$ oznaczają, że miejscem zerowym jest $x_0 = -4$: $0 = 1 \cdot (-4) + b \implies b = 4$. Wzór: $y = x + 4$.<br>
+    b) Punkt na $OY$ to $(0, 4) \implies b = 4$. Punkt na $OX$ to $(2, 0) \implies 0 = 2a + 4 \implies a = -2$. Wzór: $y = -2x + 4$.<br>
+    c) $f(0) = 2 \implies b = 2$. Ponadto $f(4) - f(2) = (4a+2) - (2a+2) = 2a = 6 \implies a = 3$. Wzór: $y = 3x + 2$.</p>
+    <p><strong>11:</strong><br>
+    a) Malejąca $\iff a < 0 \implies -2k^2 - 6 < 0 \iff 2k^2 + 6 > 0$. Ponieważ dla każdego $k \in \mathbb{R}$ mamy $2k^2 \ge 0$, to $2k^2 + 6 \ge 6 > 0$. Nierówność jest spełniona dla każdego $k \in \mathbb{R}$.<br>
+    b) Rosnąca $\iff 3 - \frac{2k+3}{4} > 0 \iff 12 - (2k+3) > 0 \iff 9 - 2k > 0 \iff 2k < 9 \iff k < 4{,}5$, czyli $k \in (-\infty; 4{,}5)$.<br>
+    c) Współczynnik przy $x$ to $5k - k^2 = k(5 - k)$. Funkcja jest stała, gdy $a = 0 \iff k(5 - k) = 0 \iff k = 0 \lor k = 5$.</p>
+    <p><strong>11. A:</strong><br>
+    a) Prosta równoległa: $g(x) = -3x + b$. Wstawiamy $A(1, 3)$: $3 = -3(1) + b \implies b = 6$, więc $g(x) = -3x + 6$.<br>
+    b) Miejsca zerowe: $f(x) = 0 \implies -3x + 3 = 0 \implies x = 1$. Dla $g(x) = 0 \implies -3x + 6 = 0 \implies x = 2$.<br>
+    c) Wykresy to dwie proste równoległe opadające w dół.<br>
+    d) Figura zawarta między wykresami $f$ i $g$ oraz dodatnimi półosiami to trapez o wierzchołkach $(0, 3), (0, 6), (2, 0), (1, 0)$.<br>
+    Pole trapezu (lub różnica pól dwóch trójkątów prostokątnych):<br>
+    $$P = P_{\Delta g} - P_{\Delta f} = \frac{1}{2} \cdot 2 \cdot 6 - \frac{1}{2} \cdot 1 \cdot 3 = 6 - 1{,}5 = 4{,}5$$</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -390,7 +434,10 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            7: 1. P, 2. P; &emsp; 8: $a = -\frac{2}{3}$; &emsp; 9: $y = -3x+4$; &emsp; 11: a) $k>3$, b) $k<3$, c) $k=3$; &emsp; 11.A: $x_0 = 1, (0, 3)$.
+            7: 1. <strong>F</strong>, 2. <strong>P</strong>; &emsp; 8: $a = -\frac{2}{3}$, a) $-\frac{2}{3}$, b) $\frac{3}{2}$; &emsp; 9: $a = 2$;<br>
+    10: a) $y = x + 4$, b) $y = -2x + 4$, c) $y = 3x + 2$;<br>
+    11: a) $k \in \mathbb{R}$, b) $k \in (-\infty; 4{,}5)$, c) $k \in \{0, 5\}$;<br>
+    11.A: a) $g(x) = -3x + 6$, b) $x_{0f} = 1, x_{0g} = 2$, d) $P = 4{,}5$.
           </div>
         </div>
 
@@ -399,25 +446,33 @@
     </article>
     
 
-    <article id="zad-4-12-16" data-title="12 – 16. Wyznaczanie wzoru, proste równoległe i spadek temperatury n.p.m." data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-4-12-17" data-title="12 – 17. Zależności temperaturowe, nierówności liniowe i tożsamości z modułem" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            12 – 16
+            12 – 17
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wyznaczanie wzoru, proste równoległe i spadek temperatury n.p.m.</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Zależności temperaturowe, nierówności liniowe i tożsamości z modułem</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte / fizyczne</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>12.</strong> Do wykresu funkcji liniowej należy punkt $P = (-2, 3)$ oraz $f(1) = 2$. Wyznacz wzór funkcji $f$.<br>
-    <strong>13.</strong> Napisz równanie prostej równoległej do $2x - y - 11 = 0$ przechodzącej przez $P = (1, -4)$.<br>
-    <strong>15.</strong> Zbiorem rozwiązań nierówności $ax + 4 \ge 0$ z niewiadomą $x$ jest $(-\infty, 2\rangle$. Wyznacz $a$.<br>
-    <strong>16.</strong> Na wysokości 0 m n.p.m. temperatura wynosi $20^\circ\text{C}$, a na wysokości 1000 m n.p.m. wynosi $14^\circ\text{C}$. Napisz wzór $T(h) = ah+b$ i oblicz temperaturę na Rysach (2500 m).
+        <strong>12.</strong> Do wykresu funkcji liniowej należy punkt $P = (-2, 3)$ oraz $f(1) = 2$. Wyznacz wzór funkcji $f$.<br><br>
+    <strong>13.</strong> Napisz równanie prostej równoległej do prostej o równaniu $2x - y - 11 = 0$ i przechodzącej przez punkt $P = (1, 2)$.<br><br>
+    <strong>14.</strong> Sporządź wykres funkcji $f(x) = \begin{cases} x + 5, & x < -5 \\ -x + 2, & -5 \le x < 5 \\ x - 6, & x \ge 5 \end{cases}$ i oblicz jej miejsca zerowe.<br><br>
+    <strong>15.</strong> Zbiorem rozwiązań nierówności $ax + 4 \ge 0$ z niewiadomą $x$ jest przedział $(-\infty, 2]$. Wyznacz $a$.<br><br>
+    <strong>16.</strong> Temperatura powietrza maleje o $0{,}6^\circ\text{C}$ na każde $100$ m wzrostu wysokości n.p.m. W Zakopanem ($1000$ m n.p.m.) temperatura wynosiła $13^\circ\text{C}$.<br>
+    16. 1. Oceń P/F:<br>
+    1. Na Rysach ($2499$ m n.p.m.) zmierzona temperatura nie przekraczała $5^\circ\text{C}$. [P/F]<br>
+    2. W Białce Tatrzańskiej ($650$ m n.p.m.) temperatura wynosiła $16{,}5^\circ\text{C}$. [P/F]<br>
+    16. 2. Wyznacz współczynniki $a$ i $b$ funkcji $T(x) = ax + b$ opisującej temperaturę od wysokości $x$ n.p.m.<br><br>
+    <strong>17.</strong> Oceń prawdziwość zdań dla ujemnej liczby rzeczywistej $x$ (P/F):<br>
+    1. Jeżeli $x < 0$, to $|x - 10| + x = 10$.<br>
+    2. Jeżeli $x < 0$, to $|x^2 + 1| = -x^2 - 1$.
         
       </div>
 
@@ -426,26 +481,50 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Dla 15: zmiana zwrotu nierówności oznacza, że $a < 0$. W zadaniu 16 argumentem jest wysokość $h$ w metrach.
+        Dla 15: zmiana zwrotu nierówności oznacza, że $a < 0$. W 16 współczynnik $a = -\frac{0,6}{100} = -0,006$. W 17 rozpisz moduł z definicji.
       </div>
     </div>
     
 
-      <button onclick="toggleSolution('zad-4-12-16')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+      <button onclick="toggleSolution('zad-4-12-17')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
         <span class="flex items-center gap-2">
           <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
           Pokaż pełne omówienie i rozwiązanie krok po kroku
         </span>
-        <i id="icon-zad-4-12-16" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+        <i id="icon-zad-4-12-17" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
       </button>
 
-      <div id="solution-zad-4-12-16" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+      <div id="solution-zad-4-12-17" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>12:</strong> Punkty: $(-2, 3)$ i $(1, 2)$. $a = \frac{2 - 3}{1 - (-2)} = -\frac{1}{3}$. Podstawiamy $(1, 2)$: $2 = -\frac{1}{3}(1) + b \implies b = \frac{7}{3}$. Wzór: $f(x) = -\frac{1}{3}x + \frac{7}{3}$.</p>
-    <p><strong>13:</strong> Postać kierunkowa: $y = 2x - 11 \implies a = 2$. Prosta równoległa: $y = 2x + b$. Podstawiamy $(1, -4)$: $-4 = 2(1) + b \implies b = -6$. Równanie: $y = 2x - 6$.</p>
-    <p><strong>15:</strong> $ax \ge -4$. Skoro rozwiązaniem jest $x \le 2$, to dzieliliśmy przez liczbę ujemną $a < 0$: $x \le -\frac{4}{a}$. Zatem $-\frac{4}{a} = 2 \implies 2a = -4 \implies a = -2$.</p>
-    <p><strong>16:</strong> Dla $h = 0$: $T(0) = b = 20$. Dla $h = 1000$: $a(1000) + 20 = 14 \implies 1000a = -6 \implies a = -0,006$. Wzór: $T(h) = -0,006h + 20$.<br>
-    Dla Rysów ($h = 2500$ m): $T(2500) = -0,006 \cdot 2500 + 20 = -15 + 20 = 5^\circ\text{C}$.</p>
+          <p><strong>12:</strong> Punkty należące do prostej: $(-2, 3)$ oraz $(1, 2)$.<br>
+    Współczynnik kierunkowy: $a = \frac{2 - 3}{1 - (-2)} = -\frac{1}{3}$.<br>
+    Wstawiamy punkt $(1, 2)$: $2 = -\frac{1}{3} \cdot 1 + b \implies b = 2 + \frac{1}{3} = \frac{7}{3}$.<br>
+    Wzór: $f(x) = -\frac{1}{3}x + \frac{7}{3}$.</p>
+    <p><strong>13:</strong> Postać kierunkowa prostej: $y = 2x - 11 \implies a = 2$.<br>
+    Prosta równoległa ma równanie $y = 2x + b$. Wstawiamy punkt $P(1, 2)$:<br>
+    $$2 = 2(1) + b \implies b = 0 \implies y = 2x$$</p>
+    <p><strong>14:</strong> Badamy miejsca zerowe w poszczególnych przedziałach:<br>
+    - Dla $x < -5$: $x + 5 = 0 \implies x = -5$, lecz $-5 \notin (-\infty, -5)$ (brak).<br>
+    - Dla $-5 \le x < 5$: $-x + 2 = 0 \implies x = 2 \in [-5, 5)$. Miejscem zerowym jest $x = 2$.<br>
+    - Dla $x \ge 5$: $x - 6 = 0 \implies x = 6 \in [5, \infty)$. Miejscem zerowym jest $x = 6$.<br>
+    Miejsca zerowe funkcji to: $x_1 = 2$ oraz $x_2 = 6$.</p>
+    <p><strong>15:</strong> $ax + 4 \ge 0 \iff ax \ge -4$. Skoro zbiorem rozwiązań jest $(-\infty, 2]$, to nierówność zmieniła zwrot na $\le$, co oznacza, że dzieliliśmy przez liczbę ujemną $a < 0$:<br>
+    $$x \le -\frac{4}{a} \implies -\frac{4}{a} = 2 \implies 2a = -4 \implies a = -2$$</p>
+    <p><strong>16:</strong><br>
+    16.1:<br>
+    1. Różnica wysokości między Rysami a Zakopanem: $\Delta h = 2499 - 1000 = 1499$ m.<br>
+    Spadek temperatury: $\frac{1499}{100} \cdot 0{,}6^\circ\text{C} = 14{,}99 \cdot 0{,}6 = 8{,}994^\circ\text{C}$.<br>
+    Temperatura na Rysach: $T = 13 - 8{,}994 = 4{,}006^\circ\text{C} \le 5^\circ\text{C}$ &rarr; <strong>PRAWDA (P)</strong>.<br>
+    2. Różnica dla Białki Tatrzańskiej: $1000 - 650 = 350$ m w dół.<br>
+    Wzrost temperatury: $3{,}5 \cdot 0{,}6 = 2{,}1^\circ\text{C}$.<br>
+    Temperatura w Białce: $13 + 2{,}1 = 15{,}1^\circ\text{C} \ne 16{,}5^\circ\text{C}$ &rarr; <strong>FAŁSZ (F)</strong>.<br>
+    16.2: $a = -\frac{0{,}6}{100} = -0{,}006^\circ\text{C}/\text{m}$.<br>
+    Dla $x = 1000$: $-0{,}006 \cdot 1000 + b = 13 \implies -6 + b = 13 \implies b = 19$.<br>
+    Wzór: $T(x) = -0{,}006x + 19$.</p>
+    <p><strong>17:</strong><br>
+    1. Dla $x < 0$: $x - 10 < -10 < 0$, więc $|x - 10| = -(x - 10) = 10 - x$.<br>
+    Wtedy $|x - 10| + x = 10 - x + x = 10$ &rarr; <strong>PRAWDA (P)</strong>.<br>
+    2. Dla każdego $x \in \mathbb{R}$: $x^2 + 1 \ge 1 > 0$, więc $|x^2 + 1| = x^2 + 1 \ne -x^2 - 1$ &rarr; <strong>FAŁSZ (F)</strong>.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -454,7 +533,9 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            12: $f(x) = -\frac{1}{3}x + \frac{7}{3}$; &nbsp; 13: $y = 2x - 6$; &nbsp; 15: $a = -2$; &nbsp; 16: $T(h) = -0,006h+20$, na 2500 m: $5^\circ\text{C}$.
+            12: $f(x) = -\frac{1}{3}x + \frac{7}{3}$; &emsp; 13: $y = 2x$; &emsp; 14: $x_0 \in \{2, 6\}$; &emsp; 15: $a = -2$;<br>
+    16.1: 1. <strong>P</strong>, 2. <strong>F</strong>; &emsp; 16.2: $a = -0{,}006, b = 19$;<br>
+    17: 1. <strong>P</strong>, 2. <strong>F</strong>.
           </div>
         </div>
 
@@ -463,25 +544,30 @@
     </article>
     
 
-    <article id="zad-4-18-21" data-title="18 – 21. A. Wykresy z wartością bezwzględną i nierówności na osi" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-4-18-21" data-title="18 – 21. A. Wykresy i nierówności z wartością bezwzględną na osi liczbowej" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
             18 – 21. A
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wykresy z wartością bezwzględną i nierówności na osi</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wykresy i nierówności z wartością bezwzględną na osi liczbowej</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania z wykresem i modułem</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania geometryczne i analityczne</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>18.</strong> Sporządź wykres funkcji $f(x) = -|x+2| + 1$ i podaj jej własności.<br>
-    <strong>18. A)</strong> Sporządź wykres funkcji $f(x) = |4 - 2x|$.<br>
-    <strong>20.</strong> Zaznaczono na osi zbiór $\langle -2, 6 \rangle$. Wskaż nierówność z wartością bezwzględną opisującą ten zbiór.<br>
-    <strong>21. A)</strong> Zapisz za pomocą wartości bezwzględnej warunek: odległość liczby $x$ od liczby $-3$ jest nie większa niż 5.
+        <strong>18.</strong> Narysuj wykres funkcji $f(x) = -|x + 2| + 1$ i omów jej własności.<br><br>
+    <strong>18. A)</strong> Narysuj wykres funkcji $f(x) = |4 - 2x|$ i omów jej własności.<br><br>
+    <strong>19.</strong> Określ z zastosowaniem wartości bezwzględnej:<br>
+    a) $x \in \langle -3, 5 \rangle$ &emsp; b) $x \in (-\infty, 0) \cup (4, \infty)$<br><br>
+    <strong>20.</strong> Wybierz nierówność, której zbiór rozwiązań zaznaczono na osi: przedział $[-4, 0]$ (środek $-2$, promień 2):<br>
+    A. $|x + 2| \le 2$ &emsp; B. $|x - 2| \le 2$ &emsp; C. $|x + 2| \ge 2$ &emsp; D. $|x - 2| \ge 2$<br><br>
+    <strong>21.</strong> Zbiór rozwiązań nierówności $|2x - 8| \le 10$ to przedział $[-1, 9]$. Wynika stąd, że dla $|x - 4| \le k$:<br>
+    A. $k = 2$ &emsp; B. $k = 4$ &emsp; C. $k = 5$ &emsp; D. $k = 9$<br><br>
+    <strong>21. A)</strong> Przedział $A$ składa się z liczb, których odległość od punktu 1 jest nie większa od $4{,}5$. Przedział $A$ przesunięto wzdłuż osi o 2 w prawo, otrzymując przedział $B$. Wyznacz wszystkie liczby całkowite należące jednocześnie do $A$ i $B$.
         
       </div>
 
@@ -490,7 +576,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Wykres $y = -|x+2|+1$ to przesunięcie $y=-|x|$ o wektor $[-2, 1]$. Środek przedziału $\langle a, b \rangle$ to $s = \frac{a+b}{2}$, promień $r = \frac{b-a}{2}$.
+        Warunek $|x - s| \le r$ opisuje przedział $\langle s - r, s + r \rangle$. Środek to $s = \frac{a+b}{2}$, a promień to $r = \frac{b-a}{2}$.
       </div>
     </div>
     
@@ -505,13 +591,23 @@
 
       <div id="solution-zad-4-18-21" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>18:</strong> Wierzchołek wykresu to $W = (-2, 1)$, ramiona skierowane są w dół pod kątem $45^\circ$.<br>
-    Własności: $D_f = \mathbb{R}$, $ZW_f = (-\infty, 1\rangle$, funkcja rośnie w $(-\infty, -2\rangle$, maleje w $\langle -2, \infty)$, miejsce zerowe: $-|x+2|+1 = 0 \implies |x+2| = 1 \implies x \in \{-3, -1\}$.</p>
-    <p><strong>18. A:</strong> $|4 - 2x| = 2|x - 2|$. Wykres ma kształt litery V z ostrzem w punkcie $(2, 0)$ i ramionami o współczynniku nachylenia $\pm 2$.</p>
-    <p><strong>20:</strong> Środek przedziału: $s = \frac{-2 + 6}{2} = 2$. Promień: $r = \frac{6 - (-2)}{2} = 4$. Nierówność to:
-    $$|x - 2| \le 4$$</p>
-    <p><strong>21. A:</strong> Odległość $x$ od $-3$ to $|x - (-3)| = |x + 3|$. Warunek „nie większa niż 5”:
-    $$|x + 3| \le 5$$</p>
+          <p><strong>18:</strong> Wykres powstaje przez przesunięcie $y = -|x|$ o wektor $\vec{u} = [-2, 1]$.<br>
+    Wierzchołek to $W = (-2, 1)$, ramiona opadają w dół pod kątem $45^\circ$.<br>
+    Własności: $D = \mathbb{R}$, $ZW = (-\infty, 1\rangle$, funkcja rośnie w $(-\infty, -2\rangle$, maleje w $\langle -2, \infty)$, miejsca zerowe: $-|x+2| + 1 = 0 \implies |x+2| = 1 \implies x \in \{-3, -1\}$.</p>
+    <p><strong>18. A:</strong> $|4 - 2x| = 2|x - 2|$. Wykres w kształcie litery V z ostrzem w punkcie $(2, 0)$ na osi $OX$ i ramionami o nachyleniu $\pm 2$.<br>
+    $D = \mathbb{R}$, $ZW = \langle 0, \infty)$, maleje w $(-\infty, 2\rangle$, rośnie w $\langle 2, \infty)$, miejsce zerowe: $x_0 = 2$.</p>
+    <p><strong>19:</strong><br>
+    a) Środek: $s = \frac{-3 + 5}{2} = 1$. Promień: $r = \frac{5 - (-3)}{2} = 4$. Zapis: $|x - 1| \le 4$.<br>
+    b) Środek: $s = \frac{0 + 4}{2} = 2$. Promień: $r = 2$. Zapis: $|x - 2| > 2$.</p>
+    <p><strong>20:</strong> Środek przedziału to $s = -2$, promień $r = 2$. Nierówność: $|x - (-2)| \le 2 \iff |x + 2| \le 2$.<br>
+    Poprawna odpowiedź: <strong>A ($|x + 2| \le 2$)</strong>.</p>
+    <p><strong>21:</strong> Dzielimy nierówność obustronnie przez 2:<br>
+    $$|2x - 8| \le 10 \iff 2|x - 4| \le 10 \iff |x - 4| \le 5$$
+    Zatem promień $k = 5$. Poprawna odpowiedź: <strong>C ($k = 5$)</strong>.</p>
+    <p><strong>21. A:</strong> Przedział $A$: $|x - 1| \le 4{,}5 \iff -4{,}5 \le x - 1 \le 4{,}5 \iff -3{,}5 \le x \le 5{,}5$, czyli $A = [-3{,}5; 5{,}5]$.<br>
+    Przesunięcie o 2 w prawo daje przedział $B$: $[-3{,}5 + 2; 5{,}5 + 2] = [-1{,}5; 7{,}5]$.<br>
+    Część wspólna: $A \cap B = [-1{,}5; 5{,}5]$.<br>
+    Liczby całkowite w tym przedziale to: $\{-1, 0, 1, 2, 3, 4, 5\}$.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -520,7 +616,9 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            18: $ZW = (-\infty, 1\rangle, x_0 \in \{-3, -1\}$; &nbsp; 20: $|x-2| \le 4$; &nbsp; 21.A: $|x+3| \le 5$.
+            18: $ZW = (-\infty, 1\rangle, x_0 \in \{-3, -1\}$; &emsp; 18.A: $x_0 = 2, ZW = \langle 0, \infty)$;<br>
+    19: a) $|x - 1| \le 4$, b) $|x - 2| > 2$; &emsp; 20: <strong>A</strong>; &emsp; 21: <strong>C</strong> ($k = 5$);<br>
+    21.A: $\{-1, 0, 1, 2, 3, 4, 5\}$ (7 liczb całkowitych).
           </div>
         </div>
 
@@ -529,25 +627,31 @@
     </article>
     
 
-    <article id="zad-4-22-23" data-title="22 – 23. Równania i nierówności z wartością bezwzględną" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-4-22-23" data-title="22 – 23. Rozwiązywanie równań i nierówności z modułem oraz pierwiastkami" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
             22 – 23
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Równania i nierówności z wartością bezwzględną</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Rozwiązywanie równań i nierówności z modułem oraz pierwiastkami</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania algebraiczne</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
         <strong>22.</strong> Rozwiąż równania:<br>
-    a) $|x - 3| = 5$ &emsp; b) $|2x + 4| = 8$ &emsp; c) $|3 - x| = 0$<br>
-    <strong>23.</strong> Rozwiąż nierówności i zilustruj na osi liczbowej:<br>
-    a) $|x - 1| < 4$ &emsp; b) $|x + 2| \ge 3$ &emsp; c) $|2x - 6| \le 10$
+    a) $\sqrt{6}z - \sqrt{3} = \sqrt{12} - \sqrt{3}z$<br>
+    b) $m - (m - 1)^2 = (m + 1)(-m + 1)$<br>
+    c) $10 + |1 - x| = 15$<br>
+    d) $3|t + 1| = |2t + 2|$<br><br>
+    <strong>23.</strong> Rozwiąż nierówności i przedstaw na osi liczbowej:<br>
+    a) $2x \ge \sqrt{5}x + 3\sqrt{5} - 6$, podaj największą liczbę całkowitą spełniającą tę nierówność,<br>
+    b) $|3x + 6| \le 9$,<br>
+    c) $2|x| + 2 > |x|$,<br>
+    d) $|4 - x| > \frac{1}{3}$.
         
       </div>
 
@@ -556,7 +660,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        $|u| = c \iff u = c \lor u = -c$. $|u| < c \iff -c < u < c$. $|u| \ge c \iff u \le -c \lor u \ge c$.
+        W 22.d zauważ, że $|2t+2| = 2|t+1|$. W 23.a przenieś wyrazy z $x$ na lewo i podziel przez $2-\sqrt{5} < 0$, co zmienia zwrot nierówności!
       </div>
     </div>
     
@@ -571,12 +675,19 @@
 
       <div id="solution-zad-4-22-23" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>22. a)</strong> $x - 3 = 5 \implies x = 8$ lub $x - 3 = -5 \implies x = -2$. $x \in \{-2, 8\}$.<br>
-    <strong>22. b)</strong> $2x + 4 = 8 \implies 2x = 4 \implies x = 2$; lub $2x+4 = -8 \implies 2x = -12 \implies x = -6$. $x \in \{-6, 2\}$.<br>
-    <strong>22. c)</strong> $3 - x = 0 \implies x = 3$.</p>
-    <p><strong>23. a)</strong> $-4 < x - 1 < 4 \implies -3 < x < 5 \iff x \in (-3, 5)$.<br>
-    <strong>23. b)</strong> $x + 2 \ge 3 \implies x \ge 1$ lub $x + 2 \le -3 \implies x \le -5 \iff x \in (-\infty, -5\rangle \cup \langle 1, \infty)$.<br>
-    <strong>23. c)</strong> $-10 \le 2x - 6 \le 10 \implies -4 \le 2x \le 16 \implies -2 \le x \le 8 \iff x \in \langle -2, 8 \rangle$.</p>
+          <p><strong>22. a)</strong> $\sqrt{6}z + \sqrt{3}z = \sqrt{12} + \sqrt{3} \implies z(\sqrt{6} + \sqrt{3}) = 2\sqrt{3} + \sqrt{3} = 3\sqrt{3}$.<br>
+    $$z = \frac{3\sqrt{3}}{\sqrt{6} + \sqrt{3}} = \frac{3\sqrt{3}(\sqrt{6} - \sqrt{3})}{6 - 3} = \frac{3(3\sqrt{2} - 3)}{3} = 3\sqrt{2} - 3 = 3(\sqrt{2} - 1)$$</p>
+    <p><strong>22. b)</strong> $m - (m^2 - 2m + 1) = 1 - m^2 \implies m - m^2 + 2m - 1 = 1 - m^2 \implies 3m - 1 = 1 \implies 3m = 2 \implies m = \frac{2}{3}$.</p>
+    <p><strong>22. c)</strong> $|1 - x| = 5 \iff 1 - x = 5 \lor 1 - x = -5 \implies x = -4 \lor x = 6$.</p>
+    <p><strong>22. d)</strong> $3|t + 1| = 2|t + 1| \implies |t + 1| = 0 \implies t = -1$.</p>
+    <p><strong>23. a)</strong> $(2 - \sqrt{5})x \ge 3(\sqrt{5} - 2)$.<br>
+    Zauważmy, że $2 - \sqrt{5} < 0$. Dzieląc przez liczbę ujemną, zmieniamy zwrot nierówności:<br>
+    $$x \le \frac{3(\sqrt{5} - 2)}{2 - \sqrt{5}} = \frac{-3(2 - \sqrt{5})}{2 - \sqrt{5}} = -3$$
+    Rozwiązaniem jest $x \in (-\infty, -3\rangle$. Największą liczbą całkowitą spełniającą nierówność jest <strong>-3</strong>.</p>
+    <p><strong>23. b)</strong> $3|x + 2| \le 9 \iff |x + 2| \le 3 \iff -3 \le x + 2 \le 3 \iff -5 \le x \le 1 \iff x \in [-5, 1]$.</p>
+    <p><strong>23. c)</strong> $2|x| - |x| > -2 \iff |x| > -2$. Ponieważ wartość bezwzględna jest zawsze $\ge 0 > -2$, nierówność jest tożsamościowa: $x \in \mathbb{R}$.</p>
+    <p><strong>23. d)</strong> $|x - 4| > \frac{1}{3} \iff x - 4 > \frac{1}{3} \lor x - 4 < -\frac{1}{3} \iff x > 4\frac{1}{3} \lor x < 3\frac{2}{3}$.<br>
+    Rozwiązanie: $x \in \left(-\infty, 3\frac{2}{3}\right) \cup \left(4\frac{1}{3}, \infty\right)$.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -585,7 +696,8 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            22: a) $\{-2, 8\}$, b) $\{-6, 2\}$, c) $\{3\}$; &nbsp; 23: a) $(-3, 5)$, b) $(-\infty, -5\rangle \cup \langle 1, \infty)$, c) $\langle -2, 8 \rangle$.
+            22: a) $z = 3\sqrt{2} - 3$, b) $m = \frac{2}{3}$, c) $x \in \{-4, 6\}$, d) $t = -1$;<br>
+    23: a) $x \in (-\infty, -3\rangle$, najw. całk.: $-3$; b) $x \in [-5, 1]$; c) $x \in \mathbb{R}$; d) $x \in (-\infty; 3\frac{2}{3}) \cup (4\frac{1}{3}; \infty)$.
           </div>
         </div>
 
@@ -594,25 +706,29 @@
     </article>
     
 
-    <article id="zad-4-24-28" data-title="24 – 28. Układy równań i zadania tekstowe" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-4-24-28" data-title="24 – 28. Zadania tekstowe, wiek jubilata, praca i układy równań" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
             24 – 28
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Układy równań i zadania tekstowe</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Zadania tekstowe, wiek jubilata, praca i układy równań</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania z treścią / modelowanie</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>24.</strong> Klient wypłacił 1040 zł w 32 banknotach po 20 zł i 50 zł. Ile było banknotów każdego rodzaju?<br>
-    <strong>25.</strong> W 2015 r. jubilat powiedział: „Gdy pomnożę liczbę moich lat z roku 2005 przez liczbę lat, którą będę miał w 2025, to otrzymam rok moich urodzin”. Ile lat ma jubilat w 2015 r.?<br>
-    <strong>27.</strong> Rozwiąż układ równań metodą algebraiczną i graficzną: $\begin{cases} 2x - y = 4 \\ x + 2y = 7 \end{cases}$<br>
-    <strong>28.</strong> Samolot leci z wiatrem 1134 km w 3 godziny, a pod wiatr tę samą trasę w 3,5 godziny. Oblicz prędkość własną samolotu i prędkość wiatru.
+        <strong>24.</strong> Bankomat wypłacił 1040 zł w banknotach 20 zł, 50 zł i 100 zł. Banknotów 100 zł było 2 razy więcej niż 50 zł, a banknotów 20 zł było o 2 mniej niż 50 zł. Niech $x$ oznacza liczbę banknotów 50 zł, a $y$ liczbę banknotów 20 zł. Poprawny układ równań to:<br>
+    A. $\begin{cases} 20y + 50x + 100 \cdot 2x = 1040 \\ y = x - 2 \end{cases}$ &emsp; B. $\begin{cases} 20y + 50x + 50x \cdot 2 = 1040 \\ y = x - 2 \end{cases}$<br><br>
+    <strong>24. A)</strong> Kupiono 50 par spodni po $x$ zł i 40 marynarek po $y$ zł za łącznie 8000 zł. Po doliczeniu marży 50% na spodnie i 20% na marynarki ceny detaliczne były równe. Układ równań to:<br>
+    A. $\begin{cases} x + y = 8000 \\ 0{,}5x = 0{,}2y \end{cases}$ &emsp; C. $\begin{cases} 50x + 40y = 8000 \\ 1{,}5x = 1{,}2y \end{cases}$<br><br>
+    <strong>25.</strong> W 2015 roku jubilat powiedział: „jeśli swój wiek sprzed 27 lat pomnożę przez swój wiek za 15 lat, to otrzymam rok swojego urodzenia”. Ile lat ma ten jubilat?<br><br>
+    <strong>26.</strong> Każdy z 10 pracowników wykonuje średnio 2700 detali. Po zatrudnieniu 1 nowego pracownika średnia spadła o 4%. Ile detali wykonuje nowy pracownik?<br><br>
+    <strong>27.</strong> Rozwiąż układ równań: a) $\begin{cases} -0{,}1x + 0{,}2y = 1 \\ 2y = x + 2 \end{cases}$ &emsp; c) $\begin{cases} \frac{1}{4}x + \frac{1}{2}y = 3 \\ y = -\frac{1}{2}x + 6 \end{cases}$<br><br>
+    <strong>28.</strong> W 3 godziny samolot przeleciał z wiatrem 1134 km. Pod wiatr przeleciał w 1 godzinę 342 km. Oblicz prędkość własną samolotu i prędkość wiatru.
         
       </div>
 
@@ -621,7 +737,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Dla 24: układ równań $x+y=32$ i $20x+50y=1040$. Dla 28: $v_{z} = v_s + v_w = 1134/3$, $v_{pod} = v_s - v_w = 1134/3,5$.
+        W zadaniu 25 niech $w$ oznacza wiek w 2015 roku. Wtedy rok urodzenia to $2015 - w$. Równanie: $(w - 27)(w + 15) = 2015 - w$.
       </div>
     </div>
     
@@ -636,18 +752,30 @@
 
       <div id="solution-zad-4-24-28" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>24:</strong> Niech $x$ – liczba banknotów 20 zł, $y$ – 50 zł.<br>
-    $\begin{cases} x + y = 32 \\ 20x + 50y = 1040 \end{cases} \implies 2x + 5y = 104$. Z pierwszego $2x + 2y = 64$. Odejmując: $3y = 40$ – chwila, sprawdźmy treść z PDF: $1040$ zł w banknotach 20 zł i 50 zł, łączna liczba banknotów: w PDF podano 32 banknoty? Sprawdźmy: $20(18) + 50(14) = 360 + 700 = 1060$. Dla $1040$: $20(20) + 50(12) = 400 + 600 = 1000$; $20(18) + 50(14) = 1060$. Jeśli suma to 32 banknoty i 1040 zł, to $2x+5(32-x) = 104 \implies -3x = 104 - 160 = -56$, ułamek? Sprawdźmy nominały w PDF: banknoty 20 zł i 50 zł lub 100 zł! Rozwiązujemy zgodnie z treścią: $x$ banknotów 20 zł, $y$ banknotów 50 zł: 20 zł $\times 18$ i 50 zł $\times 14$ dają 1060 zł; dla 1040 zł: 20 zł $\times 12$ i 100 zł $\times 8$. W zadaniu 24 jest: 20 zł i 50 zł, łącznie banknotów 28: $20(12) + 50(16) = 240 + 800 = 1040$ i $12+16 = 28$.</p>
-    <p><strong>25:</strong> Niech $w$ to wiek w 2015 r. Rok urodzenia: $2015 - w$.<br>
-    Wiek w 2005 r.: $w - 10$. Wiek w 2025 r.: $w + 10$.<br>
-    $(w - 10)(w + 10) = 2015 - w \implies w^2 - 100 = 2015 - w \implies w^2 + w - 2115 = 0$.<br>
-    $\Delta = 1 + 4 \cdot 2115 = 1 + 8460 = 8461$, $\sqrt{8461} = 92$.<br>
-    $w = \frac{-1 + 92}{2} = 45,5$ lub dla roku $2015 - w$: $w = 45$ lat ($45^2 - 100 = 2025 - 100 = 1925$; $2015 - 45 = 1970$. Przy $w=45$: $(35)(55) = 1925 = 1970 - 45$). Jubilat ma 45 lat.</p>
-    <p><strong>27:</strong> Z pierwszego: $y = 2x - 4$. Podstawiamy: $x + 2(2x - 4) = 7 \implies 5x - 8 = 7 \implies 5x = 15 \implies x = 3$, stąd $y = 2(3) - 4 = 2$.<br>
-    Punkt przecięcia prostych: $(3, 2)$.</p>
-    <p><strong>28:</strong> Prędkość z wiatrem: $v_1 = \frac{1134}{3} = 378$ km/h.<br>
-    Prędkość pod wiatr: $v_2 = \frac{1134}{3,5} = 324$ km/h.<br>
-    Układ: $\begin{cases} v_s + v_w = 378 \\ v_s - v_w = 324 \end{cases} \implies 2v_s = 702 \implies v_s = 351\text{ km/h}, \quad v_w = 27\text{ km/h}$.</p>
+          <p><strong>24:</strong> Liczba banknotów: 50 zł to $x$, 20 zł to $y = x - 2$, 100 zł to $2x$.<br>
+    Wartość pieniędzy: $20y + 50x + 100(2x) = 1040$. Poprawna odpowiedź to <strong>A</strong>.</p>
+    <p><strong>24. A:</strong> Zakup hurtowy: $50x + 40y = 8000$.<br>
+    Cena detaliczna spodni z 50% marżą: $1{,}5x$. Marynarki z 20% marżą: $1{,}2y$. Równość cen: $1{,}5x = 1{,}2y$. Poprawna odpowiedź to <strong>C</strong>.</p>
+    <p><strong>25:</strong> Niech $w$ oznacza obecny wiek jubilata w 2015 roku. Wtedy rok urodzenia to $2015 - w$.<br>
+    $$(w - 27)(w + 15) = 2015 - w$$
+    $$w^2 - 12w - 405 = 2015 - w \implies w^2 - 11w - 2420 = 0$$
+    $$\Delta = (-11)^2 - 4(1)(-2420) = 121 + 9680 = 9801 = 99^2$$
+    $$w = \frac{11 + 99}{2} = \frac{110}{2} = 55 \text{ lat}$$
+    (Drugi pierwiastek ujemny $w = -44$ odrzucamy).<br>
+    Sprawdzenie: wiek sprzed 27 lat to $55 - 27 = 28$. Wiek za 15 lat to $55 + 15 = 70$. Iloczyn: $28 \cdot 70 = 1960$. Rok urodzenia: $2015 - 55 = 1960$. Zgadza się! Jubilat ma <strong>55 lat</strong>.</p>
+    <p><strong>26:</strong> Łączna produkcja 10 pracowników: $10 \cdot 2700 = 27000$ detali.<br>
+    Nowa średnia po spadku o 4%: $2700 \cdot (1 - 0{,}04) = 2700 \cdot 0{,}96 = 2592$ detali na pracownika.<br>
+    Łączna produkcja 11 pracowników: $11 \cdot 2592 = 28512$ detali.<br>
+    Produkcja nowego pracownika: $28512 - 27000 = 1512$ detali.</p>
+    <p><strong>27. a)</strong> Mnożymy I równanie przez 10: $-x + 2y = 10 \implies 2y = x + 10$.<br>
+    Z drugiego równania: $2y = x + 2$. Otrzymujemy $x + 10 = x + 2 \implies 10 = 2$ (sprzeczność). Układ <strong>sprzeczny (0 rozwiązań)</strong>.</p>
+    <p><strong>27. c)</strong> Mnożymy I równanie przez 4: $x + 2y = 12 \implies 2y = -x + 12 \implies y = -\frac{1}{2}x + 6$.<br>
+    Oba równania są identyczne. Układ <strong>nieoznaczony (nieskończenie wiele rozwiązań)</strong>.</p>
+    <p><strong>28:</strong> Niech $v$ – prędkość własna samolotu, $u$ – prędkość wiatru.<br>
+    Prędkość z wiatrem: $v + u = \frac{1134}{3} = 378$ km/h.<br>
+    Prędkość pod wiatr: $v - u = \frac{342}{1} = 342$ km/h.<br>
+    Dodajemy stronami: $2v = 720 \implies v = 360$ km/h.<br>
+    Odejmujemy: $2u = 36 \implies u = 18$ km/h.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -656,7 +784,8 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            27: $(x, y) = (3, 2)$; &nbsp; 28: prędkość własna $351$ km/h, wiatr $27$ km/h.
+            24: <strong>A</strong>; &emsp; 24.A: <strong>C</strong>; &emsp; 25: <strong>55 lat</strong>; &emsp; 26: <strong>1512 detali</strong>;<br>
+    27: a) sprzeczny (0), c) tożsamościowy ($\infty$); &emsp; 28: samolot: $360$ km/h, wiatr: $18$ km/h.
           </div>
         </div>
 
@@ -665,25 +794,26 @@
     </article>
     
 
-    <article id="zad-4-29-34" data-title="29 – 34. Równania wielomodułowe, układy z parametrem (metoda Cramera)" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-4-29-34" data-title="29 – 34 (R). Równania z parametrem, układy równań i geometria analityczna na poziomie rozszerzonym" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            29 – 34
+            29 – 34 (R)
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Równania wielomodułowe, układy z parametrem (metoda Cramera)</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Równania z parametrem, układy równań i geometria analityczna na poziomie rozszerzonym</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania z parametrem / dowody (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania z parametrem i dowody</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>29. B) (R)</strong> Rozwiąż równanie $|x-1| + |x-3| = 2$.<br>
-    <strong>30. (R)</strong> Wyznacz wszystkie wartości parametru $p$, dla których równanie $|x-2| + |x+3| = p$ ma nieskończenie wiele rozwiązań.<br>
-    <strong>31. (R)</strong> Dla jakiego $m$ proste $l: mx - (2m-3)y + 3 = 0$ oraz $k: (2m+5)x + (m+6)y - 6 = 0$ są prostopadłe?<br>
-    <strong>33. (R)</strong> Zbadaj liczbę rozwiązań układu równań $\begin{cases} (m-1)x - 2y = m \\ 2x - 4y = 2 \end{cases}$ w zależności od $m$.
+        <strong>29. B) (R)</strong> Niech $A$ będzie zbiorem rozwiązań równania $|x - 1| + |x - 3| = 2$. Niech $B$ będzie zbiorem punktów, których suma odległości od 4 i 6 jest nie większa niż 4. Wyznacz $A \cap B$.<br><br>
+    <strong>30. (R)</strong> Wyznacz wszystkie wartości parametru $p$, dla których równanie $|x - 2| + |x + 3| = p$ ma dokładnie dwa rozwiązania.<br><br>
+    <strong>31. (R)</strong> Dla jakiej wartości parametru $m$ proste $l: mx - (2m - 3)y + 3 = 0$ oraz $k: (2m + 5)x + (m + 6)y - 6 = 0$ są prostopadłe?<br><br>
+    <strong>33. (R)</strong> Zbadaj liczbę rozwiązań układu równań w zależności od parametru $m$:<br>
+    $$\begin{cases} (m - 1)x - 2y = m \\ -3x + my = -2 \end{cases}$$
         
       </div>
 
@@ -692,7 +822,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Interpretacja geometryczna $|x-a|+|x-b|$: suma odległości od $a$ i $b$ na osi wynosi co najmniej $|a-b|$. Warunek prostopadłości w postaci ogólnej: $A_1A_2 + B_1B_2 = 0$. Układy równań: wyznaczniki $W, W_x, W_y$.
+        Dla 30: z nierówności trójkąta $|x-2| + |x+3| \ge 5$. Dla $p = 5$ jest nieskończenie wiele rozwiązań, a dla $p > 5$ dokładnie dwa. W 31 warunek prostopadłości w postaci ogólnej: $A_1 A_2 + B_1 B_2 = 0$.
       </div>
     </div>
     
@@ -707,22 +837,29 @@
 
       <div id="solution-zad-4-29-34" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>29. B (R):</strong> Odległość $x$ od 1 plus odległość $x$ od 3 wynosi 2. Ponieważ odległość między 1 a 3 to dokładnie 2, równość zachodzi dla każdego punktu leżącego pomiędzy 1 a 3 (włącznie):
-    $$x \in \langle 1, 3 \rangle$$</p>
-    <p><strong>30 (R):</strong> Odległość między $-3$ a $2$ wynosi $2 - (-3) = 5$. Z nierówności trójkąta $|x-2| + |x+3| \ge 5$, przy czym równość zachodzi dla każdego $x \in \langle -3, 2 \rangle$. Zatem równanie ma nieskończenie wiele rozwiązań dokładnie wtedy, gdy:
-    $$p = 5$$</p>
-    <p><strong>31 (R):</strong> Proste w postaci ogólnej $A_1x+B_1y+C_1=0$ i $A_2x+B_2y+C_2=0$ są prostopadłe $\iff A_1A_2 + B_1B_2 = 0$:
-    $$m(2m+5) + [-(2m-3)](m+6) = 0$$
+          <p><strong>29. B:</strong><br>
+    Równanie $|x - 1| + |x - 3| = 2$: odległość między 1 a 3 wynosi dokładnie 2. Z nierówności trójkąta suma odległości jest równa 2 dla każdego punktu z odcinka łączącego te liczby: $A = \langle 1, 3 \rangle$.<br>
+    Zbiór $B$: suma odległości od 4 i 6 jest $\le 4$. Punkty o odległości $\le 4$ leżą w przedziale $[4 - 1; 6 + 1] = [3, 7]$.<br>
+    Część wspólna: $A \cap B = \langle 1, 3 \rangle \cap \langle 3, 7 \rangle = \{3\}$.</p>
+    <p><strong>30:</strong> Funkcja $f(x) = |x - 2| + |x + 3|$ ma dno wykresu w przedziale $[-3, 2]$ o stałej wartości $y = 5$. Poza tym przedziałem ramiona rosną nieograniczenie do $+\infty$.<br>
+    Zatem równanie $f(x) = p$ ma:<br>
+    - 0 rozwiązań dla $p < 5$,<br>
+    - nieskończenie wiele rozwiązań dla $p = 5$ (cały przedział $[-3, 2]$),<br>
+    - <strong>dokładnie dwa rozwiązania dla $p > 5$</strong>, czyli $p \in (5, \infty)$.</p>
+    <p><strong>31:</strong> Proste w postaci ogólnej $A_1 x + B_1 y + C_1 = 0$ oraz $A_2 x + B_2 y + C_2 = 0$ są prostopadłe wtedy i tylko wtedy, gdy:<br>
+    $$A_1 A_2 + B_1 B_2 = 0$$
+    Podstawiamy współczynniki:<br>
+    $$m(2m + 5) + (-(2m - 3))(m + 6) = 0$$
     $$2m^2 + 5m - (2m^2 + 12m - 3m - 18) = 0$$
-    $$2m^2 + 5m - 2m^2 - 9m + 18 = 0 \implies -4m + 18 = 0 \implies 4m = 18 \implies m = \frac{9}{2} = 4,5$$</p>
-    <p><strong>33 (R):</strong> Metoda wyznacznikowa:<br>
-    $W = \begin{vmatrix} m-1 & -2 \\ 2 & -4 \end{vmatrix} = -4(m-1) - (-4) = -4m + 4 + 4 = -4m + 8 = -4(m-2)$.<br>
-    $W_x = \begin{vmatrix} m & -2 \\ 2 & -4 \end{vmatrix} = -4m + 4 = -4(m-1)$.<br>
-    $W_y = \begin{vmatrix} m-1 & m \\ 2 & 2 \end{vmatrix} = 2(m-1) - 2m = -2$.<br>
+    $$2m^2 + 5m - 2m^2 - 9m + 18 = 0 \implies -4m + 18 = 0 \implies 4m = 18 \implies m = \frac{9}{2} = 4{,}5$$</p>
+    <p><strong>33:</strong> Stosujemy metodę wyznacznikową Cramera:<br>
+    $$W = \begin{vmatrix} m - 1 & -2 \\ -3 & m \end{vmatrix} = m(m - 1) - (-2)(-3) = m^2 - m - 6 = (m - 3)(m + 2)$$
+    $$W_x = \begin{vmatrix} m & -2 \\ -2 & m \end{vmatrix} = m^2 - 4 = (m - 2)(m + 2)$$
+    $$W_y = \begin{vmatrix} m - 1 & m \\ -3 & -2 \end{vmatrix} = -2(m - 1) - (-3m) = m + 2$$
     Wnioski:<br>
-    - Dla $m \neq 2$: $W \neq 0$, układ ma <strong>dokładnie jedno rozwiązanie</strong>: $x = \frac{m-1}{m-2}$, $y = \frac{1}{2(m-2)}$.<br>
-    - Dla $m = 2$: $W = 0$, ale $W_y = -2 \neq 0$, więc układ jest <strong>sprzeczny (0 rozwiązań)</strong>.<br>
-    Układ nigdy nie ma nieskończenie wielu rozwiązań (nie jest tożsamościowy).</p>
+    - Gdy $W \ne 0 \iff m \in \mathbb{R} \setminus \{-2, 3\}$: układ ma <strong>dokładnie 1 rozwiązanie</strong> (jest oznaczony).<br>
+    - Gdy $m = 3$: $W = 0$, ale $W_x = 9 - 4 = 5 \ne 0$ $\implies$ układ jest <strong>sprzeczny (0 rozwiązań)</strong>.<br>
+    - Gdy $m = -2$: $W = 0, W_x = 0, W_y = 0$ $\implies$ układ jest <strong>nieoznaczony (nieskończenie wiele rozwiązań)</strong>.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -731,7 +868,8 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            29.B: $x \in \langle 1, 3 \rangle$; &nbsp; 30: $p = 5$; &nbsp; 31: $m = 4,5$; &nbsp; 33: jedno rozwiązanie dla $m \neq 2$, 0 rozwiązań dla $m = 2$.
+            29.B: $A \cap B = \{3\}$; &emsp; 30: $p \in (5, \infty)$; &emsp; 31: prostopadłe dla $m = 4{,}5$;<br>
+    33: $m \in \mathbb{R} \setminus \{-2, 3\}$: 1 rozw.; $m = 3$: 0 rozw.; $m = -2$: $\infty$ rozw.
           </div>
         </div>
 
