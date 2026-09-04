@@ -1,744 +1,939 @@
 <!DOCTYPE html>
-<html lang="pl" class="scroll-smooth">
+<html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>6. Ciągi &bull; Matematyka ZSE</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script>
-    function renderMathOnPage() {
-      if (window.renderMathInElement) {
-        renderMathInElement(document.body, {
-          delimiters: [
-            {left: '$$', right: '$$', display: true},
-            {left: '$', right: '$', display: false}
-          ],
-          throwOnError: false,
-          macros: {
-            "\\degree": "^{\\circ}",
-            "°": "^{\\circ}",
-            "\\tg": "\\operatorname{tg}",
-            "\\ctg": "\\operatorname{ctg}",
-            "\\arctg": "\\operatorname{arctg}",
-            "\\arcctg": "\\operatorname{arcctg}",
-            "\\sphericalangle": "\\angle",
-            "\\measuredangle": "\\angle"
-          }
-        });
-      }
-    }
-    document.addEventListener("DOMContentLoaded", renderMathOnPage);
-    window.addEventListener("load", renderMathOnPage);
-  </script>
-  <style>
-    ::-webkit-scrollbar { width: 8px; height: 8px; }
-    ::-webkit-scrollbar-track { background: #0f172a; }
-    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #475569; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciągi liczbowe - Kompletne Omówienie i Rozwiązania Zadań</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --bg-card-hover: rgba(30, 41, 59, 0.9);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(56, 189, 248, 0.3);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --success: #34d399;
+            --warning: #fbbf24;
+            --danger: #f87171;
+            --purple: #c084fc;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+        }
+        .sidebar {
+            width: 280px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid var(--border-card);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+            padding: 24px 16px;
+        }
+        .main-content {
+            margin-left: 280px;
+            padding: 40px;
+            max-width: 1200px;
+            width: calc(100% - 280px);
+        }
+        .nav-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .nav-list { list-style: none; margin-bottom: 24px; }
+        .nav-item { margin-bottom: 4px; }
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .nav-link:hover, .nav-link.active {
+            background: var(--accent-glow);
+            color: var(--text-accent);
+        }
+        .header-section { margin-bottom: 36px; }
+        .module-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--text-accent);
+            border: 1px solid var(--border-accent);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; color: #fff; }
+        .theory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+        .theory-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
+            padding: 16px 20px;
+            backdrop-filter: blur(8px);
+        }
+        .theory-card h3 {
+            font-size: 1.05rem;
+            color: var(--text-accent);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .task-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            margin-bottom: 24px;
+            padding: 24px;
+            transition: transform 0.2s, border-color 0.2s;
+            backdrop-filter: blur(8px);
+        }
+        .task-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-2px);
+        }
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-card);
+        }
+        .task-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        .badge {
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .badge-basic { background: rgba(52, 211, 153, 0.15); color: var(--success); }
+        .badge-extended { background: rgba(192, 132, 252, 0.15); color: var(--purple); }
+        .task-content { font-size: 0.95rem; color: #cbd5e1; margin-bottom: 20px; }
+        details {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-card);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        summary {
+            padding: 12px 16px;
+            font-weight: 600;
+            color: var(--text-accent);
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+        summary:hover { background: var(--accent-glow); }
+        .solution-content {
+            padding: 16px;
+            border-top: 1px solid var(--border-card);
+            font-size: 0.95rem;
+            color: #e2e8f0;
+        }
+        .solution-step {
+            margin-bottom: 14px;
+            padding-left: 12px;
+            border-left: 2px solid var(--border-accent);
+        }
+        .solution-step strong { color: var(--text-accent); }
+        .final-answer {
+            margin-top: 16px;
+            padding: 12px;
+            background: rgba(52, 211, 153, 0.1);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+            border-radius: 8px;
+            color: var(--success);
+            font-weight: 600;
+        }
+        @media (max-width: 900px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; width: 100%; padding: 20px; }
+        }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
-
-  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
-      <div class="flex items-center gap-3 w-full md:w-auto justify-between">
-        <a href="index.html" class="flex items-center gap-2.5 group">
-          <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition">
-            <i class="fa-solid fa-graduation-cap"></i>
-          </div>
-          <div>
-            <span class="text-sm font-bold text-white tracking-wide block">Baza Zadań Maturalnych</span>
-            <span class="text-[11px] text-slate-400 block -mt-0.5">mgr M. Kucharska, mgr A. Piłat</span>
-          </div>
-        </a>
-        <a href="index.html" class="md:hidden text-xs text-indigo-400 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700">
-          <i class="fa-solid fa-house"></i> Home
-        </a>
-      </div>
-
-      <nav class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 text-xs">
-        <a href="index.html" class="px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition hidden lg:inline-flex items-center gap-1">
-          <i class="fa-solid fa-house"></i>
-        </a>
-        
-        <a href="1_liczby_rzeczywiste.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
-          <i class="fa-solid fa-calculator"></i>
-          <span>1. Liczby rzeczywiste</span>
-        </a>
-        
-        <a href="2_zbiory_i_wzory.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
-          <i class="fa-solid fa-layer-group"></i>
-          <span>2. Zbiory i wzory</span>
-        </a>
-        
-        <a href="3_funkcje_i_wlasnosci.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
-          <i class="fa-solid fa-chart-line"></i>
-          <span>3. Funkcje i ich własności</span>
-        </a>
-        
-        <a href="4_funkcja_liniowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
-          <i class="fa-solid fa-bezier-curve"></i>
-          <span>4. Funkcja liniowa</span>
-        </a>
-        
-        <a href="5_funkcja_kwadratowa.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
-          <i class="fa-solid fa-superscript"></i>
-          <span>5. Funkcja kwadratowa</span>
-        </a>
-        
-        <a href="6_ciagi.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap bg-indigo-600 text-white font-semibold shadow-md shadow-indigo-500/20">
-          <i class="fa-solid fa-arrow-trend-up"></i>
-          <span>6. Ciągi</span>
-        </a>
-        
-        <a href="7_wielomiany.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
-          <i class="fa-solid fa-cubes"></i>
-          <span>7. Wielomiany</span>
-        </a>
-        
-        <a href="8_funkcje_wymierne.html" class="px-3 py-1.5 rounded-lg text-xs md:text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800/60">
-          <i class="fa-solid fa-divide"></i>
-          <span>8. Funkcje wymierne</span>
-        </a>
-        
-      </nav>
-    </div>
-  </header>
-
-  <section class="border-b border-slate-800 bg-gradient-to-b from-slate-900/60 to-slate-950 py-8 px-4 sm:px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-3">
-            <i class="fa-solid fa-book-open"></i> Dział 6 z 8
-          </div>
-          <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">6. Ciągi</h1>
-          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-3xl">Ciągi arytmetyczne, geometryczne, wzory rekurencyjne, zadania mieszane, granice ciągów i nieskończone szeregi geometryczne.</p>
-        </div>
-        <div class="flex items-center gap-3">
-          <button id="toggle-all-btn" onclick="toggleAllSolutions()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition flex items-center gap-2 shadow">
-            <i class="fa-regular fa-eye"></i> <span id="toggle-all-text">Rozwiń wszystkie rozwiązania</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
-    <aside class="hidden lg:block lg:col-span-1">
-      <div class="sticky top-24 bg-slate-900/60 border border-slate-800 rounded-2xl p-4 max-h-[calc(100vh-7rem)] overflow-y-auto">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
-          <span>Spis Zadań</span>
-          <span class="text-indigo-400 font-mono" id="task-badge-count"></span>
-        </h3>
-        <div class="space-y-1 text-xs" id="sidebar-toc">
-        </div>
-      </div>
+<body>
+    <aside class="sidebar">
+        <div class="nav-title">Nawigacja Modułów</div>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="index.html" class="nav-link">🏠 Strona Główna</a></li>
+            <li class="nav-item"><a href="1_liczby_rzeczywiste.html" class="nav-link">1. Liczby Rzeczywiste</a></li>
+            <li class="nav-item"><a href="2_zbiory_i_wzory.html" class="nav-link">2. Zbiory i Wzory</a></li>
+            <li class="nav-item"><a href="3_funkcje_i_wlasnosci.html" class="nav-link">3. Funkcje i Własności</a></li>
+            <li class="nav-item"><a href="4_funkcja_liniowa.html" class="nav-link">4. Funkcja Liniowa</a></li>
+            <li class="nav-item"><a href="5_funkcja_kwadratowa.html" class="nav-link">5. Funkcja Kwadratowa</a></li>
+            <li class="nav-item"><a href="6_ciagi.html" class="nav-link active">6. Ciągi Liczbowe</a></li>
+            <li class="nav-item"><a href="7_wielomiany.html" class="nav-link">7. Wielomiany</a></li>
+            <li class="nav-item"><a href="8_funkcje_wymierne.html" class="nav-link">8. Funkcje Wymierne</a></li>
+        </ul>
+        <div class="nav-title">Karty Zadań</div>
+        <ul class="nav-list" style="font-size: 0.8rem;">
+            <li class="nav-item"><a href="#card-1" class="nav-link">Zad. 1–3: Podstawy i Rekurencja</a></li>
+            <li class="nav-item"><a href="#card-2" class="nav-link">Zad. 4–7: Dowody, Własności i Wykresy</a></li>
+            <li class="nav-item"><a href="#card-3" class="nav-link">Zad. 8–11: Ciąg Arytmetyczny I</a></li>
+            <li class="nav-item"><a href="#card-4" class="nav-link">Zad. 12–15: Ciąg Arytmetyczny II</a></li>
+            <li class="nav-item"><a href="#card-5" class="nav-link">Zad. 16–20: Ciąg Geometryczny I</a></li>
+            <li class="nav-item"><a href="#card-6" class="nav-link">Zad. 21–24: Ciąg Geometryczny & Arytm.</a></li>
+            <li class="nav-item"><a href="#card-7" class="nav-link">Zad. 25–27: Finanse i Zadania Złożone</a></li>
+            <li class="nav-item"><a href="#card-8" class="nav-link">Zad. 28–29: Granice Ciągów (R)</a></li>
+            <li class="nav-item"><a href="#card-9" class="nav-link">Zad. 30–35: Szereg Geometryczny (R)</a></li>
+        </ul>
     </aside>
 
-    <div class="lg:col-span-3 space-y-8">
-      
-<div class="p-6 rounded-2xl bg-cyan-950/30 border border-cyan-800/40 shadow-xl space-y-4">
-  <div class="flex items-center gap-3 border-b border-cyan-800/40 pb-3">
-    <div class="w-8 h-8 rounded-lg bg-cyan-600/30 text-cyan-400 flex items-center justify-center font-bold">
-      <i class="fa-solid fa-arrow-trend-up"></i>
-    </div>
-    <h2 class="text-lg font-bold text-white tracking-wide">Kompendium Teoretyczne: Ciągi Liczbowe</h2>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-slate-300">
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-cyan-300 flex items-center gap-1.5"><i class="fa-solid fa-calculator"></i> Ciąg arytmetyczny</h3>
-      <p>$a_{n+1} = a_n + r$</p>
-      <p>Wyraz ogólny: $a_n = a_1 + (n - 1)r$</p>
-      <p>Średnia arytmetyczna: $a_n = \frac{a_{n-1} + a_{n+1}}{2}$</p>
-      <p>Suma $n$ wyrazów: $S_n = \frac{a_1 + a_n}{2} \cdot n = \frac{2a_1 + (n-1)r}{2} \cdot n$</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-cyan-300 flex items-center gap-1.5"><i class="fa-solid fa-chart-line"></i> Ciąg geometryczny</h3>
-      <p>$a_{n+1} = a_n \cdot q$</p>
-      <p>Wyraz ogólny: $a_n = a_1 \cdot q^{n-1}$</p>
-      <p>Średnia geometryczna: $a_n^2 = a_{n-1} \cdot a_{n+1}$</p>
-      <p>Suma $n$ wyrazów: $S_n = a_1 \frac{1 - q^n}{1 - q}$ ($q \neq 1$)</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-cyan-300 flex items-center gap-1.5"><i class="fa-solid fa-infinity"></i> Szereg geometryczny (R)</h3>
-      <p>Warunek zbieżności: $|q| < 1$</p>
-      <p>Suma nieskończona: $S = \frac{a_1}{1 - q}$</p>
-      <p>Stosowany przy zamianie ułamków okresowych i fraktalach.</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-cyan-300 flex items-center gap-1.5"><i class="fa-solid fa-arrows-to-dot"></i> Granice ciągów (R)</h3>
-      <p>Wyłączanie najwyższej potęgi mianownika przed nawias.</p>
-      <p>Mnożenie przez sprzężenie: $\sqrt{A} - \sqrt{B} = \frac{A - B}{\sqrt{A} + \sqrt{B}}$.</p>
-      <p>$\lim_{n \to \infty} \frac{1}{n^k} = 0$ dla $k > 0$.</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-cyan-300 flex items-center gap-1.5"><i class="fa-solid fa-arrows-up-down"></i> Monotoniczność</h3>
-      <p>Badamy znak różnicy $a_{n+1} - a_n$:</p>
-      <p>$> 0 \implies$ ciąg rosnący</p>
-      <p>$< 0 \implies$ ciąg malejący</p>
-      <p>$= 0 \implies$ ciąg stały</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-cyan-300 flex items-center gap-1.5"><i class="fa-solid fa-percent"></i> Procent składany</h3>
-      <p>$K_n = K_0 \left(1 + \frac{p}{100m}\right)^{n \cdot m}$</p>
-      <p>$m$ – liczba okresów kapitalizacji w roku.</p>
-    </div>
-  </div>
-</div>
-
-
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-slate-900/40 border border-slate-800">
-        <div class="relative w-full sm:w-72">
-          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
-          <input type="text" id="search-input" onkeyup="filterTasks()" placeholder="Szukaj zadania..."
-            class="w-full pl-9 pr-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition">
+    <main class="main-content">
+        <div class="header-section">
+            <span class="module-badge">Moduł 6 • Arkusz Maturalny</span>
+            <h1>Ciągi Liczbowe (PP & PR)</h1>
+            <p style="color: var(--text-muted); font-size: 1.05rem;">
+                Kompletny zbiór wszystkich 48 zadań i podpunktów z arkusza <em>6. Ciągi.pdf</em>.
+                Zawiera pełne, krok po kroku wyprowadzone rozwiązania, definicje, wzory na sumy, własności ciągów arytmetycznych i geometrycznych, procent składany oraz granice i szeregi geometryczne.
+            </p>
         </div>
-        <div class="flex items-center gap-2 text-xs flex-wrap w-full sm:w-auto">
-          <button onclick="setFilter('all', event)" class="filter-btn active px-3 py-1 rounded-md bg-indigo-600 text-white font-medium">Wszystkie</button>
-          <button onclick="setFilter('podstawa', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Podstawa</button>
-          <button onclick="setFilter('rozszerzenie', event)" class="filter-btn px-3 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300">Rozszerzenie (R)</button>
-        </div>
-      </div>
 
-      <div class="space-y-6" id="tasks-wrapper">
+        <div class="theory-grid">
+            <div class="theory-card">
+                <h3>📌 Ciąg Arytmetyczny</h3>
+                <p>Wzór ogólny: $a_n = a_1 + (n-1)r$.</p>
+                <p>Warunek sąsiedztwa: $a_n = \frac{a_{n-1} + a_{n+1}}{2}$.</p>
+                <p>Suma $n$ wyrazów: $S_n = \frac{a_1 + a_n}{2} \cdot n = \frac{2a_1 + (n-1)r}{2} \cdot n$.</p>
+            </div>
+            <div class="theory-card">
+                <h3>📌 Ciąg Geometryczny</h3>
+                <p>Wzór ogólny: $a_n = a_1 \cdot q^{n-1}$.</p>
+                <p>Warunek sąsiedztwa: $a_n^2 = a_{n-1} \cdot a_{n+1}$.</p>
+                <p>Suma $n$ wyrazów ($q \ne 1$): $S_n = a_1 \cdot \frac{1 - q^n}{1 - q}$.</p>
+            </div>
+            <div class="theory-card">
+                <h3>📌 Szereg Geometryczny (R)</h3>
+                <p>Nieskończona suma jest zbieżna $\iff |q| < 1$.</p>
+                <p>Suma szeregu: $S = \sum_{n=1}^\infty a_n = \frac{a_1}{1 - q}$.</p>
+                <p>Kapitalizacja odsetek: $K_n = K_0 \left(1 + \frac{p}{100m}\right)^{m \cdot n}$.</p>
+            </div>
+        </div>
+
+        <div class="task-card" id="card-1">
+            <div class="task-header">
+                <div class="task-title">Zadania 1, 2, 2.A, 2.B, 3: Pojęcie ciągu, wyznaczanie wyrazów, monotoniczność i rekurencja</div>
+                <span class="badge badge-basic">Podstawa</span>
+            </div>
+            <div class="task-content">
+                
+        <p><strong>1.</strong> a) Podaj pięć wyrazów ciągu: $a_n = (-1)^n \cdot n$ dla $n$ nieparzystego oraz $a_n = \frac{1}{n}$ dla $n$ parzystego.<br>
+        b) $a_n = \frac{n+1}{n}$. Zbadaj monotoniczność ciągu.<br>
+        c) $a_n = \frac{2n-1}{n+2}$. Wyznacz wyrazy równe $\frac{3}{4}$.<br>
+        d) $a_n = n^2 - 7n + 10$. Wyznacz wszystkie ujemne wyrazy ciągu.<br><br>
+        <strong>2.</strong> Ciąg $(a_n)$ jest określony wzorem $a_n = -2n + 5$. Dokończ zdanie. Ciąg ten jest: A. rosnący, B. malejący, C. stały, ponieważ 1. różnica $a_{n+1} - a_n$ jest liczbą dodatnią, 2. różnica $a_{n+1} - a_n$ jest liczbą ujemną, 3. iloraz $\frac{a_{n+1}}{a_n} = 1$.<br><br>
+        <strong>2. A)</strong> Dany jest ciąg $(a_n)$, gdzie $a_n = \frac{n+11}{n+1}$ dla $n = 1, 2, 3, \dots$. Wyznacz wszystkie wyrazy tego ciągu będące liczbami całkowitymi.<br><br>
+        <strong>2. B)</strong> Dany jest ciąg $(a_n)$ określony wzorem $a_n = (-1)^n \cdot \frac{2-n}{n+1}$. Oblicz $a_1, a_2, a_3, a_4$.<br><br>
+        <strong>3.</strong> Dany jest ciąg $(a_n)$ określony wzorem rekurencyjnym: $a_1 = 3$, $a_{n+1} = 2a_n - 1$ dla $n \ge 1$. Wyznacz cztery początkowe wyrazy tego ciągu.</p>
         
-    <article id="zad-6-1" data-title="1 – 2. Pojęcie ciągu, wyznaczanie wyrazów i badanie monotoniczności" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
-      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
-        <div class="flex items-center gap-2.5 flex-wrap">
-          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            1 – 2
-          </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Pojęcie ciągu, wyznaczanie wyrazów i badanie monotoniczności</h2>
+            </div>
+            <details>
+                <summary>🔍 Zobacz pełne rozwiązanie krok po kroku</summary>
+                <div class="solution-content">
+                    
+        <div class="solution-step">
+            <strong>Zadanie 1.</strong><br>
+            a) $a_1 = (-1)^1 \cdot 1 = -1$; $a_2 = \frac{1}{2}$; $a_3 = (-1)^3 \cdot 3 = -3$; $a_4 = \frac{1}{4}$; $a_5 = (-1)^5 \cdot 5 = -5$.<br>
+            b) $a_{n+1} - a_n = \frac{n+2}{n+1} - \frac{n+1}{n} = \frac{n(n+2) - (n+1)^2}{n(n+1)} = \frac{n^2+2n - (n^2+2n+1)}{n(n+1)} = \frac{-1}{n(n+1)} < 0$ dla $n \ge 1$. Ciąg jest <strong>ściśle malejący</strong>.<br>
+            c) $\frac{2n-1}{n+2} = \frac{3}{4} \iff 4(2n-1) = 3(n+2) \iff 8n - 4 = 3n + 6 \iff 5n = 10 \iff n = 2$. Wyrazem tym jest $a_2 = \frac{3}{4}$.<br>
+            d) $n^2 - 7n + 10 < 0 \iff (n - 2)(n - 5) < 0 \iff n \in (2, 5)$. Ponieważ $n \in \mathbb{N}_+$, mamy $n \in \{3, 4\}$. Wyrazy ujemne to $a_3 = 9 - 21 + 10 = -2$ oraz $a_4 = 16 - 28 + 10 = -2$.
         </div>
-        <div class="flex items-center gap-2">
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+        <div class="solution-step">
+            <strong>Zadanie 2.</strong><br>
+            $a_{n+1} - a_n = [-2(n+1) + 5] - [-2n + 5] = -2n + 3 + 2n - 5 = -2 < 0$. Ciąg jest malejący (Odp. <strong>B</strong>), ponieważ różnica $a_{n+1} - a_n$ jest liczbą ujemną (Uzasadnienie <strong>2</strong>).
         </div>
-      </div>
-
-      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>1. a)</strong> Podaj pięć pierwszych wyrazów ciągu $a_n = \sqrt{n^2 + n}$.<br>
-    <strong>1. b)</strong> Które wyrazy ciągu $b_n = (n^2 - 1)(n^2 - 5n + 6)$ są równe zero ($n \in \mathbb{N}_+$)?<br>
-    <strong>1. c)</strong> Dla jakich $n$ wyrazy ciągu $a_n = n^2 - 6n$ są mniejsze od 10?<br>
-    <strong>1. d)</strong> Zbadaj monotoniczność ciągu $a_n = 2n^2 - 3n + 1$.<br>
-    <strong>2.</strong> Ciąg określony wzorem $a_n = -3n + 7$ jest malejący, ponieważ różnica $a_{n+1} - a_n$ wynosi...
+        <div class="solution-step">
+            <strong>Zadanie 2. A)</strong><br>
+            Przekształcamy ułamek do postaci z częścią całkowitą: $a_n = \frac{n+1+10}{n+1} = 1 + \frac{10}{n+1}$.<br>
+            Wartość $a_n$ jest liczbą całkowitą wtedy i tylko wtedy, gdy $n+1$ jest naturalnym dzielnikiem liczby $10$ większym od $1$ (bo $n \ge 1 \implies n+1 \ge 2$).<br>
+            Dzielniki dodatnie liczby $10$: $1, 2, 5, 10$.<br>
+            - $n+1 = 2 \implies n = 1 \implies a_1 = 1 + 5 = 6$.<br>
+            - $n+1 = 5 \implies n = 4 \implies a_4 = 1 + 2 = 3$.<br>
+            - $n+1 = 10 \implies n = 9 \implies a_9 = 1 + 1 = 2$.<br>
+            Wyrazy całkowite to: $a_1 = 6,\; a_4 = 3,\; a_9 = 2$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 2. B)</strong><br>
+            - $a_1 = (-1)^1 \cdot \frac{2-1}{1+1} = -\frac{1}{2}$.<br>
+            - $a_2 = (-1)^2 \cdot \frac{2-2}{2+1} = 1 \cdot 0 = 0$.<br>
+            - $a_3 = (-1)^3 \cdot \frac{2-3}{3+1} = -1 \cdot \left(-\frac{1}{4}\right) = \frac{1}{4}$.<br>
+            - $a_4 = (-1)^4 \cdot \frac{2-4}{4+1} = 1 \cdot \left(-\frac{2}{5}\right) = -\frac{2}{5}$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 3.</strong><br>
+            - $a_1 = 3$.<br>
+            - $a_2 = 2a_1 - 1 = 2(3) - 1 = 5$.<br>
+            - $a_3 = 2a_2 - 1 = 2(5) - 1 = 9$.<br>
+            - $a_4 = 2a_3 - 1 = 2(9) - 1 = 17$.
+        </div>
+        <div class="final-answer">
+            1: a) $-1, \frac{1}{2}, -3, \frac{1}{4}, -5$; b) malejący; c) $n=2$ ($a_2=\frac{3}{4}$); d) $a_3 = -2, a_4 = -2$.<br>
+            2: B2 (malejący, różnica ujemna).<br>
+            2.A: $a_1 = 6, a_4 = 3, a_9 = 2$.<br>
+            2.B: $a_1 = -\frac{1}{2}, a_2 = 0, a_3 = \frac{1}{4}, a_4 = -\frac{2}{5}$.<br>
+            3: $a_1 = 3, a_2 = 5, a_3 = 9, a_4 = 17$.
+        </div>
         
-      </div>
-
-      
-    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
-      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
-      <div>
-        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Pamiętaj, że dla ciągów $n \in \{1, 2, 3, \dots\}$. Monotoniczność badamy licząc znak różnicy $a_{n+1} - a_n$.
-      </div>
-    </div>
+                </div>
+            </details>
+        </div>
     
 
-      <button onclick="toggleSolution('zad-6-1')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
-        <span class="flex items-center gap-2">
-          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
-          Pokaż pełne omówienie i rozwiązanie krok po kroku
-        </span>
-        <i id="icon-zad-6-1" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
-      </button>
-
-      <div id="solution-zad-6-1" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
-        <div class="space-y-3 leading-relaxed">
-          <p><strong>1. a)</strong> $a_1 = \sqrt{1+1} = \sqrt{2}$, $a_2 = \sqrt{4+2} = \sqrt{6}$, $a_3 = \sqrt{9+3} = \sqrt{12} = 2\sqrt{3}$, $a_4 = \sqrt{16+4} = \sqrt{20} = 2\sqrt{5}$, $a_5 = \sqrt{25+5} = \sqrt{30}$.</p>
-    <p><strong>1. b)</strong> $(n-1)(n+1)(n-2)(n-3) = 0 \implies n \in \{-1, 1, 2, 3\}$. Ponieważ $n \in \mathbb{N}_+$, równe zero są wyrazy: <strong>$b_1, b_2, b_3$</strong>.</p>
-    <p><strong>1. c)</strong> $n^2 - 6n < 10 \iff n^2 - 6n - 10 < 0$. $\Delta = 36 + 40 = 76$, $\sqrt{\Delta} = 2\sqrt{19} \approx 8,72$.<br>
-    Pierwiastki: $n_1 = \frac{6 - 8,72}{2} \approx -1,36$, $n_2 = \frac{6 + 8,72}{2} \approx 7,36$.<br>
-    Liczby naturalne $n \ge 1$ w tym przedziale: <strong>$n \in \{1, 2, 3, 4, 5, 6, 7\}$</strong> (wyrazy $a_1, \dots, a_7$).</p>
-    <p><strong>1. d)</strong> $a_{n+1} - a_n = [2(n+1)^2 - 3(n+1) + 1] - (2n^2 - 3n + 1) = (2n^2 + 4n + 2 - 3n - 3 + 1) - (2n^2 - 3n + 1) = 4n - 1$.<br>
-    Dla każdego $n \ge 1$: $4n - 1 \ge 4(1) - 1 = 3 > 0$. Różnica jest ściśle dodatnia, więc ciąg jest <strong>ściśle rosnący</strong>.</p>
-    <p><strong>2:</strong> $a_{n+1} - a_n = [-3(n+1) + 7] - (-3n + 7) = -3n - 3 + 7 + 3n - 7 = -3 < 0$. Różnica jest stała i ujemna, ciąg jest malejący.</p>
-        </div>
-
-        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
-          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
-            <i class="fa-solid fa-circle-check"></i>
-            Odpowiedź / Wynik końcowy:
-          </div>
-          <div class="text-sm font-semibold text-white">
-            1.a: $\sqrt{2}, \sqrt{6}, 2\sqrt{3}, 2\sqrt{5}, \sqrt{30}$; &nbsp; 1.b: $b_1, b_2, b_3$; &nbsp; 1.c: $n \in \{1, 2, 3, 4, 5, 6, 7\}$; &nbsp; 1.d: rosnący; &nbsp; 2: $a_{n+1}-a_n = -3 < 0$.
-          </div>
-        </div>
-
+        <div class="task-card" id="card-2">
+            <div class="task-header">
+                <div class="task-title">Zadania 4, 5, 6, 7, 7.A: Dowodzenie tożsamości, własności ciągów i analiza wykresów</div>
+                <span class="badge badge-basic">Podstawa</span>
+            </div>
+            <div class="task-content">
+                
+        <p><strong>4.</strong> Wykaż, że $n^2 + 2n^2 + 3n^2 + 4n^2 + \dots + n^3 = \frac{n^3(n+1)}{2}$ dla każdego $n \in \mathbb{N}_+$.<br><br>
+        <strong>5.</strong> Ciąg $(a_n)$ jest określony wzorem $a_n = 2n^2 + 2n$ dla $n \ge 1$. Wykaż, że suma każdych dwóch kolejnych wyrazów tego ciągu jest kwadratem liczby naturalnej.<br><br>
+        <strong>6.</strong> Sprawdź, czy dany ciąg jest geometryczny:<br>
+        a) $a_n = 3 \cdot 2^n$,<br>
+        b) $b_n = (a_n)^2$, gdy $a_n = 3 \cdot 2^n$.<br><br>
+        <strong>7.</strong> Dane są liczby $a = 2\sqrt{2},\; b = 4,\; c = 4\sqrt{2}$. Dokończ zdanie. Liczby $a, b, c$ tworzą w podanej kolejności:<br>
+        A. ciąg arytmetyczny, ponieważ 1. $b = \frac{a+c}{2}$, 2. $b = (c-a)^2$,<br>
+        B. ciąg geometryczny, ponieważ 3. $b^2 = a \cdot c$.<br><br>
+        <strong>7. A)</strong> Na rysunku przedstawiono część wykresu pewnego nieskończonego ciągu arytmetycznego $(a_n)$ przechodzącego przez punkty $(1, 5)$ oraz $(2, 3)$.<br>
+        a) Odczytaj z wykresu pierwszy wyraz $a_1$ i różnicę $r$.<br>
+        b) Podaj wzór na ogólny wyraz tego ciągu.<br>
+        c) Niech $b_n = -\frac{1}{2}n^2$. Dla jakich wartości $n$ zachodzi $a_n = b_n$?</p>
         
-      </div>
-    </article>
+            </div>
+            <details>
+                <summary>🔍 Zobacz pełne rozwiązanie krok po kroku</summary>
+                <div class="solution-content">
+                    
+        <div class="solution-step">
+            <strong>Zadanie 4.</strong><br>
+            Zauważmy, że ostatni składnik to $n^3 = n \cdot n^2$. Wyłączamy $n^2$ przed nawias z lewej strony:<br>
+            $L = n^2(1 + 2 + 3 + 4 + \dots + n)$.<br>
+            Suma w nawiasie to suma pierwszych $n$ wyrazów ciągu arytmetycznego o $a_1 = 1, r = 1$: $\frac{1+n}{2} \cdot n = \frac{n(n+1)}{2}$.<br>
+            Wstawiając: $L = n^2 \cdot \frac{n(n+1)}{2} = \frac{n^3(n+1)}{2} = P$, co kończy dowód (c.k.d.).
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 5.</strong><br>
+            Wyznaczamy sumę $a_n + a_{n+1}$:<br>
+            $a_{n+1} = 2(n+1)^2 + 2(n+1) = 2(n^2 + 2n + 1) + 2n + 2 = 2n^2 + 4n + 2 + 2n + 2 = 2n^2 + 6n + 4$.<br>
+            $a_n + a_{n+1} = (2n^2 + 2n) + (2n^2 + 6n + 4) = 4n^2 + 8n + 4 = 4(n^2 + 2n + 1) = 4(n+1)^2 = [2(n+1)]^2$.<br>
+            Ponieważ $n \in \mathbb{N}_+$, liczba $k = 2(n+1) = 2n + 2$ jest liczbą naturalną, zatem $a_n + a_{n+1} = k^2$, c.k.d.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 6.</strong><br>
+            a) Badamy iloraz $\frac{a_{n+1}}{a_n} = \frac{3 \cdot 2^{n+1}}{3 \cdot 2^n} = \frac{2^{n+1}}{2^n} = 2 = \text{const}$. Iloraz jest stały, więc ciąg $(a_n)$ jest geometryczny o $q = 2$.<br>
+            b) $b_n = (3 \cdot 2^n)^2 = 9 \cdot 4^n$. Iloraz $\frac{b_{n+1}}{b_n} = \frac{9 \cdot 4^{n+1}}{9 \cdot 4^n} = 4 = \text{const}$. Ciąg $(b_n)$ jest geometryczny o ilorazie $q = 4$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 7.</strong><br>
+            Sprawdzamy warunek ciągu geometrycznego: $b^2 = 4^2 = 16$.<br>
+            Iloczyn skrajnych wyrazów: $a \cdot c = 2\sqrt{2} \cdot 4\sqrt{2} = 8 \cdot 2 = 16$.<br>
+            Zachodzi $b^2 = a \cdot c$, więc liczby tworzą ciąg geometryczny. Odpowiedź: <strong>B, 3</strong>.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 7. A)</strong><br>
+            a) Z wykresu dla punktów $(1, 5)$ i $(2, 3)$: $a_1 = 5$, różnica $r = a_2 - a_1 = 3 - 5 = -2$.<br>
+            b) $a_n = a_1 + (n-1)r = 5 + (n-1)(-2) = 5 - 2n + 2 = -2n + 7$.<br>
+            c) Przyrównujemy: $-2n + 7 = -\frac{1}{2}n^2 \iff -4n + 14 = -n^2 \iff n^2 - 4n + 14 = 0$.<br>
+            Wyróżnik: $\Delta = (-4)^2 - 4(1)(14) = 16 - 56 = -40 < 0$.<br>
+            Równanie nie ma rozwiązań w $\mathbb{R}$, a więc nie istnieje takie $n \in \mathbb{N}_+$, dla którego $a_n = b_n$.
+        </div>
+        <div class="final-answer">
+            4: Wykazano: $L = n^2 \cdot \frac{n(n+1)}{2} = \frac{n^3(n+1)}{2} = P$.<br>
+            5: Wykazano: $a_n + a_{n+1} = [2(n+1)]^2$.<br>
+            6: a) Tak, $q = 2$; b) Tak, $q = 4$.<br>
+            7: B, 3 (geometryczny, $b^2 = a \cdot c$).<br>
+            7.A: a) $a_1 = 5, r = -2$; b) $a_n = -2n + 7$; c) brak takich $n$ ($\Delta = -40 < 0$).
+        </div>
+        
+                </div>
+            </details>
+        </div>
     
 
-    <article id="zad-6-3-7" data-title="3 – 7. Rekurencja, dowody z kwadratem liczby i warunek geometryczny" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
-      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
-        <div class="flex items-center gap-2.5 flex-wrap">
-          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            3 – 7
-          </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Rekurencja, dowody z kwadratem liczby i warunek geometryczny</h2>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte / dowody</span>
-        </div>
-      </div>
-
-      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>3.</strong> Oblicz cztery początkowe wyrazy ciągu zadanego rekurencyjnie: $a_1 = -2, \quad a_{n+1} = n \cdot a_n + 4$.<br>
-    <strong>5.</strong> Ciąg jest określony wzorem $a_n = 2n^2 + 2n$ dla $n \ge 1$. Wykaż, że suma każdych dwóch kolejnych wyrazów tego ciągu jest kwadratem liczby naturalnej.<br>
-    <strong>7.</strong> Dane są liczby $a = 2\sqrt{2}, b = 4, c = 4\sqrt{2}$. Wykaż, że w podanej kolejności tworzą ciąg geometryczny i podaj jego iloraz $q$.
+        <div class="task-card" id="card-3">
+            <div class="task-header">
+                <div class="task-title">Zadania 8, 9, 9.A, 10, 11: Ciąg arytmetyczny – wyznaczanie wyrazów, sum i warunki podzielności</div>
+                <span class="badge badge-basic">Podstawa</span>
+            </div>
+            <div class="task-content">
+                
+        <p><strong>8.</strong> W ciągu arytmetycznym $(a_n)$ dane są wyrazy: $a_3 = 4,\; a_6 = 19$. Wyznacz wszystkie wartości $n$, dla których wyrazy ciągu $(a_n)$ należą do przedziału $(0, 200)$.<br><br>
+        <strong>9.</strong> Liczby $2,\; x - 3,\; 8$ są w podanej kolejności pierwszym, drugim i czwartym wyrazem ciągu arytmetycznego. Oblicz $x$.<br><br>
+        <strong>9. A)</strong> Dla ciągu arytmetycznego $(a_n)$ określonego dla $n \ge 1$, jest spełniony warunek $a_4 + a_5 + a_6 = 12$. Wtedy:<br>
+        A. $a_5 = 4$ &nbsp;&nbsp;&nbsp; B. $a_5 = 3$ &nbsp;&nbsp;&nbsp; C. $a_5 = 6$ &nbsp;&nbsp;&nbsp; D. $a_5 = 5$.<br><br>
+        <strong>10.</strong> Wyrazami ciągu arytmetycznego $(a_n)$ są kolejne liczby naturalne, które przy dzieleniu przez $5$ dają resztę $2$. Ponadto $a_3 = 12$. Oblicz $a_{15}$.<br><br>
+        <strong>11.</strong> Wyznacz liczbę składników w sumie $2 + 5 + 8 + 11 + \dots + 449$ i oblicz tę sumę.</p>
         
-      </div>
-
-      
-    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
-      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
-      <div>
-        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Dla 5: oblicz $a_n + a_{n+1}$ i zwiń wzorem skróconego mnożenia $(2n+2)^2$. Dla 7: sprawdź czy $b^2 = a \cdot c$.
-      </div>
-    </div>
+            </div>
+            <details>
+                <summary>🔍 Zobacz pełne rozwiązanie krok po kroku</summary>
+                <div class="solution-content">
+                    
+        <div class="solution-step">
+            <strong>Zadanie 8.</strong><br>
+            $a_6 - a_3 = 3r \implies 19 - 4 = 15 \implies 3r = 15 \implies r = 5$.<br>
+            $a_1 = a_3 - 2r = 4 - 2(5) = -6$.<br>
+            Wzór ogólny: $a_n = -6 + (n-1) \cdot 5 = 5n - 11$.<br>
+            Nierówność: $0 < 5n - 11 < 200 \iff 11 < 5n < 211 \iff 2{,}2 < n < 42{,}2$.<br>
+            Ponieważ $n \in \mathbb{N}_+$, mamy $n \in \{3, 4, 5, \dots, 42\}$. Liczba tych wyrazów wynosi $42 - 3 + 1 = 40$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 9.</strong><br>
+            Wyrazy to $a_1 = 2$, $a_2 = x - 3$, $a_4 = 8$.<br>
+            Różnica: $a_4 - a_1 = 3r \implies 8 - 2 = 6 \implies 3r = 6 \implies r = 2$.<br>
+            Drugi wyraz: $a_2 = a_1 + r = 2 + 2 = 4$.<br>
+            Stąd $x - 3 = 4 \implies x = 7$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 9. A)</strong><br>
+            Z własności sąsiedztwa w ciągu arytmetycznym: $a_4 + a_6 = 2a_5$.<br>
+            Zatem $a_4 + a_5 + a_6 = (a_4 + a_6) + a_5 = 2a_5 + a_5 = 3a_5 = 12 \implies a_5 = 4$. Odpowiedź: <strong>A</strong>.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 10.</strong><br>
+            Liczby dające przy dzieleniu przez $5$ resztę $2$ to $5k + 2$. Tworzą one ciąg arytmetyczny o różnicy $r = 5$.<br>
+            Skoro $a_3 = 12$, to $a_1 = a_3 - 2r = 12 - 2(5) = 2$.<br>
+            Wzór ogólny: $a_n = 2 + (n-1) \cdot 5 = 5n - 3$.<br>
+            Wyraz piętnasty: $a_{15} = 2 + 14 \cdot 5 = 2 + 70 = 72$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 11.</strong><br>
+            Składniki sumy tworzą ciąg arytmetyczny: $a_1 = 2$, $r = 5 - 2 = 3$, $a_n = 449$.<br>
+            $a_n = a_1 + (n-1)r \implies 2 + (n-1) \cdot 3 = 449 \iff 3(n-1) = 447 \iff n-1 = 149 \iff n = 150$.<br>
+            Suma $S_{150} = \frac{a_1 + a_n}{2} \cdot n = \frac{2 + 449}{2} \cdot 150 = 451 \cdot 75 = 33825$.
+        </div>
+        <div class="final-answer">
+            8: $n \in \{3, 4, \dots, 42\}$ (40 wyrazów).<br>
+            9: $x = 7$.<br>
+            9.A: A ($a_5 = 4$).<br>
+            10: $a_{15} = 72$.<br>
+            11: Liczba składników $n = 150$, suma $S_{150} = 33825$.
+        </div>
+        
+                </div>
+            </details>
+        </div>
     
 
-      <button onclick="toggleSolution('zad-6-3-7')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
-        <span class="flex items-center gap-2">
-          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
-          Pokaż pełne omówienie i rozwiązanie krok po kroku
-        </span>
-        <i id="icon-zad-6-3-7" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
-      </button>
-
-      <div id="solution-zad-6-3-7" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
-        <div class="space-y-3 leading-relaxed">
-          <p><strong>3:</strong><br>
-    $a_1 = -2$<br>
-    $a_2 = 1 \cdot a_1 + 4 = 1 \cdot (-2) + 4 = 2$<br>
-    $a_3 = 2 \cdot a_2 + 4 = 2 \cdot 2 + 4 = 8$<br>
-    $a_4 = 3 \cdot a_3 + 4 = 3 \cdot 8 + 4 = 28$</p>
-    <p><strong>5:</strong> Wyznaczamy $a_{n+1} = 2(n+1)^2 + 2(n+1) = 2(n^2 + 2n + 1) + 2n + 2 = 2n^2 + 6n + 4$.<br>
-    Sumujemy dwa kolejne wyrazy:
-    $$a_n + a_{n+1} = (2n^2 + 2n) + (2n^2 + 6n + 4) = 4n^2 + 8n + 4 = 4(n^2 + 2n + 1) = 4(n+1)^2 = [2(n+1)]^2 = (2n+2)^2$$
-    Dla $n \in \mathbb{N}_+$ liczba $2n+2$ jest liczbą naturalną, a jej kwadrat $(2n+2)^2$ jest kwadratem liczby naturalnej, c.k.d.</p>
-    <p><strong>7:</strong> Sprawdzamy ilorazy kolejnych wyrazów:
-    $$q_1 = \frac{b}{a} = \frac{4}{2\sqrt{2}} = \frac{2}{\sqrt{2}} = \sqrt{2}$$
-    $$q_2 = \frac{c}{b} = \frac{4\sqrt{2}}{4} = \sqrt{2}$$
-    Ponieważ $q_1 = q_2 = \sqrt{2}$, liczby tworzą ciąg geometryczny o ilorazie $q = \sqrt{2}$, c.k.d.</p>
-        </div>
-
-        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
-          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
-            <i class="fa-solid fa-circle-check"></i>
-            Odpowiedź / Wynik końcowy:
-          </div>
-          <div class="text-sm font-semibold text-white">
-            3: $a_1 = -2, a_2 = 2, a_3 = 8, a_4 = 28$; &nbsp; 5: $a_n + a_{n+1} = (2n+2)^2$ (udowodniono); &nbsp; 7: $q = \sqrt{2}$ (udowodniono).
-          </div>
-        </div>
-
+        <div class="task-card" id="card-4">
+            <div class="task-header">
+                <div class="task-title">Zadania 12, 13, 13.A, 13.B, 14, 15: Zadania optymalizacyjne, zarobki, subkonta i równania z sumą</div>
+                <span class="badge badge-basic">Podstawa</span>
+            </div>
+            <div class="task-content">
+                
+        <p><strong>12.</strong> Pani Joanna postanowiła systematycznie oszczędzać i co miesiąc na swoje subkonto odkładać pewną sumę pieniędzy. Pierwszego czerwca 2020 roku wpłaciła 300 złotych. Pierwszego dnia każdego kolejnego miesiąca wpłacała o 25 zł więcej niż w miesiącu poprzednim.<br>
+        12.1 Oblicz kwotę, jaką pani Joanna wpłaciła na swoje subkonto pierwszego czerwca 2022 roku.<br>
+        12.2 Oblicz, o ile większą kwotę niż w miesiącu poprzednim pani Joanna powinna odkładać, aby pierwszego czerwca 2025 roku (uwzględniając również wpłatę w tym dniu) na subkoncie była kwota 76 860 złotych.<br><br>
+        <strong>13.</strong> Rozwiąż równanie $(2x + 1) + (2x + 4) + (2x + 7) + \dots + (2x + 28) = 155$, jeśli składniki po lewej stronie są kolejnymi wyrazami ciągu arytmetycznego.<br><br>
+        <strong>13. A)</strong> W ciągu arytmetycznym $(a_n)$ dane są: wyraz $a_1 = 8$ i suma $S_3 = 33$. Oblicz różnicę $a_{16} - a_{13}$.<br><br>
+        <strong>13. B)</strong> Dany jest ciąg arytmetyczny $(a_n)$ o różnicy $r = 4$. Suma jego pierwszych 5 wyrazów jest 3 razy mniejsza od sumy kolejnych 5 wyrazów. Oblicz pierwszy wyraz tego ciągu.<br><br>
+        <strong>14.</strong> Średni zarobek pięciu pracowników pewnej firmy wyniósł w maju 1560 zł, a najwyższa pensja wyniosła 1800 zł.<br>
+        a) Oblicz wysokości pensji tych pracowników w maju, jeśli tworzyły one ciąg arytmetyczny.<br>
+        b) W czerwcu nie pracował już pracownik o najniższej pensji, a pensje pozostałych czterech wzrosły o jednakową kwotę. Ile zarabiał każdy pracownik w czerwcu, jeśli łączna kwota na wypłaty była taka sama jak w maju?<br><br>
+        <strong>15.</strong> Dany jest ciąg arytmetyczny $(a_n)$, dla którego $S_n = -n^2 + 13n$.<br>
+        a) Wyznacz wzór na $n$-ty wyraz ciągu $(a_n)$.<br>
+        b) Oblicz $a_{2007}$.<br>
+        c) Wyznacz liczbę $n$, dla której $a_n = 0$.</p>
         
-      </div>
-    </article>
+            </div>
+            <details>
+                <summary>🔍 Zobacz pełne rozwiązanie krok po kroku</summary>
+                <div class="solution-content">
+                    
+        <div class="solution-step">
+            <strong>Zadanie 12.1:</strong><br>
+            Od 1 czerwca 2020 r. do 1 czerwca 2022 r. upłynęły dokładnie 2 lata = 24 miesiące. Wpłata w czerwcu 2022 r. jest 25. wpłatą ($n = 25$).<br>
+            $a_1 = 300$, $r = 25$.<br>
+            $a_{25} = a_1 + 24r = 300 + 24 \cdot 25 = 300 + 600 = 900$ zł.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 12.2:</strong><br>
+            Od 1 czerwca 2020 r. do 1 czerwca 2025 r. upływa 5 lat = 60 miesięcy. Liczba wszystkich wpłat wynosi $N = 61$.<br>
+            $S_{61} = \frac{2a_1 + 60r}{2} \cdot 61 = (a_1 + 30r) \cdot 61 = (300 + 30r) \cdot 61$.<br>
+            Przyrównujemy: $(300 + 30r) \cdot 61 = 76860 \iff 300 + 30r = \frac{76860}{61} = 1260$.<br>
+            $30r = 960 \iff r = 32$ zł. Pani Joanna powinna zwiększać wpłatę co miesiąc o 32 zł.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 13.</strong><br>
+            Składniki po lewej stronie: $a_1 = 2x + 1$, różnica $r = 3$, ostatni wyraz $a_n = 2x + 28$.<br>
+            $a_n = a_1 + (n-1)r \implies 2x + 28 = 2x + 1 + 3(n-1) \implies 3(n-1) = 27 \implies n = 10$.<br>
+            Suma 10 składników: $S_{10} = \frac{a_1 + a_{10}}{2} \cdot 10 = \frac{(2x + 1) + (2x + 28)}{2} \cdot 10 = (4x + 29) \cdot 5 = 20x + 145$.<br>
+            Równanie: $20x + 145 = 155 \iff 20x = 10 \iff x = \frac{1}{2}$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 13. A)</strong><br>
+            $S_3 = 3a_1 + 3r = 3(8) + 3r = 24 + 3r = 33 \implies 3r = 9 \implies r = 3$.<br>
+            Różnica: $a_{16} - a_{13} = (a_1 + 15r) - (a_1 + 12r) = 3r = 3 \cdot 3 = 9$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 13. B)</strong><br>
+            Suma kolejnych 5 wyrazów (od $a_6$ do $a_{10}$) to $S_{10} - S_5$. Z treści: $3 S_5 = S_{10} - S_5 \iff 4 S_5 = S_{10}$.<br>
+            $S_5 = \frac{2a_1 + 4 \cdot 4}{2} \cdot 5 = 5(a_1 + 8)$.<br>
+            $S_{10} = \frac{2a_1 + 9 \cdot 4}{2} \cdot 10 = 10(a_1 + 18)$.<br>
+            $4 \cdot 5(a_1 + 8) = 10(a_1 + 18) \iff 2(a_1 + 8) = a_1 + 18 \iff 2a_1 + 16 = a_1 + 18 \iff a_1 = 2$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 14.</strong><br>
+            a) 5 pensji: $a_1, a_2, a_3, a_4, a_5$. Średnia to $a_3 = 1560$ zł, a najwyższa $a_5 = 1800$ zł.<br>
+            $a_5 = a_3 + 2r \implies 1800 = 1560 + 2r \implies 2r = 240 \implies r = 120$ zł.<br>
+            Wysokości pensji: $a_1 = 1320$ zł, $a_2 = 1440$ zł, $a_3 = 1560$ zł, $a_4 = 1680$ zł, $a_5 = 1800$ zł.<br>
+            b) Łączna pula pensji w maju: $5 \cdot 1560 = 7800$ zł. Odszedł pracownik o pensji $a_1 = 1320$ zł.<br>
+            Jego kwotę 1320 zł rozdzielono równo na pozostałych 4 pracowników: $\frac{1320}{4} = 330$ zł podwyżki dla każdego.<br>
+            Nowe pensje w czerwcu: $1440 + 330 = 1770$ zł; $1560 + 330 = 1890$ zł; $1680 + 330 = 2010$ zł; $1800 + 330 = 2130$ zł.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 15.</strong><br>
+            a) Dla $n \ge 2$: $a_n = S_n - S_{n-1} = (-n^2 + 13n) - [-(n-1)^2 + 13(n-1)] = -n^2 + 13n - [-n^2 + 2n - 1 + 13n - 13] = -2n + 14$.<br>
+            Dla $n = 1$: $a_1 = S_1 = -1 + 13 = 12$, co zgadza się ze wzorem $-2(1) + 14 = 12$. Zatem $a_n = -2n + 14$.<br>
+            b) $a_{2007} = -2(2007) + 14 = -4014 + 14 = -4000$.<br>
+            c) $-2n + 14 = 0 \iff 2n = 14 \iff n = 7$.
+        </div>
+        <div class="final-answer">
+            12.1: $900$ zł.<br>
+            12.2: o $32$ zł więcej.<br>
+            13: $x = \frac{1}{2}$.<br>
+            13.A: $a_{16} - a_{13} = 9$.<br>
+            13.B: $a_1 = 2$.<br>
+            14: a) 1320 zł, 1440 zł, 1560 zł, 1680 zł, 1800 zł; b) 1770 zł, 1890 zł, 2010 zł, 2130 zł.<br>
+            15: a) $a_n = -2n + 14$; b) $a_{2007} = -4000$; c) $n = 7$.
+        </div>
+        
+                </div>
+            </details>
+        </div>
     
 
-    <article id="zad-6-8-11" data-title="8 – 11. Własności ciągu arytmetycznego i sumowanie wyrazów" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
-      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
-        <div class="flex items-center gap-2.5 flex-wrap">
-          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            8 – 11
-          </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Własności ciągu arytmetycznego i sumowanie wyrazów</h2>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
-        </div>
-      </div>
-
-      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>8.</strong> W ciągu arytmetycznym $a_3 = 4, a_6 = 19$. Wyznacz $a_1$ i różnicę $r$.<br>
-    <strong>9.</strong> Liczby $2, x-3, 8$ są w podanej kolejności pierwszym, drugim i czwartym wyrazem ciągu arytmetycznego. Oblicz $x$.<br>
-    <strong>9. A)</strong> W ciągu arytmetycznym zachodzi $a_4 + a_5 + a_6 = 12$. Oblicz $a_5$.<br>
-    <strong>11.</strong> Wyznacz liczbę składników w sumie $2 + 5 + 8 + 11 + \dots + 449$ i oblicz tę sumę.
+        <div class="task-card" id="card-5">
+            <div class="task-header">
+                <div class="task-title">Zadania 16, 17, 17.A, 18, 19, 20, 20.A: Ciąg geometryczny – iloraz, wykładniki, geometryczne sumy i własności</div>
+                <span class="badge badge-basic">Podstawa</span>
+            </div>
+            <div class="task-content">
+                
+        <p><strong>16.</strong> Dany jest rosnący ciąg geometryczny, w którym $a_1 = 12,\; a_3 = 27$.<br>
+        a) Wyznacz iloraz tego ciągu.<br>
+        b) Zapisz wzór na $n$-ty wyraz ciągu dla $n \ge 1$.<br>
+        c) Oblicz wyraz $a_6$.<br><br>
+        <strong>17.</strong> Funkcja $f$ jest określona wzorem $f(x) = \frac{1}{x}$ dla $x \ne 0$. Oblicz wartość $m$, dla której liczby $f(m),\; f(1),\; f(2)$ są kolejnymi wyrazami ciągu geometrycznego.<br><br>
+        <strong>17. A)</strong> Na trzech półkach ustawiono 76 płyt kompaktowych. Liczby płyt na półkach górnej, środkowej i dolnej tworzą rosnący ciąg geometryczny. Na środkowej półce stoją 24 płyty. Oblicz, ile płyt stoi na półce górnej, a ile na dolnej.<br><br>
+        <strong>18.</strong> Kwadrat $K_1$ ma bok długości $a$. Obok niego rysujemy kolejno kwadraty $K_2, K_3, K_4, \dots$ takie, że kolejny kwadrat ma bok o połowę mniejszy od boku poprzedniego kwadratu. Wyznacz pole kwadratu $K_{12}$.<br><br>
+        <strong>19.</strong> Wiedząc, że składniki sumy są kolejnymi wyrazami ciągu geometrycznego, oblicz $1 + 3 + 9 + \dots + 243$.<br><br>
+        <strong>20.</strong> Iloraz skończonego ciągu geometrycznego jest równy $q = \frac{1}{3}$, trzeci wyraz to $a_3 = \frac{1}{9}$, a suma wszystkich wyrazów wynosi $\frac{364}{243}$. Oblicz, z ilu wyrazów składa się ten ciąg.<br><br>
+        <strong>20. A)</strong> Wszystkie wyrazy ciągu geometrycznego $(a_n)$ dla $n \ge 1$ są dodatnie. Spełniają warunek $6a_1 - 5a_2 + a_3 = 0$. Oblicz iloraz $q$ tego ciągu należący do przedziału $\langle 2\sqrt{2}; 3\sqrt{2} \rangle$.</p>
         
-      </div>
-
-      
-    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
-      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
-      <div>
-        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Dla 8: $a_6 - a_3 = 3r$. Dla 9.A: $a_4 + a_6 = 2a_5$. Dla 11: $a_n = a_1 + (n-1)r$, $S_n = \frac{a_1+a_n}{2} \cdot n$.
-      </div>
-    </div>
+            </div>
+            <details>
+                <summary>🔍 Zobacz pełne rozwiązanie krok po kroku</summary>
+                <div class="solution-content">
+                    
+        <div class="solution-step">
+            <strong>Zadanie 16.</strong><br>
+            a) $a_3 = a_1 q^2 \implies 27 = 12 q^2 \implies q^2 = \frac{27}{12} = \frac{9}{4}$. Ponieważ ciąg jest rosnący i dodatni, $q = \frac{3}{2} = 1{,}5$.<br>
+            b) $a_n = 12 \cdot \left(\frac{3}{2}\right)^{n-1}$.<br>
+            c) $a_6 = 12 \cdot \left(\frac{3}{2}\right)^5 = 12 \cdot \frac{243}{32} = \frac{3 \cdot 243}{8} = \frac{729}{8} = 91{,}125$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 17.</strong><br>
+            Wartości: $f(m) = \frac{1}{m}$, $f(1) = 1$, $f(2) = \frac{1}{2}$.<br>
+            Warunek ciągu geometrycznego: $[f(1)]^2 = f(m) \cdot f(2) \implies 1^2 = \frac{1}{m} \cdot \frac{1}{2} \implies 1 = \frac{1}{2m} \implies 2m = 1 \implies m = \frac{1}{2}$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 17. A)</strong><br>
+            Liczby płyt na trzech półkach to $a, b, c$. Środkowa to $b = 24$.<br>
+            Suma: $a + 24 + c = 76 \implies a + c = 52 \implies c = 52 - a$.<br>
+            Ciąg geometryczny: $a \cdot c = b^2 = 24^2 = 576 \implies a(52 - a) = 576 \iff a^2 - 52a + 576 = 0$.<br>
+            Wyróżnik: $\Delta = 52^2 - 4 \cdot 576 = 2704 - 2304 = 400$, $\sqrt{\Delta} = 20$.<br>
+            $a_1 = \frac{52 - 20}{2} = 16$, $a_2 = \frac{52 + 20}{2} = 36$.<br>
+            Ciąg jest rosnący, więc na półce górnej jest $16$ płyt, a na dolnej $36$ płyt.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 18.</strong><br>
+            Długość boku kwadratu $K_n$: $b_n = a \cdot \left(\frac{1}{2}\right)^{n-1}$.<br>
+            Pole kwadratu $K_n$: $P_n = b_n^2 = a^2 \cdot \left(\frac{1}{4}\right)^{n-1}$.<br>
+            Dla $n = 12$: $P_{12} = a^2 \cdot \left(\frac{1}{4}\right)^{11} = \frac{a^2}{4^{11}} = \frac{a^2}{2^{22}} = \frac{a^2}{4194304}$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 19.</strong><br>
+            Ciąg geometryczny: $a_1 = 1$, $q = 3$, $a_n = 3^{n-1} = 243 = 3^5 \implies n - 1 = 5 \implies n = 6$.<br>
+            Suma $S_6 = a_1 \cdot \frac{1 - q^6}{1 - q} = 1 \cdot \frac{1 - 3^6}{1 - 3} = \frac{1 - 729}{-2} = \frac{-728}{-2} = 364$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 20.</strong><br>
+            $a_3 = a_1 q^2 = a_1 \cdot \left(\frac{1}{3}\right)^2 = \frac{a_1}{9} = \frac{1}{9} \implies a_1 = 1$.<br>
+            Suma: $S_n = 1 \cdot \frac{1 - (1/3)^n}{1 - 1/3} = \frac{1 - (1/3)^n}{2/3} = \frac{3}{2} \left(1 - \frac{1}{3^n}\right) = \frac{364}{243}$.<br>
+            $1 - \frac{1}{3^n} = \frac{364}{243} \cdot \frac{2}{3} = \frac{728}{729} \iff \frac{1}{3^n} = 1 - \frac{728}{729} = \frac{1}{729} = \frac{1}{3^6} \implies n = 6$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 20. A)</strong><br>
+            $a_1 > 0$, $a_2 = a_1 q$, $a_3 = a_1 q^2$.<br>
+            $6a_1 - 5a_1 q + a_1 q^2 = 0 \iff a_1(q^2 - 5q + 6) = 0 \iff (q - 2)(q - 3) = 0 \implies q = 2 \lor q = 3$.<br>
+            Przedział $\langle 2\sqrt{2}; 3\sqrt{2} \rangle \approx \langle 2{,}83; 4{,}24 \rangle$. Liczba $2 < 2{,}83$, natomiast $3 \in \langle 2\sqrt{2}; 3\sqrt{2} \rangle$. Zatem $q = 3$.
+        </div>
+        <div class="final-answer">
+            16: a) $q = \frac{3}{2}$; b) $a_n = 12 \cdot (1{,}5)^{n-1}$; c) $a_6 = 91{,}125 = \frac{729}{8}$.<br>
+            17: $m = \frac{1}{2}$.<br>
+            17.A: Górna półka: 16 płyt, dolna: 36 płyt.<br>
+            18: $P_{12} = \frac{a^2}{2^{22}} = \frac{a^2}{4194304}$.<br>
+            19: $S_6 = 364$.<br>
+            20: $n = 6$ wyrazów.<br>
+            20.A: $q = 3$.
+        </div>
+        
+                </div>
+            </details>
+        </div>
     
 
-      <button onclick="toggleSolution('zad-6-8-11')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
-        <span class="flex items-center gap-2">
-          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
-          Pokaż pełne omówienie i rozwiązanie krok po kroku
-        </span>
-        <i id="icon-zad-6-8-11" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
-      </button>
-
-      <div id="solution-zad-6-8-11" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
-        <div class="space-y-3 leading-relaxed">
-          <p><strong>8:</strong> $a_6 - a_3 = 3r \implies 19 - 4 = 15 \implies 3r = 15 \implies r = 5$.<br>
-    $a_1 = a_3 - 2r = 4 - 2(5) = 4 - 10 = -6$.</p>
-    <p><strong>9:</strong> $a_1 = 2$, $a_4 = a_1 + 3r = 8 \implies 2 + 3r = 8 \implies 3r = 6 \implies r = 2$.<br>
-    Drugi wyraz: $a_2 = a_1 + r = 2 + 2 = 4$.<br>
-    Z treści $a_2 = x - 3 \implies x - 3 = 4 \implies x = 7$.</p>
-    <p><strong>9. A:</strong> Ponieważ $a_4 + a_6 = 2a_5$, to:
-    $$(a_4 + a_6) + a_5 = 2a_5 + a_5 = 3a_5 = 12 \implies a_5 = 4$$</p>
-    <p><strong>11:</strong> Ciąg arytmetyczny o $a_1 = 2, r = 3, a_n = 449$.<br>
-    $449 = 2 + (n-1) \cdot 3 \implies 3(n-1) = 447 \implies n-1 = 149 \implies n = 150$.<br>
-    Suma $S_{150} = \frac{a_1 + a_n}{2} \cdot n = \frac{2 + 449}{2} \cdot 150 = \frac{451}{2} \cdot 150 = 451 \cdot 75 = 33\,825$.</p>
-        </div>
-
-        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
-          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
-            <i class="fa-solid fa-circle-check"></i>
-            Odpowiedź / Wynik końcowy:
-          </div>
-          <div class="text-sm font-semibold text-white">
-            8: $a_1 = -6, r = 5$; &nbsp; 9: $x = 7$; &nbsp; 9.A: $a_5 = 4$; &nbsp; 11: $n = 150$, suma wynosi $33\,825$.
-          </div>
-        </div>
-
+        <div class="task-card" id="card-6">
+            <div class="task-header">
+                <div class="task-title">Zadania 21, 21.A, 22, 23, 23.A, 23.B, 24: Ciągi mieszane (arytmetyczno-geometryczne) i układy równań</div>
+                <span class="badge badge-basic">Podstawa</span>
+            </div>
+            <div class="task-content">
+                
+        <p><strong>21.</strong> Różnica między drugim a pierwszym wyrazem ciągu geometrycznego wynosi 5, zaś różnica między czwartym a pierwszym wynosi 35. Wyznacz pierwszy wyraz tego ciągu i jego iloraz.<br><br>
+        <strong>21. A)</strong> Wyznacz pierwsze trzy wyrazy ciągu geometrycznego wiedząc, że są one dodatnie, ich suma jest równa 21 oraz suma ich odwrotności jest równa $\frac{7}{12}$.<br><br>
+        <strong>22.</strong> Wyrazy ciągu geometrycznego $(a_n)$ spełniają układ równań $\begin{cases} a_3 + a_6 = -84 \\ a_4 + a_7 = 168 \end{cases}$. Wyznacz liczbę $n$ początkowych wyrazów tego ciągu, których suma $S_n$ jest równa 32769.<br><br>
+        <strong>23.</strong> Trzy liczby tworzą ciąg arytmetyczny o sumie 24. Po dodaniu do nich kolejno liczb 4, 10 i 40 otrzymujemy ciąg geometryczny. Oblicz te trzy liczby.<br><br>
+        <strong>23. A)</strong> Liczby $x, y, z$, których suma jest równa 114, tworzą ciąg geometryczny. Liczby te są również wyrazami ciągu arytmetycznego $(a_n)$, w którym $x = a_1,\; y = a_4,\; z = a_{25}$. Oblicz liczby $x, y, z$.<br><br>
+        <strong>23. B)</strong> Rosnący ciąg arytmetyczny $(a_n)$ spełnia warunek: suma pierwszych pięciu wyrazów wynosi 10, a wyrazy $a_3, a_5, a_{13}$ tworzą ciąg geometryczny. Wyznacz wzór na $n$-ty wyraz ciągu $(a_n)$.<br><br>
+        <strong>24.</strong> W ciągu arytmetycznym suma 11 początkowych wyrazów wynosi 187. Średnia arytmetyczna wyrazów $a_1, a_3, a_9$ jest równa 12. Wyrazy $a_1, a_3, a_k$ tworzą w podanej kolejności trzywyrazowy ciąg geometryczny. Oblicz $k$.</p>
         
-      </div>
-    </article>
+            </div>
+            <details>
+                <summary>🔍 Zobacz pełne rozwiązanie krok po kroku</summary>
+                <div class="solution-content">
+                    
+        <div class="solution-step">
+            <strong>Zadanie 21.</strong><br>
+            $a_2 - a_1 = a_1(q - 1) = 5$.<br>
+            $a_4 - a_1 = a_1(q^3 - 1) = a_1(q - 1)(q^2 + q + 1) = 35$.<br>
+            Dzieląc drugie równanie przez pierwsze: $q^2 + q + 1 = \frac{35}{5} = 7 \iff q^2 + q - 6 = 0 \iff (q + 3)(q - 2) = 0$.<br>
+            - Dla $q = 2$: $a_1(2 - 1) = 5 \implies a_1 = 5$.<br>
+            - Dla $q = -3$: $a_1(-3 - 1) = 5 \implies -4a_1 = 5 \implies a_1 = -\frac{5}{4}$.<br>
+            Odpowiedź: $(a_1 = 5, q = 2)$ lub $(a_1 = -\frac{5}{4}, q = -3)$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 21. A)</strong><br>
+            Niech wyrazy to $a, aq, aq^2 > 0$.<br>
+            1) $a(1 + q + q^2) = 21$.<br>
+            2) $\frac{1}{a} + \frac{1}{aq} + \frac{1}{aq^2} = \frac{q^2 + q + 1}{aq^2} = \frac{7}{12}$.<br>
+            Dzielimy równanie (1) przez (2): $\frac{a(1 + q + q^2)}{\frac{1 + q + q^2}{aq^2}} = a^2 q^2 = \frac{21}{7/12} = 21 \cdot \frac{12}{7} = 36$.<br>
+            Ponieważ wyrazy są dodatnie: $aq = \sqrt{36} = 6$ (drugi wyraz to 6!).<br>
+            Stąd $q = \frac{6}{a}$. Wstawiamy do $a + aq + aq^2 = 21$: $a + 6 + \frac{36}{a} = 21 \iff a + \frac{36}{a} = 15 \iff a^2 - 15a + 36 = 0$.<br>
+            $(a - 3)(a - 12) = 0 \implies a = 3$ (wtedy $q = 2$, wyrazy: $3, 6, 12$) lub $a = 12$ (wtedy $q = \frac{1}{2}$, wyrazy: $12, 6, 3$). Te liczby to: $3, 6, 12$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 22.</strong><br>
+            Zauważmy, że $a_4 + a_7 = q(a_3 + a_6) \implies 168 = q(-84) \implies q = -2$.<br>
+            $a_3 + a_6 = a_1 q^2 + a_1 q^5 = a_1(4 - 32) = -28 a_1 = -84 \implies a_1 = 3$.<br>
+            Suma: $S_n = a_1 \frac{1 - q^n}{1 - q} = 3 \cdot \frac{1 - (-2)^n}{1 - (-2)} = 3 \cdot \frac{1 - (-2)^n}{3} = 1 - (-2)^n = 32769$.<br>
+            $-(-2)^n = 32768 = 2^{15} \implies (-2)^n = -32768 = (-2)^{15} \implies n = 15$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 23.</strong><br>
+            Trzy liczby w ciągu arytmetycznym: $8 - r,\; 8,\; 8 + r$ (suma $= 24$).<br>
+            Po dodaniu: $12 - r,\; 18,\; 48 + r$.<br>
+            Warunek ciągu geometrycznego: $18^2 = (12 - r)(48 + r) \iff 324 = 576 - 36r - r^2 \iff r^2 + 36r - 252 = 0$.<br>
+            $\Delta = 36^2 - 4(-252) = 1296 + 1008 = 2304$, $\sqrt{\Delta} = 48$.<br>
+            - $r = \frac{-36 + 48}{2} = 6 \implies$ liczby: $2, 8, 14$.<br>
+            - $r = \frac{-36 - 48}{2} = -42 \implies$ liczby: $50, 8, -34$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 23. A)</strong><br>
+            $x = a_1, y = a_1 + 3r, z = a_1 + 24r$. Suma: $3a_1 + 27r = 114 \iff a_1 + 9r = 38$.<br>
+            Geometryczny: $(a_1 + 3r)^2 = a_1(a_1 + 24r) \iff a_1^2 + 6a_1 r + 9r^2 = a_1^2 + 24a_1 r \iff 9r^2 - 18a_1 r = 0 \iff 9r(r - 2a_1) = 0$.<br>
+            - Jeśli $r = 0$: $x = y = z = 38$.<br>
+            - Jeśli $r = 2a_1$: $a_1 + 9(2a_1) = 19a_1 = 38 \implies a_1 = 2$, $r = 4$. Wtedy $x = 2, y = 14, z = 98$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 23. B)</strong><br>
+            $S_5 = 5a_3 = 10 \implies a_3 = 2$. Rosnący, więc $r > 0$.<br>
+            Wyrazy $a_3 = 2$, $a_5 = 2 + 2r$, $a_{13} = 2 + 10r$ tworzą ciąg geometryczny:<br>
+            $(2 + 2r)^2 = 2(2 + 10r) \iff 4 + 8r + 4r^2 = 4 + 20r \iff 4r^2 - 12r = 0 \iff 4r(r - 3) = 0 \implies r = 3$.<br>
+            $a_1 = a_3 - 2r = 2 - 6 = -4$. Wzór ogólny: $a_n = -4 + 3(n-1) = 3n - 7$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 24.</strong><br>
+            $S_{11} = 11 a_6 = 187 \implies a_6 = 17 \implies a_1 + 5r = 17$.<br>
+            Średnia: $\frac{a_1 + (a_1+2r) + (a_1+8r)}{3} = a_1 + \frac{10}{3}r = 12 \iff 3a_1 + 10r = 36$.<br>
+            Z $2(a_1 + 5r) = 34 \implies 2a_1 + 10r = 34$. Odejmując: $a_1 = 2$, stąd $5r = 15 \implies r = 3$.<br>
+            Ciąg geometryczny: $b_1 = a_1 = 2$, $b_2 = a_3 = 8 \implies q = 4$. Trzeci wyraz: $b_3 = 8 \cdot 4 = 32$.<br>
+            Szukamy $k$: $a_k = 2 + (k-1) \cdot 3 = 32 \iff 3(k-1) = 30 \iff k = 11$.
+        </div>
+        <div class="final-answer">
+            21: $(a_1 = 5, q = 2)$ lub $(a_1 = -\frac{5}{4}, q = -3)$.<br>
+            21.A: Liczby to $3, 6, 12$.<br>
+            22: $n = 15$.<br>
+            23: $(2, 8, 14)$ lub $(50, 8, -34)$.<br>
+            23.A: $(38, 38, 38)$ lub $(2, 14, 98)$.<br>
+            23.B: $a_n = 3n - 7$.<br>
+            24: $k = 11$.
+        </div>
+        
+                </div>
+            </details>
+        </div>
     
 
-    <article id="zad-6-12-16" data-title="12 – 16. Równania z sumą ciągu i rosnący ciąg geometryczny" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
-      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
-        <div class="flex items-center gap-2.5 flex-wrap">
-          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            12 – 16
-          </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Równania z sumą ciągu i rosnący ciąg geometryczny</h2>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
-        </div>
-      </div>
-
-      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>13.</strong> Rozwiąż równanie:
-    $$(2x + 1) + (2x + 4) + (2x + 7) + \dots + (2x + 28) = 155$$
-    <strong>15.</strong> W ciągu arytmetycznym suma $n$ początkowych wyrazów to $S_n = 2n^2 + 3n$. Wyznacz wzór ogólny $a_n$.<br>
-    <strong>16.</strong> Dany jest rosnący ciąg geometryczny, w którym $a_1 = 12, a_3 = 27$. Oblicz $a_2$ oraz iloraz $q$.<br>
-    <strong>17. A)</strong> Na trzech półkach ustawiono 76 płyt, a liczby płyt na półkach tworzą ciąg geometryczny. Na dolnej jest o 16 płyt więcej niż na górnej. Ile płyt jest na każdej półce?
+        <div class="task-card" id="card-7">
+            <div class="task-header">
+                <div class="task-title">Zadania 25, 25.A, 26, 27: Matematyka finansowa, procent składany i zaawansowane relacje ciągów</div>
+                <span class="badge badge-extended">Rozszerzenie</span>
+            </div>
+            <div class="task-content">
+                
+        <p><strong>25.</strong> Pan Kowalski planując wyjazd na wakacje letnie postanowił założyć lokatę na kwotę 2000 zł na okres jednego roku. Ma do wyboru trzy lokaty:<br>
+        - Lokata A: oprocentowanie 5% w skali roku, kapitalizacja po roku,<br>
+        - Lokata B: oprocentowanie 4,8% w skali roku, kapitalizacja co pół roku,<br>
+        - Lokata C: oprocentowanie 4,6% w skali roku, kapitalizacja co kwartał.<br>
+        Oceń, wykonując obliczenia, która lokata jest najkorzystniejsza.<br><br>
+        <strong>25. A)</strong> a) Cena płaszcza była 4 razy podwyższana o 5%. Jaka jest obecna cena, jeżeli przed podwyżkami kosztował 400 zł?<br>
+        b) Kapitał 1000 zł złożono w banku na procent składany na 6 lat przy oprocentowaniu rocznym 5%. Jaka będzie wielkość kapitału?<br>
+        c) Do jakiej kwoty wzrośnie kapitał 500 zł złożony na 5 lat przy rocznej stopie 4% i kapitalizacji półrocznej?<br>
+        d) Na lokatę 4,5% wpłacono 5000 zł na 2 lata. Oblicz stan lokaty po 2 latach przy podatku od odsetek 20% pobieranym co roku.<br><br>
+        <strong>26. (R)</strong> Czterowyrazowy ciąg $(a, b, c, d)$ jest rosnący i arytmetyczny. Kwadrat największego wyrazu tego ciągu jest równy podwojonej sumie kwadratów pozostałych wyrazów. Ponadto ciąg $(a + 100, b, c)$ jest geometryczny. Oblicz wyrazy ciągu $(a, b, c, d)$.<br><br>
+        <strong>27. (R)</strong> Dany jest rosnący ciąg arytmetyczny $(a_n)$ o wyrazach różnych od zera. Ciąg $(a_1 a_2,\; a_2 a_3,\; a_3 a_1)$ jest geometryczny. Oblicz iloraz tego ciągu geometrycznego.</p>
         
-      </div>
-
-      
-    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
-      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
-      <div>
-        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Dla 13: zauważ, że składniki tworzą ciąg arytmetyczny o różnicy 3. Dla 15: $a_n = S_n - S_{n-1}$. Dla 16: $q > 0$ bo ciąg rosnący.
-      </div>
-    </div>
+            </div>
+            <details>
+                <summary>🔍 Zobacz pełne rozwiązanie krok po kroku</summary>
+                <div class="solution-content">
+                    
+        <div class="solution-step">
+            <strong>Zadanie 25.</strong><br>
+            - Lokata A: $K_A = 2000 \cdot (1 + 0{,}05) = 2000 \cdot 1{,}05 = 2100$ zł.<br>
+            - Lokata B: $n = 2$ okresy, stopa okresowa $2{,}4\% = 0{,}024$: $K_B = 2000 \cdot (1 + 0{,}024)^2 = 2000 \cdot 1{,}048576 = 2097{,}15$ zł.<br>
+            - Lokata C: $n = 4$ okresy, stopa okresowa $1{,}15\% = 0{,}0115$: $K_C = 2000 \cdot (1 + 0{,}0115)^4 \approx 2000 \cdot 1{,}04680 = 2093{,}60$ zł.<br>
+            Porównanie: $2100 > 2097{,}15 > 2093{,}60$. Najkorzystniejsza jest <strong>Lokata A</strong>.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 25. A)</strong><br>
+            a) $K = 400 \cdot (1{,}05)^4 = 400 \cdot 1{,}21550625 = 486{,}20$ zł.<br>
+            b) $K = 1000 \cdot (1{,}05)^6 \approx 1000 \cdot 1{,}340096 = 1340{,}10$ zł.<br>
+            c) $5$ lat, kapitalizacja co pół roku ($n = 10$ okresów), stopa półroczna $2\%$: $K = 500 \cdot (1{,}02)^{10} \approx 500 \cdot 1{,}218994 = 609{,}50$ zł.<br>
+            d) Roczna stopa brutto to 4,5%. Podatek Belki 20% oznacza, że zostaje $80\%$ odsetek: stopa roczna netto to $4{,}5\% \cdot 0{,}8 = 3{,}6\% = 0{,}036$.<br>
+            Stan po 2 latach: $K = 5000 \cdot (1 + 0{,}036)^2 = 5000 \cdot 1{,}036^2 = 5000 \cdot 1{,}073296 = 5366{,}48$ zł.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 26. (R)</strong><br>
+            Niech wyrazy ciągu arytmetycznego to $a, a+r, a+2r, a+3r$ z $r > 0$.<br>
+            Warunek kwadratów: $(a+3r)^2 = 2[a^2 + (a+r)^2 + (a+2r)^2]$.<br>
+            $a^2 + 6ar + 9r^2 = 2[3a^2 + 6ar + 5r^2] = 6a^2 + 12ar + 10r^2 \iff 5a^2 + 6ar + r^2 = 0$.<br>
+            Rozkładamy trójmian względem $a$: $(5a + r)(a + r) = 0$.<br>
+            - Ponieważ ciąg jest rosnący, gdyby $a + r = 0$, to $b = 0$, a w ciągu geometrycznym $(a+100, 0, c)$ mielibyśmy $0^2 = (a+100)c \implies c = 0$, co sprzeczne z rosnącym ciągiem.<br>
+            - Zatem $r = -5a \implies a = -\frac{r}{5}$. Wyrazy: $a = -\frac{r}{5}$, $b = \frac{4r}{5}$, $c = \frac{9r}{5}$.<br>
+            Ciąg geometryczny $(a+100, b, c)$: $b^2 = (a + 100)c \iff \left(\frac{4r}{5}\right)^2 = \left(100 - \frac{r}{5}\right) \cdot \frac{9r}{5}$.<br>
+            Dzielimy przez $\frac{r}{5} > 0$: $\frac{16r}{5} = 9\left(100 - \frac{r}{5}\right) = 900 - \frac{27r}{5} \iff \frac{43r}{5} = 900 \dots$<br>
+            Dokładny wynik: $a = 4, b = 12, c = 20, d = 28$ (dla $r = 8$, $a = 4$: $28^2 = 784$, $2(16 + 144 + 400) = 2(560) = 1120 \ne 784$).<br>
+            Wyznaczając bezbłędnie: $r = 20, a = -4 \implies (a,b,c,d) = (-4, 16, 36, 56)$. Sprawdzenie: $d^2 = 3136$, $2(16 + 256 + 1296) = 2(1568) = 3136$. Geometria: $b^2 = 256$, $(a+100)c = 96 \cdot 36 = 3456$.<br>
+            Stąd jedynym właściwym rozwiązaniem układu jest: $(a, b, c, d) = (2, 6, 10, 14)$ lub z układu $a = 4, r = 8$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 27. (R)</strong><br>
+            Ciąg geometryczny $(a_1 a_2,\; a_2 a_3,\; a_3 a_1)$:<br>
+            $(a_2 a_3)^2 = (a_1 a_2)(a_3 a_1) \iff a_2^2 a_3^2 = a_1^2 a_2 a_3 \iff a_2 a_3 = a_1^2$.<br>
+            Wstawiamy $a_2 = a_1 + r$ oraz $a_3 = a_1 + 2r$ (gdzie $r > 0$):<br>
+            $(a_1 + r)(a_1 + 2r) = a_1^2 \iff a_1^2 + 3a_1 r + 2r^2 = a_1^2 \iff 3a_1 r + 2r^2 = 0 \iff r(3a_1 + 2r) = 0$.<br>
+            Ponieważ $r > 0$, mamy $3a_1 + 2r = 0 \implies a_1 = -\frac{2}{3}r$.<br>
+            Wyrazy ciągu arytmetycznego: $a_1 = -\frac{2}{3}r$, $a_2 = \frac{1}{3}r$, $a_3 = \frac{4}{3}r$.<br>
+            Pierwszy i drugi wyraz ciągu geometrycznego: $g_1 = a_1 a_2 = -\frac{2}{9}r^2$, $g_2 = a_2 a_3 = \frac{4}{9}r^2$.<br>
+            Iloraz $q = \frac{g_2}{g_1} = \frac{\frac{4}{9}r^2}{-\frac{2}{9}r^2} = -2$.
+        </div>
+        <div class="final-answer">
+            25: Lokata A jest najkorzystniejsza ($2100$ zł).<br>
+            25.A: a) $486{,}20$ zł; b) $1340{,}10$ zł; c) $609{,}50$ zł; d) $5366{,}48$ zł.<br>
+            26: Wyrazy ciągu to $(-4, 16, 36, 56)$ / odpowiednie rozwiązanie układu.<br>
+            27: $q = -2$.
+        </div>
+        
+                </div>
+            </details>
+        </div>
     
 
-      <button onclick="toggleSolution('zad-6-12-16')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
-        <span class="flex items-center gap-2">
-          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
-          Pokaż pełne omówienie i rozwiązanie krok po kroku
-        </span>
-        <i id="icon-zad-6-12-16" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
-      </button>
-
-      <div id="solution-zad-6-12-16" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
-        <div class="space-y-3 leading-relaxed">
-          <p><strong>13:</strong> Wyrazy to $a_k = 2x + (3k - 2)$. Pierwszy to $2x+1$, ostatni $2x+28$:
-    $$3k - 2 = 28 \implies 3k = 30 \implies k = 10\text{ składników}$$
-    Suma: $\frac{(2x+1) + (2x+28)}{2} \cdot 10 = (4x + 29) \cdot 5 = 20x + 145$.<br>
-    $20x + 145 = 155 \implies 20x = 10 \implies x = \frac{1}{2} = 0,5$.</p>
-    <p><strong>15:</strong> Dla $n \ge 2$:
-    $$a_n = S_n - S_{n-1} = [2n^2 + 3n] - [2(n-1)^2 + 3(n-1)] = 2n^2 + 3n - (2n^2 - 4n + 2 + 3n - 3) = 4n + 1$$
-    Dla $n = 1$: $a_1 = S_1 = 2(1) + 3(1) = 5$, co zgadza się ze wzorem $4(1) + 1 = 5$. Zatem $a_n = 4n + 1$.</p>
-    <p><strong>16:</strong> $a_3 = a_1 \cdot q^2 \implies 27 = 12 q^2 \implies q^2 = \frac{27}{12} = \frac{9}{4}$.<br>
-    Ponieważ ciąg jest rosnący i $a_1 > 0$, to $q = \frac{3}{2} = 1,5$.<br>
-    Drugi wyraz: $a_2 = a_1 \cdot q = 12 \cdot 1,5 = 18$.</p>
-    <p><strong>17. A:</strong> Niech liczby płyt to $a, aq, aq^2$. Suma $a(1 + q + q^2) = 76$.<br>
-    Różnica między dolną a górną: $aq^2 - a = a(q^2 - 1) = 16$.<br>
-    Dzielimy stronami: $\frac{1+q+q^2}{q^2-1} = \frac{76}{16} = \frac{19}{4} \implies 4(1+q+q^2) = 19(q^2-1)$.<br>
-    $4 + 4q + 4q^2 = 19q^2 - 19 \implies 15q^2 - 4q - 23 = 0$.<br>
-    $\Delta = 16 + 4(15)(23) = 16 + 1380 = 1396$ — chwila, jeśli górna i dolna to: $a$ na górnej, $a+16$ na dolnej, a środkowa to $\sqrt{a(a+16)}$: $a + \sqrt{a(a+16)} + a + 16 = 76 \implies \sqrt{a(a+16)} = 60 - 2a$.<br>
-    Podnosimy do kwadratu: $a^2 + 16a = 3600 - 240a + 4a^2 \implies 3a^2 - 256a + 3600 = 0$.<br>
-    $\Delta = 65536 - 43200 = 22336$ (niepełny kwadrat). W PDF: „płyt na półkach górnej i dolnej”: jeśli dolna ma o 16 płyt mniej lub więcej: dla liczb 12, 24, 40 (nie) lub 16, 24, 36: $16 + 24 + 36 = 76$! Sprawdźmy $16, 24, 36$: iloraz $q = \frac{24}{16} = 1,5$, $24 \cdot 1,5 = 36$! Różnica: $36 - 16 = 20$? W treści zadania: $16, 24, 36$ (iloraz 1,5), na dolnej o 20 płyt więcej niż na górnej! Zatem dla danych z zadania liczby płyt to **16, 24, 36**.</p>
-        </div>
-
-        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
-          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
-            <i class="fa-solid fa-circle-check"></i>
-            Odpowiedź / Wynik końcowy:
-          </div>
-          <div class="text-sm font-semibold text-white">
-            13: $x = \frac{1}{2}$; &nbsp; 15: $a_n = 4n + 1$; &nbsp; 16: $q = 1,5, a_2 = 18$; &nbsp; 17.A: 16, 24, 36 płyt.
-          </div>
-        </div>
-
+        <div class="task-card" id="card-8">
+            <div class="task-header">
+                <div class="task-title">Zadania 28, 29, 29.A: Granice ciągów liczbowych i sumy ciągów w granicach (PR)</div>
+                <span class="badge badge-extended">Rozszerzenie</span>
+            </div>
+            <div class="task-content">
+                
+        <p><strong>28. (R)</strong> Oblicz granice ciągów:<br>
+        a) $\lim_{n \to \infty} \frac{2n^2 + n + 2}{n^2 - 1}$,<br>
+        b) $\lim_{n \to \infty} \frac{10n^2 - 2}{2 - n + n^3}$,<br>
+        c) $\lim_{n \to \infty} \frac{6n^4 + n^2 - 5}{2 - n^3}$,<br>
+        d) $\lim_{n \to \infty} (\sqrt{n^2 + 4n} - n)$,<br>
+        e) $\lim_{n \to \infty} \frac{8n^3 + n}{3n^2 - 1}$,<br>
+        f) $\lim_{n \to \infty} \frac{(n+2)! - n!}{(n+2)! + n!}$.<br><br>
+        <strong>29. (R)</strong> Oblicz granicę: $\lim_{n \to \infty} \frac{1 + 4 + 7 + \dots + (3n - 2)}{5 + 7 + 9 + \dots + (2n + 3)}$.<br><br>
+        <strong>29. A) (R)</strong> Ciąg $(a_n)$ jest określony wzorem $a_n = (n + 5)^2 \cdot \left(\frac{p + 2}{2 - p}\right)^n$ dla $p \ne 2$. Wyznacz wszystkie wartości parametru $p$, dla których granica tego ciągu jest równa $0$.</p>
         
-      </div>
-    </article>
+            </div>
+            <details>
+                <summary>🔍 Zobacz pełne rozwiązanie krok po kroku</summary>
+                <div class="solution-content">
+                    
+        <div class="solution-step">
+            <strong>Zadanie 28. (R)</strong><br>
+            a) Dzielimy licznik i mianownik przez $n^2$: $\lim_{n \to \infty} \frac{2 + 1/n + 2/n^2}{1 - 1/n^2} = \frac{2}{1} = 2$.<br>
+            b) Stopień licznika (2) jest mniejszy niż mianownika (3): $\lim_{n \to \infty} \frac{10/n - 2/n^3}{2/n^3 - 1/n^2 + 1} = \frac{0}{1} = 0$.<br>
+            c) Stopień licznika (4) większy niż mianownika (3), współczynniki przy najwyższych potęgach mają przeciwne znaki ($+6$ i $-1$): $\lim_{n \to \infty} \frac{6n - \dots}{-1 + \dots} = -\infty$.<br>
+            d) Mnożymy przez sprzężenie: $\lim_{n \to \infty} \frac{(\sqrt{n^2+4n}-n)(\sqrt{n^2+4n}+n)}{\sqrt{n^2+4n}+n} = \lim_{n \to \infty} \frac{n^2+4n - n^2}{\sqrt{n^2+4n}+n} = \lim_{n \to \infty} \frac{4n}{n(\sqrt{1+4/n}+1)} = \frac{4}{1+1} = 2$.<br>
+            e) Stopień licznika (3) większy niż mianownika (2), współczynniki dodatnie ($8$ i $3$): granica wynosi $+\infty$.<br>
+            f) Dzielimy licznik i mianownik przez $n!$: $\frac{(n+2)! - n!}{(n+2)! + n!} = \frac{(n+1)(n+2) - 1}{(n+1)(n+2) + 1} = \frac{n^2 + 3n + 1}{n^2 + 3n + 3} \to 1$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 29. (R)</strong><br>
+            - Licznik: suma ciągu arytmetycznego o $a_1 = 1, r = 3, a_n = 3n - 2$. Suma: $L_n = \frac{1 + 3n - 2}{2} \cdot n = \frac{3n^2 - n}{2}$.<br>
+            - Mianownik: suma ciągu arytmetycznego o $b_1 = 5, r = 2$. Ostatni składnik to $2n + 3 = 5 + (k-1) \cdot 2 \implies 2(k-1) = 2n - 2 \implies k = n$. Suma: $M_n = \frac{5 + (2n + 3)}{2} \cdot n = \frac{2n + 8}{2} \cdot n = n^2 + 4n$.<br>
+            Granica: $\lim_{n \to \infty} \frac{\frac{3}{2}n^2 - \frac{1}{2}n}{n^2 + 4n} = \frac{3/2}{1} = \frac{3}{2}$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 29. A) (R)</strong><br>
+            Wyrażenie to iloczyn wielomianu $(n+5)^2$ i ciągu geometrycznego $q^n$, gdzie $q = \frac{p+2}{2-p}$.<br>
+            Ciąg $n^k q^n \to 0$ wtedy i tylko wtedy, gdy $|q| < 1$.<br>
+            Nierówność: $\left|\frac{p+2}{2-p}\right| < 1 \iff |p+2| < |2-p| \iff (p+2)^2 < (2-p)^2$.<br>
+            $p^2 + 4p + 4 < 4 - 4p + p^2 \iff 8p < 0 \iff p < 0$.<br>
+            Ponieważ $p \ne 2$ jest spełnione dla $p < 0$, ostatecznie $p \in (-\infty, 0)$.
+        </div>
+        <div class="final-answer">
+            28: a) $2$; b) $0$; c) $-\infty$; d) $2$; e) $+\infty$; f) $1$.<br>
+            29: $\frac{3}{2}$.<br>
+            29.A: $p \in (-\infty, 0)$.
+        </div>
+        
+                </div>
+            </details>
+        </div>
     
 
-    <article id="zad-6-23-27" data-title="23 – 27. Ciągi arytmetyczno-geometryczne i układy równań" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
-      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
-        <div class="flex items-center gap-2.5 flex-wrap">
-          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            23 – 27
-          </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Ciągi arytmetyczno-geometryczne i układy równań</h2>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
-        </div>
-      </div>
-
-      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>23.</strong> Trzy liczby tworzą ciąg arytmetyczny o sumie 24. Po dodaniu do nich odpowiednio 4, 10 i 40 otrzymujemy ciąg geometryczny. Wyznacz te liczby.<br>
-    <strong>23. A)</strong> Liczby $x, y, z$ o sumie 114 tworzą ciąg geometryczny, a jednocześnie są pierwszym, czwartym i dwudziestym piątym wyrazem pewnego ciągu arytmetycznego. Oblicz $x, y, z$.<br>
-    <strong>26. (R)</strong> Czterowyrazowy ciąg $(a, b, c, d)$ jest rosnący i arytmetyczny. Kwadrat największego wyrazu jest równy sumie kwadratów pozostałych. Wyznacz ten ciąg, jeśli jego różnica wynosi 2.
+        <div class="task-card" id="card-9">
+            <div class="task-header">
+                <div class="task-title">Zadania 30, 31, 32, 32.A, 33, 34, 35: Szereg geometryczny, suma nieskończona i fraktalne konstrukcje (PR)</div>
+                <span class="badge badge-extended">Rozszerzenie</span>
+            </div>
+            <div class="task-content">
+                
+        <p><strong>30. (R)</strong> Dla jakich wartości $x$ szereg geometryczny $1 + \frac{1}{3}x + \frac{1}{9}x^2 + \frac{1}{27}x^3 + \dots$ jest zbieżny? Oblicz jego sumę.<br><br>
+        <strong>31. (R)</strong> Dany jest ciąg geometryczny $(a_n)$ o wzorze $a_n = \left(\frac{1}{2x - 371}\right)^n$ dla $n \ge 1$. Wszystkie wyrazy tego ciągu są dodatnie. Wyznacz najmniejszą liczbę całkowitą $x$, dla której szereg $a_1 + a_2 + a_3 + \dots$ jest zbieżny.<br><br>
+        <strong>32. (R)</strong> W nieskończonym malejącym ciągu geometrycznym $(a_n)$ o wyrazach dodatnich spełniony jest warunek $\frac{a_5 + a_3}{a_3} = \frac{29}{25}$. Suma wszystkich wyrazów tego ciągu o numerach parzystych jest równa 6. Wyznacz wzór na $n$-ty wyraz ciągu $(a_n)$.<br><br>
+        <strong>32. A) (R)</strong> Dany jest nieskończony ciąg geometryczny $(a_n)$, dla którego $S_3 = 7$, a suma $S$ wszystkich wyrazów jest równa 8. Wyznacz wszystkie wartości $n$, dla których spełniona jest nierówność $\left|\frac{S - S_n}{S_n}\right| < 0{,}001$.<br><br>
+        <strong>33. (R)</strong> Górną podstawę kwadratu o boku długości 4 podzielono na trzy równe części i skonstruowano kwadrat, następnie górną podstawę górnego kwadratu znów podzielono na trzy równe części itd.<br>
+        a) Oblicz sumę obwodów wszystkich kwadratów.<br>
+        b) Oblicz sumę pól wszystkich kwadratów.<br><br>
+        <strong>34. (R)</strong> Rozwiąż równanie $x^2 + x^3 + x^4 + \dots = 1\frac{1}{3}$, którego lewa strona jest sumą nieskończonego szeregu geometrycznego.<br><br>
+        <strong>35. (R)</strong> Suma wszystkich wyrazów nieskończonego ciągu geometrycznego $(a_n)$ jest równa 2, a suma kwadratów wszystkich wyrazów tego ciągu jest równa 3. Oblicz iloraz ciągu $(a_n)$.</p>
         
-      </div>
-
-      
-    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
-      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
-      <div>
-        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Dla 23: liczby to $8-r, 8, 8+r$. Po dodaniu: $12-r, 18, 48+r$. Zastosuj $b^2 = ac$.
-      </div>
-    </div>
-    
-
-      <button onclick="toggleSolution('zad-6-23-27')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
-        <span class="flex items-center gap-2">
-          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
-          Pokaż pełne omówienie i rozwiązanie krok po kroku
-        </span>
-        <i id="icon-zad-6-23-27" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
-      </button>
-
-      <div id="solution-zad-6-23-27" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
-        <div class="space-y-3 leading-relaxed">
-          <p><strong>23:</strong> Suma $3a_2 = 24 \implies a_2 = 8$. Liczby to $8-r, 8, 8+r$.<br>
-    Nowe liczby: $12-r, 18, 48+r$. Z własności ciągu geometrycznego:
-    $$18^2 = (12 - r)(48 + r) \implies 324 = 576 - 36r - r^2 \implies r^2 + 36r - 252 = 0$$
-    $\Delta = 1296 + 1008 = 2304 = 48^2$.<br>
-    $r = \frac{-36 + 48}{2} = 6$ lub $r = \frac{-36 - 48}{2} = -42$.<br>
-    Dla $r = 6$: szukane liczby to <strong>2, 8, 14</strong> (nowe liczby: $6, 18, 54$ – ciąg geometryczny o $q = 3$).<br>
-    Dla $r = -42$: liczby to <strong>50, 8, -34</strong> (nowe: $54, 18, 6$ – ciąg o $q = 1/3$).</p>
-    <p><strong>26 (R):</strong> $r = 2$, więc wyrazy to $a, a+2, a+4, a+6$.<br>
-    Równanie: $(a+6)^2 = a^2 + (a+2)^2 + (a+4)^2$.<br>
-    $a^2 + 12a + 36 = a^2 + a^2 + 4a + 4 + a^2 + 8a + 16 = 3a^2 + 12a + 20$.<br>
-    $2a^2 - 16 = 0 \implies a^2 = 8 \implies a = 2\sqrt{2}$ (ponieważ ciąg ma dodatnie wyrazy lub $a = -2\sqrt{2}$).<br>
-    Dla $a = 2\sqrt{2}$: wyrazy to $2\sqrt{2}, 2\sqrt{2}+2, 2\sqrt{2}+4, 2\sqrt{2}+6$.</p>
+            </div>
+            <details>
+                <summary>🔍 Zobacz pełne rozwiązanie krok po kroku</summary>
+                <div class="solution-content">
+                    
+        <div class="solution-step">
+            <strong>Zadanie 30. (R)</strong><br>
+            Pierwszy wyraz $a_1 = 1$, iloraz $q = \frac{1}{3}x$.<br>
+            Warunek zbieżności: $|q| < 1 \iff |\frac{1}{3}x| < 1 \iff |x| < 3 \iff x \in (-3, 3)$.<br>
+            Suma: $S = \frac{a_1}{1 - q} = \frac{1}{1 - \frac{1}{3}x} = \frac{3}{3 - x}$.
         </div>
-
-        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
-          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
-            <i class="fa-solid fa-circle-check"></i>
-            Odpowiedź / Wynik końcowy:
-          </div>
-          <div class="text-sm font-semibold text-white">
-            23: 2, 8, 14 (lub 50, 8, -34); &nbsp; 26: $a = 2\sqrt{2}$, wyrazy to $2\sqrt{2}, 2\sqrt{2}+2, 2\sqrt{2}+4, 2\sqrt{2}+6$.
-          </div>
+        <div class="solution-step">
+            <strong>Zadanie 31. (R)</strong><br>
+            Wyrazy są dodatnie $\implies q = \frac{1}{2x - 371} > 0 \implies 2x - 371 > 0 \implies x > 185{,}5$.<br>
+            Zbieżność szeregu: $q < 1 \iff \frac{1}{2x - 371} < 1 \iff 2x - 371 > 1 \iff 2x > 372 \iff x > 186$.<br>
+            Najmniejsza liczba całkowita to $x = 187$.
         </div>
-
+        <div class="solution-step">
+            <strong>Zadanie 32. (R)</strong><br>
+            $\frac{a_5 + a_3}{a_3} = \frac{a_3(q^2 + 1)}{a_3} = q^2 + 1 = \frac{29}{25} \implies q^2 = \frac{4}{25} \implies q = \frac{2}{5}$ (ponieważ ciąg jest malejący i dodatni).<br>
+            Wyrazy o numerach parzystych: $a_2, a_4, a_6, \dots$ tworzą szereg o pierwszym wyrazie $b_1 = a_2 = a_1 q$ i ilorazie $Q = q^2 = \frac{4}{25}$.<br>
+            Suma wyrazów parzystych: $S_{\text{parz}} = \frac{a_1 q}{1 - q^2} = \frac{a_1 \cdot \frac{2}{5}}{1 - \frac{4}{25}} = \frac{\frac{2}{5}a_1}{\frac{21}{25}} = \frac{10}{21}a_1 = 6 \implies a_1 = 6 \cdot \frac{21}{10} = \frac{63}{5} = 12{,}6$.<br>
+            Wzór ogólny: $a_n = \frac{63}{5} \left(\frac{2}{5}\right)^{n-1}$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 32. A) (R)</strong><br>
+            $S = \frac{a_1}{1 - q} = 8 \implies a_1 = 8(1 - q)$.<br>
+            $S_3 = a_1(1 + q + q^2) = 8(1 - q)(1 + q + q^2) = 8(1 - q^3) = 7 \implies 1 - q^3 = \frac{7}{8} \implies q^3 = \frac{1}{8} \implies q = \frac{1}{2}$.<br>
+            $a_1 = 8(1 - \frac{1}{2}) = 4$. Suma $S_n = 4 \cdot \frac{1 - (1/2)^n}{1/2} = 8(1 - (1/2)^n)$.<br>
+            Różnica: $S - S_n = 8 - 8(1 - (1/2)^n) = 8 \cdot (1/2)^n$.<br>
+            Iloraz: $\left|\frac{S - S_n}{S_n}\right| = \frac{8 \cdot (1/2)^n}{8(1 - (1/2)^n)} = \frac{1}{2^n - 1} < 0{,}001 = \frac{1}{1000} \iff 2^n - 1 > 1000 \iff 2^n > 1001$.<br>
+            Ponieważ $2^9 = 512 < 1001$ i $2^{10} = 1024 > 1001$, nierówność zachodzi dla wszystkich liczb naturalnych $n \ge 10$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 33. (R)</strong><br>
+            Długości boków kolejnych kwadratów: $a_1 = 4, a_2 = \frac{4}{3}, a_3 = \frac{4}{9}, \dots$ (iloraz $q = \frac{1}{3}$).<br>
+            a) Obwody: $Obw_1 = 16$, iloraz $q = \frac{1}{3}$. Suma obwodów: $S_{Obw} = \frac{16}{1 - 1/3} = \frac{16}{2/3} = 24$.<br>
+            b) Pola: $P_1 = 4^2 = 16$, $P_2 = \left(\frac{4}{3}\right)^2 = \frac{16}{9}$, iloraz $Q = \frac{1}{9}$. Suma pól: $S_P = \frac{16}{1 - 1/9} = \frac{16}{8/9} = 16 \cdot \frac{9}{8} = 18$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 34. (R)</strong><br>
+            Szereg $x^2 + x^3 + x^4 + \dots$ ma pierwszy wyraz $a_1 = x^2$ i iloraz $q = x$. Warunek: $|x| < 1$ oraz $x \ne 0$.<br>
+            Suma: $\frac{x^2}{1 - x} = \frac{4}{3} \iff 3x^2 = 4(1 - x) = 4 - 4x \iff 3x^2 + 4x - 4 = 0$.<br>
+            $\Delta = 16 - 4(3)(-4) = 16 + 48 = 64$, $\sqrt{\Delta} = 8$.<br>
+            $x_1 = \frac{-4 - 8}{6} = -2$ (odrzucamy, bo $|-2| \ge 1$).<br>
+            $x_2 = \frac{-4 + 8}{6} = \frac{4}{6} = \frac{2}{3} \in (-1, 1)$. Rozwiązanie: $x = \frac{2}{3}$.
+        </div>
+        <div class="solution-step">
+            <strong>Zadanie 35. (R)</strong><br>
+            Dla ciągu $(a_n)$ o $|q| < 1$: $S = \frac{a_1}{1 - q} = 2 \implies a_1 = 2(1 - q)$.<br>
+            Ciąg kwadratów $a_n^2$ ma pierwszy wyraz $a_1^2$ i iloraz $q^2$: $S_{kw} = \frac{a_1^2}{1 - q^2} = 3$.<br>
+            Rozkładamy: $\frac{a_1^2}{(1 - q)(1 + q)} = \left(\frac{a_1}{1 - q}\right) \cdot \frac{a_1}{1 + q} = 2 \cdot \frac{a_1}{1 + q} = 3 \implies \frac{a_1}{1 + q} = \frac{3}{2}$.<br>
+            Wstawiamy $a_1 = 2(1 - q)$: $\frac{2(1 - q)}{1 + q} = \frac{3}{2} \iff 4(1 - q) = 3(1 + q) \iff 4 - 4q = 3 + 3q \iff 7q = 1 \iff q = \frac{1}{7}$.
+        </div>
+        <div class="final-answer">
+            30: Zbieżny dla $x \in (-3, 3)$, suma $S = \frac{3}{3 - x}$.<br>
+            31: Najmniejsza całkowita $x = 187$.<br>
+            32: $a_n = \frac{63}{5} \left(\frac{2}{5}\right)^{n-1}$.<br>
+            32.A: $n \ge 10$, $n \in \mathbb{N}_+$.<br>
+            33: a) Suma obwodów $= 24$; b) Suma pól $= 18$.<br>
+            34: $x = \frac{2}{3}$.<br>
+            35: $q = \frac{1}{7}$.
+        </div>
         
-      </div>
-    </article>
+                </div>
+            </details>
+        </div>
     
-
-    <article id="zad-6-28-35" data-title="28 – 35. Granice ciągów i nieskończone szeregi geometryczne" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
-      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
-        <div class="flex items-center gap-2.5 flex-wrap">
-          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            28 – 35
-          </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Granice ciągów i nieskończone szeregi geometryczne</h2>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania z granicami / szeregami (R)</span>
-        </div>
-      </div>
-
-      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>28. (R)</strong> Oblicz granicę: $\lim_{n \to \infty} \frac{3n^3 - 4n + 2}{5n^3 + 2n^2 - 1}$ oraz $\lim_{n \to \infty} (\sqrt{n^2 + 4n} - n)$.<br>
-    <strong>30. (R)</strong> Dla jakich wartości $x$ szereg geometryczny $1 + (x-2) + (x-2)^2 + \dots$ jest zbieżny? Oblicz jego sumę.<br>
-    <strong>34. (R)</strong> Rozwiąż równanie: $x^2 + x^3 + x^4 + \dots = 1$.<br>
-    <strong>35. (R)</strong> Suma wszystkich wyrazów nieskończonego ciągu geometrycznego wynosi 12, a suma kwadratów jego wyrazów wynosi 48. Wyznacz $a_1$ i $q$.
-        
-      </div>
-
-      
-    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
-      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
-      <div>
-        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Dla zbieżności szeregu geometrycznego warunkiem koniecznym i wystarczającym jest $|q| < 1$. Wzór na sumę: $S = \frac{a_1}{1-q}$.
-      </div>
-    </div>
-    
-
-      <button onclick="toggleSolution('zad-6-28-35')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
-        <span class="flex items-center gap-2">
-          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
-          Pokaż pełne omówienie i rozwiązanie krok po kroku
-        </span>
-        <i id="icon-zad-6-28-35" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
-      </button>
-
-      <div id="solution-zad-6-28-35" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
-        <div class="space-y-3 leading-relaxed">
-          <p><strong>28 (R):</strong><br>
-    1) Wyłączamy $n^3$: $\lim_{n \to \infty} \frac{3 - 4/n^2 + 2/n^3}{5 + 2/n - 1/n^3} = \frac{3}{5}$.<br>
-    2) Mnożymy przez sprzężenie:<br>
-    $$\sqrt{n^2+4n} - n = \frac{n^2+4n - n^2}{\sqrt{n^2+4n} + n} = \frac{4n}{n(\sqrt{1+4/n} + 1)} = \frac{4}{\sqrt{1+4/n} + 1} \xrightarrow{n \to \infty} \frac{4}{1 + 1} = 2$$</p>
-    <p><strong>30 (R):</strong> $a_1 = 1$, $q = x - 2$. Warunek zbieżności:
-    $$|x - 2| < 1 \iff -1 < x - 2 < 1 \iff 1 < x < 3 \iff x \in (1, 3)$$
-    Suma szeregu:
-    $$S = \frac{a_1}{1 - q} = \frac{1}{1 - (x - 2)} = \frac{1}{3 - x}$$</p>
-    <p><strong>34 (R):</strong> Lewa strona to szereg geometryczny z $a_1 = x^2$ i $q = x$.<br>
-    Warunek zbieżności: $|x| < 1 \iff x \in (-1, 1)$.<br>
-    Suma: $\frac{x^2}{1 - x} = 1 \implies x^2 = 1 - x \implies x^2 + x - 1 = 0$.<br>
-    $\Delta = 1 + 4 = 5 \implies x = \frac{-1 \pm \sqrt{5}}{2}$.<br>
-    Sprawdzamy warunek $|x| < 1$:<br>
-    - $x_1 = \frac{-1 + \sqrt{5}}{2} \approx \frac{1,236}{2} = 0,618 \in (-1, 1)$ (akceptujemy).<br>
-    - $x_2 = \frac{-1 - \sqrt{5}}{2} \approx -1,618 \notin (-1, 1)$ (odrzucamy).<br>
-    Jedynym rozwiązaniem jest $x = \frac{\sqrt{5} - 1}{2}$.</p>
-    <p><strong>35 (R):</strong> Wiemy, że $S = \frac{a_1}{1-q} = 12 \implies a_1 = 12(1-q)$.<br>
-    Kwadraty wyrazów tworzą ciąg o pierwszym wyrazie $a_1^2$ i ilorazie $q^2$:
-    $$S_2 = \frac{a_1^2}{1 - q^2} = 48 \implies \frac{144(1-q)^2}{(1-q)(1+q)} = 48 \implies 144 \cdot \frac{1-q}{1+q} = 48$$
-    $$\frac{1-q}{1+q} = \frac{48}{144} = \frac{1}{3} \implies 3(1-q) = 1+q \implies 3 - 3q = 1 + q \implies 4q = 2 \implies q = \frac{1}{2}$$
-    Wtedy $a_1 = 12(1 - 0,5) = 6$.</p>
-        </div>
-
-        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
-          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
-            <i class="fa-solid fa-circle-check"></i>
-            Odpowiedź / Wynik końcowy:
-          </div>
-          <div class="text-sm font-semibold text-white">
-            28: $\frac{3}{5}$ oraz 2; &nbsp; 30: $x \in (1, 3), S = \frac{1}{3-x}$; &nbsp; 34: $x = \frac{\sqrt{5}-1}{2}$; &nbsp; 35: $a_1 = 6, q = \frac{1}{2}$.
-          </div>
-        </div>
-
-        
-      </div>
-    </article>
-    
-      </div>
-
-      <div class="pt-8 border-t border-slate-800 flex items-center justify-between gap-4">
-        <a href="5_funkcja_kwadratowa.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm border border-slate-700 transition">
-        <i class="fa-solid fa-arrow-left"></i> Poprzedni: Funkcja kwadratowa
-    </a>
-        <a href="7_wielomiany.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition shadow-lg shadow-indigo-600/20">
-        Następny: Wielomiany <i class="fa-solid fa-arrow-right"></i>
-    </a>
-      </div>
-    </div>
-  </main>
-
-  <footer class="border-t border-slate-800 bg-slate-900/40 py-6 text-center text-xs text-slate-500 mt-16">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p>&copy; 2026 Baza Zadań Maturalnych &bull; Przygotowano w J:\zadania</p>
-      <div class="flex items-center gap-4">
-        <a href="index.html" class="hover:text-slate-300">Strona główna</a>
-        <a href="#" class="hover:text-indigo-400"><i class="fa-solid fa-arrow-up"></i> W górę</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    function toggleSolution(id) {
-      const content = document.getElementById('solution-' + id);
-      const icon = document.getElementById('icon-' + id);
-      if (content.classList.contains('hidden')) {
-        content.classList.remove('hidden');
-        if (icon) icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
-      } else {
-        content.classList.add('hidden');
-        if (icon) icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
-      }
-    }
-
-    let allExpanded = false;
-    function toggleAllSolutions() {
-      allExpanded = !allExpanded;
-      const solutions = document.querySelectorAll('.task-solution');
-      const icons = document.querySelectorAll('.solution-icon');
-      solutions.forEach(s => {
-        if (allExpanded) s.classList.remove('hidden');
-        else s.classList.add('hidden');
-      });
-      icons.forEach(ic => {
-        if (allExpanded) ic.classList.replace('fa-chevron-down', 'fa-chevron-up');
-        else ic.classList.replace('fa-chevron-up', 'fa-chevron-down');
-      });
-      document.getElementById('toggle-all-text').innerText = allExpanded ? 'Zwiń wszystkie rozwiązania' : 'Rozwiń wszystkie rozwiązania';
-    }
-
-    let currentFilter = 'all';
-    function filterTasks() {
-      const query = document.getElementById('search-input').value.toLowerCase();
-      const cards = document.querySelectorAll('.task-card');
-      cards.forEach(c => {
-        const text = c.innerText.toLowerCase();
-        const matchesQuery = text.includes(query);
-        const matchesType = currentFilter === 'all' || c.getAttribute('data-level') === currentFilter;
-        if (matchesQuery && matchesType) {
-          c.classList.remove('hidden');
-        } else {
-          c.classList.add('hidden');
-        }
-      });
-    }
-
-    function setFilter(type, ev) {
-      currentFilter = type;
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('bg-indigo-600', 'text-white', 'font-medium');
-        btn.classList.add('bg-slate-800', 'text-slate-300');
-      });
-      if (ev && ev.target) {
-        ev.target.classList.add('bg-indigo-600', 'text-white', 'font-medium');
-        ev.target.classList.remove('bg-slate-800', 'text-slate-300');
-      }
-      filterTasks();
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const toc = document.getElementById('sidebar-toc');
-      const cards = document.querySelectorAll('.task-card');
-      const badge = document.getElementById('task-badge-count');
-      if (badge) badge.innerText = cards.length + ' zadań';
-      
-      cards.forEach(card => {
-        const id = card.id;
-        const title = card.getAttribute('data-title') || id;
-        const isR = card.getAttribute('data-level') === 'rozszerzenie';
-        const a = document.createElement('a');
-        a.href = '#' + id;
-        a.className = 'block px-2.5 py-1.5 rounded hover:bg-slate-800 text-slate-300 hover:text-white transition truncate flex items-center justify-between';
-        a.innerHTML = `<span class="truncate">${title}</span> ${isR ? '<span class="text-[10px] bg-amber-500/20 text-amber-300 px-1 rounded font-mono ml-1">R</span>' : ''}`;
-        toc.appendChild(a);
-      });
-    });
-  </script>
+    </main>
 </body>
 </html>

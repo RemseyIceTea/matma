@@ -142,53 +142,30 @@
 
     <div class="lg:col-span-3 space-y-8">
       
-<div class="p-6 rounded-2xl bg-rose-950/30 border border-rose-800/40 shadow-xl space-y-4">
-  <div class="flex items-center gap-3 border-b border-rose-800/40 pb-3">
-    <div class="w-8 h-8 rounded-lg bg-rose-600/30 text-rose-400 flex items-center justify-center font-bold">
-      <i class="fa-solid fa-superscript"></i>
-    </div>
-    <h2 class="text-lg font-bold text-white tracking-wide">Kompendium Teoretyczne: Funkcja Kwadratowa</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+    <h3 class="font-semibold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-shapes"></i> Postacie trójmianu</h3>
+    <p class="text-xs text-slate-300">Ogólna: $f(x) = ax^2 + bx + c$ ($a \ne 0$)</p>
+    <p class="text-xs text-slate-300">Kanoniczna: $f(x) = a(x - p)^2 + q$ ($W = (p, q)$)</p>
+    <p class="text-xs text-slate-400">Iloczynowa: $f(x) = a(x - x_1)(x - x_2)$ (dla $\Delta \ge 0$)</p>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs text-slate-300">
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-shapes"></i> Trzy postacie funkcji</h3>
-      <p>Ogólna: $f(x) = ax^2 + bx + c$ ($a \neq 0$)</p>
-      <p>Kanoniczna: $f(x) = a(x - p)^2 + q$ ($W = (p, q)$)</p>
-      <p>Iloczynowa: $f(x) = a(x - x_1)(x - x_2)$ (gdy $\Delta \ge 0$)</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-triangle-exclamation"></i> Wyróżnik $\Delta$ i pierwiastki</h3>
-      <p>$\Delta = b^2 - 4ac$</p>
-      <p>$\Delta > 0$: dwa różne pierwiastki $x_{1,2} = \frac{-b \pm \sqrt{\Delta}}{2a}$</p>
-      <p>$\Delta = 0$: jeden pierwiastek podwójny $x_0 = -\frac{b}{2a}$</p>
-      <p>$\Delta < 0$: brak pierwiastków rzeczywistych</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-location-crosshairs"></i> Wierzchołek paraboli</h3>
-      <p>$p = -\frac{b}{2a} = \frac{x_1 + x_2}{2}$</p>
-      <p>$q = -\frac{\Delta}{4a} = f(p)$</p>
-      <p>Oś symetrii paraboli: prosta $x = p$</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-calculator"></i> Wzory Viète'a</h3>
-      <p>$x_1 + x_2 = -\frac{b}{a}$</p>
-      <p>$x_1 \cdot x_2 = \frac{c}{a}$</p>
-      <p>$x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2$</p>
-      <p>$\frac{1}{x_1} + \frac{1}{x_2} = \frac{x_1 + x_2}{x_1 x_2}$</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down-up-across-line"></i> Najmniejsza i największa wartość</h3>
-      <p>W przedziale $\langle \alpha, \beta \rangle$:</p>
-      <p>1. Oblicz $p$. Jeśli $p \in \langle \alpha, \beta \rangle$, oblicz $f(p)$.</p>
-      <p>2. Oblicz wartości na krańcach: $f(\alpha)$ i $f(\beta)$.</p>
-      <p>3. Wybierz wartość najmniejszą i największą spośród obliczonych.</p>
-    </div>
-    <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
-      <h3 class="font-semibold text-rose-300 flex items-center gap-1.5"><i class="fa-solid fa-diagram-project"></i> Zadania optymalizacyjne</h3>
-      <p>1. Zapisz wielkość optymalizowaną jako funkcję jednej zmiennej.</p>
-      <p>2. Ustal dziedzinę geometryczną/fizyczną.</p>
-      <p>3. Ekstremum leży w wierzchołku paraboli $x = p$.</p>
-    </div>
+  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+    <h3 class="font-semibold text-amber-300 flex items-center gap-1.5"><i class="fa-solid fa-location-crosshairs"></i> Wierzchołek paraboli</h3>
+    <p class="text-xs text-slate-300">$p = -\frac{b}{2a} = \frac{x_1 + x_2}{2}$</p>
+    <p class="text-xs text-slate-300">$q = -\frac{\Delta}{4a} = f(p)$</p>
+    <p class="text-xs text-slate-400">Oś symetrii paraboli: prosta $x = p$</p>
+  </div>
+  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+    <h3 class="font-semibold text-sky-300 flex items-center gap-1.5"><i class="fa-solid fa-calculator"></i> Wzory Viète'a</h3>
+    <p class="text-xs text-slate-300">$x_1 + x_2 = -\frac{b}{a}$</p>
+    <p class="text-xs text-slate-300">$x_1 \cdot x_2 = \frac{c}{a}$</p>
+    <p class="text-xs text-slate-400">$x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2$</p>
+  </div>
+  <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1.5">
+    <h3 class="font-semibold text-emerald-300 flex items-center gap-1.5"><i class="fa-solid fa-maximize"></i> Wartości w przedziale</h3>
+    <p class="text-xs text-slate-300">W przedziale $\langle \alpha, \beta \rangle$:</p>
+    <p class="text-xs text-slate-300">1. Oblicz $p$. Jeśli $p \in \langle \alpha, \beta \rangle$, zbadaj $f(p)$.</p>
+    <p class="text-xs text-slate-400">2. Porównaj z wartościami na krańcach: $f(\alpha)$ i $f(\beta)$.</p>
   </div>
 </div>
 
@@ -208,28 +185,28 @@
 
       <div class="space-y-6" id="tasks-wrapper">
         
-    <article id="zad-5-1" data-title="1. Rozwiązywanie równań kwadratowych i sprowadzalnych do kwadratowych" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-5-1" data-title="1. Rozwiązywanie równań kwadratowych i dwukwadratowych" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
             1
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Rozwiązywanie równań kwadratowych i sprowadzalnych do kwadratowych</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Rozwiązywanie równań kwadratowych i dwukwadratowych</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte (6 podpunktów)</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
         Rozwiąż równania:<br>
-    <strong>a)</strong> $-9x^2 + 100 = -5x^2$<br>
-    <strong>b)</strong> $\frac{1}{4}x^2 - 3x + 9 = 0$<br>
-    <strong>c)</strong> $25(t - 1)^2 - 9(t + 2)^2 = 0$<br>
-    <strong>d)</strong> $(y + 3)^2 + 25 = 0$<br>
-    <strong>e)</strong> $x^4 - 3(x^2 - 1) = 7(x^2 - 3)$<br>
-    <strong>f)</strong> $(x - 1)^4 - 5(x - 1)^2 + 6 = 0$
+    a) $-9x^2 + 100 = -5x^2$<br>
+    b) $\frac{1}{4}x^2 - 3x + 9 = 0$<br>
+    c) $25(t - 1)^2 - 9(t + 2)^2 = 0$<br>
+    d) $(y + 3)^2 + 25 = 0$<br>
+    e) $x^4 - 3(x^2 - 1) = 7(x^2 - 3)$<br>
+    f) $(x - 1)^4 - 5(x - 1)^2 + 6 = 0$
         
       </div>
 
@@ -238,7 +215,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Dla a, c stosuj różnicę kwadratów $a^2-b^2=(a-b)(a+b)$. Dla e, f podstaw $t = x^2$ lub $t = (x-1)^2$ ($t \ge 0$).
+        Dla a i c stosuj różnicę kwadratów $a^2 - b^2 = (a - b)(a + b)$. Dla e i f wprowadź zmienną pomocniczą $u \ge 0$.
       </div>
     </div>
     
@@ -253,17 +230,18 @@
 
       <div id="solution-zad-5-1" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>a)</strong> $-4x^2 + 100 = 0 \iff 4x^2 = 100 \iff x^2 = 25 \iff x \in \{-5, 5\}$.</p>
-    <p><strong>b)</strong> Mnożymy przez 4: $x^2 - 12x + 36 = 0 \iff (x - 6)^2 = 0 \iff x = 6$ (pierwiastek podwójny).</p>
-    <p><strong>c)</strong> Różnica kwadratów: $[5(t-1) - 3(t+2)][5(t-1) + 3(t+2)] = 0 \iff (2t - 11)(8t + 1) = 0 \implies t = \frac{11}{2} = 5,5$ lub $t = -\frac{1}{8}$.</p>
-    <p><strong>d)</strong> $(y + 3)^2 = -25$. Ponieważ kwadrat liczby rzeczywistej jest nieujemny, równanie <strong>nie ma rozwiązań w $\mathbb{R}$</strong> (zbiór pusty $\emptyset$).</p>
-    <p><strong>e)</strong> $x^4 - 3x^2 + 3 = 7x^2 - 21 \implies x^4 - 10x^2 + 24 = 0$. Niech $t = x^2 \ge 0$:<br>
-    $t^2 - 10t + 24 = 0 \iff (t - 4)(t - 6) = 0 \implies t = 4 \lor t = 6$.<br>
-    Stąd $x^2 = 4 \implies x = \pm 2$; $x^2 = 6 \implies x = \pm \sqrt{6}$. Rozwiązania: $x \in \{-2, 2, -\sqrt{6}, \sqrt{6}\}$.</p>
-    <p><strong>f)</strong> Niech $t = (x-1)^2 \ge 0$. Wtedy $t^2 - 5t + 6 = 0 \iff (t - 2)(t - 3) = 0 \implies t = 2 \lor t = 3$.<br>
-    1) $(x-1)^2 = 2 \implies x - 1 = \pm\sqrt{2} \implies x = 1 \pm \sqrt{2}$.<br>
-    2) $(x-1)^2 = 3 \implies x - 1 = \pm\sqrt{3} \implies x = 1 \pm \sqrt{3}$.<br>
-    Rozwiązania: $x \in \{1-\sqrt{3}, 1-\sqrt{2}, 1+\sqrt{2}, 1+\sqrt{3}\}$.</p>
+          <p><strong>a)</strong> $4x^2 = 100 \iff x^2 = 25 \iff x \in \{-5, 5\}$.</p>
+    <p><strong>b)</strong> Mnożymy przez 4: $x^2 - 12x + 36 = 0 \iff (x - 6)^2 = 0 \iff x = 6$.</p>
+    <p><strong>c)</strong> Różnica kwadratów: $[5(t - 1) - 3(t + 2)][5(t - 1) + 3(t + 2)] = 0 \iff (2t - 11)(8t + 1) = 0 \implies t = \frac{11}{2} = 5{,}5 \lor t = -\frac{1}{8}$.</p>
+    <p><strong>d)</strong> $(y + 3)^2 = -25$. Kwadrat liczby rzeczywistej nie może być ujemny. Brak rozwiązań w $\mathbb{R}$ ($y \in \emptyset$).</p>
+    <p><strong>e)</strong> $x^4 - 3x^2 + 3 = 7x^2 - 21 \implies x^4 - 10x^2 + 24 = 0$.<br>
+    Podstawiamy $u = x^2 \ge 0$: $u^2 - 10u + 24 = 0 \iff (u - 4)(u - 6) = 0 \implies u = 4 \lor u = 6$.<br>
+    Stąd $x^2 = 4 \implies x = \pm 2$, oraz $x^2 = 6 \implies x = \pm\sqrt{6}$.<br>
+    Rozwiązania: $x \in \{-2, 2, -\sqrt{6}, \sqrt{6}\}$.</p>
+    <p><strong>f)</strong> Niech $u = (x - 1)^2 \ge 0$: $u^2 - 5u + 6 = 0 \iff (u - 2)(u - 3) = 0 \implies u = 2 \lor u = 3$.<br>
+    - $(x - 1)^2 = 2 \implies x - 1 = \pm\sqrt{2} \implies x = 1 \pm \sqrt{2}$<br>
+    - $(x - 1)^2 = 3 \implies x - 1 = \pm\sqrt{3} \implies x = 1 \pm \sqrt{3}$<br>
+    Rozwiązania: $x \in \{1 - \sqrt{3}, 1 - \sqrt{2}, 1 + \sqrt{2}, 1 + \sqrt{3}\}$.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -272,7 +250,8 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            a) $\{-5, 5\}$; &nbsp; b) $\{6\}$; &nbsp; c) $\{-1/8, 11/2\}$; &nbsp; d) $\emptyset$; &nbsp; e) $\{\pm 2, \pm \sqrt{6}\}$; &nbsp; f) $\{1\pm\sqrt{2}, 1\pm\sqrt{3}\}$.
+            a) $\{-5, 5\}$; &emsp; b) $\{6\}$; &emsp; c) $\{-1/8, 11/2\}$; &emsp; d) $\emptyset$;<br>
+    e) $\{\pm 2, \pm \sqrt{6}\}$; &emsp; f) $\{1 \pm \sqrt{2}, 1 \pm \sqrt{3}\}$.
           </div>
         </div>
 
@@ -291,20 +270,20 @@
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie otwarte (8 podpunktów)</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
         Rozwiąż nierówności kwadratowe:<br>
-    <strong>a)</strong> $8x^2 - 72x \le 0$<br>
-    <strong>b)</strong> $2x^2 - 4x > 3x^2 - 6x$<br>
-    <strong>c)</strong> $2(x - 1)(x + 3) > x - 1$<br>
-    <strong>d)</strong> $k^2 + 1 > 0$<br>
-    <strong>e)</strong> $-4x^2 + 7x - 4 \ge 0$<br>
-    <strong>f)</strong> $x^2 - 5x \le 14$<br>
-    <strong>g)</strong> $(k - 2)^2 > 0$<br>
-    <strong>h)</strong> $(3y - 1)^2 \le 0$
+    a) $8x^2 - 72x \le 0$<br>
+    b) $2x^2 - 4x > 3x^2 - 6x$<br>
+    c) $2(x - 1)(x + 3) > x - 1$<br>
+    d) $k^2 + 1 > 0$<br>
+    e) $-4x^2 + 7x - 4 \ge 0$<br>
+    f) $x^2 - 5x \le 14$<br>
+    g) $(k - 2)^2 > 0$<br>
+    h) $(3y - 1)^2 \le 0$
         
       </div>
 
@@ -313,7 +292,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Zawsze sprowadź do postaci ogólnej, wyznacz miejsca zerowe i narysuj pomocniczy szkic paraboli.
+        Wyznacz miejsca zerowe i naszkicuj pomocniczy wykres paraboli z uwzględnieniem znaku współczynnika $a$.
       </div>
     </div>
     
@@ -328,14 +307,15 @@
 
       <div id="solution-zad-5-2" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>a)</strong> $8x(x - 9) \le 0$. Miejsca zerowe: $x_1 = 0, x_2 = 9$. Parabola z ramionami w górę: $x \in \langle 0, 9 \rangle$.</p>
-    <p><strong>b)</strong> Przenosimy na prawo: $0 > x^2 - 2x \iff x(x - 2) < 0$. Miejsca zerowe: 0 i 2. Rozwiązanie: $x \in (0, 2)$.</p>
-    <p><strong>c)</strong> $2(x-1)(x+3) - (x-1) > 0 \iff (x-1)[2(x+3) - 1] > 0 \iff (x-1)(2x+5) > 0$. Miejsca zerowe: $1$ oraz $-\frac{5}{2}$. Rozwiązanie: $x \in (-\infty, -2,5) \cup (1, \infty)$.</p>
-    <p><strong>d)</strong> Dla każdego $k \in \mathbb{R}$: $k^2 \ge 0 \implies k^2 + 1 \ge 1 > 0$. Zbiór rozwiązań: $k \in \mathbb{R}$.</p>
-    <p><strong>e)</strong> $\Delta = 49 - 4(-4)(-4) = 49 - 64 = -15 < 0$. Parabola z ramionami w dół leży całkowicie pod osią $OX$. Nierówność $\ge 0$ <strong>nie ma rozwiązań ($x \in \emptyset$)</strong>.</p>
-    <p><strong>f)</strong> $x^2 - 5x - 14 \le 0 \iff (x - 7)(x + 2) \le 0$. Miejsca zerowe: $-2, 7$. Rozwiązanie: $x \in \langle -2, 7 \rangle$.</p>
-    <p><strong>g)</strong> Kwadrat jest ściśle dodatni dla wszystkich liczb oprócz zera: $k \in \mathbb{R} \setminus \{2\}$.</p>
-    <p><strong>h)</strong> Kwadrat nie może być ujemny, więc jedyna możliwość to równość zeru: $3y - 1 = 0 \implies y = \frac{1}{3}$.</p>
+          <p><strong>a)</strong> $8x(x - 9) \le 0$. Ramiona w górę, miejsca zerowe $0$ i $9$: $$x \in \langle 0, 9 \rangle$$</p>
+    <p><strong>b)</strong> $2x^2 - 4x - 3x^2 + 6x > 0 \implies -x^2 + 2x > 0 \iff x^2 - 2x < 0 \iff x(x - 2) < 0$: $$x \in (0, 2)$$</p>
+    <p><strong>c)</strong> Przenosimy na lewo: $(x - 1)[2(x + 3) - 1] > 0 \iff (x - 1)(2x + 5) > 0$.<br>
+    Miejsca zerowe: $1$ oraz $-2{,}5$. Ramiona w górę: $$x \in (-\infty, -2{,}5) \cup (1, \infty)$$</p>
+    <p><strong>d)</strong> Kwadrat liczby rzeczywistej jest nieujemny ($k^2 \ge 0$), więc $k^2 + 1 \ge 1 > 0$ dla każdej liczby rzeczywistej: $$k \in \mathbb{R}$$</p>
+    <p><strong>e)</strong> $\Delta = 7^2 - 4(-4)(-4) = 49 - 64 = -15 < 0$. Parabola leży całkowicie pod osią $OX$ ($a = -4 < 0$). Nierówność nie ma rozwiązań: $$x \in \emptyset$$</p>
+    <p><strong>f)</strong> $x^2 - 5x - 14 \le 0 \iff (x - 7)(x + 2) \le 0$: $$x \in \langle -2, 7 \rangle$$</p>
+    <p><strong>g)</strong> Kwadrat jest zawsze $\ge 0$, a równy zero tylko dla $k = 2$. Zatem ściśle dodatni jest dla: $$k \in \mathbb{R} \setminus \{2\}$$</p>
+    <p><strong>h)</strong> Kwadrat nie może być ujemny, więc jedynym rozwiązaniem jest równość z zerem: $3y - 1 = 0 \implies y = \frac{1}{3}$.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -344,7 +324,8 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            a) $\langle 0, 9 \rangle$; &nbsp; b) $(0, 2)$; &nbsp; c) $(-\infty, -2,5) \cup (1, \infty)$; &nbsp; d) $\mathbb{R}$; &nbsp; e) $\emptyset$; &nbsp; f) $\langle -2, 7 \rangle$; &nbsp; g) $\mathbb{R} \setminus \{2\}$; &nbsp; h) $\{1/3\}$.
+            a) $\langle 0, 9 \rangle$; &emsp; b) $(0, 2)$; &emsp; c) $(-\infty, -2{,}5) \cup (1, \infty)$; &emsp; d) $\mathbb{R}$;<br>
+    e) $\emptyset$; &emsp; f) $\langle -2, 7 \rangle$; &emsp; g) $\mathbb{R} \setminus \{2\}$; &emsp; h) $\{\frac{1}{3}\}$.
           </div>
         </div>
 
@@ -353,25 +334,28 @@
     </article>
     
 
-    <article id="zad-5-3-6" data-title="3 – 6. Postacie funkcji kwadratowej, wierzchołek i znak delty" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-5-3-6" data-title="3 – 6. Wierzchołek paraboli, własności wykresu, iloraz wartości i znak delty" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
             3 – 6
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Postacie funkcji kwadratowej, wierzchołek i znak delty</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wierzchołek paraboli, własności wykresu, iloraz wartości i znak delty</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadanie mieszane</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania obliczeniowe i testowe</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>3.</strong> Podaj współrzędne wierzchołka paraboli $y = -2(x - 3)^2 + 5$.<br>
-    <strong>4.</strong> Sporządź wykres funkcji $f(x) = -(x+3)^2 + 4$ i omów jej własności.<br>
-    <strong>5.</strong> Liczby $-1$ i $3$ są miejscami zerowymi funkcji kwadratowej $f$. Oblicz pierwszą współrzędną wierzchołka $p$.<br>
-    <strong>6.</strong> Funkcja $f(x) = 3x^2 + bx - 5$ jest określona dla każdego $x \in \mathbb{R}$. Wykaż, że funkcja ta ma zawsze dwa różne miejsca zerowe.
+        <strong>3.</strong> Podaj współrzędne wierzchołka $W$ paraboli, która jest wykresem funkcji $f$ określonej wzorem:<br>
+    a) $f(x) = \sqrt{2}x^2$, &emsp; b) $f(x) = -4x^2 + 9$, &emsp; c) $f(x) = x^2 + 2x + 1$,<br>
+    d) $f(x) = -4\left(x - \frac{1}{2}\right)^2 - 3$, &emsp; e) $f(x) = (x - 5)(x + 3)$, &emsp; f) $f(x) = -x^2 - x + 2$.<br><br>
+    <strong>4.</strong> Sporządź wykres funkcji $f(x) = -(x + 3)^2 + 4$ i omów jej własności.<br><br>
+    <strong>5.</strong> Liczby $(-1)$ i $3$ są miejscami zerowymi funkcji kwadratowej $f$. Oblicz $\frac{f(6)}{f(12)}$.<br><br>
+    <strong>6.</strong> Funkcja kwadratowa $f$ jest określona wzorem $f(x) = 3x^2 + bx - 5$ dla każdej liczby rzeczywistej $x$. Współczynnik $b$ jest liczbą rzeczywistą mniejszą od zera. Dokończ zdanie:<br>
+    Funkcja $f$: A. ma dwa rzeczywiste miejsca zerowe, B. ma jedno rzeczywiste miejsce zerowe, C. nie ma rzeczywistych miejsc zerowych, ponieważ: 1. $b^2 + 60 > 0$, 2. $b^2 + 60 = 0$, 3. $b^2 + 60 < 0$.
         
       </div>
 
@@ -380,7 +364,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Postać kanoniczna $y = a(x-p)^2 + q \implies W = (p, q)$. Wierzchołek leży pośrodku miejsc zerowych: $p = \frac{x_1+x_2}{2}$. Liczba miejsc zerowych zależy od znaku $\Delta$.
+        W zadaniu 5 zapisz postać iloczynową $f(x) = a(x+1)(x-3)$. Współczynnik $a$ skróci się w ilorazie.
       </div>
     </div>
     
@@ -395,17 +379,24 @@
 
       <div id="solution-zad-5-3-6" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>3:</strong> Z postaci kanonicznej odczytujemy natychmiast: $p = 3, q = 5 \implies W = (3, 5)$.</p>
-    <p><strong>4:</strong> Wierzchołek $W = (-3, 4)$, ramiona skierowane w dół ($a = -1 < 0$).<br>
-    Miejsca zerowe: $-(x+3)^2 + 4 = 0 \iff (x+3)^2 = 4 \implies x+3 = 2 \lor x+3 = -2 \implies x_1 = -1, x_2 = -5$.<br>
-    Własności: $D = \mathbb{R}$, $ZW = (-\infty, 4\rangle$, rosnąca w $(-\infty, -3\rangle$, malejąca w $\langle -3, \infty)$, oś symetrii: $x = -3$.</p>
-    <p><strong>5:</strong> Ponieważ oś symetrii paraboli leży dokładnie pośrodku między miejscami zerowymi:
-    $$p = \frac{x_1 + x_2}{2} = \frac{-1 + 3}{2} = \frac{2}{2} = 1$$</p>
-    <p><strong>6:</strong> Obliczamy wyróżnik $\Delta$ trójmianu:
-    $$\Delta = b^2 - 4 \cdot 3 \cdot (-5) = b^2 + 60$$
-    Dla dowolnej liczby rzeczywistej $b$: $b^2 \ge 0$, a zatem:
-    $$\Delta = b^2 + 60 \ge 0 + 60 = 60 > 0$$
-    Ponieważ $\Delta > 0$ dla każdego $b \in \mathbb{R}$, funkcja zawsze posiada dwa różne miejsca zerowe, c.k.d.</p>
+          <p><strong>3:</strong><br>
+    a) $W = (0, 0)$<br>
+    b) $W = (0, 9)$<br>
+    c) $f(x) = (x + 1)^2 \implies W = (-1, 0)$<br>
+    d) Postać kanoniczna $a(x - p)^2 + q \implies W = \left(\frac{1}{2}, -3\right)$<br>
+    e) $p = \frac{5 + (-3)}{2} = 1, \, q = f(1) = (1 - 5)(1 + 3) = -16 \implies W = (1, -16)$<br>
+    f) $p = -\frac{-1}{2(-1)} = -\frac{1}{2}, \, q = f(-\frac{1}{2}) = -\frac{1}{4} + \frac{1}{2} + 2 = \frac{9}{4} \implies W = \left(-\frac{1}{2}, \frac{9}{4}\right)$</p>
+    <p><strong>4:</strong> Parabola o wierzchołku $W = (-3, 4)$ i ramionach skierowanych w dół ($a = -1$).<br>
+    Własności: $D = \mathbb{R}$, $ZW = (-\infty, 4\rangle$, rośnie w $(-\infty, -3\rangle$, maleje w $\langle -3, \infty)$, oś symetrii: prosta $x = -3$, miejsca zerowe: $-(x + 3)^2 + 4 = 0 \iff (x + 3)^2 = 4 \implies x_1 = -5, \, x_2 = -1$. Przecięcie z osią $OY$: $(0, -5)$.</p>
+    <p><strong>5:</strong> Postać iloczynowa: $f(x) = a(x + 1)(x - 3)$, gdzie $a \ne 0$.<br>
+    $$f(6) = a(6 + 1)(6 - 3) = a \cdot 7 \cdot 3 = 21a$$
+    $$f(12) = a(12 + 1)(12 - 3) = a \cdot 13 \cdot 9 = 117a$$
+    $$\frac{f(6)}{f(12)} = \frac{21a}{117a} = \frac{21}{117} = \frac{7}{39}$$</p>
+    <p><strong>6:</strong> Obliczamy wyróżnik trójmianu:<br>
+    $$\Delta = b^2 - 4(3)(-5) = b^2 + 60$$
+    Dla dowolnej liczby rzeczywistej $b$ kwadrat $b^2 \ge 0$, zatem $b^2 + 60 \ge 60 > 0$.<br>
+    Ponieważ $\Delta > 0$, funkcja ma dwa różne rzeczywiste miejsca zerowe.<br>
+    Poprawna odpowiedź: <strong>A oraz 1</strong>.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -414,7 +405,9 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            3: $W = (3, 5)$; &nbsp; 4: $W=(-3, 4), ZW=(-\infty, 4\rangle, x_0 \in \{-5, -1\}$; &nbsp; 5: $p = 1$; &nbsp; 6: $\Delta = b^2+60 > 0$ (udowodniono).
+            3: a) $(0, 0)$, b) $(0, 9)$, c) $(-1, 0)$, d) $(\frac{1}{2}, -3)$, e) $(1, -16)$, f) $(-\frac{1}{2}, \frac{9}{4})$;<br>
+    4: $W = (-3, 4), ZW = (-\infty, 4\rangle, x_0 \in \{-5, -1\}$;<br>
+    5: $\frac{7}{39}$; &emsp; 6: <strong>A oraz 1</strong>.
           </div>
         </div>
 
@@ -423,25 +416,32 @@
     </article>
     
 
-    <article id="zad-5-7-10" data-title="7 – 10. Przekształcenia postaci trójmianu i wyznaczanie współczynników" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-5-7-10" data-title="7 – 10. Wyznaczanie współczynników trójmianu, postacie funkcji i zbiór wartości" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
             7 – 10
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Przekształcenia postaci trójmianu i wyznaczanie współczynników</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wyznaczanie współczynników trójmianu, postacie funkcji i zbiór wartości</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania otwarte i zamknięte</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>7.</strong> Wyznacz współczynniki $b, c$ trójmianu $f(x) = x^2 + bx + c$, jeśli $W = (-2, 1)$.<br>
-    <strong>8.</strong> Dla funkcji $y = x^2 + 5x + 6$ wyznacz postać kanoniczną oraz postać iloczynową.<br>
-    <strong>9.</strong> Liczba 2 jest miejscem zerowym $f(x) = x^2 + bx - 12$. Oblicz $b$ i drugie miejsce zerowe.<br>
-    <strong>10.</strong> Wyznacz $b$ tak, aby przedział $\langle -8, \infty)$ był zbiorem wartości funkcji $f(x) = 2x^2 + bx$.
+        <strong>7.</strong> Wyznacz współczynniki $b$ i $c$ trójmianu $f(x) = x^2 + bx + c$, jeśli:<br>
+    a) osiąga najmniejszą wartość równą 7 dla $x = -1$,<br>
+    b) przyjmuje wartości ujemne tylko dla $x \in (-1; 4)$,<br>
+    c) wykres trójmianu jest symetryczny względem prostej $x = 3$ i przecina oś $OY$ w punkcie $(0, 5)$.<br><br>
+    <strong>8.</strong> Dana jest funkcja $y = x^2 + 5x + 6$.<br>
+    8. 1. Postać kanoniczna to: A. $y = (x - \frac{5}{2})^2 + \frac{1}{4}$, B. $y = (x + \frac{5}{2})^2 - \frac{1}{4}$, C. $y = (x - \frac{1}{4})^2 + \frac{5}{2}$, D. $y = (x + \frac{1}{4})^2 - \frac{5}{2}$<br>
+    8. 2. Postać iloczynowa to: E. $y = (x - 2)(x - 3)$, F. $y = (x - 2)(x + 3)$, G. $y = (x + 2)(x - 3)$, H. $y = (x + 2)(x + 3)$<br><br>
+    <strong>8. A)</strong> Parabola o wierzchołku $W = (2, 5)$ przecina oś $OY$ w punkcie $A = (0, 4)$. Wyznacz wzór funkcji oraz jej miejsca zerowe.<br><br>
+    <strong>9.</strong> Wiedząc, że liczba 2 jest miejscem zerowym funkcji $f(x) = x^2 + bx - 12$, wyznacz współczynnik $b$, drugie miejsce zerowe oraz postacie kanoniczną i iloczynową.<br><br>
+    <strong>10.</strong> a) Wyznacz współczynnik $b$ tak, aby przedział $\langle -8; \infty)$ był zbiorem wartości funkcji $f(x) = x^2 + bx + 1$.<br>
+    b) Wyznacz zbiór wartości funkcji $f(x) = (1 - x)(x + 1) + 2x$.
         
       </div>
 
@@ -450,7 +450,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Z wierzchołka: $p = -\frac{b}{2a}, q = -\frac{\Delta}{4a}$. Postać iloczynowa wymaga wyznaczenia miejsc zerowych.
+        W 7.a: $p = -1, q = 7$. W 10.a: zbiór wartości $\langle -8, \infty)$ oznacza, że rzędna wierzchołka $q = -8$.
       </div>
     </div>
     
@@ -465,15 +465,27 @@
 
       <div id="solution-zad-5-7-10" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>7:</strong> Z postaci kanonicznej: $f(x) = (x - (-2))^2 + 1 = (x+2)^2 + 1 = x^2 + 4x + 4 + 1 = x^2 + 4x + 5$. Zatem $b = 4, c = 5$.</p>
-    <p><strong>8. 1 Postać kanoniczna:</strong> $p = -\frac{5}{2} = -2,5$. $\Delta = 25 - 24 = 1$. $q = -\frac{1}{4} = -0,25$.<br>
-    $$y = \left(x + \frac{5}{2}\right)^2 - \frac{1}{4}$$<br>
-    <strong>8. 2 Postać iloczynowa:</strong> $x_1 = \frac{-5-1}{2} = -3, x_2 = \frac{-5+1}{2} = -2 \implies y = (x + 3)(x + 2)$.</p>
+          <p><strong>7:</strong><br>
+    a) $p = -\frac{b}{2} = -1 \implies b = 2$. Wartość $f(-1) = 7 \implies (-1)^2 + 2(-1) + c = 7 \implies 1 - 2 + c = 7 \implies c = 8$.<br>
+    b) Miejsca zerowe to $-1$ i $4$. Ze wzorów Viète'a: $b = -(x_1 + x_2) = -3$, $c = x_1 x_2 = -4$.<br>
+    c) Oś symetrii $x = 3 \implies p = 3 \implies -\frac{b}{2} = 3 \implies b = -6$. Punkt $(0, 5) \implies c = 5$.</p>
+    <p><strong>8. 1:</strong> $p = -\frac{5}{2}, \, q = f(-\frac{5}{2}) = \frac{25}{4} - \frac{25}{2} + 6 = -\frac{1}{4} \implies y = \left(x + \frac{5}{2}\right)^2 - \frac{1}{4}$ (odp. <strong>B</strong>).<br>
+    <strong>8. 2:</strong> $\Delta = 25 - 24 = 1 \implies x_1 = -3, x_2 = -2 \implies y = (x + 2)(x + 3)$ (odp. <strong>H</strong>).</p>
+    <p><strong>8. A:</strong> Postać kanoniczna: $y = a(x - 2)^2 + 5$.<br>
+    Wstawiamy punkt $A(0, 4)$: $4 = a(0 - 2)^2 + 5 \implies 4a = -1 \implies a = -\frac{1}{4}$.<br>
+    Wzór: $y = -\frac{1}{4}(x - 2)^2 + 5 = -\frac{1}{4}x^2 + x + 4$.<br>
+    Miejsca zerowe: $-\frac{1}{4}(x - 2)^2 + 5 = 0 \iff (x - 2)^2 = 20 \iff x = 2 \pm 2\sqrt{5}$.</p>
     <p><strong>9:</strong> $f(2) = 0 \implies 2^2 + 2b - 12 = 0 \implies 2b = 8 \implies b = 4$.<br>
-    Trójmian: $x^2 + 4x - 12 = (x - 2)(x + 6) = 0 \implies$ drugie miejsce zerowe to $x_2 = -6$.</p>
-    <p><strong>10:</strong> $a = 2 > 0$, więc najmniejszą wartością jest $q = -8$.<br>
-    $\Delta = b^2 - 4(2)(0) = b^2$. Zatem $q = -\frac{b^2}{4a} = -\frac{b^2}{8}$.<br>
-    $-\frac{b^2}{8} = -8 \implies b^2 = 64 \implies b = 8$ lub $b = -8$.</p>
+    Wzór ogólny: $f(x) = x^2 + 4x - 12$.<br>
+    Drugie miejsce zerowe: $x_1 \cdot x_2 = -12 \implies 2x_2 = -12 \implies x_2 = -6$.<br>
+    Postać kanoniczna: $p = -2, \, q = f(-2) = 4 - 8 - 12 = -16 \implies f(x) = (x + 2)^2 - 16$.<br>
+    Postać iloczynowa: $f(x) = (x - 2)(x + 6)$.</p>
+    <p><strong>10. a)</strong> Skoro $a = 1 > 0$, to zbiór wartości ma postać $\langle q, \infty)$, zatem $q = -8$.<br>
+    $q = -\frac{\Delta}{4a} = -8 \implies \Delta = 32$.<br>
+    $b^2 - 4(1)(1) = 32 \implies b^2 = 36 \implies b \in \{-6, 6\}$.<br>
+    <strong>10. b)</strong> $f(x) = 1 - x^2 + 2x = -x^2 + 2x + 1$.<br>
+    Ramiona w dół ($a = -1$). Wierzchołek: $p = -\frac{2}{-2} = 1, \, q = f(1) = -1 + 2 + 1 = 2$.<br>
+    Zbiór wartości: $ZW_f = (-\infty, 2\rangle$.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -482,7 +494,11 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            7: $b = 4, c = 5$; &nbsp; 8: $y = (x+2,5)^2 - 0,25 = (x+2)(x+3)$; &nbsp; 9: $b = 4, x_2 = -6$; &nbsp; 10: $b \in \{-8, 8\}$.
+            7: a) $b = 2, c = 8$, b) $b = -3, c = -4$, c) $b = -6, c = 5$;<br>
+    8.1: <strong>B</strong>, 8.2: <strong>H</strong>;<br>
+    8.A: $y = -\frac{1}{4}(x-2)^2 + 5$, $x_0 = 2 \pm 2\sqrt{5}$;<br>
+    9: $b = 4, x_2 = -6$, kanoniczna: $(x+2)^2 - 16$, iloczynowa: $(x-2)(x+6)$;<br>
+    10: a) $b \in \{-6, 6\}$, b) $ZW = (-\infty, 2\rangle$.
           </div>
         </div>
 
@@ -491,25 +507,31 @@
     </article>
     
 
-    <article id="zad-5-11-15" data-title="11 – 15. A. Wartości w przedziałach, styczna pozioma i znaki wartości" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-5-11-15b" data-title="11 – 15. B. Wartości największe i najmniejsze w przedziałach oraz parametry" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            11 – 15. A
+            11 – 15. B
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wartości w przedziałach, styczna pozioma i znaki wartości</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wartości największe i najmniejsze w przedziałach oraz parametry</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania optymalizacyjne i analityczne</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania optymalizacyjne i dowodowe</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>12.</strong> Funkcja $f(x) = -2x^2 + bx + c$ przyjmuje wartości dodatnie tylko dla $x \in (-1, 5)$. Wyznacz $b$ i $c$.<br>
-    <strong>13.</strong> Oblicz najmniejszą i największą wartość funkcji $f(x) = x^2 - 6x + 1$ w przedziale $\langle 0, 1 \rangle$.<br>
-    <strong>14.</strong> Oblicz najmniejszą i największą wartość funkcji $f(x) = x^2 - 6x + 3$ w przedziale $\langle 0, 4 \rangle$.<br>
-    <strong>15.</strong> Wykres $f(x) = ax^2 + bx + c$ ma z prostą $y = 6$ dokładnie jeden punkt wspólny $(2, 6)$ i przecina $OY$ w punkcie $(0, 2)$. Wyznacz wzór.
+        <strong>11.</strong> Funkcja $f(x) = ax^2 + bx + c$ osiąga największą wartość równą 6 oraz $f(-6) = f(0) = \frac{3}{2}$. Oblicz $a$.<br><br>
+    <strong>11. A)</strong> Do wykresu funkcji kwadratowej należy punkt $(0, 8)$, osią symetrii jest prosta $x = 4$, a jednym z miejsc zerowych jest $x_1 = 2$. Zapisz wzór w postaci iloczynowej.<br><br>
+    <strong>12.</strong> Funkcja $f(x) = -2x^2 + bx + c$ przyjmuje wartości dodatnie tylko dla $x \in (-4; 2)$. Oceń P/F:<br>
+    1. Osią symetrii paraboli jest prosta $x = 1$. [P/F]<br>
+    2. Postać iloczynowa to $f(x) = -2(x + 4)(x - 2)$. [P/F]<br><br>
+    <strong>13.</strong> Oblicz najmniejszą wartość funkcji $f(x) = x^2 - 6x + 1$ w przedziale $\langle 0; 1 \rangle$.<br><br>
+    <strong>14.</strong> Oblicz najmniejszą i największą wartość funkcji $f(x) = x^2 - 6x + 3$ w przedziale $\langle 0, 4 \rangle$.<br><br>
+    <strong>15.</strong> Wykres funkcji $f(x) = ax^2 + bx + c$ ma z prostą $y = 6$ dokładnie jeden punkt wspólny. Punkty $A = (-5, 0)$ i $B = (3, 0)$ należą do wykresu. Oblicz $a, b, c$ i podaj przedziały monotoniczności.<br><br>
+    <strong>15. A)</strong> Zbiorem wartości funkcji $g$ jest $(-\infty; 5\rangle$, a zbiorem rozwiązań $g(x) > 0$ jest $(2; 8)$. Wyznacz wzór funkcji $g$.<br><br>
+    <strong>15. B)</strong> Dla jakich wartości parametru $b$ wierzchołek paraboli $y = \frac{1}{2}x^2 - bx + 2$ leży nad osią $OX$?
         
       </div>
 
@@ -518,34 +540,41 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Dla 12: liczby $-1$ i $5$ są miejscami zerowymi. W zadaniach 13-14 sprawdź, czy $p \in \langle a, b \rangle$.
+        W 13 sprawdź, czy wierzchołek $p = 3$ leży w przedziale $\langle 0, 1 \rangle$. W 15.B wierzchołek nad osią OX oznacza $q > 0 \iff \Delta < 0$.
       </div>
     </div>
     
 
-      <button onclick="toggleSolution('zad-5-11-15')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+      <button onclick="toggleSolution('zad-5-11-15b')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
         <span class="flex items-center gap-2">
           <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
           Pokaż pełne omówienie i rozwiązanie krok po kroku
         </span>
-        <i id="icon-zad-5-11-15" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+        <i id="icon-zad-5-11-15b" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
       </button>
 
-      <div id="solution-zad-5-11-15" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+      <div id="solution-zad-5-11-15b" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>12:</strong> Skoro $f(x) > 0 \iff x \in (-1, 5)$, to miejscami zerowymi są $x_1 = -1, x_2 = 5$. Z postaci iloczynowej:
-    $$f(x) = -2(x + 1)(x - 5) = -2(x^2 - 4x - 5) = -2x^2 + 8x + 10$$
-    Zatem $b = 8, c = 10$.</p>
-    <p><strong>13:</strong> Współrzędna wierzchołka: $p = -\frac{-6}{2} = 3$. Ponieważ $3 \notin \langle 0, 1 \rangle$, funkcja jest monotoniczna w tym przedziale (maleje). Sprawdzamy końce:
-    $$f(0) = 1 \quad (\text{maksimum})$$
-    $$f(1) = 1 - 6 + 1 = -4 \quad (\text{minimum})$$</p>
-    <p><strong>14:</strong> $p = 3 \in \langle 0, 4 \rangle$. Ponieważ $a = 1 > 0$, w wierzchołku jest minimum:
-    $$y_{min} = f(3) = 9 - 18 + 3 = -6$$
-    Badamy końce przedziału: $f(0) = 3$, $f(4) = 16 - 24 + 3 = -5$.
-    Zatem wartość największa to $y_{max} = 3$ (dla $x=0$).</p>
-    <p><strong>15:</strong> Punkt $(2, 6)$ to wierzchołek paraboli (jedyny punkt wspólny z poziomą prostą $y=6$): $W = (2, 6)$.
-    Postać kanoniczna: $y = a(x - 2)^2 + 6$. Przecięcie z $OY$: $(0, 2) \implies 2 = a(0 - 2)^2 + 6 \implies 4a = -4 \implies a = -1$.
-    Wzór: $f(x) = -(x-2)^2 + 6 = -x^2 + 4x + 2$.</p>
+          <p><strong>11:</strong> Ponieważ $f(-6) = f(0)$, oś symetrii to $p = \frac{-6 + 0}{2} = -3$.<br>
+    Wartość największa to $q = 6$, więc postać kanoniczna to $f(x) = a(x + 3)^2 + 6$.<br>
+    Wstawiamy $(0, \frac{3}{2})$: $\frac{3}{2} = 9a + 6 \implies 9a = -\frac{9}{2} \implies a = -\frac{1}{2}$.</p>
+    <p><strong>11. A:</strong> Oś symetrii $x = 4$, jedno miejsce zerowe $x_1 = 2 \implies x_2 = 2(4) - 2 = 6$.<br>
+    Postać iloczynowa: $f(x) = a(x - 2)(x - 6)$. Punkt $(0, 8) \implies 8 = a(-2)(-6) = 12a \implies a = \frac{2}{3}$.<br>
+    Wzór: $f(x) = \frac{2}{3}(x - 2)(x - 6)$.</p>
+    <p><strong>12:</strong> Miejsca zerowe to $-4$ i $2$. Oś symetrii to $p = \frac{-4 + 2}{2} = -1 \ne 1$ &rarr; 1. <strong>FAŁSZ (F)</strong>.<br>
+    Postać iloczynowa: $f(x) = -2(x + 4)(x - 2)$ &rarr; 2. <strong>PRAWDA (P)</strong>.</p>
+    <p><strong>13:</strong> Wierzchołek $p = -\frac{-6}{2} = 3 \notin \langle 0, 1 \rangle$. Dla $x \le 3$ funkcja maleje, więc najmniejsza wartość jest na prawym krańcu: $f(1) = 1 - 6 + 1 = -4$.</p>
+    <p><strong>14:</strong> $p = 3 \in \langle 0, 4 \rangle$. Wartość w wierzchołku: $f(3) = 9 - 18 + 3 = -6$ (najmniejsza).<br>
+    Wartości na krańcach: $f(0) = 3$ (największa), $f(4) = 16 - 24 + 3 = -5$.</p>
+    <p><strong>15:</strong> Dokładnie 1 punkt wspólny z $y = 6 \implies q = 6$. Miejsca zerowe $-5$ i $3 \implies p = -1, \, W = (-1, 6)$.<br>
+    Postać kanoniczna: $f(x) = a(x + 1)^2 + 6$. Wstawiamy punkt $(3, 0)$: $0 = 16a + 6 \implies a = -\frac{3}{8}$.<br>
+    Wzór ogólny: $f(x) = -\frac{3}{8}(x^2 + 2x + 1) + 6 = -\frac{3}{8}x^2 - \frac{3}{4}x + \frac{45}{8}$.<br>
+    Współczynniki: $a = -\frac{3}{8}, b = -\frac{3}{4}, c = \frac{45}{8}$. Rośnie w $(-\infty, -1\rangle$, maleje w $\langle -1, \infty)$.</p>
+    <p><strong>15. A:</strong> $q = 5, \, x_1 = 2, \, x_2 = 8 \implies p = 5, \, W = (5, 5)$.<br>
+    $g(x) = a(x - 2)(x - 8)$. Dla $x = 5$: $g(5) = a(3)(-3) = -9a = 5 \implies a = -\frac{5}{9}$.<br>
+    Wzór: $g(x) = -\frac{5}{9}(x - 2)(x - 8) = -\frac{5}{9}x^2 + \frac{50}{9}x - \frac{80}{9}$.</p>
+    <p><strong>15. B:</strong> $a = \frac{1}{2} > 0$. Wierzchołek nad osią $OX \iff q > 0 \iff \Delta < 0$.<br>
+    $$\Delta = b^2 - 4(\frac{1}{2})(2) = b^2 - 4 < 0 \iff b \in (-2, 2)$$</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -554,7 +583,10 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            12: $b = 8, c = 10$; &nbsp; 13: $y_{min} = -4, y_{max} = 1$; &nbsp; 14: $y_{min} = -6, y_{max} = 3$; &nbsp; 15: $f(x) = -x^2 + 4x + 2$.
+            11: $a = -\frac{1}{2}$; &emsp; 11.A: $f(x) = \frac{2}{3}(x-2)(x-6)$; &emsp; 12: 1. <strong>F</strong>, 2. <strong>P</strong>;<br>
+    13: $y_{min} = -4$; &emsp; 14: $y_{min} = -6, y_{max} = 3$;<br>
+    15: $a = -\frac{3}{8}, b = -\frac{3}{4}, c = \frac{45}{8}$, rośnie w $(-\infty, -1\rangle$, maleje w $\langle -1, \infty)$;<br>
+    15.A: $g(x) = -\frac{5}{9}(x-2)(x-8)$; &emsp; 15.B: $b \in (-2, 2)$.
           </div>
         </div>
 
@@ -563,25 +595,32 @@
     </article>
     
 
-    <article id="zad-5-16-20" data-title="16 – 20. Zadania optymalizacyjne, rzut piłką i dowód nierówności" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-5-16-20" data-title="16 – 20. Zadania z treścią, rzut piłką do kosza i dowody algebraiczne" data-level="podstawa" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
             16 – 20
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Zadania optymalizacyjne, rzut piłką i dowód nierówności</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Zadania z treścią, rzut piłką do kosza i dowody algebraiczne</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/20">Poziom podstawowy</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania optymalizacyjne / praktyczne</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania z kontekstem realistycznym i dowody</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>16.</strong> Znajdź trzy kolejne liczby parzyste tak, aby suma kwadratów dwóch mniejszych była równa kwadratowi największej.<br>
-    <strong>17.</strong> Tor rzutu piłki opisuje funkcja $h(x) = -0,05x^2 + 0,4x + 2$ (gdzie $h$ to wysokość w metrach, $x$ to odległość pozioma). Oblicz maksymalną wysokość piłki.<br>
-    <strong>18.</strong> Szyba ma kształt prostokąta o obwodzie 4 m. Jakie wymiary zapewnią maksymalną powierzchnię (pole)?<br>
-    <strong>20.</strong> Wykaż, że jeżeli $x + y = 5$, to $x^2 + y^2 \ge \frac{25}{2}$.
+        <strong>16.</strong> a) Znajdź trzy kolejne liczby parzyste tak, aby suma kwadratów dwóch mniejszych liczb była równa kwadratowi trzeciej liczby.<br>
+    b) Liczbę 42 przedstaw w postaci sumy dwóch składników tak, by różnica ich kwadratów była równa 168.<br><br>
+    <strong>17.</strong> Koszykarz wykonał rzut do kosza z odległości poziomej $x_k = 7{,}01$ m. Środek piłki poruszał się po paraboli: $y = -0{,}174x^2 + 1{,}3x + 2{,}5$.<br>
+    17. 1. Obręcz kosza znajduje się na wysokości: A. $3{,}04$ m, B. $3{,}06$ m, C. $3{,}80$ m, D. $4{,}93$ m.<br>
+    17. 2. Oblicz wysokość maksymalną, na jaką wzniesie się środek piłki (zaokrąglij do $0{,}01$ m).<br>
+    17. 3. Piłka przeleciała przez kosz i upadła na parkiet. Promień piłki wynosi $0{,}12$ m. Oblicz współrzędną $x$ środka piłki w momencie dotknięcia parkietu (zaokrąglij do $0{,}01$ m).<br><br>
+    <strong>18.</strong> Szyba ma kształt prostokąta o obwodzie 4 m. Jakie są jej wymiary, jeśli pole $P$ jest największe?<br><br>
+    <strong>19.</strong> Właściciel kupuje aparaty po 100 zł i sprzedaje 40 sztuk miesięcznie po 160 zł. Każda obniżka o 1 zł zwiększa sprzedaż o 1 sztukę. Jaką cenę powinien ustalić, aby zysk był największy?<br><br>
+    <strong>20.</strong> a) Wykaż, że jeżeli $x + y = 5$, to $x^2 + y^2 \ge \frac{25}{2}$.<br>
+    b) Wykaż, że jeżeli $a > 0$, to $\frac{a^2 + 1}{a + 1} \ge \frac{a + 1}{2}$.<br>
+    c) Udowodnij, że jeśli $x, y, z \in \mathbb{R}$ oraz $x + y + z = 1$, to $x^2 + y^2 + z^2 \ge \frac{1}{3}$.
         
       </div>
 
@@ -590,7 +629,7 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Dla 16: $(2k)^2 + (2k+2)^2 = (2k+4)^2$. Dla 18: $P(x) = x(2-x)$. Dla 20: podstaw $y = 5-x$ i zbadaj minimum funkcji kwadratowej.
+        W 17.3 gdy piłka dotyka parkietu ($y=0$), to jej środek leży na wysokości promienia $y = 0{,}12$ m.
       </div>
     </div>
     
@@ -605,19 +644,31 @@
 
       <div id="solution-zad-5-16-20" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>16:</strong> Niech liczby to $2k, 2k+2, 2k+4$ dla $k > 0$.<br>
-    $4k^2 + (4k^2 + 8k + 4) = 4k^2 + 16k + 16 \implies 4k^2 - 8k - 12 = 0 \implies k^2 - 2k - 3 = 0 \implies (k-3)(k+1) = 0$.<br>
-    Dla $k = 3$: liczby to <strong>6, 8, 10</strong> ($6^2 + 8^2 = 36 + 64 = 100 = 10^2$).</p>
-    <p><strong>17:</strong> Wierzchołek paraboli: $p = -\frac{0,4}{2 \cdot (-0,05)} = \frac{0,4}{0,1} = 4$ m.<br>
-    Wysokość maksymalna $h_{max} = h(4) = -0,05(16) + 0,4(4) + 2 = -0,8 + 1,6 + 2 = 2,8$ m.</p>
-    <p><strong>18:</strong> Obwód: $2a + 2b = 4 \implies a + b = 2 \implies b = 2 - a$. Pole: $P(a) = a(2 - a) = -a^2 + 2a$.<br>
-    Maksimum w wierzchołku: $a = -\frac{2}{2(-1)} = 1$ m $\implies b = 2 - 1 = 1$ m.<br>
-    Maksymalne pole daje szyba kwadratowa o wymiarach <strong>$1\text{ m} \times 1\text{ m}$</strong> (pole $1\text{ m}^2$).</p>
-    <p><strong>20:</strong> Podstawiamy $y = 5 - x$:<br>
-    $f(x) = x^2 + (5 - x)^2 = x^2 + 25 - 10x + x^2 = 2x^2 - 10x + 25$.<br>
-    Ramiona w górę ($a = 2 > 0$). Minimum w wierzchołku: $x_w = -\frac{-10}{4} = \frac{5}{2} = 2,5$.<br>
-    Wartość najmniejsza: $f(2,5) = 2(6,25) - 10(2,5) + 25 = 12,5 - 25 + 25 = 12,5 = \frac{25}{2}$.<br>
-    Zatem dla każdego $x$: $x^2 + y^2 \ge \frac{25}{2}$, c.k.d.</p>
+          <p><strong>16. a)</strong> Niech liczby to $2n, 2n+2, 2n+4$.<br>
+    $(2n)^2 + (2n+2)^2 = (2n+4)^2 \implies 4n^2 - 8n - 12 = 0 \iff n^2 - 2n - 3 = 0 \implies n = 3 \lor n = -1$.<br>
+    Dla $n = 3$: liczby $6, 8, 10$. Dla $n = -1$: liczby $-2, 0, 2$.<br>
+    <strong>16. b)</strong> $x + y = 42$ oraz $x^2 - y^2 = 168$.<br>
+    $(x - y)(x + y) = 168 \implies (x - y) \cdot 42 = 168 \implies x - y = 4$.<br>
+    Dodając stronami: $2x = 46 \implies x = 23, \, y = 19$.</p>
+    <p><strong>17. 1:</strong> Dla $x_k = 7{,}01$:<br>
+    $$y = -0{,}174(7{,}01)^2 + 1{,}3(7{,}01) + 2{,}5 = -8{,}55 + 9{,}113 + 2{,}5 = 3{,}06 \text{ m}$$
+    Poprawna odpowiedź to <strong>B (3,06 m)</strong>.<br>
+    <strong>17. 2:</strong> Odcięta wierzchołka: $x_w = -\frac{1{,}3}{2(-0{,}174)} \approx 3{,}7356$ m.<br>
+    Wysokość maksymalna: $y_{max} = -0{,}174(3{,}7356)^2 + 1{,}3(3{,}7356) + 2{,}5 \approx 4{,}93$ m.<br>
+    <strong>17. 3:</strong> W momencie dotknięcia parkietu środek piłki znajduje się na wysokości $y = r = 0{,}12$ m:<br>
+    $$-0{,}174x^2 + 1{,}3x + 2{,}5 = 0{,}12 \iff -0{,}174x^2 + 1{,}3x + 2{,}38 = 0$$
+    $$\Delta = 1{,}69 - 4(-0{,}174)(2{,}38) = 3{,}3465 \implies \sqrt{\Delta} \approx 1{,}8293$$
+    $$x = \frac{-1{,}3 - 1{,}8293}{2(-0{,}174)} = \frac{-3{,}1293}{-0{,}348} \approx 8{,}99 \text{ m}$$</p>
+    <p><strong>18:</strong> $2a + 2b = 4 \implies b = 2 - a$. Pole $P(a) = a(2 - a) = -a^2 + 2a$.<br>
+    Maksimum w wierzchołku $a = 1 \implies b = 1$ (kwadrat). Wymiary: $1\text{ m} \times 1\text{ m}$, pole $P = 1\text{ m}^2$.</p>
+    <p><strong>19:</strong> Niech $x$ oznacza obniżkę w złotych. Cena: $160 - x$, liczba sprzedanych: $40 + x$.<br>
+    Zysk na sztuce: $(160 - x) - 100 = 60 - x$.<br>
+    Zysk całkowity: $Z(x) = (60 - x)(40 + x) = 2400 + 20x - x^2$.<br>
+    Maksimum w wierzchołku: $x = -\frac{20}{2(-1)} = 10$ zł.<br>
+    Optymalna cena to $160 - 10 = 150$ zł.</p>
+    <p><strong>20. a)</strong> $y = 5 - x \implies x^2 + y^2 = 2x^2 - 10x + 25$. Najmniejsza wartość w $x = 2{,}5$: $2(2{,}5)^2 - 10(2{,}5) + 25 = 12{,}5 = \frac{25}{2}$, c.k.d.<br>
+    <strong>20. b)</strong> Mnożymy przez $2(a+1) > 0$: $2(a^2+1) \ge (a+1)^2 \iff 2a^2 + 2 \ge a^2 + 2a + 1 \iff (a - 1)^2 \ge 0$, co jest zawsze prawdziwe, c.k.d.<br>
+    <strong>20. c)</strong> Ze wzoru Cauchy'ego-Schwarza: $(1^2 + 1^2 + 1^2)(x^2 + y^2 + z^2) \ge (x + y + z)^2 = 1^2 = 1 \implies x^2 + y^2 + z^2 \ge \frac{1}{3}$, c.k.d.</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -626,7 +677,10 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            16: 6, 8, 10; &nbsp; 17: $H_{max} = 2,8$ m; &nbsp; 18: $1\text{ m} \times 1\text{ m}$; &nbsp; 20: udowodniono.
+            16: a) $\{6, 8, 10\}$ lub $\{-2, 0, 2\}$, b) $23$ i $19$;<br>
+    17: 17.1 <strong>B</strong> ($3{,}06$ m), 17.2 $4{,}93$ m, 17.3 $8{,}99$ m;<br>
+    18: $1\text{ m} \times 1\text{ m}, P = 1\text{ m}^2$; &emsp; 19: $150$ zł;<br>
+    20: Udowodniono.
           </div>
         </div>
 
@@ -635,25 +689,30 @@
     </article>
     
 
-    <article id="zad-5-21-32" data-title="21 – 32. Równania i nierówności z parametrem i wzorami Viète'a" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+    <article id="zad-5-21-23" data-title="21 – 23 (R). Równania i nierówności pierwiastkowe oraz modułowe na poziomie rozszerzonym" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
         <div class="flex items-center gap-2.5 flex-wrap">
           <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
-            21 – 32
+            21 – 23 (R)
           </span>
-          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Równania i nierówności z parametrem i wzorami Viète'a</h2>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Równania i nierówności pierwiastkowe oraz modułowe na poziomie rozszerzonym</h2>
         </div>
         <div class="flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
-          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania z parametrem (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania algebraiczne z pierwiastkiem i modułem</span>
         </div>
       </div>
 
       <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
-        <strong>21. A) (R)</strong> Rozwiąż równanie $|x| + |1 - x^2| = 1$.<br>
-    <strong>23. (R)</strong> Wyznacz liczbę rozwiązań $2|x| - x^2 = m$ w zależności od $m$.<br>
-    <strong>27. (R)</strong> Dany jest trójmian $f(x) = x^2 + 2(m+1)x + 6m + 1$. Wyznacz wszystkie wartości $m$, dla których równanie ma dwa różne pierwiastki tego samego znaku.<br>
-    <strong>29. (R)</strong> Dla jakich wartości parametru $m$ równanie $x^2 - (m+1)x + m = 0$ ma dwa różne rozwiązania $x_1, x_2$ spełniające warunek $x_1^2 + x_2^2 < 5$?
+        <strong>21. (R)</strong> Rozwiąż równanie i nierówność:<br>
+    a) $\sqrt{x - 1} = x - 3$<br>
+    b) $2x^2 + x|2x - 1| \le 3$<br><br>
+    <strong>21. A) (R)</strong> Rozwiąż równanie $|x| + |1 - x^2| = 1$.<br><br>
+    <strong>22. (R)</strong> Rozwiąż nierówności:<br>
+    a) $5\sqrt{x - 3} > x + 1$<br>
+    b) $(|x| - 2)^2 \le 1$<br><br>
+    <strong>22. A) (R)</strong> Rozwiąż nierówność $|x| + |x - 2| \ge x^2 - 2x + 1$.<br><br>
+    <strong>23. (R)</strong> Sporządź wykres funkcji $f(x) = 2|x| - x^2$. Korzystając z wykresu podaj ekstrema lokalne oraz wartość najmniejszą i największą.
         
       </div>
 
@@ -662,40 +721,45 @@
       <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
       <div>
         <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
-        Warunki dla dwóch pierwiastków tego samego znaku: $\Delta > 0$ oraz $x_1 \cdot x_2 > 0$. Suma kwadratów: $x_1^2 + x_2^2 = (x_1+x_2)^2 - 2x_1x_2$.
+        W 21.a pamiętaj o warunku $x - 3 \ge 0$. W 22.A prawa strona to $(x-1)^2$.
       </div>
     </div>
     
 
-      <button onclick="toggleSolution('zad-5-21-32')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+      <button onclick="toggleSolution('zad-5-21-23')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
         <span class="flex items-center gap-2">
           <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
           Pokaż pełne omówienie i rozwiązanie krok po kroku
         </span>
-        <i id="icon-zad-5-21-32" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+        <i id="icon-zad-5-21-23" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
       </button>
 
-      <div id="solution-zad-5-21-32" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+      <div id="solution-zad-5-21-23" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
         <div class="space-y-3 leading-relaxed">
-          <p><strong>21. A (R):</strong> Zauważmy, że $|1 - x^2| = 1 - |x| \iff |x^2 - 1| = 1 - |x|$.<br>
-    Badamy przedziałami: dla $x \in \langle -1, 1 \rangle$: $1 - x^2 = 1 - |x| \implies x^2 - |x| = 0 \implies |x|(|x| - 1) = 0 \implies x \in \{-1, 0, 1\}$.<br>
-    Dla $|x| > 1$: $x^2 - 1 = 1 - |x| \implies x^2 + |x| - 2 = 0 \implies (|x|+2)(|x|-1) = 0 \implies |x| = 1 \implies x = \pm 1$.<br>
+          <p><strong>21. a)</strong> Dziedzina: $x \ge 1$. Warunek prawej strony: $x - 3 \ge 0 \implies x \ge 3$.<br>
+    Podnosimy do kwadratu: $x - 1 = x^2 - 6x + 9 \implies x^2 - 7x + 10 = 0 \implies (x - 2)(x - 5) = 0$.<br>
+    Ponieważ $x \ge 3$, jedynym rozwiązaniem jest $x = 5$.</p>
+    <p><strong>21. b)</strong> Punkt zmiany znaku modułu: $x = \frac{1}{2}$.<br>
+    - Dla $x \ge \frac{1}{2}$: $2x^2 + 2x^2 - x \le 3 \implies 4x^2 - x - 3 \le 0 \implies x \in [-\frac{3}{4}, 1]$. Z warunkiem: $x \in [\frac{1}{2}, 1]$.<br>
+    - Dla $x < \frac{1}{2}$: $2x^2 - 2x^2 + x \le 3 \implies x \le 3$. Z warunkiem: $x \in (-\infty, \frac{1}{2})$.<br>
+    Łącząc: $x \in (-\infty, 1]$.</p>
+    <p><strong>21. A:</strong> $|x| + |1 - x^2| = 1$.<br>
+    - Dla $x^2 \le 1 \iff x \in [-1, 1]$: $|x| + 1 - x^2 = 1 \implies |x|(1 - |x|) = 0 \implies x \in \{-1, 0, 1\}$.<br>
+    - Dla $x^2 > 1$: $|x| + x^2 - 1 = 1 \implies |x|^2 + |x| - 2 = 0 \implies |x| = 1$, co daje $x = \pm 1$.<br>
     Rozwiązania: $x \in \{-1, 0, 1\}$.</p>
-    <p><strong>23 (R):</strong> Wykres $y = 2|x| - x^2$ jest parzysty: dla $x \ge 0$: $y = 2x - x^2 = -(x-1)^2 + 1$ (wierzchołek w $(1, 1)$, miejsce zerowe $x=2$).<br>
-    Liczba rozwiązań równania $f(x) = m$:<br>
-    - 0 rozwiązań dla $m > 1$<br>
-    - 2 rozwiązania dla $m = 1$ oraz $m < 0$<br>
-    - 3 rozwiązania dla $m = 0$<br>
-    - 4 rozwiązania dla $m \in (0, 1)$.</p>
-    <p><strong>27 (R):</strong> Warunki zadania:<br>
-    1) $\Delta > 0$: $\Delta = 4(m+1)^2 - 4(6m+1) = 4(m^2 + 2m + 1 - 6m - 1) = 4(m^2 - 4m) = 4m(m-4) > 0 \implies m \in (-\infty, 0) \cup (4, \infty)$.<br>
-    2) $x_1 \cdot x_2 > 0$ (ze wzorów Viète'a): $\frac{c}{a} = 6m + 1 > 0 \implies m > -\frac{1}{6}$.<br>
-    Część wspólna warunków: $m \in \left(-\frac{1}{6}, 0\right) \cup (4, \infty)$.</p>
-    <p><strong>29 (R):</strong> $x^2 - (m+1)x + m = 0 \iff (x - 1)(x - m) = 0$.<br>
-    Dwa różne pierwiastki $\iff m \neq 1$. Pierwiastki to $x_1 = 1, x_2 = m$.<br>
-    Warunek sumy kwadratów: $x_1^2 + x_2^2 = 1^2 + m^2 = m^2 + 1 < 5 \implies m^2 < 4 \implies m \in (-2, 2)$.<br>
-    Uwzględniając $m \neq 1$, otrzymujemy ostatecznie:
-    $$m \in (-2, 1) \cup (1, 2)$$</p>
+    <p><strong>22. a)</strong> Dziedzina: $x \ge 3$. Ponieważ $x + 1 > 0$, podnosimy do kwadratu:<br>
+    $25(x - 3) > (x + 1)^2 \implies 25x - 75 > x^2 + 2x + 1 \implies x^2 - 23x + 76 < 0 \implies (x - 4)(x - 19) < 0$.<br>
+    Rozwiązanie: $x \in (4, 19)$.</p>
+    <p><strong>22. b)</strong> $(|x| - 2)^2 \le 1 \iff -1 \le |x| - 2 \le 1 \iff 1 \le |x| \le 3 \iff x \in [-3, -1] \cup [1, 3]$.</p>
+    <p><strong>22. A:</strong> $|x| + |x - 2| \ge (x - 1)^2$.<br>
+    - Dla $x \in [0, 2]$: lewa strona to 2, a prawa $(x - 1)^2 \le 1$, więc nierówność zachodzi tożsamościowo.<br>
+    - Dla $x < 0$: $-2x + 2 \ge x^2 - 2x + 1 \implies x^2 \le 1 \implies x \in [-1, 0)$.<br>
+    - Dla $x > 2$: $2x - 2 \ge x^2 - 2x + 1 \implies x^2 - 4x + 3 \le 0 \implies (x - 1)(x - 3) \le 0 \implies x \in (2, 3]$.<br>
+    Suma przedziałów: $x \in [-1, 3]$.</p>
+    <p><strong>23:</strong> Funkcja parzysta $f(-x) = f(x)$. Dla $x \ge 0$: $f(x) = -(x - 1)^2 + 1$.<br>
+    - Maksima lokalne: dla $x = -1$ oraz $x = 1$, równe $1$.<br>
+    - Minimum lokalne: dla $x = 0$, równe $0$.<br>
+    - Wartość największa: $y_{max} = 1$. Wartość najmniejsza nie istnieje (zmierza do $-\infty$).</p>
         </div>
 
         <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
@@ -704,7 +768,176 @@
             Odpowiedź / Wynik końcowy:
           </div>
           <div class="text-sm font-semibold text-white">
-            21.A: $x \in \{-1, 0, 1\}$; &nbsp; 23: podano liczbę rozwiązań; &nbsp; 27: $m \in (-1/6, 0) \cup (4, \infty)$; &nbsp; 29: $m \in (-2, 1) \cup (1, 2)$.
+            21: a) $x = 5$, b) $x \in (-\infty, 1]$; &emsp; 21.A: $x \in \{-1, 0, 1\}$;<br>
+    22: a) $x \in (4, 19)$, b) $x \in [-3, -1] \cup [1, 3]$; &emsp; 22.A: $x \in [-1, 3]$;<br>
+    23: max lokalne w $x = \pm 1$ ($y=1$), min lokalne w $x=0$ ($y=0$), $y_{max} = 1$, brak $y_{min}$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-5-24-27" data-title="24 – 27 (R). Wartości dodatnie dla każdego x, dowód z dwiema zmiennymi i warunki na pierwiastki" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            24 – 27 (R)
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wartości dodatnie dla każdego x, dowód z dwiema zmiennymi i warunki na pierwiastki</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania z parametrem i dowody</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>24. (R)</strong> Wyznacz wszystkie wartości parametru $m$, dla których funkcja $f(x) = (m^2 - 1)x^2 - 2(1 - m)x + 2$ przyjmuje wartości dodatnie dla każdej liczby rzeczywistej.<br><br>
+    <strong>25. (R)</strong> Udowodnij, że dla każdej liczby rzeczywistej $x$ i każdej liczby rzeczywistej $m$ prawdziwa jest nierówność $20x^2 - 24mx + 18m^2 \ge 4x + 12m - 5$.<br><br>
+    <strong>26. (R)</strong> Wyznacz wszystkie wartości parametru $p$, dla których funkcja $f(x) = px^2 + (p - 1)x + 1 - 2p$ ma dokładnie dwa miejsca zerowe różniące się o 1.<br><br>
+    <strong>27. (R)</strong> Dany jest trójmian $f(x) = x^2 + 2(m + 1)x + 6m + 1$. Wyznacz wszystkie wartości $m$, dla których trójmian ma dwa różne pierwiastki tego samego znaku, spełniające $|x_1 - x_2| < 3$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        W 24 rozpatrz przypadek liniowy $m^2-1=0$ oraz kwadratowy $a>0, \Delta < 0$. W 25 rozwiń jako sumę kwadratów.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-5-24-27')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-5-24-27" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-5-24-27" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>24:</strong><br>
+    1) Dla $m^2 - 1 = 0$:<br>
+    - $m = 1$: $f(x) = 2 > 0$ dla każdego $x \in \mathbb{R}$ (spełnia warunki zadania!).<br>
+    - $m = -1$: $f(x) = -4x + 2 > 0$ tylko dla $x < 0{,}5$ (nie spełnia).<br>
+    2) Dla $m^2 - 1 \ne 0$: funkcja kwadratowa jest dodatnia dla każdego $x \iff a > 0 \land \Delta < 0$:<br>
+    - $a = m^2 - 1 > 0 \iff m \in (-\infty, -1) \cup (1, \infty)$<br>
+    - $\Delta = 4(1 - m)^2 - 8(m^2 - 1) = 4(-m^2 - 2m + 3) < 0 \iff m^2 + 2m - 3 > 0 \iff m \in (-\infty, -3) \cup (1, \infty)$.<br>
+    Część wspólna: $m \in (-\infty, -3) \cup (1, \infty)$.<br>
+    Dołączając $m = 1$, otrzymujemy: $$m \in (-\infty, -3) \cup \langle 1, \infty)$$</p>
+    <p><strong>25:</strong> Przenosimy na lewą stronę i zwijamy w sumę kwadratów:<br>
+    $$(4x^2 - 4x + 1) + (16x^2 - 24mx + 9m^2) + (9m^2 - 12m + 4) = (2x - 1)^2 + (4x - 3m)^2 + (3m - 2)^2 \ge 0$$
+    Jako suma kwadratów liczb rzeczywistych wyrażenie jest zawsze nieujemne, c.k.d.</p>
+    <p><strong>26:</strong> Warunki: $p \ne 0$, $\Delta > 0$, $(x_1 - x_2)^2 = 1 \iff \frac{\Delta}{p^2} = 1$.<br>
+    $\Delta = (p - 1)^2 - 4p(1 - 2p) = 9p^2 - 6p + 1 = (3p - 1)^2 > 0 \iff p \ne \frac{1}{3}$.<br>
+    $$\frac{(3p - 1)^2}{p^2} = 1 \iff 3p - 1 = p \lor 3p - 1 = -p \implies p = \frac{1}{2} \lor p = \frac{1}{4}$$
+    Oba rozwiązania są różne od 0 i $\frac{1}{3}$. Zatem: $$p \in \left\{\frac{1}{4}, \frac{1}{2}\right\}$$</p>
+    <p><strong>27:</strong> Warunki:<br>
+    1) $\Delta > 0 \iff 4(m^2 - 4m) > 0 \iff m \in (-\infty, 0) \cup (4, \infty)$<br>
+    2) $x_1 x_2 > 0 \iff 6m + 1 > 0 \iff m > -\frac{1}{6}$<br>
+    3) $(x_1 - x_2)^2 < 9 \iff \Delta < 9 \iff 4m^2 - 16m - 9 < 0 \iff m \in (-\frac{1}{2}; 4{,}5)$.<br>
+    Część wspólna: $$m \in \left(-\frac{1}{6}, 0\right) \cup (4; 4{,}5)$$</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            24: $m \in (-\infty, -3) \cup \langle 1, \infty)$; &emsp; 25: Udowodniono;<br>
+    26: $p \in \{\frac{1}{4}, \frac{1}{2}\}$; &emsp; 27: $m \in (-\frac{1}{6}, 0) \cup (4; 4{,}5)$.
+          </div>
+        </div>
+
+        
+      </div>
+    </article>
+    
+
+    <article id="zad-5-28-32" data-title="28 – 32 (R). Wzory Viète'a wyższych stopni, relacje między pierwiastkami i lokalizacja zer" data-level="rozszerzenie" class="task-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-5 sm:p-6 transition hover:border-slate-700/80 shadow-lg">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800/60">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-600/20 text-indigo-300 font-mono text-xs font-bold border border-indigo-500/30">
+            28 – 32 (R)
+          </span>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Wzory Viète'a wyższych stopni, relacje między pierwiastkami i lokalizacja zer</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">Poziom rozszerzony (R)</span>
+          <span class="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-800 text-slate-400 border border-slate-700">Zadania z parametrem / wzory Viète'a</span>
+        </div>
+      </div>
+
+      <div class="py-4 text-sm sm:text-base text-slate-200 leading-relaxed">
+        <strong>28. (R)</strong> Wyznacz wszystkie wartości parametru $m$, dla których równanie $2x^2 - (2m + 7)x + m^2 - 3m + 21 = 0$ ma dwa różne rozwiązania rzeczywiste spełniające $x_1 = 2x_2$.<br><br>
+    <strong>29. (R)</strong> Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 - (m + 1)x + m = 0$ ma dwa różne rozwiązania niezerowe $x_1, x_2$ spełniające $\frac{1}{x_1} + \frac{1}{x_2} + 2 = \frac{1}{x_1^2} + \frac{1}{x_2^2}$.<br><br>
+    <strong>30. (R)</strong> Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 + (m + 1)x - m^2 + 1 = 0$ ma dwa różne rozwiązania spełniające $x_1^3 + x_2^3 > -7x_1 x_2$.<br><br>
+    <strong>31. (R)</strong> Wyznacz wszystkie wartości parametru $m$, dla których równanie $(x + 2)(x^2 - (m - 4)x + m^2 - 7m + 12) = 0$ ma trzy pierwiastki rzeczywiste o tym samym znaku.<br><br>
+    <strong>32. (R)</strong> Wyznacz wszystkie wartości parametru $m$, dla których równanie $x^2 - 3mx + 2m^2 + 1 = 0$ ma dwa różne rozwiązania należące do przedziału $(-\infty; 3)$.
+        
+      </div>
+
+      
+    <div class="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs text-indigo-200/90 flex items-start gap-3 mb-4">
+      <i class="fa-solid fa-lightbulb text-indigo-400 mt-0.5 text-sm"></i>
+      <div>
+        <strong class="font-semibold text-indigo-300 block mb-0.5">Wskazówka & Kluczowa Teoria:</strong>
+        W 31 pierwszy pierwiastek to $x = -2 < 0$, więc pozostałe dwa też muszą być ujemne. W 32 zastosuj warunki: $\Delta > 0, p < 3, f(3) > 0$.
+      </div>
+    </div>
+    
+
+      <button onclick="toggleSolution('zad-5-28-32')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700/60 transition flex items-center justify-between group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400 group-hover:rotate-12 transition"></i>
+          Pokaż pełne omówienie i rozwiązanie krok po kroku
+        </span>
+        <i id="icon-zad-5-28-32" class="solution-icon fa-solid fa-chevron-down text-slate-500 group-hover:text-white transition"></i>
+      </button>
+
+      <div id="solution-zad-5-28-32" class="task-solution hidden mt-4 pt-4 border-t border-slate-800/80 space-y-4 text-sm text-slate-300">
+        <div class="space-y-3 leading-relaxed">
+          <p><strong>28:</strong> Ze wzorów Viète'a: $x_1 + x_2 = 3x_2 = \frac{2m + 7}{2} \implies x_2 = \frac{2m + 7}{6}, \, x_1 = \frac{2m + 7}{3}$.<br>
+    Iloczyn: $x_1 x_2 = 2x_2^2 = \frac{(2m + 7)^2}{18} = \frac{m^2 - 3m + 21}{2} \implies (2m + 7)^2 = 9(m^2 - 3m + 21)$.<br>
+    $$4m^2 + 28m + 49 = 9m^2 - 27m + 189 \implies 5m^2 - 55m + 140 = 0 \iff m^2 - 11m + 28 = 0 \implies m = 4 \lor m = 7$$
+    Dla obu wartości $\Delta > 0$. Rozwiązanie: $$m \in \{4, 7\}$$</p>
+    <p><strong>29:</strong> $x^2 - (m + 1)x + m = (x - 1)(x - m) = 0$. Różne i niezerowe $\implies m \ne 0 \land m \ne 1$.<br>
+    $\frac{x_1 + x_2}{x_1 x_2} + 2 = \frac{(x_1 + x_2)^2 - 2x_1 x_2}{(x_1 x_2)^2} \implies \frac{m + 1}{m} + 2 = \frac{(m + 1)^2 - 2m}{m^2} \implies \frac{3m + 1}{m} = \frac{m^2 + 1}{m^2}$.<br>
+    $$m(3m + 1) = m^2 + 1 \implies 2m^2 + m - 1 = 0 \iff (2m - 1)(m + 1) = 0 \implies m = \frac{1}{2} \lor m = -1$$
+    Oba rozwiązania są dopuszczalne: $$m \in \{-1, \frac{1}{2}\}$$</p>
+    <p><strong>30:</strong> $\Delta = 5m^2 + 2m - 3 > 0 \iff m \in (-\infty, -1) \cup (\frac{3}{5}, \infty)$.<br>
+    $x_1^3 + x_2^3 = (x_1 + x_2)[(x_1 + x_2)^2 - 3x_1 x_2] = -(m + 1)[4m^2 + 2m - 2]$.<br>
+    Nierówność: $-(m + 1)(4m^2 + 2m - 2) > -7(1 - m^2) \iff (m + 1)(4m^2 + 9m - 9) < 0$.<br>
+    Miejsca zerowe: $-3, -1, \frac{3}{4}$. Zbiór: $m \in (-\infty, -3) \cup (-1, \frac{3}{4})$.<br>
+    Część wspólna z $\Delta > 0$: $$m \in (-\infty, -3) \cup \left(\frac{3}{5}, \frac{3}{4}\right)$$</p>
+    <p><strong>31:</strong> Pierwszy pierwiastek to $x_1 = -2 < 0$. Trójmian $x^2 - (m - 4)x + m^2 - 7m + 12 = 0$ musi mieć dwa różne pierwiastki ujemne i różne od $-2$:<br>
+    1) $\Delta = -3m^2 + 20m - 32 > 0 \iff m \in (\frac{8}{3}, 4)$<br>
+    2) $x_1 + x_2 = m - 4 < 0 \implies m < 4$<br>
+    3) $x_1 x_2 = (m - 3)(m - 4) > 0 \implies m \in (-\infty, 3) \cup (4, \infty)$<br>
+    Część wspólna: $m \in (\frac{8}{3}, 3) = (2\frac{2}{3}, 3)$. Sprawdzenie $x \ne -2$: $(-2)^2 - (m - 4)(-2) + m^2 - 7m + 12 = m^2 - 5m + 8 > 0$ dla każdego $m$.<br>
+    Rozwiązanie: $$m \in \left(2\frac{2}{3}, 3\right)$$</p>
+    <p><strong>32:</strong> Warunki na dwa różne pierwiastki w $(-\infty, 3)$:<br>
+    1) $\Delta = 9m^2 - 4(2m^2 + 1) = m^2 - 4 > 0 \iff m \in (-\infty, -2) \cup (2, \infty)$<br>
+    2) $p = \frac{3m}{2} < 3 \implies m < 2$<br>
+    3) $f(3) = 2m^2 - 9m + 10 > 0 \iff (2m - 5)(m - 2) > 0 \iff m \in (-\infty, 2) \cup (2{,}5, \infty)$.<br>
+    Część wspólna: $$m \in (-\infty, -2)$$</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 text-emerald-200">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+            <i class="fa-solid fa-circle-check"></i>
+            Odpowiedź / Wynik końcowy:
+          </div>
+          <div class="text-sm font-semibold text-white">
+            28: $m \in \{4, 7\}$; &emsp; 29: $m \in \{-1, \frac{1}{2}\}$;<br>
+    30: $m \in (-\infty, -3) \cup (\frac{3}{5}, \frac{3}{4})$;<br>
+    31: $m \in (2\frac{2}{3}, 3)$; &emsp; 32: $m \in (-\infty, -2)$.
           </div>
         </div>
 
