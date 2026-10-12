@@ -1,4 +1,4 @@
-﻿# 📚 Baza Zadań i Rozwiązań Maturalnych z Matematyki
+# 📚 Baza Zadań i Rozwiązań Maturalnych z Matematyki
 
 Kompleksowy portal edukacyjny zawierający pełne omówienia, wskazówki, rozwiązania krok po kroku oraz formuły $\KaTeX$ dla 8 zestawów zadań powtórzeniowych (poziom podstawowy i rozszerzony).
 
@@ -13,6 +13,7 @@ Kompleksowy portal edukacyjny zawierający pełne omówienia, wskazówki, rozwi�
 - **[6. Ciągi liczbowe (`6_ciagi.html`)](6_ciagi.html)** – Ciąg arytmetyczny i geometryczny, ciągi mieszane, granice (R), szereg geometryczny (R).
 - **[7. Wielomiany (`7_wielomiany.html`)](7_wielomiany.html)** – Rozkład na czynniki, twierdzenie Bézouta, schemat Hornera, wężyk nierówności, pochodne (R).
 - **[8. Funkcje wymierne (`8_funkcje_wymierne.html`)](8_funkcje_wymierne.html)** – Ułamki algebraiczne, równania wymierne, funkcja homograficzna, asymptoty, nierówności (R).
+- **[🎯 Sprawdzian: Dowody Algebraiczne (`sprawdzian.html`)](sprawdzian.html)** – Zestaw 68+ zadań: zbiór maturalny (Dowód 35–68), podręcznik (Tematy 4.1 i 4.2: podzielność i nierówności) oraz zadania z działów 1 i 2.
 - **`assets/img/`** – Wszystkie rysunki, schematy i wykresy wyodrębnione z oryginalnych arkuszy zadań.
 
 ## 🛠 Technologie
